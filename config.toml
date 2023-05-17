@@ -1,0 +1,56 @@
+baseURL = 'https://codehakase.com/'
+languageCode = 'en-us'
+title = "codehakase's logs"
+theme = "ezhil"
+
+summaryLength = 20
+# Enable syntax highlighting.
+pygmentsstyle = "solarized-dark"
+pygmentscodefences = true
+pygmentscodefencesguesssyntax = true
+showAllPostsArchive = true
+
+[params]
+  subtitle = "Notes mostly about software engineering and what I'm working on."
+
+[[menu.main]]
+name = "Home"
+url = "/blog"
+weight = 1
+
+[[menu.main]]
+name = "About"
+url = "/"
+weight = 2
+
+
+[[menu.main]]
+name = "Projects"
+url = "/projects"
+weight = 3
+
+[[menu.main]]
+name = "Archive"
+url = "/blog/archive"
+weight = 4
+
+[[menu.main]]
+name = "Tags"
+url = "/tags"
+weight = 5
+
+[[params.social]]
+name = "Twitter"
+icon = "twitter"
+url = "https://twitter.com/codehakase"
+
+[[params.social]]
+name = "Github"
+icon = "github"
+url = "https://github.com/codehakase"
+
+[taxonomies]
+   tag = "tags"
+
+[permalinks]
+  posts = "/:year-:month-:day/:title"

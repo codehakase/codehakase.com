@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>codehakase (Francis Sunday)</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Anonymous+Pro" rel="stylesheet">
+<style>
+ body {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  font-family: "Anonymous Pro", monospace;
+  justify-content: center;
+  margin-bottom: 50px;
+  margin-top: 4vh;
+  padding: 0 50px;
+}
+
+h1 {
+  font-family: "Roboto", sans-serif;
+  font-size: 55px;
+  margin-bottom: 0;
+}
+
+img {
+  width: 100%;
+}
+
+p {
+  line-height: 1.1;
+}
+
+span {
+  margin-left: 12ch;
+}
+
+a {
+  border-bottom: 0.2em solid #000;
+  color: inherit;
+  margin-right: 0.3em;
+  text-decoration: none;
+}
+
+.profile {
+  margin: 0 20px;
+  min-width: 250px;
+}
+
+.profile img {
+  width: 250px;
+  border-radius: 50%;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 20px;
+  max-width: 400px;
+  min-width: 250px;
+}
+
+@media screen and (min-width: 475px) {
+  span {
+    margin: 0;
+  }
+
+  br {
+    display: none;
+  }
+} 
+</style>
+</head>
+<body>
+  <div class="profile">
+    <img src="https://avatars.githubusercontent.com/u/9336187?v=4">
+  </div>
+  <div class="text">
+    <div>
+      <h1>Francis Sunday</h1>
+      <p>By day I’m a software engineer primarily focused on infrastructure and
+      backend systems. I write Go code most of the time, and currently
+      experimenting with Rust.</p>
+      <p>I write about what I'm working on or learning on my blog, and in my
+      free time you can find me honing my skills on the piano keyboard.</p>
+    </div>
+    <div>
+      <a href="https://codehakase.com/blog">blog</a>
+      <a href="https://github.com/codehakase">github</a>
+      <a href="mailto:codehakase@gmail.com">contact</a>
+    </div>
+  </div>
+</body>
+</html>
