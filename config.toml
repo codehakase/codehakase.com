@@ -9,6 +9,7 @@ pygmentsstyle = "solarized-dark"
 pygmentscodefences = true
 pygmentscodefencesguesssyntax = true
 showAllPostsArchive = true
+disqusShortname="codehakase-github-io"
 
 [params]
   subtitle = "Notes mostly about software engineering and what I'm working on."
