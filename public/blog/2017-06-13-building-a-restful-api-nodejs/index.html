@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Build your first RESTful API with Node.js - codehakase&#39;s logs</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Build your first RESTful API with Node.js" />
+<meta property="og:description" content="A simple guide to building RESTful apis with Node.js" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://codehakase.com/blog/2017-06-13-building-a-restful-api-nodejs/" /><meta property="article:section" content="blog" />
+
+<meta property="article:modified_time" content="2017-06-13T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Build your first RESTful API with Node.js"/>
+<meta name="twitter:description" content="A simple guide to building RESTful apis with Node.js"/>
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" media="screen" href="https://codehakase.com/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://codehakase.com/css/main.css" />
+
+	<script src="https://codehakase.com/js/feather.min.js"></script>
+	
+	<script src="https://codehakase.com/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper post">
+		<div class="header">
+	<base href="https://codehakase.com/">
+	<h1 class="site-title"><a href="https://codehakase.com/blog">codehakase&#39;s logs</a></h1>
+	<div class="site-description"><h2>Notes mostly about software engineering and what I&rsquo;m working on.</h2><nav class="nav social">
+			<ul class="flat"><a href="https://twitter.com/codehakase" title="Twitter"><i data-feather="twitter"></i></a><a href="https://github.com/codehakase" title="Github"><i data-feather="github"></i></a></ul>
+		</nav>
+	</div>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/blog">Home</a>
+			</li>
+			
+			<li>
+				<a href="/">About</a>
+			</li>
+			
+			<li>
+				<a href="/projects">Projects</a>
+			</li>
+			
+			<li>
+				<a href="/blog/archive">Archive</a>
+			</li>
+			
+			<li>
+				<a href="/tags">Tags</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
+
+
+		<div class="post-header">
+			<h1 class="title">Build your first RESTful API with Node.js</h1>
+			<div class="meta">Posted at &mdash; Jun 13, 2017</div>
+		</div>
+
+		<div class="markdown">
+			<p><img src="https://softwareengineeringdaily.com/wp-content/uploads/2015/08/nodejs_logo_green.jpg" alt="Node.js" title="Node.js"></p>
+<p><strong>Node.js</strong> is one intimidating JavaScript framework, especially for beginners. This article serves as a quick quide to Node.js, Express.js and MongoDB. We&rsquo;ll building a simple REST API that&rsquo;ll serve as a basic foundation for an application.</p>
+<p>For the purpose of this tutorial, you&rsquo;ll be creating the base for a <em>ToDo List</em> application (yeah its kinda like the convention to start with ToDo list apps). You&rsquo;ll use all CRUD (create, read, update and delete) actions on the API.</p>
+<h1 id="what-is-rest">What is REST?</h1>
+<p>REST is an acronym for Representational State Transfer. It is a web standards architecture and HTTP Protocol. The REST protocol, decribes six (6) constraints:</p>
+<ol>
+<li>Uniform Interface</li>
+<li>Cacheable</li>
+<li>Client-Server</li>
+<li>Stateless</li>
+<li>Code on Demand</li>
+<li>Layered System</li>
+</ol>
+<p>REST is composed of methods such as a base URL, media types, etc. RESTful applicaitons uses HTTP requests to perform the CRUD operations.</p>
+<h1 id="setup">Setup</h1>
+<p>You&rsquo;ll need to have Node installed, if not in place get in <a href="https://howtonode.org/how-to-install-nodejs">here</a>.</p>
+<p>I&rsquo;m on Elementary OS (an Ubuntu flavoured distro), so i&rsquo;ll be using the command line alot.</p>
+<p>In a new directory <code>todoApp</code> or whatever you&rsquo;d like to name yours, we&rsquo;ll need a <code>package.json</code> file, so we&rsquo;ll use <code>npm</code> to generate one:</p>
+<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>npm init
+</span></span></code></pre></div><p>Feel free to use or change the defaults. Once that&rsquo;s done, you should be a <code>package.json</code> file generated in the root directory.</p>
+<p>We need Express as our web framework, <code>body-parser</code> to help handle JSON requests, MongoDB for the database, and Nodemon to watch for file changes while our app is being served.</p>
+<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npm install --save express body-parser mongoose <span style="color:#719e07">&amp;&amp;</span> npm install --save-dev nodemon
+</span></span></code></pre></div><blockquote>
+<ul>
+<li>You may need root access for npm to write out files, just append <code>sudo</code> to the command to grant root access.</li>
+<li>We&rsquo;ll be using Mongoose to interact with a MongoDB instance, you&rsquo;ll still need to have MongoDB server installed on your machine</li>
+</ul>
+</blockquote>
+<p>After the package installation is done, your complete <code>package.json</code> file should look like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#268bd2">&#34;name&#34;</span>: <span style="color:#2aa198">&#34;todoApp&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#268bd2">&#34;version&#34;</span>: <span style="color:#2aa198">&#34;0.0.0&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#268bd2">&#34;description&#34;</span>: <span style="color:#2aa198">&#34;Building a REST API with Node.js&#34;</span>,
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#268bd2">&#34;author&#34;</span>: <span style="color:#2aa198">&#34;Francis Sunday&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#268bd2">&#34;license&#34;</span>: <span style="color:#2aa198">&#34;MIT&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#268bd2">&#34;dependencies&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#268bd2">&#34;body-parser&#34;</span>: <span style="color:#2aa198">&#34;^1.17.2&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#268bd2">&#34;express&#34;</span>: <span style="color:#2aa198">&#34;^4.15.3&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#268bd2">&#34;mongoose&#34;</span>: <span style="color:#2aa198">&#34;^4.10.4&#34;</span>
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#268bd2">&#34;devDependencies&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#268bd2">&#34;nodemon&#34;</span>: <span style="color:#2aa198">&#34;^1.11.0&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="serving-up-the-app">Serving up the App</h2>
+<p>If you check your directory you&rsquo;d notice a new folder <code>node_modules</code> that&rsquo;s where the dependencies were saved by the <code>npm install</code> command. We need to require them and start up our app. Go ahead and create a <code>server.js</code> file with this content:</p>
+<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#268bd2">const</span> express <span style="color:#719e07">=</span> require(<span style="color:#2aa198">&#39;express&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#268bd2">const</span> app <span style="color:#719e07">=</span> express();
+</span></span><span style="display:flex;"><span><span style="color:#268bd2">const</span> port <span style="color:#719e07">=</span> process.env.PORT <span style="color:#719e07">||</span> <span style="color:#2aa198">3000</span>;
+</span></span><span style="display:flex;"><span><span style="color:#268bd2">const</span> mongoose <span style="color:#719e07">=</span> require(<span style="color:#2aa198">&#39;mongoose&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#268bd2">const</span> bodyParser <span style="color:#719e07">=</span> require(<span style="color:#2aa198">&#39;body-parser&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#586e75">// get our server running
+</span></span></span><span style="display:flex;"><span><span style="color:#586e75"></span>app.listen(port, () =&gt; {
+</span></span><span style="display:flex;"><span>    console.log(<span style="color:#2aa198">&#34;App up and running on&#34;</span> <span style="color:#719e07">+</span> port);
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><p>Now run <code>node server.js</code> and you&rsquo;d see the log.</p>
+<h2 id="file-structure">File Structure</h2>
+<p>We need to structure or directory so we have dedicated files for various actions - <code>routes, models,</code> and <code>controllers</code>. Go ahead and create the following directory structure:</p>
+<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>--todoApp
+</span></span><span style="display:flex;"><span>    - api
+</span></span><span style="display:flex;"><span>        - models
+</span></span><span style="display:flex;"><span>        - controllers
+</span></span><span style="display:flex;"><span>        - routes
+</span></span><span style="display:flex;"><span>    - node_modules
+</span></span><span style="display:flex;"><span>    - server.js
+</span></span><span style="display:flex;"><span>    - package.json
+</span></span><span style="display:flex;"><span>    ...
+</span></span></code></pre></div><p>We create the dedicated files in their directories-
+<code>api/models/todoModel.js api/controllers/todoController.js api/routes/todoRoutes.js</code></p>
+<p>Your directory structure should look like this now:</p>
+<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>--todoApp
+</span></span><span style="display:flex;"><span>    - api
+</span></span><span style="display:flex;"><span>        - models
+</span></span><span style="display:flex;"><span>            - todoModel.js
+</span></span><span style="display:flex;"><span>        - controllers
+</span></span><span style="display:flex;"><span>            - todoController.js
+</span></span><span style="display:flex;"><span>        - routes
+</span></span><span style="display:flex;"><span>            - todoRoutes.js
+</span></span><span style="display:flex;"><span>    - node_modules
+</span></span><span style="display:flex;"><span>    - server.js
+</span></span><span style="display:flex;"><span>    - package.json
+</span></span><span style="display:flex;"><span>    ...
+</span></span></code></pre></div><h3 id="crud-routes">CRUD Routes</h3>
+<p>For this api, you&rsquo;ll create four (4) different routes, to handle CREAting a todo item, READing an item, UPDATE and item, and DELETE an item.
+You&rsquo;re also gonna need to test your API while developing, so we&rsquo;ll use an awesome app called <a href="https://getpostman.com">Postman</a>, which will allow us make simple HTTP requests.</p>
+<h4 id="your-first-route">Your First Route</h4>
+<p>Routing refers to determining how an application responds to requests, which is a URI and a specific request method (POST, GET, DELETE, etc).</p>
+<p>We&rsquo;re gonna define two basic routes <code>/tasks</code> and <code>/tasks/{taskid}</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#586e75">// api/models/todoRoutes.js
+</span></span></span><span style="display:flex;"><span><span style="color:#586e75"></span>
+</span></span><span style="display:flex;"><span>module.exports <span style="color:#719e07">=</span> (app) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#268bd2">let</span> todoList <span style="color:#719e07">=</span> require(<span style="color:#2aa198">&#39;../controllers/todoController&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#586e75">// our Routes
+</span></span></span><span style="display:flex;"><span><span style="color:#586e75"></span>    app.route(<span style="color:#2aa198">&#39;/tasks&#39;</span>)
+</span></span><span style="display:flex;"><span>        .get(todoList.getTasks)
+</span></span><span style="display:flex;"><span>        .post(todoList.createTask);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    app.route(<span style="color:#2aa198">&#39;/tasks/:taskId&#39;</span>)
+</span></span><span style="display:flex;"><span>        .get(todoList.readTask)
+</span></span><span style="display:flex;"><span>        .put(todoList.updateTask)
+</span></span><span style="display:flex;"><span>        .<span style="color:#719e07">delete</span>(todoList.deleteTask);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>In the code above, the API&rsquo;s routes are defined under different verbs; when a request is made for the <code>tasks</code> route e.g <code>todoApp.dev/tasks</code>, it calls the <code>getTasks</code> method from the required todoList controller, same for the <code>post</code>, <code>put</code>, and <code>delete</code> routes. The <code>tasks/:taskId</code> route, handles a single task. We can grab a task via its ID - <code>/tasks/3</code> update or delete it too.</p>
+<h2 id="database-schema">Database Schema</h2>
+<p>We&rsquo;ll be using Mongoose to interact with a MongoDB instance. In the <code>todoModel.js</code> file, we&rsquo;ll define a schema for our Tasks collection. With Mongoose, we can create Schemas easily by defining the fields and their types.</p>
+<blockquote>
+<p>You&rsquo;ll need to have MongoDB server installed locally, if you want to serve your database. You can also use a remote database, there&rsquo;s a free tier from <a href="'https://mlab.com">MLab</a></p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#268bd2">const</span> mongoose <span style="color:#719e07">=</span> require(<span style="color:#2aa198">&#39;mongoose&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#268bd2">const</span> Schema <span style="color:#719e07">=</span> mongoose.Schema;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#268bd2">let</span> TaskSchema <span style="color:#719e07">=</span> <span style="color:#719e07">new</span> Schema({
+</span></span><span style="display:flex;"><span>    name<span style="color:#719e07">:</span> {
+</span></span><span style="display:flex;"><span>        type<span style="color:#719e07">:</span> <span style="color:#b58900">String</span>,
+</span></span><span style="display:flex;"><span>        Required<span style="color:#719e07">:</span> <span style="color:#2aa198">&#39;Task label is required!&#39;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    Created_date<span style="color:#719e07">:</span> {
+</span></span><span style="display:flex;"><span>        type<span style="color:#719e07">:</span> <span style="color:#b58900">Date</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#719e07">default</span><span style="color:#719e07">:</span> <span style="color:#b58900">Date</span>.now
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    status<span style="color:#719e07">:</span> {
+</span></span><span style="display:flex;"><span>        type<span style="color:#719e07">:</span> [{
+</span></span><span style="display:flex;"><span>            type<span style="color:#719e07">:</span> <span style="color:#b58900">String</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#268bd2">enum</span><span style="color:#719e07">:</span> [<span style="color:#2aa198">&#39;completed&#39;</span>, <span style="color:#2aa198">&#39;ongoing&#39;</span>, <span style="color:#2aa198">&#39;pending&#39;</span>]
+</span></span><span style="display:flex;"><span>        }],
+</span></span><span style="display:flex;"><span>        <span style="color:#719e07">default</span><span style="color:#719e07">:</span> [<span style="color:#2aa198">&#39;pending&#39;</span>]
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>module.exports <span style="color:#719e07">=</span> mongoose.model(<span style="color:#2aa198">&#39;Tasks&#39;</span>, TaskSchema);
+</span></span></code></pre></div><p>In the <code>taskModel</code> file, we created a schema for it. As you can see, it the task collection(table) will contain a name: a string, and the date it was created.</p>
+<h3 id="setting-up-controllers">Setting up Controllers</h3>
+<p>Remember those methods attached to each verb in the <code>todoRoutes.js</code> file, they are controller methods, and we are creating them in the <code>api/controllers/todoController.js</code> file:</p>
+<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#268bd2">const</span> mongoose <span style="color:#719e07">=</span> require(<span style="color:#2aa198">&#34;mongoose&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#268bd2">const</span> Task <span style="color:#719e07">=</span> mongoose.model(<span style="color:#2aa198">&#34;Tasks&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#586e75">// get all tasks
+</span></span></span><span style="display:flex;"><span><span style="color:#586e75"></span>
+</span></span><span style="display:flex;"><span>exports.getTasks <span style="color:#719e07">=</span> (req, res) =&gt; {
+</span></span><span style="display:flex;"><span>    Task.find({}, (err, task) =&gt; {
+</span></span><span style="display:flex;"><span>        <span style="color:#719e07">if</span> (err)
+</span></span><span style="display:flex;"><span>            res.send(err);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        res.json(task);
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#586e75">// create a task
+</span></span></span><span style="display:flex;"><span><span style="color:#586e75"></span>
+</span></span><span style="display:flex;"><span>exports.createTask <span style="color:#719e07">=</span> (req, res) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#268bd2">let</span> newTask <span style="color:#719e07">=</span> <span style="color:#719e07">new</span> Task(req.body);
+</span></span><span style="display:flex;"><span>    newTask.save( (err, task) =&gt; {
+</span></span><span style="display:flex;"><span>        <span style="color:#719e07">if</span> (err)
+</span></span><span style="display:flex;"><span>            res.send(err);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        res.json(task);
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#586e75">// read a single task
+</span></span></span><span style="display:flex;"><span><span style="color:#586e75"></span>
+</span></span><span style="display:flex;"><span>exports.readTask <span style="color:#719e07">=</span> (req, res) =&gt; {
+</span></span><span style="display:flex;"><span>    Task.findById(req.params.id, (err, task) =&gt; {
+</span></span><span style="display:flex;"><span>        <span style="color:#719e07">if</span> (err)
+</span></span><span style="display:flex;"><span>            res.send(err);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        res.json(task);
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#586e75">// update a particular task
+</span></span></span><span style="display:flex;"><span><span style="color:#586e75"></span>
+</span></span><span style="display:flex;"><span>exports.updateTask <span style="color:#719e07">=</span> (req, res) =&gt; {
+</span></span><span style="display:flex;"><span>  Task.findOneAndUpdate(req.params.id, req.body, { <span style="color:#719e07">new</span><span style="color:#719e07">:</span> <span style="color:#cb4b16">true</span> }, (err, task) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#719e07">if</span> (err)
+</span></span><span style="display:flex;"><span>        res.send(err);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    res.json(task);
+</span></span><span style="display:flex;"><span>  });
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#586e75">// delete a single task
+</span></span></span><span style="display:flex;"><span><span style="color:#586e75"></span>
+</span></span><span style="display:flex;"><span>exports.deleteTask <span style="color:#719e07">=</span> (req, res) =&gt; {
+</span></span><span style="display:flex;"><span>    Task.remove({
+</span></span><span style="display:flex;"><span>        _id<span style="color:#719e07">:</span> req.params.id
+</span></span><span style="display:flex;"><span>    }, (err, task) =&gt; {
+</span></span><span style="display:flex;"><span>        <span style="color:#719e07">if</span> (err)
+</span></span><span style="display:flex;"><span>            res.send(err);
+</span></span><span style="display:flex;"><span>        res.json({ message<span style="color:#719e07">:</span> <span style="color:#2aa198">&#39;Task deleted!!&#39;</span> });
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h3 id="coupling-everything">Coupling everything</h3>
+<p>Back in our <code>server.js</code> file, we&rsquo;ll connect to our database, by adding a URL to the mongoose connection instance, Load the created Model (<code>task</code>), register our created routes.
+Update your <code>server.js</code> file to look like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#268bd2">const</span> express <span style="color:#719e07">=</span> require(<span style="color:#2aa198">&#34;express&#34;</span>); <span style="color:#586e75">// express framework
+</span></span></span><span style="display:flex;"><span><span style="color:#586e75"></span><span style="color:#268bd2">const</span> app <span style="color:#719e07">=</span> express();
+</span></span><span style="display:flex;"><span><span style="color:#268bd2">const</span> port <span style="color:#719e07">=</span> process.env.PORT <span style="color:#719e07">||</span> <span style="color:#2aa198">3000</span>;
+</span></span><span style="display:flex;"><span><span style="color:#268bd2">const</span> mongoose <span style="color:#719e07">=</span> require(<span style="color:#2aa198">&#34;mongoose&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#268bd2">const</span> Task <span style="color:#719e07">=</span> require(<span style="color:#2aa198">&#34;./api/models/todoListModel&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#268bd2">const</span> bodyParser <span style="color:#719e07">=</span> require(<span style="color:#2aa198">&#39;body-parser&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mongoose.<span style="color:#b58900">Promise</span> <span style="color:#719e07">=</span> global.<span style="color:#b58900">Promise</span>;
+</span></span><span style="display:flex;"><span>mongoose.connect(<span style="color:#2aa198">&#34;mongodb://localhost:2701/todoApp&#34;</span>); <span style="color:#586e75">// connect to MongoDB
+</span></span></span><span style="display:flex;"><span><span style="color:#586e75"></span>
+</span></span><span style="display:flex;"><span><span style="color:#586e75">// handle incoming requests
+</span></span></span><span style="display:flex;"><span><span style="color:#586e75"></span>app.use(bodyParser.urlencoded({ extended<span style="color:#719e07">:</span> <span style="color:#cb4b16">true</span> }));
+</span></span><span style="display:flex;"><span>app.use(bodyParser.json());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#586e75">// middleware to handle wrong routes
+</span></span></span><span style="display:flex;"><span><span style="color:#586e75"></span>
+</span></span><span style="display:flex;"><span>app.use( (req, res) =&gt; {
+</span></span><span style="display:flex;"><span>    res.status(<span style="color:#2aa198">404</span>).send({ url<span style="color:#719e07">:</span> req.originalUrl <span style="color:#719e07">+</span> <span style="color:#2aa198">&#39;not found&#39;</span> });
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#268bd2">let</span> routes <span style="color:#719e07">=</span> require(<span style="color:#2aa198">&#34;./api/routes/todoListRoute&#34;</span>);
+</span></span><span style="display:flex;"><span>routes(app); <span style="color:#586e75">// register our routes
+</span></span></span><span style="display:flex;"><span><span style="color:#586e75"></span>
+</span></span><span style="display:flex;"><span>app.listen(port);
+</span></span><span style="display:flex;"><span>console.log(<span style="color:#2aa198">&#39;App running on &#39;</span> <span style="color:#719e07">+</span> port);
+</span></span></code></pre></div><h2 id="testing-with-postman">Testing with Postman</h2>
+<p>To test your API using postman, startup the server <code>nodemon server.js</code> and then open up the postman app and pass in your url</p>
+<h4 id="get-all-tasks">Get all tasks</h4>
+<p><img src="https://user-images.githubusercontent.com/9336187/27061121-6fa2db82-4fd9-11e7-9b51-6116f15da36e.png" alt="node-api-postman-get"></p>
+<h4 id="create-a-task">Create a Task</h4>
+<p><img src="https://user-images.githubusercontent.com/9336187/27061119-6f56e13c-4fd9-11e7-9ebc-5b5afb1aac01.png" alt="node-api-postman-post"></p>
+<blockquote>
+<p>Note: To use the post method on postman, the <em>Body</em> should be set to <em>x-www-form-urlencode</em></p>
+</blockquote>
+<p>[<strong>Update: 2017-06-24</strong> Source code for this tutorial -&gt; <a href="https://github.com/HakaseLabs/source-blog/tree/master/rest-api-nodejs">Here</a>]</p>
+<h2 id="thats-it">That&rsquo;s it!</h2>
+<p>You have a working Node.js API which makes use of the four major HTTP verbs (GET, POST, PUT, DELETE).</p>
+<p>This tutorial was created to give you a familarity with the Node.js development environment along side Express.js and MongoDB.</p>
+<p>Was this helpful? feel free to leave a comment below. Also, if you have questions, noticed an error, please do well to let me know.</p>
+<p>Thanks!</p>
+
+		</div>
+
+		<div class="post-tags">
+			
+				
+					<nav class="nav tags">
+							<ul class="flat">
+								
+								<li><a href="/tags/node.js">node.js</a></li>
+								
+								<li><a href="/tags/api">api</a></li>
+								
+								<li><a href="/tags/rest">rest</a></li>
+								
+								<li><a href="/tags/nodejs">nodejs</a></li>
+								
+							</ul>
+					</nav>
+				
+			
+		</div>
+		<div id="disqus_thread"></div>
+<script type="text/javascript">
+	(function () {
+		
+		
+		if (window.location.hostname == "localhost")
+			return;
+
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		var disqus_shortname = 'codehakase-github-io';
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+		Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div> <a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+
+
+<script>feather.replace()</script>
+</body>
+</html>

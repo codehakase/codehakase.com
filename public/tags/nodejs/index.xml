@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>nodejs on codehakase&#39;s logs</title>
+    <link>https://codehakase.com/tags/nodejs/</link>
+    <description>Recent content in nodejs on codehakase&#39;s logs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 13 Jun 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://codehakase.com/tags/nodejs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Build your first RESTful API with Node.js</title>
+      <link>https://codehakase.com/blog/2017-06-13-building-a-restful-api-nodejs/</link>
+      <pubDate>Tue, 13 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://codehakase.com/blog/2017-06-13-building-a-restful-api-nodejs/</guid>
+      <description>Node.js is one intimidating JavaScript framework, especially for beginners. This article serves as a quick quide to Node.js, Express.js and MongoDB.</description>
+    </item>
+    
+  </channel>
+</rss>

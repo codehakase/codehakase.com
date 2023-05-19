@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>golang on codehakase&#39;s logs</title>
+    <link>https://codehakase.com/tags/golang/</link>
+    <description>Recent content in golang on codehakase&#39;s logs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 03 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://codehakase.com/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Working with JSON in Go</title>
+      <link>https://codehakase.com/blog/2021-05-03-json-in-go/</link>
+      <pubDate>Mon, 03 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://codehakase.com/blog/2021-05-03-json-in-go/</guid>
+      <description>Summary: I&amp;rsquo;ve worked with JSON in various programming languages in context to data exchange/communication between applications. In this article, I&amp;rsquo;ll give a brief overview of the encoding/json package in Go, and point some gotchas I&amp;rsquo;ve encountered.</description>
+    </item>
+    
+    <item>
+      <title>Enum Stringer Interface optimisation in Go</title>
+      <link>https://codehakase.com/blog/2021-04-08-enum-stringer-optimization-go/</link>
+      <pubDate>Thu, 08 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://codehakase.com/blog/2021-04-08-enum-stringer-optimization-go/</guid>
+      <description>The most idiomatic way of describing an enum type in Go is to use constants, often in conjunction with iota.</description>
+    </item>
+    
+    <item>
+      <title>Building Small Containers for Kubernetes</title>
+      <link>https://codehakase.com/blog/2018-01-12-building-small-containers-for-kubernetes/</link>
+      <pubDate>Sat, 01 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codehakase.com/blog/2018-01-12-building-small-containers-for-kubernetes/</guid>
+      <description>The first step to deploying any app to Kubernetes, is to bundle the app in a container. There are several official, and community-backed container images for various languages and distros, and most of these containers can be really large, or sometimes contain overheads your app may never need/use.</description>
+    </item>
+    
+    <item>
+      <title>Building a Web App With Go, Gin and React</title>
+      <link>https://codehakase.com/blog/2018-04-20-building-a-web-app-with-go-gin-and-react/</link>
+      <pubDate>Fri, 20 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codehakase.com/blog/2018-04-20-building-a-web-app-with-go-gin-and-react/</guid>
+      <description>TL;DR: In this tutorial, I&amp;rsquo;ll show you how easy it is to build a web application with Go and the Gin framework and add authentication to it.</description>
+    </item>
+    
+    <item>
+      <title>Here&#39;s What&#39;s New  In Go 1.10</title>
+      <link>https://codehakase.com/blog/2018-03-05-whats-new-in-golang-1-dot-10/</link>
+      <pubDate>Tue, 06 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codehakase.com/blog/2018-03-05-whats-new-in-golang-1-dot-10/</guid>
+      <description>Go 1.8 is one year old (Happy belated Birthday 🎊 🎉) Go 1.9 is already 6 months old! Go 1.</description>
+    </item>
+    
+  </channel>
+</rss>

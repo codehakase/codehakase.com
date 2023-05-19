@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Introduction to JavaScript Promises - codehakase&#39;s logs</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Introduction to JavaScript Promises" />
+<meta property="og:description" content="The basics you need to know, about promises in JavaScript" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://codehakase.com/blog/2017-05-21-intro-to-javascript-promises/" /><meta property="article:section" content="blog" />
+
+<meta property="article:modified_time" content="2017-05-21T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Introduction to JavaScript Promises"/>
+<meta name="twitter:description" content="The basics you need to know, about promises in JavaScript"/>
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" media="screen" href="https://codehakase.com/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://codehakase.com/css/main.css" />
+
+	<script src="https://codehakase.com/js/feather.min.js"></script>
+	
+	<script src="https://codehakase.com/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper post">
+		<div class="header">
+	<base href="https://codehakase.com/">
+	<h1 class="site-title"><a href="https://codehakase.com/blog">codehakase&#39;s logs</a></h1>
+	<div class="site-description"><h2>Notes mostly about software engineering and what I&rsquo;m working on.</h2><nav class="nav social">
+			<ul class="flat"><a href="https://twitter.com/codehakase" title="Twitter"><i data-feather="twitter"></i></a><a href="https://github.com/codehakase" title="Github"><i data-feather="github"></i></a></ul>
+		</nav>
+	</div>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/blog">Home</a>
+			</li>
+			
+			<li>
+				<a href="/">About</a>
+			</li>
+			
+			<li>
+				<a href="/projects">Projects</a>
+			</li>
+			
+			<li>
+				<a href="/blog/archive">Archive</a>
+			</li>
+			
+			<li>
+				<a href="/tags">Tags</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
+
+
+		<div class="post-header">
+			<h1 class="title">Introduction to JavaScript Promises</h1>
+			<div class="meta">Posted at &mdash; May 21, 2017</div>
+		</div>
+
+		<div class="markdown">
+			<p>JavaScript promises have become a popular way to handle the tangled mess that JavaScript’s asynchronous nature often creates for us.
+Synchronous code is eaiser to follow and debug, async is better for flexibiity. Promises are becomming a big part of the JavaScript world, with awesome APIs implemented with it.</p>
+<h2 id="what-is-a-promise">What is a Promise?</h2>
+<p>A Promise is a proxy for a value not necessarily known when the promise is created. It allows you to associate handlers with an asynchronous action&rsquo;s eventual success value or failure reason. This lets asynchronous methods return values like synchronous methods: instead of immediately returning the final value, the asynchronous method returns a promise to supply the value at some point in the future. - <strong>Mozilla Developer Network (MDN)</strong></p>
+<h2 id="how-promises-work">How Promises work</h2>
+<p>A promise, returns an object synchronously from asynchronous function, in three possible states:</p>
+<ul>
+<li>Fuilfiled <code>resolve()</code> - The action relating to the promise succeeded</li>
+<li>Rejected <code>reject()</code> - The action relating to the promise failed</li>
+<li>Pending - not yet fulfilled or rejected</li>
+<li>Settled - Has fulfilled or rejected</li>
+</ul>
+<p><strong>A simple promise:</strong> The code below has a function that returns a promise after a specified time delay.</p>
+<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#268bd2">const</span> greet <span style="color:#719e07">=</span> t =&gt; <span style="color:#719e07">new</span> <span style="color:#b58900">Promise</span>((resolve) =&gt; setTimeout(resolve, t));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>greet(<span style="color:#2aa198">5000</span>)
+</span></span><span style="display:flex;"><span>    .then( () =&gt; console.log(<span style="color:#2aa198">&#34;Promises!!&#34;</span>));
+</span></span></code></pre></div><p>The <code>greet</code> function waits for 5 seconds (5000ms) and log to the console a string.</p>
+<h2 id="basic-promise-usage">Basic Promise Usage</h2>
+<p>A new Promise is created with the <code>new</code> keyword and the promise provides <code>resolve</code> and <code>reject</code> functions to the provided callback:</p>
+<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#268bd2">const</span> myPromise <span style="color:#719e07">=</span> <span style="color:#719e07">new</span> <span style="color:#b58900">Promise</span>( (resolve, reject) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#586e75">// we could run an async task here
+</span></span></span><span style="display:flex;"><span><span style="color:#586e75"></span>    <span style="color:#719e07">if</span> (<span style="color:#cb4b16">true</span>) { <span style="color:#586e75">// condition is good
+</span></span></span><span style="display:flex;"><span><span style="color:#586e75"></span>        resolve(<span style="color:#2aa198">&#39;Success!!&#39;</span>);
+</span></span><span style="display:flex;"><span>    } <span style="color:#719e07">else</span> {;
+</span></span><span style="display:flex;"><span>        reject(<span style="color:#2aa198">&#39;Failure&#39;</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    myPromise.then( () =&gt; {
+</span></span><span style="display:flex;"><span>        <span style="color:#586e75">// do something with the result
+</span></span></span><span style="display:flex;"><span><span style="color:#586e75"></span>    }).<span style="color:#719e07">catch</span>(<span style="color:#268bd2">function</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#586e75">// error message
+</span></span></span><span style="display:flex;"><span><span style="color:#586e75"></span>    })
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><p>The ES6 promise constructor takes a function, with two parameters, <code>resolve()</code> and <code>reject()</code>.</p>
+<h3 id="then">then()</h3>
+<p>All promise instance, gets a <code>then</code> method which allows you to react to the promise. It receives the result given to it by the <code>resolve()</code> call.
+The <code>then</code> callback method, is triggered when a promise is resolved.</p>
+<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#268bd2">const</span> p <span style="color:#719e07">=</span> <span style="color:#719e07">new</span> <span style="color:#b58900">Promise</span>( (resolve, reject) {
+</span></span><span style="display:flex;"><span>    setTimeout( () =&gt; {
+</span></span><span style="display:flex;"><span>        resolve(<span style="color:#2aa198">10</span>);
+</span></span><span style="display:flex;"><span>    }, <span style="color:#2aa198">3000</span>);
+</span></span><span style="display:flex;"><span>})
+</span></span><span style="display:flex;"><span>.then( (num) =&gt; {
+</span></span><span style="display:flex;"><span>    console.log(<span style="color:#2aa198">&#39;then call 1: &#39;</span>, num);
+</span></span><span style="display:flex;"><span>    <span style="color:#719e07">return</span> num <span style="color:#719e07">*</span> <span style="color:#2aa198">2</span>;
+</span></span><span style="display:flex;"><span>})
+</span></span><span style="display:flex;"><span>.then( (num) =&gt; {
+</span></span><span style="display:flex;"><span>    console.log(<span style="color:#2aa198">&#39;then call 2: &#39;</span>, num);
+</span></span><span style="display:flex;"><span>    <span style="color:#719e07">return</span> num <span style="color:#719e07">*</span> <span style="color:#2aa198">2</span>;
+</span></span><span style="display:flex;"><span>})
+</span></span></code></pre></div><p>The output of the above code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>    &gt; then call 1: 10
+</span></span><span style="display:flex;"><span>    &gt; then call 2: 20
+</span></span></code></pre></div><h3 id="catch">catch()</h3>
+<p>The <code>catch</code> callback is executed when a promise is rejected</p>
+<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#268bd2">const</span> p <span style="color:#719e07">=</span> <span style="color:#719e07">new</span> <span style="color:#b58900">Promise</span>( (resolve, reject) =&gt; {
+</span></span><span style="display:flex;"><span>    setTimeout(<span style="color:#268bd2">function</span>() {
+</span></span><span style="display:flex;"><span>        reject(<span style="color:#2aa198">&#39;Rejected!!&#39;</span>);
+</span></span><span style="display:flex;"><span>    }, <span style="color:#2aa198">2000</span>);
+</span></span><span style="display:flex;"><span>})
+</span></span><span style="display:flex;"><span>.then( (e) =&gt; { console.log(<span style="color:#2aa198">&#39;done&#39;</span>, e); })
+</span></span><span style="display:flex;"><span>.<span style="color:#719e07">catch</span>( (e) =&gt; { console.log(<span style="color:#2aa198">&#39;catch:&#39;</span>, e); } )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#586e75">// output
+</span></span></span><span style="display:flex;"><span><span style="color:#586e75">// catch: Rejected!!
+</span></span></span></code></pre></div><p>You can also use Promises in jQuery. jQuery has an object called <code>Deferred</code> that has <code>resolve</code> and <code>reject</code> methods that behaves like the resolve and reject methods passed to the Native JavaScript Promise constructor.</p>
+<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#586e75">//using jQuery
+</span></span></span><span style="display:flex;"><span><span style="color:#586e75"></span><span style="color:#268bd2">let</span> p <span style="color:#719e07">=</span> $.Deferred(<span style="color:#268bd2">function</span> (dfd) {
+</span></span><span style="display:flex;"><span>    setTimeout(dfd.resolve, <span style="color:#2aa198">1000</span>);
+</span></span><span style="display:flex;"><span>}).p();
+</span></span></code></pre></div><h2 id="important-promise-rules">Important Promise Rules</h2>
+<p>A standard for promises was defined by the <a href="https://promisesaplus.com/implementations">Promises/A+ specification</a> community.
+Promises following the specmust follow a specific set of rules:</p>
+<ul>
+<li>A promise, is an object that supplies a standard compliant <code>.then</code> method.</li>
+<li>A pending promise may transition into a fulfilled or rejected state.</li>
+<li>A fulfiled or rejected promise is settled, and must not transition into any other state.</li>
+<li>Once a promise is settled, it must have a value, which must not change.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>The change refers to identity (===) comparison
+</span></span></code></pre></div><h2 id="extras">Extras</h2>
+<p>The native <code>Promise</code> object has some extra stuff you might be interested in:</p>
+<ul>
+<li><code>Promise.reject()</code> return a rejected promise.</li>
+<li><code>Promise.resolve()</code> returns a resolved promise.</li>
+<li><code>Promise.race()</code> takes an array and returns a promise that resolves with the value of the resolved promise in th eiterable or rejects with the first promise that rejects.</li>
+<li><code>Promise.all()</code> take and array, and returns a promise that resolves when all the promises in te iterable argument have resolved, or rejects with the reason of the first passed promise that rejects.</li>
+</ul>
+<h2 id="browser-support--polyfill">Browser support &amp; Polyfill</h2>
+<p>As of Chrome 32, Firefox 29, Safari 8 &amp; Microsoft Edge, promises are enabled by default.
+To bring browsers that lack a complete promises implementation, there&rsquo;s <a href="https://github.com/jakearchibald/ES6-Promises#readme">Polyfill</a> to help out.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Promises have become an integral part of JavaScript and a very powerful way of managing asychronous behavior in JavaScript. By next week, I&rsquo;ll publish a read on the Properties of Promises, and relate to a live sample.
+Promises takes some time to get used used too (I still find it confusing at some point), so to grasp this concept, you have to <em>Learn, Un-learn, and Re-learn</em>.
+Have any questions or comments? Leave them below :bowtie: .</p>
+<h2 id="references">References</h2>
+<p><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise">Mozilla Developer Network</a></p>
+<p><a href="https://developers.google.com/web/fundamentals/getting-started/primers/promises">Jake Archibald - Google Developers</a></p>
+
+		</div>
+
+		<div class="post-tags">
+			
+				
+					<nav class="nav tags">
+							<ul class="flat">
+								
+								<li><a href="/tags/javascript">javascript</a></li>
+								
+								<li><a href="/tags/promises">promises</a></li>
+								
+							</ul>
+					</nav>
+				
+			
+		</div>
+		<div id="disqus_thread"></div>
+<script type="text/javascript">
+	(function () {
+		
+		
+		if (window.location.hostname == "localhost")
+			return;
+
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		var disqus_shortname = 'codehakase-github-io';
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+		Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div> <a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+
+
+<script>feather.replace()</script>
+</body>
+</html>

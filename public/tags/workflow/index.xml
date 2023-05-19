@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>workflow on codehakase&#39;s logs</title>
+    <link>https://codehakase.com/tags/workflow/</link>
+    <description>Recent content in workflow on codehakase&#39;s logs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 07 Feb 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://codehakase.com/tags/workflow/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Line Numbers In Vim</title>
+      <link>https://codehakase.com/blog/2020-02-07-vim-linenumbers/</link>
+      <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://codehakase.com/blog/2020-02-07-vim-linenumbers/</guid>
+      <description>Vim doesn&amp;rsquo;t show line numbers by default, they can be turned on in your vim configuration. Vim has an absolute, relative and hybrid line numbering mode.</description>
+    </item>
+    
+    <item>
+      <title>What I Use</title>
+      <link>https://codehakase.com/blog/2020-01-10-what-i-use/</link>
+      <pubDate>Fri, 10 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://codehakase.com/blog/2020-01-10-what-i-use/</guid>
+      <description>For the few times I have to tell people in detail the software and hardware I use on a day to day basis to do my job, here’s a post to list them.</description>
+    </item>
+    
+  </channel>
+</rss>

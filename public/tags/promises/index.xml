@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>promises on codehakase&#39;s logs</title>
+    <link>https://codehakase.com/tags/promises/</link>
+    <description>Recent content in promises on codehakase&#39;s logs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 21 May 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://codehakase.com/tags/promises/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Introduction to JavaScript Promises</title>
+      <link>https://codehakase.com/blog/2017-05-21-intro-to-javascript-promises/</link>
+      <pubDate>Sun, 21 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://codehakase.com/blog/2017-05-21-intro-to-javascript-promises/</guid>
+      <description>JavaScript promises have become a popular way to handle the tangled mess that JavaScript’s asynchronous nature often creates for us. Synchronous code is eaiser to follow and debug, async is better for flexibiity.</description>
+    </item>
+    
+  </channel>
+</rss>
