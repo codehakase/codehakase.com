@@ -7,7 +7,8 @@ body {
 }
 
 a, a:hover {
-    color: #a00;
+    color: #000;
+    font-weight: bold;
     text-decoration: none;
     word-break: break-word;
 }
@@ -80,7 +81,6 @@ blockquote em {
 }
 
 a,a:hover {
-    color: #a00;
     text-decoration: none
 }
 
@@ -301,7 +301,6 @@ pre code {
 }
 
 .post .draft-label {
-    color: #a00;
     text-decoration: none;
     padding: 2px 4px;
     border-radius: 4px;
@@ -316,10 +315,10 @@ pre code {
 
 .post-tags .tags a {
     display: inline-block;
-    border: 1px solid #a00;
+    border: 1px solid #000;
     border-radius: 4px;
     padding: 0px 6px;
-    color: #a00;
+    color: #000;
     line-height: 20px;
     font-size: 12px;
     text-decoration: none;
