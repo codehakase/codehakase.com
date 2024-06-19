@@ -6,11 +6,13 @@ body {
     font-size: 16px;
 }
 
-a, a:hover {
+a {
     color: #000;
-    font-weight: bold;
     text-decoration: none;
-    word-break: break-word;
+}
+
+a:hover {
+    text-decoration: underline
 }
 
 html,button,input,select,textarea {
@@ -80,13 +82,6 @@ blockquote em {
     font-weight: 600;
 }
 
-a,a:hover {
-    text-decoration: none
-}
-
-a:hover {
-    text-decoration: underline
-}
 
 h1,h2,h3,h4,h5,h6 {
     font-family: raleway,sans-serif;
