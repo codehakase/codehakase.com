@@ -42,7 +42,7 @@
 		{{- end -}}
 
 		<!-- Check if disqus short name is given -->
-		{{ if not .Site.DisqusShortname }}
+		{{ if not .Site.Params.DisqusShortname }}
 		{{- $.Scratch.Set "isDisqus" false -}}
 		{{ end }}
 

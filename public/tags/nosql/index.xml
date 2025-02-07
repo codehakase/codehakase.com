@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>nosql on codehakase&#39;s logs</title>
-    <link>https://codehakase.com/tags/nosql/</link>
-    <description>Recent content in nosql on codehakase&#39;s logs</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <title>Nosql on codehakase&#39;s logs</title>
+    <link>http://localhost:1313/tags/nosql/</link>
+    <description>Recent content in Nosql on codehakase&#39;s logs</description>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 19 Apr 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://codehakase.com/tags/nosql/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 19 Apr 2018 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/nosql/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>The CouchDB Replicator Database - An Overview</title>
-      <link>https://codehakase.com/blog/2018-04-19-couchdb-replicator-database/</link>
+      <link>http://localhost:1313/blog/2018-04-19-couchdb-replicator-database/</link>
       <pubDate>Thu, 19 Apr 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://codehakase.com/blog/2018-04-19-couchdb-replicator-database/</guid>
-      <description>TL;DR: In this article, I&amp;rsquo;ll give an overview of the replicator database in CouchDB, how to spin off a replication task in CouchDB</description>
+      <guid>http://localhost:1313/blog/2018-04-19-couchdb-replicator-database/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;TL;DR:&lt;/strong&gt; In this article, I&amp;rsquo;ll give an overview of the replicator database in CouchDB, how to spin off a replication task in CouchDB&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

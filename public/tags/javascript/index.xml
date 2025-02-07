@@ -1,66 +1,54 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>javascript on codehakase&#39;s logs</title>
-    <link>https://codehakase.com/tags/javascript/</link>
-    <description>Recent content in javascript on codehakase&#39;s logs</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <title>Javascript on codehakase&#39;s logs</title>
+    <link>http://localhost:1313/tags/javascript/</link>
+    <description>Recent content in Javascript on codehakase&#39;s logs</description>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 12 Aug 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://codehakase.com/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 12 Aug 2017 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>JavaScript Async/Await 101</title>
-      <link>https://codehakase.com/blog/2017-08-02-show-me-async-await-like-am-5/</link>
+      <link>http://localhost:1313/blog/2017-08-02-show-me-async-await-like-am-5/</link>
       <pubDate>Sat, 12 Aug 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://codehakase.com/blog/2017-08-02-show-me-async-await-like-am-5/</guid>
-      <description>Async and Await has been a blessing to most JavaScript Developers. Even while it was on the Stage 4 proposal for ES6, the feature has been warmtly welcomed.</description>
+      <guid>http://localhost:1313/blog/2017-08-02-show-me-async-await-like-am-5/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/aysnc-await.png&#34; alt=&#34;async/await&#34; title=&#34;Async/await&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Async and Await has been a blessing to most JavaScript Developers. Even while it was on the &lt;a href=&#34;https://github.com/tc39/ecma262/tree/82bebe057c9fca355cfbfeb36be8e42f18c61e94&#34;&gt;Stage 4 proposal&lt;/a&gt; for ES6, the feature has been warmtly welcomed.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>for...in vs for...of Loops in JavaScript</title>
-      <link>https://codehakase.com/blog/2017-06-19-for-in-vs-for-of-loop-javascript/</link>
+      <link>http://localhost:1313/blog/2017-06-19-for-in-vs-for-of-loop-javascript/</link>
       <pubDate>Mon, 19 Jun 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://codehakase.com/blog/2017-06-19-for-in-vs-for-of-loop-javascript/</guid>
-      <description>The for..in and for..of loops, gives us a clean and concise syntax to iterate on iterable items like arrays, strings, objects, and enumerables.</description>
+      <guid>http://localhost:1313/blog/2017-06-19-for-in-vs-for-of-loop-javascript/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://user-images.githubusercontent.com/9336187/27305938-97169192-553b-11e7-99cb-99396a9593fd.png&#34; alt=&#34;for-in-graphics&#34; title=&#34;Hakase Labs&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;The &lt;code&gt;for..in&lt;/code&gt; and &lt;code&gt;for..of&lt;/code&gt; loops, gives us a clean and concise syntax to iterate on iterable items like arrays, strings, objects, and enumerables. Now the question is where to use which.&#xA;Here&amp;rsquo;s a little reminder to get you you started.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Making hakasebot - Twitter Bots 101</title>
-      <link>https://codehakase.com/blog/2017-05-30-making-hakasebot-bots-101/</link>
+      <link>http://localhost:1313/blog/2017-05-30-making-hakasebot-bots-101/</link>
       <pubDate>Tue, 30 May 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://codehakase.com/blog/2017-05-30-making-hakasebot-bots-101/</guid>
-      <description>![Bots]({{ site.url }}/images/twitter-bots.gif &amp;ldquo;Bots&amp;rdquo;)
-This was my first attempt making twitter bots. I made a very simple twitter bot for this blog, check the Source and also follow @_hakasebot.</description>
+      <guid>http://localhost:1313/blog/2017-05-30-making-hakasebot-bots-101/</guid>
+      <description>&lt;p&gt;![Bots]({{ site.url }}/images/twitter-bots.gif &amp;ldquo;Bots&amp;rdquo;)&lt;/p&gt;&#xA;&lt;p&gt;This was my first attempt making twitter bots. I made a very simple twitter bot for this blog, check the &lt;a href=&#34;https://github.com/codehakase/hakasebot&#34;&gt;Source&lt;/a&gt; and also follow &lt;a href=&#34;https://twitter.com/_hakasebot&#34;&gt;@_hakasebot&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>JavaScript Objects 101</title>
-      <link>https://codehakase.com/blog/2017-05-25-javascript-objects-101/</link>
+      <link>http://localhost:1313/blog/2017-05-25-javascript-objects-101/</link>
       <pubDate>Thu, 25 May 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://codehakase.com/blog/2017-05-25-javascript-objects-101/</guid>
-      <description>In JavaScript, most things are objects, from core JavaScript features like strings and arrays to the browser APIs built on top of JavaScript.</description>
+      <guid>http://localhost:1313/blog/2017-05-25-javascript-objects-101/</guid>
+      <description>&lt;p&gt;In JavaScript, most things are objects, from core JavaScript features like strings and arrays to the browser APIs built on top of JavaScript. You can even create your own objects to encapsulate related functions and variables into efficient packages, and act as handy data containers.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Introduction to JavaScript Promises</title>
-      <link>https://codehakase.com/blog/2017-05-21-intro-to-javascript-promises/</link>
+      <link>http://localhost:1313/blog/2017-05-21-intro-to-javascript-promises/</link>
       <pubDate>Sun, 21 May 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://codehakase.com/blog/2017-05-21-intro-to-javascript-promises/</guid>
-      <description>JavaScript promises have become a popular way to handle the tangled mess that JavaScript’s asynchronous nature often creates for us. Synchronous code is eaiser to follow and debug, async is better for flexibiity.</description>
+      <guid>http://localhost:1313/blog/2017-05-21-intro-to-javascript-promises/</guid>
+      <description>&lt;p&gt;JavaScript promises have become a popular way to handle the tangled mess that JavaScript’s asynchronous nature often creates for us.&#xA;Synchronous code is eaiser to follow and debug, async is better for flexibiity. Promises are becomming a big part of the JavaScript world, with awesome APIs implemented with it.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Introducing Adonis Js</title>
-      <link>https://codehakase.com/blog/2017-05-09-introducing-adonis-js/</link>
+      <link>http://localhost:1313/blog/2017-05-09-introducing-adonis-js/</link>
       <pubDate>Tue, 09 May 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://codehakase.com/blog/2017-05-09-introducing-adonis-js/</guid>
-      <description>TL;DR AdonisJs is a true MVC Framework for Node.js. It encapsulate all the boring parts of Web programming and offers you a nice &amp;amp; clean API to work with.</description>
+      <guid>http://localhost:1313/blog/2017-05-09-introducing-adonis-js/</guid>
+      <description>&lt;h2 id=&#34;tldr&#34;&gt;TL;DR&lt;/h2&gt;&#xA;&lt;p&gt;AdonisJs is a true MVC Framework for Node.js. It encapsulate all the boring parts of Web programming and offers you a nice &amp;amp; clean API to work with. AdonisJs makes it easy to write web applications with less code. In this article, i will show you how to get started with AdonisJs. Checkout the repo on Github.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

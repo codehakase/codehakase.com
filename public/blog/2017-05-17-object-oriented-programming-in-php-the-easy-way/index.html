@@ -1,32 +1,38 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Object-Oriented PHP - An Easy Approach - codehakase&#39;s logs</title><meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta property="og:title" content="Object-Oriented PHP - An Easy Approach" />
-<meta property="og:description" content="A simple guide to getting started with Object Oriented PHP" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://codehakase.com/blog/2017-05-17-object-oriented-programming-in-php-the-easy-way/" /><meta property="article:section" content="blog" />
+	<meta property="og:url" content="http://localhost:1313/blog/2017-05-17-object-oriented-programming-in-php-the-easy-way/">
+  <meta property="og:site_name" content="codehakase&#39;s logs">
+  <meta property="og:title" content="Object-Oriented PHP - An Easy Approach">
+  <meta property="og:description" content="A simple guide to getting started with Object Oriented PHP">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2017-05-17T00:00:00+00:00">
+    <meta property="article:modified_time" content="2017-05-17T00:00:00+00:00">
+    <meta property="article:tag" content="Php">
+    <meta property="article:tag" content="Oop">
 
-<meta property="article:modified_time" content="2017-05-17T00:00:00+00:00" />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Object-Oriented PHP - An Easy Approach"/>
-<meta name="twitter:description" content="A simple guide to getting started with Object Oriented PHP"/>
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Object-Oriented PHP - An Easy Approach">
+  <meta name="twitter:description" content="A simple guide to getting started with Object Oriented PHP">
 <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
 
-	<link rel="stylesheet" type="text/css" media="screen" href="https://codehakase.com/css/normalize.css" />
-	<link rel="stylesheet" type="text/css" media="screen" href="https://codehakase.com/css/main.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="http://localhost:1313/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="http://localhost:1313/css/main.css" />
 
-	<script src="https://codehakase.com/js/feather.min.js"></script>
+	<script src="http://localhost:1313/js/feather.min.js"></script>
 	
-	<script src="https://codehakase.com/js/main.js"></script>
+	<script src="http://localhost:1313/js/main.js"></script>
 </head>
 
 <body>
 	<div class="container wrapper post">
 		<div class="header">
-	<base href="https://codehakase.com/">
-	<h1 class="site-title"><a href="https://codehakase.com/blog">codehakase&#39;s logs</a></h1>
+	<base href="http://localhost:1313/">
+	<h1 class="site-title"><a href="http://localhost:1313/blog">codehakase&#39;s logs</a></h1>
 	<div class="site-description"><h2>Notes mostly about software engineering and what I&rsquo;m working on.</h2><nav class="nav social">
 			<ul class="flat"><a href="https://twitter.com/codehakase" title="Twitter"><i data-feather="twitter"></i></a><a href="https://github.com/codehakase" title="Github"><i data-feather="github"></i></a></ul>
 		</nav>
@@ -118,20 +124,20 @@ We can have various objects as instance of the same class, but their data will v
 </span></span><span style="display:flex;"><span><span style="color:#268bd2">$user_b</span> <span style="color:#719e07">=</span> <span style="color:#719e07">new</span> User(<span style="color:#2aa198">&#34;Desiigner&#34;</span>, <span style="color:#2aa198">&#34;Doe&#34;</span>);
 </span></span><span style="display:flex;"><span><span style="color:#268bd2">$user_b</span><span style="color:#719e07">-&gt;</span>showInfo();
 </span></span></code></pre></div><p>Load up the script in your favorite browser <code>localhost/dir/oop.php</code>, you should see an output similar to this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>/var/www/html/tuts/backend/PHP/oop.php:15:
-</span></span><span style="display:flex;"><span>object(User)[1]
-</span></span><span style="display:flex;"><span>  public &#39;firstname&#39; =&gt; string &#39;John&#39; (length=4)
-</span></span><span style="display:flex;"><span>  public &#39;lastname&#39; =&gt; string &#39;Doe&#39; (length=3)
+<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gdscript3" data-lang="gdscript3"><span style="display:flex;"><span><span style="color:#719e07">/</span><span style="color:#719e07">var</span><span style="color:#719e07">/</span>www<span style="color:#719e07">/</span>html<span style="color:#719e07">/</span>tuts<span style="color:#719e07">/</span>backend<span style="color:#719e07">/</span>PHP<span style="color:#719e07">/</span>oop<span style="color:#719e07">.</span>php:<span style="color:#2aa198">15</span>:
+</span></span><span style="display:flex;"><span>object(User)[<span style="color:#2aa198">1</span>]
+</span></span><span style="display:flex;"><span>  public <span style="color:#2aa198">&#39;firstname&#39;</span> <span style="color:#719e07">=&gt;</span> string <span style="color:#2aa198">&#39;John&#39;</span> (length<span style="color:#719e07">=</span><span style="color:#2aa198">4</span>)
+</span></span><span style="display:flex;"><span>  public <span style="color:#2aa198">&#39;lastname&#39;</span> <span style="color:#719e07">=&gt;</span> string <span style="color:#2aa198">&#39;Doe&#39;</span> (length<span style="color:#719e07">=</span><span style="color:#2aa198">3</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>/var/www/html/tuts/backend/PHP/oop.php:15:
-</span></span><span style="display:flex;"><span>object(User)[2]
-</span></span><span style="display:flex;"><span>  public &#39;firstname&#39; =&gt; string &#39;Francis&#39; (length=7)
-</span></span><span style="display:flex;"><span>  public &#39;lastname&#39; =&gt; string &#39;Sunday&#39; (length=6)
+</span></span><span style="display:flex;"><span><span style="color:#719e07">/</span><span style="color:#719e07">var</span><span style="color:#719e07">/</span>www<span style="color:#719e07">/</span>html<span style="color:#719e07">/</span>tuts<span style="color:#719e07">/</span>backend<span style="color:#719e07">/</span>PHP<span style="color:#719e07">/</span>oop<span style="color:#719e07">.</span>php:<span style="color:#2aa198">15</span>:
+</span></span><span style="display:flex;"><span>object(User)[<span style="color:#2aa198">2</span>]
+</span></span><span style="display:flex;"><span>  public <span style="color:#2aa198">&#39;firstname&#39;</span> <span style="color:#719e07">=&gt;</span> string <span style="color:#2aa198">&#39;Francis&#39;</span> (length<span style="color:#719e07">=</span><span style="color:#2aa198">7</span>)
+</span></span><span style="display:flex;"><span>  public <span style="color:#2aa198">&#39;lastname&#39;</span> <span style="color:#719e07">=&gt;</span> string <span style="color:#2aa198">&#39;Sunday&#39;</span> (length<span style="color:#719e07">=</span><span style="color:#2aa198">6</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>/var/www/html/tuts/backend/PHP/oop.php:15:
-</span></span><span style="display:flex;"><span>object(User)[3]
-</span></span><span style="display:flex;"><span>  public &#39;firstname&#39; =&gt; string &#39;Desiigner&#39; (length=9)
-</span></span><span style="display:flex;"><span>  public &#39;lastname&#39; =&gt; string &#39;Doe&#39; (length=3)
+</span></span><span style="display:flex;"><span><span style="color:#719e07">/</span><span style="color:#719e07">var</span><span style="color:#719e07">/</span>www<span style="color:#719e07">/</span>html<span style="color:#719e07">/</span>tuts<span style="color:#719e07">/</span>backend<span style="color:#719e07">/</span>PHP<span style="color:#719e07">/</span>oop<span style="color:#719e07">.</span>php:<span style="color:#2aa198">15</span>:
+</span></span><span style="display:flex;"><span>object(User)[<span style="color:#2aa198">3</span>]
+</span></span><span style="display:flex;"><span>  public <span style="color:#2aa198">&#39;firstname&#39;</span> <span style="color:#719e07">=&gt;</span> string <span style="color:#2aa198">&#39;Desiigner&#39;</span> (length<span style="color:#719e07">=</span><span style="color:#2aa198">9</span>)
+</span></span><span style="display:flex;"><span>  public <span style="color:#2aa198">&#39;lastname&#39;</span> <span style="color:#719e07">=&gt;</span> string <span style="color:#2aa198">&#39;Doe&#39;</span> (length<span style="color:#719e07">=</span><span style="color:#2aa198">3</span>)
 </span></span></code></pre></div><p>Awesome!! each instance of the <code>User</code> class is independent of the others, their data is not same.</p>
 <h3 id="method-and-property-visibility">Method and Property Visibility</h3>
 <p>Now the <code>public</code> keyword, is a visibility type. There are three of them <code>public</code>, <code>protected</code>, and <code>private</code>. Also in addition to a property or method visiblity, there&rsquo;s <code>static</code> keyword, which allows them to accessed even without an instantiation of the class.
@@ -195,12 +201,12 @@ Consider the following getter, setter procedural code</p>
 </span></span><span style="display:flex;"><span>var_dump(<span style="color:#268bd2">$ex</span>);
 </span></span><span style="display:flex;"><span><span style="color:#719e07">?&gt;</span>
 </span></span></code></pre></div><p>Running the OOP code, you get something similar to:</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>/var/www/html/tuts/backend/PHP/oop.php:49:
-</span></span><span style="display:flex;"><span>object(Sample)[4]
-</span></span><span style="display:flex;"><span>  private &#39;vars&#39; =&gt; null
-</span></span><span style="display:flex;"><span>  public &#39;var&#39; =&gt;
-</span></span><span style="display:flex;"><span>    array (size=1)
-</span></span><span style="display:flex;"><span>      &#39;Hello&#39; =&gt; string &#39;World&#39; (length=5)
+<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gdscript3" data-lang="gdscript3"><span style="display:flex;"><span><span style="color:#719e07">/</span><span style="color:#719e07">var</span><span style="color:#719e07">/</span>www<span style="color:#719e07">/</span>html<span style="color:#719e07">/</span>tuts<span style="color:#719e07">/</span>backend<span style="color:#719e07">/</span>PHP<span style="color:#719e07">/</span>oop<span style="color:#719e07">.</span>php:<span style="color:#2aa198">49</span>:
+</span></span><span style="display:flex;"><span>object(<span style="color:#cb4b16">Sample</span>)[<span style="color:#2aa198">4</span>]
+</span></span><span style="display:flex;"><span>  private <span style="color:#2aa198">&#39;vars&#39;</span> <span style="color:#719e07">=&gt;</span> null
+</span></span><span style="display:flex;"><span>  public <span style="color:#2aa198">&#39;var&#39;</span> <span style="color:#719e07">=&gt;</span>
+</span></span><span style="display:flex;"><span>    array (size<span style="color:#719e07">=</span><span style="color:#2aa198">1</span>)
+</span></span><span style="display:flex;"><span>      <span style="color:#2aa198">&#39;Hello&#39;</span> <span style="color:#719e07">=&gt;</span> string <span style="color:#2aa198">&#39;World&#39;</span> (length<span style="color:#719e07">=</span><span style="color:#2aa198">5</span>)
 </span></span></code></pre></div><h3 id="better-code-management">Better Code Management</h3>
 <p>With OOP, you can manage your files within your application easily, by making use of autoloading.</p>
 <p>A typical procedural dependencies script may look as such:</p>
@@ -276,10 +282,6 @@ We are still gonna continue learning other concepts of OOP, and build a real app
 	<nav class="nav">
 		<div> Based on the <a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
 	</nav>
-</div>
-
-
-
-<script>feather.replace()</script>
+</div><script>feather.replace()</script>
 </body>
 </html>

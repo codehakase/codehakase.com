@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>adonisjs on codehakase&#39;s logs</title>
-    <link>https://codehakase.com/tags/adonisjs/</link>
-    <description>Recent content in adonisjs on codehakase&#39;s logs</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <title>Adonisjs on codehakase&#39;s logs</title>
+    <link>http://localhost:1313/tags/adonisjs/</link>
+    <description>Recent content in Adonisjs on codehakase&#39;s logs</description>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 09 May 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://codehakase.com/tags/adonisjs/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 09 May 2017 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/adonisjs/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Introducing Adonis Js</title>
-      <link>https://codehakase.com/blog/2017-05-09-introducing-adonis-js/</link>
+      <link>http://localhost:1313/blog/2017-05-09-introducing-adonis-js/</link>
       <pubDate>Tue, 09 May 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://codehakase.com/blog/2017-05-09-introducing-adonis-js/</guid>
-      <description>TL;DR AdonisJs is a true MVC Framework for Node.js. It encapsulate all the boring parts of Web programming and offers you a nice &amp;amp; clean API to work with.</description>
+      <guid>http://localhost:1313/blog/2017-05-09-introducing-adonis-js/</guid>
+      <description>&lt;h2 id=&#34;tldr&#34;&gt;TL;DR&lt;/h2&gt;&#xA;&lt;p&gt;AdonisJs is a true MVC Framework for Node.js. It encapsulate all the boring parts of Web programming and offers you a nice &amp;amp; clean API to work with. AdonisJs makes it easy to write web applications with less code. In this article, i will show you how to get started with AdonisJs. Checkout the repo on Github.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

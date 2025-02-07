@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>async/await on codehakase&#39;s logs</title>
-    <link>https://codehakase.com/tags/async/await/</link>
-    <description>Recent content in async/await on codehakase&#39;s logs</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://codehakase.com/tags/async/await/index.xml" rel="self" type="application/rss+xml" />
+    <title>Async/Await on codehakase&#39;s logs</title>
+    <link>http://localhost:1313/tags/async/await/</link>
+    <description>Recent content in Async/Await on codehakase&#39;s logs</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 12 Aug 2017 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/async/await/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>JavaScript Async/Await 101</title>
-      <link>https://codehakase.com/blog/2017-08-02-show-me-async-await-like-am-5/</link>
+      <link>http://localhost:1313/blog/2017-08-02-show-me-async-await-like-am-5/</link>
       <pubDate>Sat, 12 Aug 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://codehakase.com/blog/2017-08-02-show-me-async-await-like-am-5/</guid>
-      <description>Async and Await has been a blessing to most JavaScript Developers. Even while it was on the Stage 4 proposal for ES6, the feature has been warmtly welcomed.</description>
+      <guid>http://localhost:1313/blog/2017-08-02-show-me-async-await-like-am-5/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/aysnc-await.png&#34; alt=&#34;async/await&#34; title=&#34;Async/await&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Async and Await has been a blessing to most JavaScript Developers. Even while it was on the &lt;a href=&#34;https://github.com/tc39/ecma262/tree/82bebe057c9fca355cfbfeb36be8e42f18c61e94&#34;&gt;Stage 4 proposal&lt;/a&gt; for ES6, the feature has been warmtly welcomed.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

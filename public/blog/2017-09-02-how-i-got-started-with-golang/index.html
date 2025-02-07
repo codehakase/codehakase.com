@@ -1,32 +1,38 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>How I Learned Golang - codehakase&#39;s logs</title><meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta property="og:title" content="How I Learned Golang" />
-<meta property="og:description" content="How I started with Go Programming" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://codehakase.com/blog/2017-09-02-how-i-got-started-with-golang/" /><meta property="article:section" content="blog" />
+	<meta property="og:url" content="http://localhost:1313/blog/2017-09-02-how-i-got-started-with-golang/">
+  <meta property="og:site_name" content="codehakase&#39;s logs">
+  <meta property="og:title" content="How I Learned Golang">
+  <meta property="og:description" content="How I started with Go Programming">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2017-09-02T00:00:00+00:00">
+    <meta property="article:modified_time" content="2017-09-02T00:00:00+00:00">
+    <meta property="article:tag" content="Go">
+    <meta property="article:tag" content="Getting-Started">
 
-<meta property="article:modified_time" content="2017-09-02T00:00:00+00:00" />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="How I Learned Golang"/>
-<meta name="twitter:description" content="How I started with Go Programming"/>
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="How I Learned Golang">
+  <meta name="twitter:description" content="How I started with Go Programming">
 <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
 
-	<link rel="stylesheet" type="text/css" media="screen" href="https://codehakase.com/css/normalize.css" />
-	<link rel="stylesheet" type="text/css" media="screen" href="https://codehakase.com/css/main.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="http://localhost:1313/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="http://localhost:1313/css/main.css" />
 
-	<script src="https://codehakase.com/js/feather.min.js"></script>
+	<script src="http://localhost:1313/js/feather.min.js"></script>
 	
-	<script src="https://codehakase.com/js/main.js"></script>
+	<script src="http://localhost:1313/js/main.js"></script>
 </head>
 
 <body>
 	<div class="container wrapper post">
 		<div class="header">
-	<base href="https://codehakase.com/">
-	<h1 class="site-title"><a href="https://codehakase.com/blog">codehakase&#39;s logs</a></h1>
+	<base href="http://localhost:1313/">
+	<h1 class="site-title"><a href="http://localhost:1313/blog">codehakase&#39;s logs</a></h1>
 	<div class="site-description"><h2>Notes mostly about software engineering and what I&rsquo;m working on.</h2><nav class="nav social">
 			<ul class="flat"><a href="https://twitter.com/codehakase" title="Twitter"><i data-feather="twitter"></i></a><a href="https://github.com/codehakase" title="Github"><i data-feather="github"></i></a></ul>
 		</nav>
@@ -106,8 +112,7 @@
 </span></span></code></pre></div><p>We declare a variable <code>num</code> of type <code>int</code>. Go by default, assigns a <strong>zero</strong> value to variables. Integers are assigned <strong>0</strong>, booleans, <code>false</code>, strings <code>&quot;&quot;</code>, and so on. That pattern may look like a lot of typing, Go also provides us a handy operator <code>:=</code>.
 So we can rewrite the declaration above to <code>num := 29</code></p>
 <blockquote>
-<p>As long as the variable is new, <code>:=</code> can be used.</p>
-</blockquote>
+<p>As long as the variable is new, <code>:=</code> can be used.</p></blockquote>
 <h3 id="two-value-assignment">Two-value Assignment</h3>
 <p>Interfaces in Go are used to do exactly what they were designed to do in any language, which is to logically group code that has similar behaviour, not to achieve less code.
 In Go, every type implements at least zero methods, which means each type implements a special zero <code>interface{}</code>. This is useful when we do no not know what type a variable is.</p>
@@ -126,8 +131,8 @@ In Go, every type implements at least zero methods, which means each type implem
 </span></span></code></pre></div><p>Same applies for retrieving values from a map</p>
 <div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>data <span style="color:#719e07">:=</span> <span style="color:#b58900">make</span>(<span style="color:#268bd2">map</span>[<span style="color:#dc322f">string</span>]<span style="color:#dc322f">int</span>)
 </span></span><span style="display:flex;"><span>data[<span style="color:#2aa198">&#34;result&#34;</span>] = <span style="color:#2aa198">20</span>
-</span></span><span style="display:flex;"><span>val, ok <span style="color:#719e07">:=</span> data[<span style="color:#2aa198">&#34;result&#34;</span>] <span style="color:#586e75">// returns false if key isn&#39;t found
-</span></span></span><span style="display:flex;"><span><span style="color:#586e75"></span><span style="color:#719e07">if</span> !ok {
+</span></span><span style="display:flex;"><span>val, ok <span style="color:#719e07">:=</span> data[<span style="color:#2aa198">&#34;result&#34;</span>] <span style="color:#586e75">// returns false if key isn&#39;t found</span>
+</span></span><span style="display:flex;"><span><span style="color:#719e07">if</span> !ok {
 </span></span><span style="display:flex;"><span>	log.<span style="color:#268bd2">info</span>(<span style="color:#2aa198">&#34;Value for key not found!!&#34;</span>)
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h3 id="goroutines">Goroutines</h3>
@@ -143,8 +148,7 @@ In Go, every type implements at least zero methods, which means each type implem
 <li>Goroutines and OS threads do not have a 1:1 mapping. A single goroutine can run on multiple threads. Goroutines are multiplexed into small number of OS threads.</li>
 </ul>
 <blockquote>
-<p>More on Concurrency by <a href="https://blog.golang.org/concurrency-is-not-parallelism">Rob Pike</a></p>
-</blockquote>
+<p>More on Concurrency by <a href="https://blog.golang.org/concurrency-is-not-parallelism">Rob Pike</a></p></blockquote>
 <h3 id="written-in-go-its-easy-to-maintain">Written in Go? Its easy to maintain</h3>
 <p>Go intentionally leaves out many features of modern OOP languages.</p>
 <ul>
@@ -202,10 +206,6 @@ These resources helped out and is still helping me out, even though I there was 
 	<nav class="nav">
 		<div> Based on the <a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
 	</nav>
-</div>
-
-
-
-<script>feather.replace()</script>
+</div><script>feather.replace()</script>
 </body>
 </html>

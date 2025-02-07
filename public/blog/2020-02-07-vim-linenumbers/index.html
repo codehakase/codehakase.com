@@ -1,32 +1,23 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Line Numbers In Vim - codehakase&#39;s logs</title><meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta property="og:title" content="Line Numbers In Vim" />
-<meta property="og:description" content="Vim’s absolute, relative and hybrid line numbers" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://codehakase.com/blog/2020-02-07-vim-linenumbers/" /><meta property="article:section" content="blog" />
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
 
-<meta property="article:modified_time" content="2020-02-07T00:00:00+00:00" />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Line Numbers In Vim"/>
-<meta name="twitter:description" content="Vim’s absolute, relative and hybrid line numbers"/>
-<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="http://localhost:1313/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="http://localhost:1313/css/main.css" />
 
-	<link rel="stylesheet" type="text/css" media="screen" href="https://codehakase.com/css/normalize.css" />
-	<link rel="stylesheet" type="text/css" media="screen" href="https://codehakase.com/css/main.css" />
-
-	<script src="https://codehakase.com/js/feather.min.js"></script>
+	<script src="http://localhost:1313/js/feather.min.js"></script>
 	
-	<script src="https://codehakase.com/js/main.js"></script>
+	<script src="http://localhost:1313/js/main.js"></script>
 </head>
 
 <body>
 	<div class="container wrapper post">
 		<div class="header">
-	<base href="https://codehakase.com/">
-	<h1 class="site-title"><a href="https://codehakase.com/blog">codehakase&#39;s logs</a></h1>
+	<base href="http://localhost:1313/">
+	<h1 class="site-title"><a href="http://localhost:1313/blog">codehakase&#39;s logs</a></h1>
 	<div class="site-description"><h2>Notes mostly about software engineering and what I&rsquo;m working on.</h2><nav class="nav social">
 			<ul class="flat"><a href="https://twitter.com/codehakase" title="Twitter"><i data-feather="twitter"></i></a><a href="https://github.com/codehakase" title="Github"><i data-feather="github"></i></a></ul>
 		</nav>
@@ -72,29 +63,29 @@
 <p>Addding the <code>number</code> option to your vim config, Vim sets up absolute line numbers to show the line number for each line in the current buffer.
 <img src="https://res.cloudinary.com/hakase-labs/image/upload/v1581043108/absolute_numbers_q1z6ku.gif" alt=""></p>
 <div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span><span style="color:#586e75">&#34; set absolute numbers</span>
-</span></span><span style="display:flex;"><span>set number <span style="color:#586e75">&#34; or</span>
-</span></span><span style="display:flex;"><span>set nu
+</span></span><span style="display:flex;"><span><span style="color:#719e07">set</span> number <span style="color:#586e75">&#34; or</span>
+</span></span><span style="display:flex;"><span><span style="color:#719e07">set</span> nu
 </span></span></code></pre></div><h2 id="relative-line-numbers">Relative Line Numbers</h2>
 <p>With the <code>relativenumber</code> option, each line in your file is numbered relative to the cursor’s current position.
 <img src="https://res.cloudinary.com/hakase-labs/image/upload/v1581043108/relative_numbers_prnvbk.gif" alt=""></p>
 <div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span><span style="color:#586e75">&#34; set relative numbers</span>
-</span></span><span style="display:flex;"><span>set relativenumber <span style="color:#586e75">&#34; or</span>
-</span></span><span style="display:flex;"><span>set rnu
+</span></span><span style="display:flex;"><span><span style="color:#719e07">set</span> relativenumber <span style="color:#586e75">&#34; or</span>
+</span></span><span style="display:flex;"><span><span style="color:#719e07">set</span> rnu
 </span></span><span style="display:flex;"><span><span style="color:#586e75">
 </span></span></span><span style="display:flex;"><span><span style="color:#586e75">&#34; turn relative numbers off</span>
-</span></span><span style="display:flex;"><span>:set norelativenumber
-</span></span><span style="display:flex;"><span>:set nornu
+</span></span><span style="display:flex;"><span>:<span style="color:#719e07">set</span> norelativenumber
+</span></span><span style="display:flex;"><span>:<span style="color:#719e07">set</span> nornu
 </span></span></code></pre></div><h2 id="hybrid-line-numbers">Hybrid Line Numbers</h2>
 <p>Setting <code>number</code> and <code>relativenumber</code> at the same time produces activates the hybrid line number mode. All lines will show their relative number, except for current line, which will show its absolute line number.
 <img src="https://res.cloudinary.com/hakase-labs/image/upload/v1581043107/hybrid_numbers_tfx83y.gif" alt=""></p>
 <div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span><span style="color:#586e75">&#34; turn hybrid numbers on</span>
-</span></span><span style="display:flex;"><span>set relativenumber
-</span></span><span style="display:flex;"><span>set number <span style="color:#586e75">&#34; or</span>
-</span></span><span style="display:flex;"><span>set rnu
-</span></span><span style="display:flex;"><span>set nu
+</span></span><span style="display:flex;"><span><span style="color:#719e07">set</span> relativenumber
+</span></span><span style="display:flex;"><span><span style="color:#719e07">set</span> number <span style="color:#586e75">&#34; or</span>
+</span></span><span style="display:flex;"><span><span style="color:#719e07">set</span> rnu
+</span></span><span style="display:flex;"><span><span style="color:#719e07">set</span> nu
 </span></span><span style="display:flex;"><span><span style="color:#586e75">&#34; toggle hybrid line numbers</span>
-</span></span><span style="display:flex;"><span>:set number! relativenumber!
-</span></span><span style="display:flex;"><span>:set nu! rnu!
+</span></span><span style="display:flex;"><span>:<span style="color:#719e07">set</span> number! relativenumber!
+</span></span><span style="display:flex;"><span>:<span style="color:#719e07">set</span> nu! rnu!
 </span></span></code></pre></div><p>That&rsquo;s it. That&rsquo;s the post. Got any questions, corrections? Leave a comment below!</p>
 
 		</div>
@@ -116,32 +107,11 @@
 				
 			
 		</div>
-		<div id="disqus_thread"></div>
-<script type="text/javascript">
-	(function () {
-		
-		
-		if (window.location.hostname == "localhost")
-			return;
-
-		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-		var disqus_shortname = 'codehakase-github-io';
-		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-	})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
-		Disqus.</a></noscript>
-<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>
+		</div>
 	<div class="footer wrapper">
 	<nav class="nav">
 		<div> Based on the <a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
 	</nav>
-</div>
-
-
-
-<script>feather.replace()</script>
+</div><script>feather.replace()</script>
 </body>
 </html>

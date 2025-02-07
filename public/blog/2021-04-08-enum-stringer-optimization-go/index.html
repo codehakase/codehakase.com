@@ -1,32 +1,23 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Enum Stringer Interface optimisation in Go - codehakase&#39;s logs</title><meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta property="og:title" content="Enum Stringer Interface optimisation in Go" />
-<meta property="og:description" content="A tip on how to optimise enum stringer interface" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://codehakase.com/blog/2021-04-08-enum-stringer-optimization-go/" /><meta property="article:section" content="blog" />
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
 
-<meta property="article:modified_time" content="2021-04-08T00:00:00+00:00" />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Enum Stringer Interface optimisation in Go"/>
-<meta name="twitter:description" content="A tip on how to optimise enum stringer interface"/>
-<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="http://localhost:1313/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="http://localhost:1313/css/main.css" />
 
-	<link rel="stylesheet" type="text/css" media="screen" href="https://codehakase.com/css/normalize.css" />
-	<link rel="stylesheet" type="text/css" media="screen" href="https://codehakase.com/css/main.css" />
-
-	<script src="https://codehakase.com/js/feather.min.js"></script>
+	<script src="http://localhost:1313/js/feather.min.js"></script>
 	
-	<script src="https://codehakase.com/js/main.js"></script>
+	<script src="http://localhost:1313/js/main.js"></script>
 </head>
 
 <body>
 	<div class="container wrapper post">
 		<div class="header">
-	<base href="https://codehakase.com/">
-	<h1 class="site-title"><a href="https://codehakase.com/blog">codehakase&#39;s logs</a></h1>
+	<base href="http://localhost:1313/">
+	<h1 class="site-title"><a href="http://localhost:1313/blog">codehakase&#39;s logs</a></h1>
 	<div class="site-description"><h2>Notes mostly about software engineering and what I&rsquo;m working on.</h2><nav class="nav social">
 			<ul class="flat"><a href="https://twitter.com/codehakase" title="Twitter"><i data-feather="twitter"></i></a><a href="https://github.com/codehakase" title="Github"><i data-feather="github"></i></a></ul>
 		</nav>
@@ -70,17 +61,17 @@
 <p>A pattern I&rsquo;ve used to implement the <code>Stringer</code> interface for an enum type is to
 lookup the string representation in a slice. Consider this snippet from a
 project I&rsquo;m working on:</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#586e75">// Status ...
-</span></span></span><span style="display:flex;"><span><span style="color:#586e75"></span><span style="color:#268bd2">type</span> Status <span style="color:#dc322f">uint32</span>
+<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#586e75">// Status ...</span>
+</span></span><span style="display:flex;"><span><span style="color:#268bd2">type</span> Status <span style="color:#dc322f">uint32</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#586e75">// List of possible status values
-</span></span></span><span style="display:flex;"><span><span style="color:#586e75"></span><span style="color:#268bd2">const</span> (
-</span></span><span style="display:flex;"><span>  <span style="color:#586e75">// The operation is known, but hasn&#39;t been decided yet
-</span></span></span><span style="display:flex;"><span><span style="color:#586e75"></span>	Processing Status = <span style="color:#cb4b16">iota</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#586e75">// The operation will never be accepted
-</span></span></span><span style="display:flex;"><span><span style="color:#586e75"></span>	Rejected
-</span></span><span style="display:flex;"><span>  <span style="color:#586e75">// The operation was accepted
-</span></span></span><span style="display:flex;"><span><span style="color:#586e75"></span>	Accepted
+</span></span><span style="display:flex;"><span><span style="color:#586e75">// List of possible status values</span>
+</span></span><span style="display:flex;"><span><span style="color:#268bd2">const</span> (
+</span></span><span style="display:flex;"><span>  <span style="color:#586e75">// The operation is known, but hasn&#39;t been decided yet</span>
+</span></span><span style="display:flex;"><span>	Processing Status = <span style="color:#cb4b16">iota</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#586e75">// The operation will never be accepted</span>
+</span></span><span style="display:flex;"><span>	Rejected
+</span></span><span style="display:flex;"><span>  <span style="color:#586e75">// The operation was accepted</span>
+</span></span><span style="display:flex;"><span>	Accepted
 </span></span><span style="display:flex;"><span>  <span style="color:#719e07">...</span>
 </span></span><span style="display:flex;"><span>)
 </span></span><span style="display:flex;"><span>
@@ -94,15 +85,15 @@ into consideration.</p>
 <p>A way to optimise this is to use a map which provides <code>O(1)</code> access time rather
 than the linear <code>O(n)</code> time in the string slice version.</p>
 <div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#719e07">...</span>
-</span></span><span style="display:flex;"><span><span style="color:#586e75">// Map of Status values back to their constant names for pretty printing.
-</span></span></span><span style="display:flex;"><span><span style="color:#586e75"></span><span style="color:#268bd2">var</span> txStatuses = <span style="color:#268bd2">map</span>[Status]<span style="color:#dc322f">string</span>{
+</span></span><span style="display:flex;"><span><span style="color:#586e75">// Map of Status values back to their constant names for pretty printing.</span>
+</span></span><span style="display:flex;"><span><span style="color:#268bd2">var</span> txStatuses = <span style="color:#268bd2">map</span>[Status]<span style="color:#dc322f">string</span>{
 </span></span><span style="display:flex;"><span>	Processing: <span style="color:#2aa198">&#34;processing&#34;</span>,
 </span></span><span style="display:flex;"><span>	Rejected:   <span style="color:#2aa198">&#34;rejected&#34;</span>,
 </span></span><span style="display:flex;"><span>	Accepted:   <span style="color:#2aa198">&#34;accepted&#34;</span>,
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#586e75">// String returns the ErrorCode as a human-readable name.
-</span></span></span><span style="display:flex;"><span><span style="color:#586e75"></span><span style="color:#268bd2">func</span> (s Status) <span style="color:#268bd2">String</span>() <span style="color:#dc322f">string</span> {
+</span></span><span style="display:flex;"><span><span style="color:#586e75">// String returns the ErrorCode as a human-readable name.</span>
+</span></span><span style="display:flex;"><span><span style="color:#268bd2">func</span> (s Status) <span style="color:#268bd2">String</span>() <span style="color:#dc322f">string</span> {
 </span></span><span style="display:flex;"><span>	<span style="color:#719e07">if</span> s <span style="color:#719e07">:=</span> txStatuses[s]; s <span style="color:#719e07">!=</span> <span style="color:#2aa198">&#34;&#34;</span> {
 </span></span><span style="display:flex;"><span>		<span style="color:#719e07">return</span> s
 </span></span><span style="display:flex;"><span>	}
@@ -126,32 +117,11 @@ than the linear <code>O(n)</code> time in the string slice version.</p>
 				
 			
 		</div>
-		<div id="disqus_thread"></div>
-<script type="text/javascript">
-	(function () {
-		
-		
-		if (window.location.hostname == "localhost")
-			return;
-
-		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-		var disqus_shortname = 'codehakase-github-io';
-		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-	})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
-		Disqus.</a></noscript>
-<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>
+		</div>
 	<div class="footer wrapper">
 	<nav class="nav">
 		<div> Based on the <a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
 	</nav>
-</div>
-
-
-
-<script>feather.replace()</script>
+</div><script>feather.replace()</script>
 </body>
 </html>

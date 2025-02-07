@@ -13,6 +13,7 @@ disqusShortname="codehakase-github-io"
 
 [params]
   subtitle = "Notes mostly about software engineering and what I'm working on."
+  disqusShortname="codehakase-github-io"
 
 [[menu.main]]
 name = "Home"

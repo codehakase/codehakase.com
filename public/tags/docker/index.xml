@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>docker on codehakase&#39;s logs</title>
-    <link>https://codehakase.com/tags/docker/</link>
-    <description>Recent content in docker on codehakase&#39;s logs</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <title>Docker on codehakase&#39;s logs</title>
+    <link>http://localhost:1313/tags/docker/</link>
+    <description>Recent content in Docker on codehakase&#39;s logs</description>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 01 Dec 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://codehakase.com/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 01 Dec 2018 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/docker/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Building Small Containers for Kubernetes</title>
-      <link>https://codehakase.com/blog/2018-01-12-building-small-containers-for-kubernetes/</link>
+      <link>http://localhost:1313/blog/2018-01-12-building-small-containers-for-kubernetes/</link>
       <pubDate>Sat, 01 Dec 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://codehakase.com/blog/2018-01-12-building-small-containers-for-kubernetes/</guid>
-      <description>The first step to deploying any app to Kubernetes, is to bundle the app in a container. There are several official, and community-backed container images for various languages and distros, and most of these containers can be really large, or sometimes contain overheads your app may never need/use.</description>
+      <guid>http://localhost:1313/blog/2018-01-12-building-small-containers-for-kubernetes/</guid>
+      <description>&lt;p&gt;The first step to deploying any app to &lt;a href=&#34;https://kubernetes.io&#34;&gt;Kubernetes&lt;/a&gt;, is to bundle the app in a&#xA;container. There are several official, and community-backed container images for&#xA;various languages and distros, and most of these containers can be really large,&#xA;or sometimes contain overheads your app may never need/use.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

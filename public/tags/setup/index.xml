@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>setup on codehakase&#39;s logs</title>
-    <link>https://codehakase.com/tags/setup/</link>
-    <description>Recent content in setup on codehakase&#39;s logs</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <title>Setup on codehakase&#39;s logs</title>
+    <link>http://localhost:1313/tags/setup/</link>
+    <description>Recent content in Setup on codehakase&#39;s logs</description>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 10 Jan 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://codehakase.com/tags/setup/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 10 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/setup/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>What I Use</title>
-      <link>https://codehakase.com/blog/2020-01-10-what-i-use/</link>
+      <link>http://localhost:1313/blog/2020-01-10-what-i-use/</link>
       <pubDate>Fri, 10 Jan 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://codehakase.com/blog/2020-01-10-what-i-use/</guid>
-      <description>For the few times I have to tell people in detail the software and hardware I use on a day to day basis to do my job, here’s a post to list them.</description>
+      <guid>http://localhost:1313/blog/2020-01-10-what-i-use/</guid>
+      <description>&lt;p&gt;For  the few times I have to tell people in detail the software and hardware I use on a day to day basis to do my job, here’s a post to list them. My setup changes from time to time but I’ll try to keep this up to date.&#xA;My dotfiles can be found  on &lt;a href=&#34;https://github.com/codehakase/dotfiles&#34;&gt;This Repo&lt;/a&gt; - they work for me, read carefully before installing for yourself.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>
