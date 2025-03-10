@@ -6,7 +6,7 @@ description: "A short note on my haskell solution to Project Euler's problem 8"
 modified: 2025-02-07
 tags: [haskell]
 share: true
-category: [haskell]
+category: haskell
 ---
 
 First post on this blog after a long hiatus -- hopefully, this will stick. I was cleaning up my browser tabs, and found a Project Euler window open and decided to attempt some problems in Haskell. I've been writing Haskell for a couple of months now, and it was a great way to test myself. 

@@ -2,7 +2,7 @@
 <html>
   <head>
 	<meta name="generator" content="Hugo 0.143.1"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-    <title>codehakase (Francis Sunday)</title>
+    <title>Francis Sunday</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Francis Sunday&#x27;s personal website"/>
@@ -14,91 +14,61 @@
     <meta name="twitter:creator" property="twitter:creator" content="@codehakase"/>
     <meta property="twitter:url" content="https://codehakase.com"/>
     <link href="https://fonts.googleapis.com/css?family=Roboto|Anonymous+Pro" rel="stylesheet">
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <style>
-body {
-  display: flex;
-  flex-direction: row-reverse;
-  flex-wrap: wrap;
-  font-family: "Anonymous Pro", monospace;
-  justify-content: center;
-  margin-bottom: 50px;
-  margin-top: 4vh;
-  padding: 0 50px;
-}
-
-h1 {
-  font-family: "Roboto", sans-serif;
-  font-size: 55px;
-  margin-bottom: 0;
-}
-
-img {
-  width: 100%;
-}
-
-p {
-  line-height: 1.5;
-}
-
-span {
-  margin-left: 12ch;
-}
-
-a {
-  border-bottom: 0.2em solid #000;
-  color: inherit;
-  margin-right: 0.3em;
-  text-decoration: none;
-}
-
-.profile {
-  margin: 0 20px;
-  min-width: 250px;
-}
-
-.profile img {
-  width: 250px;
-  border-radius: 50%;
-}
-
-.text {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 0 20px;
-  max-width: 400px;
-  min-width: 250px;
-}
-
-    @media screen and (min-width: 475px) {
-      span {
-        margin: 0;
+      body {
+        font-family: "Anonymous Pro", monospace;
       }
-
-      br {
-        display: none;
-      }
-    } 
     </style>
   </head>
   <body>
-    <div class="profile">
-      <img src="https://avatars.githubusercontent.com/u/9336187?v=4">
-    </div>
-    <div class="text">
-      <div>
-        <h1>Francis Sunday</h1>
-        <p>I'm a software engineer specializing in backend systems and
-          infrastructure. I primarily
-          work with Go, TypeScript, and Ruby, using tools like Docker,
-          Kubernetes, and PostgreSQL to build efficient and maintainable systems.</p> 
-        <p>Recently, I’ve been working with Haskell, deepening my understanding of functional programming and exploring its powerful type system.</p> 
-        <p>I write about what I’m building or learning on my blog. In my free time, you’ll find me honing my skills on the piano keyboard.</p>
+    <div class="max-w-3xl mx-auto p-4">
+      <header>
+        <h1 class="text-4xl md:text-5xl font-bold pt-10 mb-8">Francis Sunday</h1>
+      </header>
+
+      <div class="mb-8">
+        <h2 class="text-3xl font-bold mb-5">Hi!</h2>
+        <div class="text-lg leading-7 space-y-4">
+          <p>I'm a <span title="Flag of Nigeria">🇳🇬 </span> software engineer with a strong foundation in backend development and a passion for tackling complex challenges. 
+            I'm fascinated by distributed systems, databases, and functional programming, and I primarily work with Go and Haskell.</p>
+          <p>I write about what I’m building or learning on my <a class="underline" href="/blog">blog</a>. In my free time, you’ll find me honing my skills on the piano keyboard.</p>
+        </div>
       </div>
-      <div>
-        <a href="/blog">blog</a>
-        <a href="https://github.com/codehakase">github</a>
-        <a href="mailto:me@codehakase.com">contact</a>
+
+      <div class="mb-8">
+        <h2 class="font-bold text-lg mb-2">Writings</h2>
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          
+            <li>
+              <a class="font-semibold hover:underline" href="/blog/2025-02-07-largest-product-in-a-series/">Largest product in a series</a>
+              <p class="text-sm">February 7, 2025</p>
+            </li> 
+          
+            <li>
+              <a class="font-semibold hover:underline" href="/blog/2021-05-03-json-in-go/">Working with JSON in Go</a>
+              <p class="text-sm">May 3, 2021</p>
+            </li> 
+          
+            <li>
+              <a class="font-semibold hover:underline" href="/blog/2021-04-08-enum-stringer-optimization-go/">Enum Stringer Interface optimisation in Go</a>
+              <p class="text-sm">April 8, 2021</p>
+            </li> 
+          
+            <li>
+              <a class="font-semibold hover:underline" href="/blog/2020-02-07-vim-linenumbers/">Line Numbers In Vim</a>
+              <p class="text-sm">February 7, 2020</p>
+            </li> 
+          
+        </ul>
+      </div>
+
+      <div class="font-bold">
+        <a class="underline" href="/blog">/blog</a>
+        
+        <a class="underline" href="https://x.com/codehakase">/X</a>
+        <a class="underline" href="https://linkedin.com/in/codehakase">/linkedin</a>
+        <a class="underline" href="https://github.com/codehakase">/github</a>
       </div>
     </div>
   </body>
