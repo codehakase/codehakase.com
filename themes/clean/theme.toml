@@ -1,0 +1,12 @@
+name = "Clean"
+license = "MIT"
+licenselink = "https://github.com/codehakase/codehakase.com/blob/main/LICENSE"
+description = "A clean, minimalist theme for personal websites and blogs"
+homepage = "https://codehakase.com/"
+tags = ["blog", "personal", "responsive", "clean", "minimal"]
+features = ["responsive", "blog", "clean", "minimal"]
+min_version = "0.41.0"
+
+[author]
+  name = "Francis Sunday"
+  homepage = "https://codehakase.com" 

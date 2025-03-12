@@ -1,0 +1,24 @@
+{{ define "main" }}
+<div class="mb-8">
+  <h1 class="text-3xl font-bold mb-6">Archive</h1>
+
+  {{ $type := .Type }}
+  {{ range (.Site.RegularPages.GroupByDate "2006") }}
+    {{ if gt .Key 1 }}
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold mb-4">{{ .Key }}</h2>
+        <ul class="space-y-2">
+          {{ range .Pages }}
+            {{ if ne .Params.hidden true }}
+              <li class="flex items-baseline">
+                <span class="text-sm text-gray-500 w-24 flex-shrink-0">{{ .Date.Format "Jan 02" }}</span>
+                <a href="{{ .RelPermalink }}" class="hover:underline">{{ .Title }}</a>
+              </li>
+            {{ end }}
+          {{ end }}
+        </ul>
+      </div>
+    {{ end }}
+  {{ end }}
+</div>
+{{ end }} 
