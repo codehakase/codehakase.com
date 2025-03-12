@@ -6,6 +6,8 @@ pre {
   overflow-x: auto;
   background-color: #f8f8f8;
   border-radius: 0.25rem;
+  margin: 1.5rem 0;
+  position: relative;
 }
 
 /* Style for inline code */
@@ -13,6 +15,22 @@ code {
   padding: 0.2rem 0.4rem;
   background-color: #f8f8f8;
   border-radius: 0.25rem;
+  font-size: 0.9em;
+}
+
+/* Code blocks with language tags */
+pre code {
+  padding: 0;
+  background-color: transparent;
+  border-radius: 0;
+  font-size: 0.9em;
+  line-height: 1.6;
+}
+
+/* Minimal code highlighting */
+.hljs {
+  background: #f8f8f8 !important;
+  padding: 0 !important;
 }
 
 /* Ensure images don't overflow their containers */
@@ -58,4 +76,20 @@ table th {
 a:focus {
   outline: 2px solid #4299e1;
   outline-offset: 2px;
+}
+
+/* Simple tag styling */
+.tag {
+  border: 1px solid black;
+  color: black;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  display: inline-block;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.tag:hover {
+  background-color: rgba(0, 0, 0, 0.05);
 } 

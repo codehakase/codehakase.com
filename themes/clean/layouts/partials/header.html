@@ -7,11 +7,18 @@
   
   <nav class="mt-4 md:mt-0">
     <ul class="flex space-x-4">
-      {{ range .Site.Menus.main }}
       <li>
-        <a href="{{ .URL }}" class="hover:underline font-bold">{{ .Name }}</a>
+        <a href="/about/" class="hover:underline font-bold">About</a>
       </li>
-      {{ end }}
+      <li>
+        <a href="/blog/" class="hover:underline font-bold">Blog</a>
+      </li>
+      <li>
+        <a href="/archive/" class="hover:underline font-bold">Archive</a>
+      </li>
+      <li>
+        <a href="/tags/" class="hover:underline font-bold">Tags</a>
+      </li>
     </ul>
   </nav>
 </header> 
