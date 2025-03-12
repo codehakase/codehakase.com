@@ -1,0 +1,17 @@
+<header class="flex flex-col md:flex-row justify-between items-center py-8">
+  <div>
+    <h1 class="text-4xl md:text-5xl font-bold">
+      <a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
+    </h1>
+  </div>
+  
+  <nav class="mt-4 md:mt-0">
+    <ul class="flex space-x-4">
+      {{ range .Site.Menus.main }}
+      <li>
+        <a href="{{ .URL }}" class="hover:underline font-bold">{{ .Name }}</a>
+      </li>
+      {{ end }}
+    </ul>
+  </nav>
+</header> 

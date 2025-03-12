@@ -1,0 +1,23 @@
+{{ define "main" }}
+<article class="mb-8">
+  <header class="mb-8">
+    <h1 class="text-3xl font-bold mb-2">{{ .Title }}</h1>
+    <div class="text-sm">{{ dateFormat "January 2, 2006" .Date }}</div>
+  </header>
+
+  <div class="prose max-w-none">
+    {{ .Content }}
+  </div>
+
+  {{ if .Params.tags }}
+  <div class="mt-8 pt-4 border-t border-gray-200">
+    <h3 class="text-lg font-bold mb-2">Tags:</h3>
+    <div class="flex flex-wrap gap-2">
+      {{ range .Params.tags }}
+        <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-md text-sm">{{ . }}</a>
+      {{ end }}
+    </div>
+  </div>
+  {{ end }}
+</article>
+{{ end }} 

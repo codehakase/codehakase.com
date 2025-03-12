@@ -1,0 +1,61 @@
+/* Additional custom styles */
+
+/* Improve code block readability */
+pre {
+  padding: 1rem;
+  overflow-x: auto;
+  background-color: #f8f8f8;
+  border-radius: 0.25rem;
+}
+
+/* Style for inline code */
+code {
+  padding: 0.2rem 0.4rem;
+  background-color: #f8f8f8;
+  border-radius: 0.25rem;
+}
+
+/* Ensure images don't overflow their containers */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Style for blockquotes */
+blockquote {
+  border-left: 4px solid #e2e8f0;
+  padding-left: 1rem;
+  font-style: italic;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* Style for horizontal rules */
+hr {
+  border: 0;
+  border-top: 1px solid #e2e8f0;
+  margin: 2rem 0;
+}
+
+/* Style for tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+table th,
+table td {
+  padding: 0.5rem;
+  border: 1px solid #e2e8f0;
+}
+
+table th {
+  background-color: #f8f8f8;
+}
+
+/* Improve link accessibility */
+a:focus {
+  outline: 2px solid #4299e1;
+  outline-offset: 2px;
+} 
