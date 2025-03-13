@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Nosql on Francis Sunday</title>
-    <link>http://localhost:1313/tags/nosql/</link>
+    <link>https://codehakase.com/tags/nosql/</link>
     <description>Recent content in Nosql on Francis Sunday</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 19 Apr 2018 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/nosql/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://codehakase.com/tags/nosql/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>The CouchDB Replicator Database - An Overview</title>
-      <link>http://localhost:1313/blog/2018-04-19-couchdb-replicator-database/</link>
+      <link>https://codehakase.com/blog/2018-04-19-couchdb-replicator-database/</link>
       <pubDate>Thu, 19 Apr 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/2018-04-19-couchdb-replicator-database/</guid>
+      <guid>https://codehakase.com/blog/2018-04-19-couchdb-replicator-database/</guid>
       <description>&lt;p&gt;&lt;strong&gt;TL;DR:&lt;/strong&gt; In this article, I&amp;rsquo;ll give an overview of the replicator database in CouchDB, how to spin off a replication task in CouchDB&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;&lt;strong&gt;CouchDB&lt;/strong&gt; is a database that completely embraces the web. CouchDB stores your data as JSON documents, and allows you access these documents easily, from a web interface or its &lt;a href=&#34;http://docs.couchdb.org/en/2.1.1/api/basics.html#api-basics&#34;&gt;REST API&lt;/a&gt;. We won&amp;rsquo;t be going too deep into couchdb as it would be out of scope for this article - I&amp;rsquo;ll write one of those pretty soon.&lt;/p&gt;</description>
     </item>
   </channel>

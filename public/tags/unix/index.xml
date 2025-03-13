@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Unix on Francis Sunday</title>
-    <link>http://localhost:1313/tags/unix/</link>
+    <link>https://codehakase.com/tags/unix/</link>
     <description>Recent content in Unix on Francis Sunday</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 19 Nov 2017 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/unix/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://codehakase.com/tags/unix/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Getting Started with Go - Variables</title>
-      <link>http://localhost:1313/blog/2017-11-19-golang-tutorial-series-pt-2/</link>
+      <link>https://codehakase.com/blog/2017-11-19-golang-tutorial-series-pt-2/</link>
       <pubDate>Sun, 19 Nov 2017 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/2017-11-19-golang-tutorial-series-pt-2/</guid>
+      <guid>https://codehakase.com/blog/2017-11-19-golang-tutorial-series-pt-2/</guid>
       <description>&lt;p&gt;In the previous article - &lt;a href=&#34;https://dev.to/codehakase/golang---getting-started-16c&#34;&gt;Golang - Getting Started&lt;/a&gt; on &lt;a href=&#34;https://dev.to&#34;&gt;The Practical Dev&lt;/a&gt;, I wrote an intro to the Go programing language, and how to setup a development environment for your platform.&lt;/p&gt;&#xA;&lt;p&gt;In this part of the series, we&amp;rsquo;re going to talk about variables in Go, check it out &lt;a href=&#34;https://dev.to/codehakase/getting-started-with-go---variables-aef&#34;&gt;HERE&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Terminal for Beginners!</title>
-      <link>http://localhost:1313/blog/2017-10-28-terminal-for-beginers/</link>
+      <link>https://codehakase.com/blog/2017-10-28-terminal-for-beginers/</link>
       <pubDate>Sat, 28 Oct 2017 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/2017-10-28-terminal-for-beginers/</guid>
+      <guid>https://codehakase.com/blog/2017-10-28-terminal-for-beginers/</guid>
       <description>&lt;p&gt;Getting into Software Development seem overwhelming (actually it is) these days. One has to go through the hassle of getting familiar with different languages, to organizing codebases, to libraries, frameworks, the list goes on. Every Job description (at least the sane ones), requires additional skills to get the job. Example of such, Version Control (Git or Mecurial), tasks runners, build tools, package managers, etc.&lt;/p&gt;&#xA;&lt;p&gt;Most of these extra tools are being accessed/used from a command line interface. The black hacker environment thingy stuff seem frightening kind of, but this article should get you familiar with the terminal interface. For those of us already familiar, after reading this article, you&amp;rsquo;d wished you&amp;rsquo;ve read it before you opened a terminal for the first time.&lt;/p&gt;</description>
     </item>
   </channel>

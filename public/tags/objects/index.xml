@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Objects on Francis Sunday</title>
-    <link>http://localhost:1313/tags/objects/</link>
+    <link>https://codehakase.com/tags/objects/</link>
     <description>Recent content in Objects on Francis Sunday</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 25 May 2017 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/objects/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://codehakase.com/tags/objects/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>JavaScript Objects 101</title>
-      <link>http://localhost:1313/blog/2017-05-25-javascript-objects-101/</link>
+      <link>https://codehakase.com/blog/2017-05-25-javascript-objects-101/</link>
       <pubDate>Thu, 25 May 2017 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/2017-05-25-javascript-objects-101/</guid>
+      <guid>https://codehakase.com/blog/2017-05-25-javascript-objects-101/</guid>
       <description>&lt;p&gt;In JavaScript, most things are objects, from core JavaScript features like strings and arrays to the browser APIs built on top of JavaScript. You can even create your own objects to encapsulate related functions and variables into efficient packages, and act as handy data containers.&lt;/p&gt;&#xA;&lt;h3 id=&#34;what-is-an-object&#34;&gt;What Is An Object?&lt;/h3&gt;&#xA;&lt;p&gt;In JavaScript terms, An Object is a collection of data, which consits of several variables and functions - which are called properties and methods.&lt;/p&gt;</description>
     </item>
   </channel>
