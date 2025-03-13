@@ -152,6 +152,7 @@ a:focus {
 
 .toc li ul li {
   list-style-type: circle;
+  margin-left: 1.5rem;
 }
 
 .toc a {
