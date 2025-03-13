@@ -161,9 +161,3 @@ a:focus {
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
 }
-
-.feed h4 {
-  box-shadow: 0 1px;
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
-}
