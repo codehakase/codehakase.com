@@ -1,78 +1,112 @@
 <!DOCTYPE html>
-<html>
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>React Native vs Ionic - A Quick Comparison - codehakase&#39;s logs</title><meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta property="og:url" content="http://localhost:1313/blog/2017-12-05-react-native-vs-ionic/">
-  <meta property="og:site_name" content="codehakase&#39;s logs">
-  <meta property="og:title" content="React Native vs Ionic - A Quick Comparison">
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>React Native vs Ionic - A Quick Comparison | Francis Sunday</title>
+  
+  <meta name="description" content="Demistifying the differences between Ionic and React Native">
+  
+  
+  <meta property="og:title" content="React Native vs Ionic - A Quick Comparison | Francis Sunday"/>
   <meta property="og:description" content="Demistifying the differences between Ionic and React Native">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="blog">
-    <meta property="article:published_time" content="2017-12-05T00:00:00+00:00">
-    <meta property="article:modified_time" content="2017-12-05T00:00:00+00:00">
-    <meta property="article:tag" content="Ionic">
-    <meta property="article:tag" content="React-Native">
-
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="React Native vs Ionic - A Quick Comparison">
+  <meta property="og:type" content="article"/>
+  <meta property="og:url" content="http://localhost:1313/blog/2017-12-05-react-native-vs-ionic/"/>
+  
+  
+  <meta name="twitter:title" content="React Native vs Ionic - A Quick Comparison | Francis Sunday"/>
   <meta name="twitter:description" content="Demistifying the differences between Ionic and React Native">
-<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
+  
+  <meta name="twitter:creator" property="twitter:creator" content="@codehakase"/>
+  
+  
+  
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Anonymous+Pro" rel="stylesheet">
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="http://localhost:1313/css/main.css">
+  
+  <style>
+    body {
+      font-family: "Anonymous Pro", monospace;
+      font-size: 1.1em;
+      line-height: 2;
+    }
+  </style>
+  
+  
+  </head> 
+  <body class="font-mono">
+    <div class="max-w-3xl mx-auto p-4">
+      <header class="flex flex-col md:flex-row justify-between items-center py-8">
+  <div>
+    <h1 class="text-4xl md:text-5xl font-bold">
+      <a href="http://localhost:1313/">Francis Sunday</a>
+    </h1>
+  </div>
+  
+  <nav class="mt-4 md:mt-0">
+    <ul class="flex space-x-4">
+      <li>
+        <a href="/about/" class="hover:underline font-bold">About</a>
+      </li>
+      <li>
+        <a href="/blog/" class="hover:underline font-bold">Blog</a>
+      </li>
+      <li>
+        <a href="/archive/" class="hover:underline font-bold">Archive</a>
+      </li>
+      <li>
+        <a href="/tags/" class="hover:underline font-bold">Tags</a>
+      </li>
+    </ul>
+  </nav>
+</header> 
+      
+      <main>
+        
+<article class="mb-8">
+  <header class="mb-8">
+    <h1 class="text-3xl font-bold mb-2">React Native vs Ionic - A Quick Comparison</h1>
+    <div class="text-sm">December 5, 2017</div>
+  </header>
 
-	<link rel="stylesheet" type="text/css" media="screen" href="http://localhost:1313/css/normalize.css" />
-	<link rel="stylesheet" type="text/css" media="screen" href="http://localhost:1313/css/main.css" />
+  
+  <div class="toc">
+    <h5 class="toc-title font-semibold">Jump to:</h5>
+    <div class="toc-content">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#native-vs-hybrid-apps">Native vs Hybrid apps</a></li>
+    <li><a href="#ionic-vs-react-native---differences">Ionic vs React Native - Differences</a>
+      <ul>
+        <li><a href="#ionic">Ionic</a></li>
+        <li><a href="#react-native">React Native</a></li>
+        <li><a href="#hello-world-in-ionic">Hello world in Ionic</a></li>
+        <li><a href="#hello-world-in-react-native">Hello world in React Native</a></li>
+      </ul>
+    </li>
+    <li><a href="#write-once-run-anywhere">Write once, run anywhere?</a>
+      <ul>
+        <li><a href="#ionic-1">Ionic</a></li>
+        <li><a href="#react-native-1">React Native</a></li>
+      </ul>
+    </li>
+    <li><a href="#community--plugins">Community &amp; Plugins</a>
+      <ul>
+        <li><a href="#ionic-2">Ionic</a></li>
+        <li><a href="#react-native-2">React Native</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
+  </div>
+  
 
-	<script src="http://localhost:1313/js/feather.min.js"></script>
-	
-	<script src="http://localhost:1313/js/main.js"></script>
-</head>
-
-<body>
-	<div class="container wrapper post">
-		<div class="header">
-	<base href="http://localhost:1313/">
-	<h1 class="site-title"><a href="http://localhost:1313/blog">codehakase&#39;s logs</a></h1>
-	<div class="site-description"><h2>Notes mostly about software engineering and what I&rsquo;m working on.</h2><nav class="nav social">
-			<ul class="flat"><a href="https://twitter.com/codehakase" title="Twitter"><i data-feather="twitter"></i></a><a href="https://github.com/codehakase" title="Github"><i data-feather="github"></i></a></ul>
-		</nav>
-	</div>
-
-	<nav class="nav">
-		<ul class="flat">
-			
-			<li>
-				<a href="/blog">Home</a>
-			</li>
-			
-			<li>
-				<a href="/">About</a>
-			</li>
-			
-			<li>
-				<a href="/projects">Projects</a>
-			</li>
-			
-			<li>
-				<a href="/blog/archive">Archive</a>
-			</li>
-			
-			<li>
-				<a href="/tags">Tags</a>
-			</li>
-			
-		</ul>
-	</nav>
-</div>
-
-
-		<div class="post-header">
-			<h1 class="title">React Native vs Ionic - A Quick Comparison</h1>
-			<div class="meta">Posted at &mdash; Dec 5, 2017</div>
-		</div>
-
-		<div class="markdown">
-			<p><img src="https://cdn.scotch.io/23499/HDDv8v7TRhqt4ao1nwfH_React_Native_vs_Ionic_m5b5ol.png.jpg" alt="&ldquo;React Native vs Ionic&rdquo;"></p>
+  <div class="prose max-w-none content-body">
+    <p><img src="https://cdn.scotch.io/23499/HDDv8v7TRhqt4ao1nwfH_React_Native_vs_Ionic_m5b5ol.png.jpg" alt="&ldquo;React Native vs Ionic&rdquo;"></p>
 <p>The main purpose of this article, is to highlight the important differences between Ionic and React Native. Developers utilize a variety of tools. There&rsquo;s always an unending discussion and argument on which platform is best, as every developer has her own personal preferences. Hopefully this article would give you the information you&rsquo;ll need to make a decision on which you&rsquo;d want to settle for in your next mobile app project.</p>
 <h2 id="native-vs-hybrid-apps">Native vs Hybrid apps</h2>
 <p>We&rsquo;re going to journey smoothly on pointing out the differences between Ionic and React Native after we note the difference between a Native and a Hybrid app.</p>
@@ -84,44 +118,44 @@
 <h3 id="react-native">React Native</h3>
 <p>Developing in React Native is primarily done with JavaScript, which means most of the code you need to get started can be shared across platforms. However, where hybrid apps render using HTML and CSS, React Native will render using native components. In React Native, you can choose to write in Native code (Objective-C or Java) based on the feature you want to optimize.</p>
 <h3 id="hello-world-in-ionic">Hello world in Ionic</h3>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#586e75">&lt;!-- Template --&gt;</span>
-</span></span><span style="display:flex;"><span>&lt;<span style="color:#268bd2">ion-navbar</span> *navbar&gt;
-</span></span><span style="display:flex;"><span>  &lt;<span style="color:#268bd2">ion-title</span>&gt;
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-style:italic">&lt;!-- Template --&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="font-weight:bold">ion-navbar</span> <span style="">*</span>navbar&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="font-weight:bold">ion-title</span>&gt;
 </span></span><span style="display:flex;"><span>    Home
-</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#268bd2">ion-title</span>&gt;
-</span></span><span style="display:flex;"><span>&lt;/<span style="color:#268bd2">ion-navbar</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="font-weight:bold">ion-title</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="font-weight:bold">ion-navbar</span>&gt;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>&lt;<span style="color:#268bd2">ion-content</span> class<span style="color:#719e07">=</span><span style="color:#2aa198">&#34;home&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>  &lt;<span style="color:#268bd2">ion-card</span>&gt;
-</span></span><span style="display:flex;"><span>    &lt;<span style="color:#268bd2">ion-card-header</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="font-weight:bold">ion-content</span> class=<span style="font-style:italic">&#34;home&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="font-weight:bold">ion-card</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="font-weight:bold">ion-card-header</span>&gt;
 </span></span><span style="display:flex;"><span>      Card Header
-</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#268bd2">ion-card-header</span>&gt;
-</span></span><span style="display:flex;"><span>    &lt;<span style="color:#268bd2">ion-card-content</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="font-weight:bold">ion-card-header</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="font-weight:bold">ion-card-content</span>&gt;
 </span></span><span style="display:flex;"><span>      Hello World, Man&#39;s not Hot!!!
-</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#268bd2">ion-card-content</span>&gt;
-</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#268bd2">ion-card</span>&gt;
-</span></span><span style="display:flex;"><span>&lt;/<span style="color:#268bd2">ion-content</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="font-weight:bold">ion-card-content</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="font-weight:bold">ion-card</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="font-weight:bold">ion-content</span>&gt;
 </span></span></code></pre></div><h3 id="hello-world-in-react-native">Hello world in React Native</h3>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#268bd2">import</span> React from <span style="color:#2aa198">&#39;react&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#268bd2">import</span> {
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="font-weight:bold">import</span> React from <span style="font-style:italic">&#39;react&#39;</span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">import</span> {
 </span></span><span style="display:flex;"><span>  AppRegistry,
 </span></span><span style="display:flex;"><span>  Text,
 </span></span><span style="display:flex;"><span>  View
-</span></span><span style="display:flex;"><span>} from <span style="color:#2aa198">&#39;react-native&#39;</span>
+</span></span><span style="display:flex;"><span>} from <span style="font-style:italic">&#39;react-native&#39;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#268bd2">class</span> App <span style="color:#268bd2">extends</span> React.Component
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">class</span> App <span style="font-weight:bold">extends</span> React.Component
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>  render() {
-</span></span><span style="display:flex;"><span>    <span style="color:#719e07">return</span>(
-</span></span><span style="display:flex;"><span>      <span style="color:#719e07">&lt;</span>View<span style="color:#719e07">&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#719e07">&lt;</span>Text<span style="color:#719e07">&gt;</span>Hello World<span style="color:#719e07">!&lt;</span>/Text&gt;
-</span></span><span style="display:flex;"><span>      <span style="color:#719e07">&lt;</span>/View&gt;
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span>(
+</span></span><span style="display:flex;"><span>      &lt;View&gt;
+</span></span><span style="display:flex;"><span>    &lt;Text&gt;Hello World!&lt;<span style="">/Text&gt;</span>
+</span></span><span style="display:flex;"><span>      &lt;<span style="">/View&gt;</span>
 </span></span><span style="display:flex;"><span>   );
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>AppRegistry.registerComponent(<span style="color:#2aa198">&#39;App&#39;</span>, () =&gt; App)
+</span></span><span style="display:flex;"><span>AppRegistry.registerComponent(<span style="font-style:italic">&#39;App&#39;</span>, () =&gt; App)
 </span></span></code></pre></div><h2 id="write-once-run-anywhere">Write once, run anywhere?</h2>
 <h3 id="ionic-1">Ionic</h3>
 <p>Hybrid apps, are meant to run the same code on any platform, and that is what Ionic is capable of doing. However, in order to feel more “native”, Ionic will adapt a few of its behaviors according to the platform.</p>
@@ -142,45 +176,37 @@
 </ul>
 <p>But anyway, the best way to choose the best tool for resolving particular issues is to test different options. So, try them both to make a choice.</p>
 
-		</div>
+  </div>
 
-		<div class="post-tags">
-			
-				
-					<nav class="nav tags">
-							<ul class="flat">
-								
-								<li><a href="/tags/ionic">ionic</a></li>
-								
-								<li><a href="/tags/react-native">react-native</a></li>
-								
-							</ul>
-					</nav>
-				
-			
-		</div>
-		<div id="disqus_thread"></div>
-<script type="text/javascript">
-	(function () {
-		
-		
-		if (window.location.hostname == "localhost")
-			return;
+  
+  <div class="mt-8 pt-4 border-t border-gray-200">
+    <h3 class="text-lg font-bold mb-2">Tags:</h3>
+    <div class="flex flex-wrap">
+      
+        <a href="/tags/ionic" class="tag">ionic</a>
+      
+        <a href="/tags/react-native" class="tag">react-native</a>
+      
+    </div>
+  </div>
+  
+</article>
 
-		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-		var disqus_shortname = 'codehakase-github-io';
-		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-	})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
-		Disqus.</a></noscript>
-<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>
-	<div class="footer wrapper">
-	<nav class="nav">
-		<div> Based on the <a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
-	</nav>
-</div><script>feather.replace()</script>
-</body>
-</html>
+      </main>
+      
+      <footer class="mt-8 pt-8 border-t border-gray-200">
+  <div class="flex flex-wrap justify-between items-center">
+    <div class="font-bold">
+      <a class="underline mr-4" href="/blog">/blog</a>
+      <a class="underline mr-4" href="https://x.com/codehakase">/X</a>
+      <a class="underline mr-4" href="https://linkedin.com/in/codehakase">/linkedin</a>
+      <a class="underline" href="https://github.com/codehakase">/github</a>
+    </div>
+    <div class="mt-4 md:mt-0 text-sm">
+      &copy; 2025 Francis Sunday
+    </div>
+  </div>
+</footer> 
+    </div>
+  </body>
+</html> 

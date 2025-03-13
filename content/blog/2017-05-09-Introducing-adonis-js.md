@@ -2,10 +2,11 @@
 layout: post
 title: "Introducing Adonis Js"
 author: "@codehakase"
-description: "Get started with AdonisJS eaisly."
+description: "An introduction to the AdonisJs framework for Node.js"
 modified: 2017-05-09
-tags: [adonisjs,javascript]
+tags: [nodejs, javascript, framework]
 share: true
+toc: true
 comments: true
 category: javascript
 ---
@@ -25,7 +26,7 @@ AdonisJs is inspired by a PHP Framework called Laravel. It borrows the concepts 
 - Mailing System
 - Data Validator
 
-Similar to **Laravel**, here are some features Adonis has which are similar to Laravel’s:
+Similar to **Laravel**, here are some features Adonis has which are similar to Laravel's:
 
 - Routing
 - Scaffolding
@@ -57,11 +58,11 @@ Installing AdonisJs is very straight forward, the prerequisites is Nodejs >=4.0 
 
 npm is a package manager for Node.js. During the development process, you will find yourself using npm install a lot. Hence all dependencies are pulled from npm only.
 
-*Note:* We’ll be using a command line (terminal) through out, if you are on Mac OS, Ubuntu, Linux the commands we’d use should work. If you are on windows, get a command line tool like Git Bash, so you can use the same comamnds.
+*Note:* We'll be using a command line (terminal) through out, if you are on Mac OS, Ubuntu, Linux the commands we'd use should work. If you are on windows, get a command line tool like Git Bash, so you can use the same comamnds.
 
 ### Installing Adonis-CLI
 
-We’ll install adonis-cli globally using npm. It is a command line tool to scaffold new applications within a matter of seconds.
+We'll install adonis-cli globally using npm. It is a command line tool to scaffold new applications within a matter of seconds.
 
 ```
 npm i -g adonis-cli
@@ -69,9 +70,9 @@ npm i -g adonis-cli
 
 ![](http://i1.wp.com/cdn-images-1.medium.com/max/1600/1*gCIyTiyEis5hUtxdmAAn0A.gif)
 
-With Adonis-CLI installed, we can create projects using it. For this tutorial, we’ll be creating a project holla-adonis.
+With Adonis-CLI installed, we can create projects using it. For this tutorial, we'll be creating a project holla-adonis.
 
-We’ll create the project using Adonis-CLI
+We'll create the project using Adonis-CLI
 
 ```
 adonis new holla-adonis
@@ -80,7 +81,7 @@ adonis new holla-adonis
 ![](http://i0.wp.com/cdn-images-1.medium.com/max/1600/1*k0mjXf6_EclO_MbTpRq5SA.gif)
 scaffolding a new project with adonis-cli
 
-Now you’ve created a new project, lets move into the directory and launch the HTTP server.
+Now you've created a new project, lets move into the directory and launch the HTTP server.
 ```
 cd holla-adonis thennpm run serve:dev
 ```
@@ -89,7 +90,7 @@ Now open up your favourite browser and navigate to http://localhost:3333 and you
 
 ## Installing AdonisJs manually
 
-If you’d prefer installing Adonis without adonis-cli (which you should definitely use), you can clone the source from Github and build manually:
+If you'd prefer installing Adonis without adonis-cli (which you should definitely use), you can clone the source from Github and build manually:
 
 ```
 git clone --dissociate https://github.com/adonisjs/adonis-app holla-adonis
@@ -110,7 +111,7 @@ Open up the package.json file in your holla-adonis directory, and replace the va
 
 And replace the first line of the ace file to:
 
-    #!/usr/bin/env node — harmony_proxies
+    #!/usr/bin/env node — harmony_proxies
 
 ### Conclusion
 

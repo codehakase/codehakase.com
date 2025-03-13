@@ -1,158 +1,163 @@
 <!DOCTYPE html>
-<html>
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>for...in vs for...of Loops in JavaScript - codehakase&#39;s logs</title><meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta property="og:url" content="http://localhost:1313/blog/2017-06-19-for-in-vs-for-of-loop-javascript/">
-  <meta property="og:site_name" content="codehakase&#39;s logs">
-  <meta property="og:title" content="for...in vs for...of Loops in JavaScript">
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>for...in vs for...of Loops in JavaScript | Francis Sunday</title>
+  
+  <meta name="description" content="Differences between the for..in and for..of loops in javascript">
+  
+  
+  <meta property="og:title" content="for...in vs for...of Loops in JavaScript | Francis Sunday"/>
   <meta property="og:description" content="Differences between the for..in and for..of loops in javascript">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="blog">
-    <meta property="article:published_time" content="2017-06-19T00:00:00+00:00">
-    <meta property="article:modified_time" content="2017-06-19T00:00:00+00:00">
-    <meta property="article:tag" content="Javascript">
-    <meta property="article:tag" content="Loops">
-
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="for...in vs for...of Loops in JavaScript">
+  <meta property="og:type" content="article"/>
+  <meta property="og:url" content="http://localhost:1313/blog/2017-06-19-for-in-vs-for-of-loop-javascript/"/>
+  
+  
+  <meta name="twitter:title" content="for...in vs for...of Loops in JavaScript | Francis Sunday"/>
   <meta name="twitter:description" content="Differences between the for..in and for..of loops in javascript">
-<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
+  
+  <meta name="twitter:creator" property="twitter:creator" content="@codehakase"/>
+  
+  
+  
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Anonymous+Pro" rel="stylesheet">
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="http://localhost:1313/css/main.css">
+  
+  <style>
+    body {
+      font-family: "Anonymous Pro", monospace;
+      font-size: 1.1em;
+      line-height: 2;
+    }
+  </style>
+  
+  
+  </head> 
+  <body class="font-mono">
+    <div class="max-w-3xl mx-auto p-4">
+      <header class="flex flex-col md:flex-row justify-between items-center py-8">
+  <div>
+    <h1 class="text-4xl md:text-5xl font-bold">
+      <a href="http://localhost:1313/">Francis Sunday</a>
+    </h1>
+  </div>
+  
+  <nav class="mt-4 md:mt-0">
+    <ul class="flex space-x-4">
+      <li>
+        <a href="/about/" class="hover:underline font-bold">About</a>
+      </li>
+      <li>
+        <a href="/blog/" class="hover:underline font-bold">Blog</a>
+      </li>
+      <li>
+        <a href="/archive/" class="hover:underline font-bold">Archive</a>
+      </li>
+      <li>
+        <a href="/tags/" class="hover:underline font-bold">Tags</a>
+      </li>
+    </ul>
+  </nav>
+</header> 
+      
+      <main>
+        
+<article class="mb-8">
+  <header class="mb-8">
+    <h1 class="text-3xl font-bold mb-2">for...in vs for...of Loops in JavaScript</h1>
+    <div class="text-sm">June 19, 2017</div>
+  </header>
 
-	<link rel="stylesheet" type="text/css" media="screen" href="http://localhost:1313/css/normalize.css" />
-	<link rel="stylesheet" type="text/css" media="screen" href="http://localhost:1313/css/main.css" />
+  
+  <div class="toc">
+    <h5 class="toc-title font-semibold">Jump to:</h5>
+    <div class="toc-content">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#forin">for..in</a></li>
+  </ul>
+</nav>
+    </div>
+  </div>
+  
 
-	<script src="http://localhost:1313/js/feather.min.js"></script>
-	
-	<script src="http://localhost:1313/js/main.js"></script>
-</head>
-
-<body>
-	<div class="container wrapper post">
-		<div class="header">
-	<base href="http://localhost:1313/">
-	<h1 class="site-title"><a href="http://localhost:1313/blog">codehakase&#39;s logs</a></h1>
-	<div class="site-description"><h2>Notes mostly about software engineering and what I&rsquo;m working on.</h2><nav class="nav social">
-			<ul class="flat"><a href="https://twitter.com/codehakase" title="Twitter"><i data-feather="twitter"></i></a><a href="https://github.com/codehakase" title="Github"><i data-feather="github"></i></a></ul>
-		</nav>
-	</div>
-
-	<nav class="nav">
-		<ul class="flat">
-			
-			<li>
-				<a href="/blog">Home</a>
-			</li>
-			
-			<li>
-				<a href="/">About</a>
-			</li>
-			
-			<li>
-				<a href="/projects">Projects</a>
-			</li>
-			
-			<li>
-				<a href="/blog/archive">Archive</a>
-			</li>
-			
-			<li>
-				<a href="/tags">Tags</a>
-			</li>
-			
-		</ul>
-	</nav>
-</div>
-
-
-		<div class="post-header">
-			<h1 class="title">for...in vs for...of Loops in JavaScript</h1>
-			<div class="meta">Posted at &mdash; Jun 19, 2017</div>
-		</div>
-
-		<div class="markdown">
-			<p><img src="https://user-images.githubusercontent.com/9336187/27305938-97169192-553b-11e7-99cb-99396a9593fd.png" alt="for-in-graphics" title="Hakase Labs"></p>
+  <div class="prose max-w-none content-body">
+    <p><img src="https://user-images.githubusercontent.com/9336187/27305938-97169192-553b-11e7-99cb-99396a9593fd.png" alt="for-in-graphics" title="Hakase Labs"></p>
 <p>The <code>for..in</code> and <code>for..of</code> loops, gives us a clean and concise syntax to iterate on iterable items like arrays, strings, objects, and enumerables. Now the question is where to use which.
 Here&rsquo;s a little reminder to get you you started.</p>
 <h2 id="forin">for..in</h2>
 <p>Use this to iterate over the properties of an object:</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#268bd2">let</span> person <span style="color:#719e07">=</span> {
-</span></span><span style="display:flex;"><span>    name<span style="color:#719e07">:</span> <span style="color:#2aa198">&#39;Francis&#39;</span>,
-</span></span><span style="display:flex;"><span>    alias<span style="color:#719e07">:</span> <span style="color:#2aa198">&#39;codehakase&#39;</span>,
-</span></span><span style="display:flex;"><span>    eyeColour<span style="color:#719e07">:</span> <span style="color:#2aa198">&#39;brown&#39;</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="font-weight:bold">let</span> person = {
+</span></span><span style="display:flex;"><span>    name: <span style="font-style:italic">&#39;Francis&#39;</span>,
+</span></span><span style="display:flex;"><span>    alias: <span style="font-style:italic">&#39;codehakase&#39;</span>,
+</span></span><span style="display:flex;"><span>    eyeColour: <span style="font-style:italic">&#39;brown&#39;</span>
 </span></span><span style="display:flex;"><span>};
-</span></span><span style="display:flex;"><span><span style="color:#719e07">for</span>(<span style="color:#268bd2">let</span> key <span style="color:#719e07">in</span> person) {
-</span></span><span style="display:flex;"><span>    console.log( <span style="color:#586e75">`</span><span style="color:#2aa198">${</span>key<span style="color:#2aa198">}</span><span style="color:#586e75"> =&gt; </span><span style="color:#2aa198">${</span>person[key]<span style="color:#2aa198">}</span><span style="color:#586e75">`</span> );
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">for</span>(<span style="font-weight:bold">let</span> key <span style="font-weight:bold">in</span> person) {
+</span></span><span style="display:flex;"><span>    console.log( <span style="font-style:italic">`</span><span style="font-weight:bold;font-style:italic">${</span>key<span style="font-weight:bold;font-style:italic">}</span><span style="font-style:italic"> =&gt; </span><span style="font-weight:bold;font-style:italic">${</span>person[key]<span style="font-weight:bold;font-style:italic">}</span><span style="font-style:italic">`</span> );
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#586e75">// name =&gt; Francis
-</span></span></span><span style="display:flex;"><span><span style="color:#586e75">// alias =&gt; codehakase
-</span></span></span><span style="display:flex;"><span><span style="color:#586e75"></span>...
+</span></span><span style="display:flex;"><span><span style="font-style:italic">// name =&gt; Francis
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic">// alias =&gt; codehakase
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>...
 </span></span></code></pre></div><p>The <code>for..in</code> loop can also be used to iterate over indexed values of a string:</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#268bd2">let</span> text <span style="color:#719e07">=</span> <span style="color:#2aa198">&#39;JavaScript&#39;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#719e07">for</span> (<span style="color:#268bd2">let</span> i <span style="color:#719e07">in</span> text) {
-</span></span><span style="display:flex;"><span>    console.log(<span style="color:#586e75">`Index of </span><span style="color:#2aa198">${</span>str[index]<span style="color:#2aa198">}</span><span style="color:#586e75">: </span><span style="color:#2aa198">${</span>i<span style="color:#2aa198">}</span><span style="color:#586e75">`</span>);
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="font-weight:bold">let</span> text = <span style="font-style:italic">&#39;JavaScript&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">for</span> (<span style="font-weight:bold">let</span> i <span style="font-weight:bold">in</span> text) {
+</span></span><span style="display:flex;"><span>    console.log(<span style="font-style:italic">`Index of </span><span style="font-weight:bold;font-style:italic">${</span>str[index]<span style="font-weight:bold;font-style:italic">}</span><span style="font-style:italic">: </span><span style="font-weight:bold;font-style:italic">${</span>i<span style="font-weight:bold;font-style:italic">}</span><span style="font-style:italic">`</span>);
 </span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span><span style="color:#586e75">// Index of J: 0
-</span></span></span><span style="display:flex;"><span><span style="color:#586e75">// Index of a: 1
-</span></span></span><span style="display:flex;"><span><span style="color:#586e75"></span>...
+</span></span><span style="display:flex;"><span><span style="font-style:italic">// Index of J: 0
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic">// Index of a: 1
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>...
 </span></span></code></pre></div><h1 id="forof">for..of</h1>
 <p>Use this to iterate over the values in an iterable like an array:</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#268bd2">let</span> girls <span style="color:#719e07">=</span> [<span style="color:#2aa198">&#39;Jane&#39;</span>, <span style="color:#2aa198">&#39;Lilian&#39;</span>, <span style="color:#2aa198">&#39;Tobi&#39;</span>];
-</span></span><span style="display:flex;"><span><span style="color:#268bd2">let</span> boys <span style="color:#719e07">=</span> [<span style="color:#2aa198">&#39;John&#39;</span>, <span style="color:#2aa198">&#39;Tom&#39;</span>, <span style="color:#2aa198">&#39;Kelvin&#39;</span>];
-</span></span><span style="display:flex;"><span><span style="color:#719e07">for</span> (<span style="color:#268bd2">let</span> crush <span style="color:#719e07">of</span> girl_crush) {
-</span></span><span style="display:flex;"><span>    <span style="color:#586e75">// lucky crush for them boys
-</span></span></span><span style="display:flex;"><span><span style="color:#586e75"></span>    <span style="color:#268bd2">let</span> index <span style="color:#719e07">=</span> <span style="color:#b58900">Math</span>.floor(<span style="color:#b58900">Math</span>.random() <span style="color:#719e07">*</span> names.length);
-</span></span><span style="display:flex;"><span>    console.log( <span style="color:#586e75">`</span><span style="color:#2aa198">${</span>boys[index<span style="color:#2aa198">}</span><span style="color:#586e75"> crushes on </span><span style="color:#2aa198">${</span>girls<span style="color:#2aa198">}</span><span style="color:#586e75">`</span> );
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="font-weight:bold">let</span> girls = [<span style="font-style:italic">&#39;Jane&#39;</span>, <span style="font-style:italic">&#39;Lilian&#39;</span>, <span style="font-style:italic">&#39;Tobi&#39;</span>];
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">let</span> boys = [<span style="font-style:italic">&#39;John&#39;</span>, <span style="font-style:italic">&#39;Tom&#39;</span>, <span style="font-style:italic">&#39;Kelvin&#39;</span>];
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">for</span> (<span style="font-weight:bold">let</span> crush <span style="font-weight:bold">of</span> girl_crush) {
+</span></span><span style="display:flex;"><span>    <span style="font-style:italic">// lucky crush for them boys
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>    <span style="font-weight:bold">let</span> index = Math.floor(Math.random() * names.length);
+</span></span><span style="display:flex;"><span>    console.log( <span style="font-style:italic">`</span><span style="font-weight:bold;font-style:italic">${</span>boys[index<span style="font-weight:bold;font-style:italic">}</span><span style="font-style:italic"> crushes on </span><span style="font-weight:bold;font-style:italic">${</span>girls<span style="font-weight:bold;font-style:italic">}</span><span style="font-style:italic">`</span> );
 </span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span><span style="color:#586e75">// Tom crushes on Tobi
-</span></span></span><span style="display:flex;"><span><span style="color:#586e75">// Kelvin crushes on Lilian
-</span></span></span><span style="display:flex;"><span><span style="color:#586e75">// John crushes on Jane
+</span></span><span style="display:flex;"><span><span style="font-style:italic">// Tom crushes on Tobi
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic">// Kelvin crushes on Lilian
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic">// John crushes on Jane
 </span></span></span></code></pre></div><p>The <code>for..of</code> loop can also iterate over <code>maps</code>, <code>generators</code>, and <code>DOM node collections</code></p>
 <p>Now you know where and when to use the <code>for..in</code> and <code>for..of</code> loops.
 Did I miss anything? Let me know in comments section.</p>
 <p>Cheers!</p>
 
-		</div>
+  </div>
 
-		<div class="post-tags">
-			
-				
-					<nav class="nav tags">
-							<ul class="flat">
-								
-								<li><a href="/tags/javascript">javascript</a></li>
-								
-								<li><a href="/tags/loops">loops</a></li>
-								
-							</ul>
-					</nav>
-				
-			
-		</div>
-		<div id="disqus_thread"></div>
-<script type="text/javascript">
-	(function () {
-		
-		
-		if (window.location.hostname == "localhost")
-			return;
+  
+  <div class="mt-8 pt-4 border-t border-gray-200">
+    <h3 class="text-lg font-bold mb-2">Tags:</h3>
+    <div class="flex flex-wrap">
+      
+        <a href="/tags/javascript" class="tag">javascript</a>
+      
+        <a href="/tags/loops" class="tag">loops</a>
+      
+    </div>
+  </div>
+  
+</article>
 
-		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-		var disqus_shortname = 'codehakase-github-io';
-		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-	})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
-		Disqus.</a></noscript>
-<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>
-	<div class="footer wrapper">
-	<nav class="nav">
-		<div> Based on the <a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
-	</nav>
-</div><script>feather.replace()</script>
-</body>
-</html>
+      </main>
+      
+      <footer class="mt-8 pt-8 border-t border-gray-200">
+  <div class="flex flex-wrap justify-between items-center">
+    <div class="font-bold">
+      <a class="underline mr-4" href="/blog">/blog</a>
+      <a class="underline mr-4" href="https://x.com/codehakase">/X</a>
+      <a class="underline mr-4" href="https://linkedin.com/in/codehakase">/linkedin</a>
+      <a class="underline" href="https://github.com/codehakase">/github</a>
+    </div>
+    <div class="mt-4 md:mt-0 text-sm">
+      &copy; 2025 Francis Sunday
+    </div>
+  </div>
+</footer> 
+    </div>
+  </body>
+</html> 

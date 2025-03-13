@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on codehakase&#39;s logs</title>
+    <title>Tags on Francis Sunday</title>
     <link>http://localhost:1313/tags/</link>
-    <description>Recent content in Tags on codehakase&#39;s logs</description>
+    <description>Recent content in Tags on Francis Sunday</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 07 Feb 2025 00:00:00 +0000</lastBuildDate>
@@ -251,6 +251,20 @@
       <link>http://localhost:1313/tags/adonisjs/</link>
       <pubDate>Tue, 09 May 2017 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/tags/adonisjs/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Sample</title>
+      <link>http://localhost:1313/tags/sample/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/sample/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Toc</title>
+      <link>http://localhost:1313/tags/toc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/toc/</guid>
       <description></description>
     </item>
   </channel>

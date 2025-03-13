@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Toc on Francis Sunday</title>
+    <link>http://localhost:1313/tags/toc/</link>
+    <description>Recent content in Toc on Francis Sunday</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 01 May 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/toc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Sample Post with Table of Contents</title>
+      <link>http://localhost:1313/post/sample-post-with-toc/</link>
+      <pubDate>Mon, 01 May 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/sample-post-with-toc/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;This is a sample post to test the table of contents functionality.&lt;/p&gt;&#xA;&lt;h2 id=&#34;first-section&#34;&gt;First Section&lt;/h2&gt;&#xA;&lt;p&gt;This is the first section of the post.&lt;/p&gt;&#xA;&lt;h3 id=&#34;subsection-11&#34;&gt;Subsection 1.1&lt;/h3&gt;&#xA;&lt;p&gt;This is a subsection of the first section.&lt;/p&gt;&#xA;&lt;h3 id=&#34;subsection-12&#34;&gt;Subsection 1.2&lt;/h3&gt;&#xA;&lt;p&gt;This is another subsection of the first section.&lt;/p&gt;&#xA;&lt;h2 id=&#34;second-section&#34;&gt;Second Section&lt;/h2&gt;&#xA;&lt;p&gt;This is the second section of the post.&lt;/p&gt;&#xA;&lt;h3 id=&#34;subsection-21&#34;&gt;Subsection 2.1&lt;/h3&gt;&#xA;&lt;p&gt;This is a subsection of the second section.&lt;/p&gt;&#xA;&lt;h4 id=&#34;nested-subsection-211&#34;&gt;Nested Subsection 2.1.1&lt;/h4&gt;&#xA;&lt;p&gt;This is a nested subsection.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

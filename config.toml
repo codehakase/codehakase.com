@@ -1,19 +1,25 @@
-baseURL = 'https://codehakase.com/'
-languageCode = 'en-us'
-title = "codehakase's logs"
-theme = "ezhil"
-
-summaryLength = 20
-# Enable syntax highlighting.
-pygmentsstyle = "solarized-dark"
-pygmentscodefences = true
-pygmentscodefencesguesssyntax = true
-showAllPostsArchive = true
-disqusShortname="codehakase-github-io"
+baseURL = "https://codehakase.com/"
+languageCode = "en-us"
+title = "Francis Sunday"
+theme = "clean"
 
 [params]
-  subtitle = "Notes mostly about software engineering and what I'm working on."
-  disqusShortname="codehakase-github-io"
+  mainSections = ["post", "posts", "blog"]
+  description = "Francis Sunday's personal website"
+  twitter = "@codehakase"
+
+[markup]
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = true
+    lineNumbersInTable = true
+    style = "bw"
+    tabWidth = 4
+    lineNos = false
+    noClasses = true
+
+summaryLength = 20
+showAllPostsArchive = true
 
 [[menu.main]]
 name = "Home"
@@ -22,9 +28,8 @@ weight = 1
 
 [[menu.main]]
 name = "About"
-url = "/"
+url = "/about/"
 weight = 2
-
 
 [[menu.main]]
 name = "Projects"
@@ -33,7 +38,7 @@ weight = 3
 
 [[menu.main]]
 name = "Archive"
-url = "/blog/archive"
+url = "/archive/"
 weight = 4
 
 [[menu.main]]
