@@ -7,10 +7,7 @@ modified: 2025-02-07
 tags: [haskell]
 share: true
 category: haskell
-toc: true
 ---
-
-## Introduction
 
 First post on this blog after a long hiatus -- hopefully, this will stick. I was cleaning up my browser tabs, and found a Project Euler window open and decided to attempt some problems in Haskell. I've been writing Haskell for a couple of months now, and it was a great way to test myself. 
 I picked one of the problems I attempted, a simple one -- [Problem 8: Largest product in a series](https://projecteuler.net/problem=8).

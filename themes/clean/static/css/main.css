@@ -2,9 +2,19 @@ html {
   scroll-behavior: smooth;
 }
 
+ul, ol {
+  padding: 0;
+}
+
 .content-body p {
   margin-bottom: 1.5rem;
   white-space: pre-wrap;
+}
+
+.content-body a {
+  box-shadow: 0 1px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 
 .content-body h1,
@@ -36,7 +46,6 @@ pre {
   margin-top: 2rem;
   margin-bottom: 2rem;
   border-radius: 0.25rem;
-  overflow: scroll;
   overflow-x: auto;
   scrollbar-width: none;
   border: 1px solid #DFE1E7;
@@ -121,23 +130,38 @@ a:focus {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
-#TableOfContents ul {
+
+.toc {
+  font-size: 1em;
+  line-height: calc(.9 * 1.5em);
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+}
+
+.toc ul {
+  margin-top: .1rem;
+  margin-bottom: .1rem;
+}
+
+.toc li {
   list-style-type: disc;
-  line-height: normal;
+  margin-top: .1rem;
+  margin-bottom: .1rem;
+  margin-left: 1.5rem;
 }
 
-#TableOfContents li {
-  margin-bottom: 0.5rem;
+.toc li ul li {
+  list-style-type: circle;
 }
 
-#TableOfContents a {
-  text-decoration: underline;
-  color: inherit;
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.25rem;
-  display: inline-block;
+.toc a {
+  box-shadow: 0 1px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 
-#TableOfContents a:hover {
-  background-color: rgba(0, 0, 0, 0.05);
-} 
+.feed h4 {
+  box-shadow: 0 1px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}

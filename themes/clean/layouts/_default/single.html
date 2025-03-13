@@ -6,15 +6,13 @@
   </header>
 
   {{ if .Params.toc }}
-  <div class="mb-8">
-    <p class="text-base font-semibold">Table of Contents</p>
-    <div class="p-2 ml-4">
-      {{ .TableOfContents }}
-    </div>
+  <div class="toc">
+    <p class="text-base font-bold">Table of Contents</p>
+    {{ .TableOfContents }}
   </div>
   {{ end }}
 
-  <div class="prose max-w-none content-body">
+  <div class="prose max-w-none content-body {{ if .Params.feed }}feed{{ end }}">
     {{ .Content }}
   </div>
 

@@ -18,6 +18,11 @@ theme = "clean"
     lineNos = false
     noClasses = true
 
+  [markup.tableOfContents]
+    endLevel = 3
+    ordered = false
+    startLevel = 2
+
 summaryLength = 20
 showAllPostsArchive = true
 

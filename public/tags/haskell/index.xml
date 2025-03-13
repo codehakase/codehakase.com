@@ -13,7 +13,7 @@
       <link>https://codehakase.com/blog/2025-02-07-largest-product-in-a-series/</link>
       <pubDate>Fri, 07 Feb 2025 00:00:00 +0000</pubDate>
       <guid>https://codehakase.com/blog/2025-02-07-largest-product-in-a-series/</guid>
-      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;First post on this blog after a long hiatus &amp;ndash; hopefully, this will stick. I was cleaning up my browser tabs, and found a Project Euler window open and decided to attempt some problems in Haskell. I&amp;rsquo;ve been writing Haskell for a couple of months now, and it was a great way to test myself.&#xA;I picked one of the problems I attempted, a simple one &amp;ndash; &lt;a href=&#34;https://projecteuler.net/problem=8&#34;&gt;Problem 8: Largest product in a series&lt;/a&gt;.&lt;/p&gt;</description>
+      <description>&lt;p&gt;First post on this blog after a long hiatus &amp;ndash; hopefully, this will stick. I was cleaning up my browser tabs, and found a Project Euler window open and decided to attempt some problems in Haskell. I&amp;rsquo;ve been writing Haskell for a couple of months now, and it was a great way to test myself.&#xA;I picked one of the problems I attempted, a simple one &amp;ndash; &lt;a href=&#34;https://projecteuler.net/problem=8&#34;&gt;Problem 8: Largest product in a series&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
