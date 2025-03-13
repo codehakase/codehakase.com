@@ -1,79 +1,105 @@
 <!DOCTYPE html>
-<html>
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Here&#39;s What&#39;s New  In Go 1.10 - codehakase&#39;s logs</title><meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta property="og:url" content="http://localhost:1313/blog/2018-03-05-whats-new-in-golang-1-dot-10/">
-  <meta property="og:site_name" content="codehakase&#39;s logs">
-  <meta property="og:title" content="Here&#39;s What&#39;s New  In Go 1.10">
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>Here&#39;s What&#39;s New  In Go 1.10 | Francis Sunday</title>
+  
+  <meta name="description" content="The latest Go release, v1.10 arrived six months after V1.9. This release was stated in the change-logs and the Go blog. I&#39;m gonna share some interesting changes I&#39;ve found in Go 1.10 with you.">
+  
+  
+  <meta property="og:title" content="Here&#39;s What&#39;s New  In Go 1.10 | Francis Sunday"/>
   <meta property="og:description" content="The latest Go release, v1.10 arrived six months after V1.9. This release was stated in the change-logs and the Go blog. I&#39;m gonna share some interesting changes I&#39;ve found in Go 1.10 with you.">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="blog">
-    <meta property="article:published_time" content="2018-03-06T00:00:00+00:00">
-    <meta property="article:modified_time" content="2018-03-06T00:00:00+00:00">
-    <meta property="article:tag" content="Changelog">
-    <meta property="article:tag" content="Golang">
-    <meta property="article:tag" content="Go">
-
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Here&#39;s What&#39;s New  In Go 1.10">
+  <meta property="og:type" content="article"/>
+  <meta property="og:url" content="http://localhost:1313/blog/2018-03-05-whats-new-in-golang-1-dot-10/"/>
+  
+  
+  <meta name="twitter:title" content="Here&#39;s What&#39;s New  In Go 1.10 | Francis Sunday"/>
   <meta name="twitter:description" content="The latest Go release, v1.10 arrived six months after V1.9. This release was stated in the change-logs and the Go blog. I&#39;m gonna share some interesting changes I&#39;ve found in Go 1.10 with you.">
-<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
+  
+  <meta name="twitter:creator" property="twitter:creator" content="@codehakase"/>
+  
+  
+  
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Anonymous+Pro" rel="stylesheet">
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="http://localhost:1313/css/main.css">
+  
+  <style>
+    body {
+      font-family: "Anonymous Pro", monospace;
+      font-size: 1.1em;
+      line-height: 2;
+    }
+  </style>
+  
+  
+  </head> 
+  <body class="font-mono">
+    <div class="max-w-3xl mx-auto p-4">
+      <header class="flex flex-col md:flex-row justify-between items-center py-8">
+  <div>
+    <h1 class="text-4xl md:text-5xl font-bold">
+      <a href="http://localhost:1313/">Francis Sunday</a>
+    </h1>
+  </div>
+  
+  <nav class="mt-4 md:mt-0">
+    <ul class="flex space-x-4">
+      <li>
+        <a href="/about/" class="hover:underline font-bold">About</a>
+      </li>
+      <li>
+        <a href="/blog/" class="hover:underline font-bold">Blog</a>
+      </li>
+      <li>
+        <a href="/archive/" class="hover:underline font-bold">Archive</a>
+      </li>
+      <li>
+        <a href="/tags/" class="hover:underline font-bold">Tags</a>
+      </li>
+    </ul>
+  </nav>
+</header> 
+      
+      <main>
+        
+<article class="mb-8">
+  <header class="mb-8">
+    <h1 class="text-3xl font-bold mb-2">Here&#39;s What&#39;s New  In Go 1.10</h1>
+    <div class="text-sm">March 6, 2018</div>
+  </header>
 
-	<link rel="stylesheet" type="text/css" media="screen" href="http://localhost:1313/css/normalize.css" />
-	<link rel="stylesheet" type="text/css" media="screen" href="http://localhost:1313/css/main.css" />
+  
+  <div class="toc">
+    <h5 class="toc-title font-semibold">Jump to:</h5>
+    <div class="toc-content">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#new-features">New Features</a>
+      <ul>
+        <li><a href="#the-language">The Language</a></li>
+        <li><a href="#ports">Ports</a></li>
+        <li><a href="#tooling">Tooling</a></li>
+        <li><a href="#runtime">Runtime</a></li>
+        <li><a href="#performance">Performance</a></li>
+        <li><a href="#changes-to-standard-library">Changes to Standard Library</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </div>
+  
 
-	<script src="http://localhost:1313/js/feather.min.js"></script>
-	
-	<script src="http://localhost:1313/js/main.js"></script>
-</head>
-
-<body>
-	<div class="container wrapper post">
-		<div class="header">
-	<base href="http://localhost:1313/">
-	<h1 class="site-title"><a href="http://localhost:1313/blog">codehakase&#39;s logs</a></h1>
-	<div class="site-description"><h2>Notes mostly about software engineering and what I&rsquo;m working on.</h2><nav class="nav social">
-			<ul class="flat"><a href="https://twitter.com/codehakase" title="Twitter"><i data-feather="twitter"></i></a><a href="https://github.com/codehakase" title="Github"><i data-feather="github"></i></a></ul>
-		</nav>
-	</div>
-
-	<nav class="nav">
-		<ul class="flat">
-			
-			<li>
-				<a href="/blog">Home</a>
-			</li>
-			
-			<li>
-				<a href="/">About</a>
-			</li>
-			
-			<li>
-				<a href="/projects">Projects</a>
-			</li>
-			
-			<li>
-				<a href="/blog/archive">Archive</a>
-			</li>
-			
-			<li>
-				<a href="/tags">Tags</a>
-			</li>
-			
-		</ul>
-	</nav>
-</div>
-
-
-		<div class="post-header">
-			<h1 class="title">Here&#39;s What&#39;s New  In Go 1.10</h1>
-			<div class="meta">Posted at &mdash; Mar 6, 2018</div>
-		</div>
-
-		<div class="markdown">
-			<blockquote>
+  <div class="prose max-w-none content-body">
+    <blockquote>
 <p>Go 1.8 is one year old (Happy belated Birthday 🎊 🎉)
 Go 1.9 is already 6 months old!
 Go 1.10 is out ✌</p></blockquote>
@@ -103,31 +129,31 @@ Passing the <code>-failfast</code> flag to <code>go test</code> disables running
 There&rsquo;s a new flag <code>-json</code> when used with <code>go test</code>, converts the test output to JSON format - <code>go test -json</code></p>
 <h4 id="godoc">GoDoc</h4>
 <p>The <code>go doc</code> tool now adds functions returning slices of <code>T</code> or <code>*T</code> to the display of <code>type T</code>.  For example:</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ go doc mail.Address
-</span></span><span style="display:flex;"><span>package mail // import <span style="color:#2aa198">&#34;net/mail&#34;</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ go doc mail.Address
+</span></span><span style="display:flex;"><span>package mail // import <span style="font-style:italic">&#34;net/mail&#34;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#b58900">type</span> Address struct <span style="color:#719e07">{</span>
+</span></span><span style="display:flex;"><span>type Address struct {
 </span></span><span style="display:flex;"><span>	Name    string
 </span></span><span style="display:flex;"><span>	Address string
-</span></span><span style="display:flex;"><span><span style="color:#719e07">}</span>
+</span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>    Address represents a single mail address.
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>func ParseAddress<span style="color:#719e07">(</span>address string<span style="color:#719e07">)</span> <span style="color:#719e07">(</span>*Address, error<span style="color:#719e07">)</span>
-</span></span><span style="display:flex;"><span>func ParseAddressList<span style="color:#719e07">(</span>list string<span style="color:#719e07">)</span> <span style="color:#719e07">([]</span>*Address, error<span style="color:#719e07">)</span> // Pointer is included
-</span></span><span style="display:flex;"><span>func <span style="color:#719e07">(</span>a *Address<span style="color:#719e07">)</span> String<span style="color:#719e07">()</span> string
+</span></span><span style="display:flex;"><span>func ParseAddress(address string) (*Address, error)
+</span></span><span style="display:flex;"><span>func ParseAddressList(list string) ([]*Address, error) // Pointer is included
+</span></span><span style="display:flex;"><span>func (a *Address) String() string
 </span></span></code></pre></div><p>In Go 1.9 <code>go doc mail.Address</code> outputs:</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>package mail // import <span style="color:#2aa198">&#34;net/mail&#34;</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>package mail // import <span style="font-style:italic">&#34;net/mail&#34;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#b58900">type</span> Address struct <span style="color:#719e07">{</span>
+</span></span><span style="display:flex;"><span>type Address struct {
 </span></span><span style="display:flex;"><span> Name    string
 </span></span><span style="display:flex;"><span> Address string
-</span></span><span style="display:flex;"><span><span style="color:#719e07">}</span>
-</span></span><span style="display:flex;"><span>    Address represents a single mail address. An address such as <span style="color:#2aa198">&#34;Barry Gibbs
-</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">    &lt;[bg@example.com](mailto:bg@example.com)&gt;&#34;</span> is represented as Address<span style="color:#719e07">{</span>Name: <span style="color:#2aa198">&#34;Barry Gibbs&#34;</span>, Address:
-</span></span><span style="display:flex;"><span>    <span style="color:#2aa198">&#34;[bg@example.com](mailto:bg@example.com)&#34;</span><span style="color:#719e07">}</span>.
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>    Address represents a single mail address. An address such as <span style="font-style:italic">&#34;Barry Gibbs
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic">    &lt;[bg@example.com](mailto:bg@example.com)&gt;&#34;</span> is represented as Address{Name: <span style="font-style:italic">&#34;Barry Gibbs&#34;</span>, Address:
+</span></span><span style="display:flex;"><span>    <span style="font-style:italic">&#34;[bg@example.com](mailto:bg@example.com)&#34;</span>}.
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>func ParseAddress<span style="color:#719e07">(</span>address string<span style="color:#719e07">)</span> <span style="color:#719e07">(</span>*Address, error<span style="color:#719e07">)</span>
-</span></span><span style="display:flex;"><span>func <span style="color:#719e07">(</span>a *Address<span style="color:#719e07">)</span> String<span style="color:#719e07">()</span> string
+</span></span><span style="display:flex;"><span>func ParseAddress(address string) (*Address, error)
+</span></span><span style="display:flex;"><span>func (a *Address) String() string
 </span></span></code></pre></div><p>Difference between both is the display of <code>ParseAddressList</code> which was only shown  the package overview - <code>go doc mail</code>.</p>
 <h4 id="go-vet">Go Vet</h4>
 <p>The <code>go vet</code> command now always have access to complete, up-to-date type information when checking packages, even for packages using <code>cgo</code> or vendored imports.</p>
@@ -135,10 +161,10 @@ There&rsquo;s a new flag <code>-json</code> when used with <code>go test</code>,
 <p>Go 1.10 includes a new <a href="https://golang.org/doc/diagnostics.html">overview of available Go program diagnostic tools</a></p>
 <h4 id="gofmt">Gofmt</h4>
 <p>Go 1.10 changed two minor details of the default formatting of Go source code. For instance, a certain complex three-index slice expression formatted like <code>x[i+1 : j:k</code> is now formatted with more consistent spacing: <code>x[i+1 : j : k</code>. Inline interface with single methods is now supported:</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#268bd2">type</span> CarService <span style="color:#268bd2">interface</span> { <span style="color:#268bd2">Check</span>() }
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="font-weight:bold">type</span> CarService <span style="font-weight:bold">interface</span> { Check() }
 </span></span></code></pre></div><p>Running <code>go fmt</code> in Go 1.9 formats the above to:</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#268bd2">type</span> CarService <span style="color:#268bd2">interface</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#268bd2">Check</span>()
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="font-weight:bold">type</span> CarService <span style="font-weight:bold">interface</span> {
+</span></span><span style="display:flex;"><span>  Check()
 </span></span><span style="display:flex;"><span> }
 </span></span></code></pre></div><h4 id="go-fix">Go Fix</h4>
 <p>The <code>go fix</code>  tool now replaces imports of <code>golang.org/x/net/context</code> with <code>&quot;context&quot;</code></p>
@@ -154,9 +180,9 @@ There&rsquo;s a new flag <code>-json</code> when used with <code>go test</code>,
 <p>Here I&rsquo;ll list some changes to the Go standard library as of Go 1.10, full details on this can be found on the <a href="https://golang.org/doc/go1.10">official release doc</a></p>
 <h4 id="lib-neturl">Lib: net/url</h4>
 <p>The <code>ResolveReference</code> method now preserves multiple leading slashes n the target URL. Previously, it rewrote multiple leading slashes to a single slash, which resulted in the <code>http.Client</code> following certain redirects incorrectly. Consider following code:</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>base, _ <span style="color:#719e07">:=</span> url.<span style="color:#268bd2">Parse</span>(<span style="color:#2aa198">&#34;http://host//path//to/page1&#34;</span>)
-</span></span><span style="display:flex;"><span>target, _ <span style="color:#719e07">:=</span> url.<span style="color:#268bd2">Parse</span>(<span style="color:#2aa198">&#34;page2&#34;</span>)
-</span></span><span style="display:flex;"><span>fmt.<span style="color:#268bd2">Println</span>(base.<span style="color:#268bd2">ResolveReference</span>(target))
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>base, _ := url.Parse(<span style="font-style:italic">&#34;http://host//path//to/page1&#34;</span>)
+</span></span><span style="display:flex;"><span>target, _ := url.Parse(<span style="font-style:italic">&#34;page2&#34;</span>)
+</span></span><span style="display:flex;"><span>fmt.Println(base.ResolveReference(target))
 </span></span></code></pre></div><p>In Go 1.9, the output of the above is <code>http://host/path//to/page2</code>
 In Go 1.10, the resolved URL is <code>http://host//path//to/page2</code></p>
 <p>Note the doubled slashes around <code>path</code>. In Go 1.9 and earlier, the resolved URL was <code>http://host/path//to/page2</code>: the doubled slash before <code>path</code> was incorrectly rewritten to a single slash, while the doubled slash after <code>path</code> was correctly preserved. Go 1.10 preserves both doubled slashes, resolving to <code>http://host//path//to/page2</code> as required by <a href="https://tools.ietf.org/html/rfc3986#section-5.2">RFC 3986</a>.</p>
@@ -172,47 +198,39 @@ In Go 1.10, the resolved URL is <code>http://host//path//to/page2</code></p>
 <h4 id="references">References</h4>
 <p><a href="https://golang.org.doc/go1.10">https://golang.org.doc/go1.10</a></p>
 
-		</div>
+  </div>
 
-		<div class="post-tags">
-			
-				
-					<nav class="nav tags">
-							<ul class="flat">
-								
-								<li><a href="/tags/changelog">changelog</a></li>
-								
-								<li><a href="/tags/golang">golang</a></li>
-								
-								<li><a href="/tags/go">go</a></li>
-								
-							</ul>
-					</nav>
-				
-			
-		</div>
-		<div id="disqus_thread"></div>
-<script type="text/javascript">
-	(function () {
-		
-		
-		if (window.location.hostname == "localhost")
-			return;
+  
+  <div class="mt-8 pt-4 border-t border-gray-200">
+    <h3 class="text-lg font-bold mb-2">Tags:</h3>
+    <div class="flex flex-wrap">
+      
+        <a href="/tags/changelog" class="tag">changelog</a>
+      
+        <a href="/tags/golang" class="tag">golang</a>
+      
+        <a href="/tags/go" class="tag">go</a>
+      
+    </div>
+  </div>
+  
+</article>
 
-		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-		var disqus_shortname = 'codehakase-github-io';
-		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-	})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
-		Disqus.</a></noscript>
-<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>
-	<div class="footer wrapper">
-	<nav class="nav">
-		<div> Based on the <a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
-	</nav>
-</div><script>feather.replace()</script>
-</body>
-</html>
+      </main>
+      
+      <footer class="mt-8 pt-8 border-t border-gray-200">
+  <div class="flex flex-wrap justify-between items-center">
+    <div class="font-bold">
+      <a class="underline mr-4" href="/blog">/blog</a>
+      <a class="underline mr-4" href="https://x.com/codehakase">/X</a>
+      <a class="underline mr-4" href="https://linkedin.com/in/codehakase">/linkedin</a>
+      <a class="underline" href="https://github.com/codehakase">/github</a>
+    </div>
+    <div class="mt-4 md:mt-0 text-sm">
+      &copy; 2025 Francis Sunday
+    </div>
+  </div>
+</footer> 
+    </div>
+  </body>
+</html> 

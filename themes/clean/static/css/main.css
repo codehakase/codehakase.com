@@ -1,36 +1,65 @@
-/* Additional custom styles */
+html {
+  scroll-behavior: smooth;
+}
 
-/* Improve code block readability */
+.content-body p {
+  margin-bottom: 1.5rem;
+  white-space: pre-wrap;
+}
+
+.content-body h1,
+.content-body h2,
+.content-body h3,
+.content-body h4,
+.content-body h5,
+.content-body h6 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 600; /* semibold */
+}
+
+.content-body ul,
+.content-body ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+  list-style-type: disc;
+}
+
+.content-body li {
+  margin-bottom: 0.5rem;
+}
+
+/* Code block styling */
 pre {
-  padding: 1rem;
-  overflow-x: auto;
-  background-color: #f8f8f8;
-  border-radius: 0.25rem;
-  margin: 1.5rem 0;
   position: relative;
-}
-
-/* Style for inline code */
-code {
-  padding: 0.2rem 0.4rem;
-  background-color: #f8f8f8;
+  padding: 1.25rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
   border-radius: 0.25rem;
-  font-size: 0.9em;
+  overflow: scroll;
+  overflow-x: auto;
+  scrollbar-width: none;
+  border: 1px solid #DFE1E7;
+  background-color: #fafafa !important;
+  line-height: 1.3em;
 }
 
-/* Code blocks with language tags */
 pre code {
-  padding: 0;
-  background-color: transparent;
-  border-radius: 0;
   font-size: 0.9em;
   line-height: 1.6;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  display: block;
 }
 
-/* Minimal code highlighting */
-.hljs {
-  background: #f8f8f8 !important;
-  padding: 0 !important;
+/* Inline code styling */
+:not(pre) > code {
+  padding: 0.2rem 0.4rem;
+  background-color: #f1f1f1;
+  border-radius: 0.25rem;
+  font-size: 0.9em;
+  border: 1px solid #e1e1e1;
+  color: #d63384;
 }
 
 /* Ensure images don't overflow their containers */
@@ -39,23 +68,22 @@ img {
   height: auto;
 }
 
-/* Style for blockquotes */
 blockquote {
   border-left: 4px solid #e2e8f0;
   padding-left: 1rem;
   font-style: italic;
   margin-left: 0;
   margin-right: 0;
+  background-color: #f8f9fa;
+  padding: 1rem;
 }
 
-/* Style for horizontal rules */
 hr {
   border: 0;
   border-top: 1px solid #e2e8f0;
   margin: 2rem 0;
 }
 
-/* Style for tables */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -78,7 +106,6 @@ a:focus {
   outline-offset: 2px;
 }
 
-/* Simple tag styling */
 .tag {
   border: 1px solid black;
   color: black;
@@ -91,5 +118,26 @@ a:focus {
 }
 
 .tag:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+#TableOfContents ul {
+  list-style-type: disc;
+  line-height: normal;
+}
+
+#TableOfContents li {
+  margin-bottom: 0.5rem;
+}
+
+#TableOfContents a {
+  text-decoration: underline;
+  color: inherit;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  display: inline-block;
+}
+
+#TableOfContents a:hover {
   background-color: rgba(0, 0, 0, 0.05);
 } 

@@ -5,7 +5,16 @@
     <div class="text-sm">{{ dateFormat "January 2, 2006" .Date }}</div>
   </header>
 
-  <div class="prose max-w-none">
+  {{ if .Params.toc }}
+  <div class="mb-8">
+    <p class="text-base font-semibold">Table of Contents</p>
+    <div class="p-2 ml-4">
+      {{ .TableOfContents }}
+    </div>
+  </div>
+  {{ end }}
+
+  <div class="prose max-w-none content-body">
     {{ .Content }}
   </div>
 

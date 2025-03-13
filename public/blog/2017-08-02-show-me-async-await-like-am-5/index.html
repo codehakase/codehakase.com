@@ -1,78 +1,97 @@
 <!DOCTYPE html>
-<html>
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>JavaScript Async/Await 101 - codehakase&#39;s logs</title><meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta property="og:url" content="http://localhost:1313/blog/2017-08-02-show-me-async-await-like-am-5/">
-  <meta property="og:site_name" content="codehakase&#39;s logs">
-  <meta property="og:title" content="JavaScript Async/Await 101">
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>JavaScript Async/Await 101 | Francis Sunday</title>
+  
+  <meta name="description" content="A simple guide to getting started with Async and Await in JavaScript">
+  
+  
+  <meta property="og:title" content="JavaScript Async/Await 101 | Francis Sunday"/>
   <meta property="og:description" content="A simple guide to getting started with Async and Await in JavaScript">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="blog">
-    <meta property="article:published_time" content="2017-08-12T00:00:00+00:00">
-    <meta property="article:modified_time" content="2017-08-12T00:00:00+00:00">
-    <meta property="article:tag" content="Javascript">
-    <meta property="article:tag" content="Async/Await">
-
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="JavaScript Async/Await 101">
+  <meta property="og:type" content="article"/>
+  <meta property="og:url" content="http://localhost:1313/blog/2017-08-02-show-me-async-await-like-am-5/"/>
+  
+  
+  <meta name="twitter:title" content="JavaScript Async/Await 101 | Francis Sunday"/>
   <meta name="twitter:description" content="A simple guide to getting started with Async and Await in JavaScript">
-<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
+  
+  <meta name="twitter:creator" property="twitter:creator" content="@codehakase"/>
+  
+  
+  
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Anonymous+Pro" rel="stylesheet">
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="http://localhost:1313/css/main.css">
+  
+  <style>
+    body {
+      font-family: "Anonymous Pro", monospace;
+      font-size: 1.1em;
+      line-height: 2;
+    }
+  </style>
+  
+  
+  </head> 
+  <body class="font-mono">
+    <div class="max-w-3xl mx-auto p-4">
+      <header class="flex flex-col md:flex-row justify-between items-center py-8">
+  <div>
+    <h1 class="text-4xl md:text-5xl font-bold">
+      <a href="http://localhost:1313/">Francis Sunday</a>
+    </h1>
+  </div>
+  
+  <nav class="mt-4 md:mt-0">
+    <ul class="flex space-x-4">
+      <li>
+        <a href="/about/" class="hover:underline font-bold">About</a>
+      </li>
+      <li>
+        <a href="/blog/" class="hover:underline font-bold">Blog</a>
+      </li>
+      <li>
+        <a href="/archive/" class="hover:underline font-bold">Archive</a>
+      </li>
+      <li>
+        <a href="/tags/" class="hover:underline font-bold">Tags</a>
+      </li>
+    </ul>
+  </nav>
+</header> 
+      
+      <main>
+        
+<article class="mb-8">
+  <header class="mb-8">
+    <h1 class="text-3xl font-bold mb-2">JavaScript Async/Await 101</h1>
+    <div class="text-sm">August 12, 2017</div>
+  </header>
 
-	<link rel="stylesheet" type="text/css" media="screen" href="http://localhost:1313/css/normalize.css" />
-	<link rel="stylesheet" type="text/css" media="screen" href="http://localhost:1313/css/main.css" />
+  
+  <div class="toc">
+    <h5 class="toc-title font-semibold">Jump to:</h5>
+    <div class="toc-content">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-is-asyncawait">What is async/await?</a>
+      <ul>
+        <li></li>
+        <li><a href="#but-i-like-promises-">But I like Promises!! :(</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </div>
+  
 
-	<script src="http://localhost:1313/js/feather.min.js"></script>
-	
-	<script src="http://localhost:1313/js/main.js"></script>
-</head>
-
-<body>
-	<div class="container wrapper post">
-		<div class="header">
-	<base href="http://localhost:1313/">
-	<h1 class="site-title"><a href="http://localhost:1313/blog">codehakase&#39;s logs</a></h1>
-	<div class="site-description"><h2>Notes mostly about software engineering and what I&rsquo;m working on.</h2><nav class="nav social">
-			<ul class="flat"><a href="https://twitter.com/codehakase" title="Twitter"><i data-feather="twitter"></i></a><a href="https://github.com/codehakase" title="Github"><i data-feather="github"></i></a></ul>
-		</nav>
-	</div>
-
-	<nav class="nav">
-		<ul class="flat">
-			
-			<li>
-				<a href="/blog">Home</a>
-			</li>
-			
-			<li>
-				<a href="/">About</a>
-			</li>
-			
-			<li>
-				<a href="/projects">Projects</a>
-			</li>
-			
-			<li>
-				<a href="/blog/archive">Archive</a>
-			</li>
-			
-			<li>
-				<a href="/tags">Tags</a>
-			</li>
-			
-		</ul>
-	</nav>
-</div>
-
-
-		<div class="post-header">
-			<h1 class="title">JavaScript Async/Await 101</h1>
-			<div class="meta">Posted at &mdash; Aug 12, 2017</div>
-		</div>
-
-		<div class="markdown">
-			<p><img src="/images/aysnc-await.png" alt="async/await" title="Async/await"></p>
+  <div class="prose max-w-none content-body">
+    <p><img src="/images/aysnc-await.png" alt="async/await" title="Async/await"></p>
 <p>Async and Await has been a blessing to most JavaScript Developers. Even while it was on the <a href="https://github.com/tc39/ecma262/tree/82bebe057c9fca355cfbfeb36be8e42f18c61e94">Stage 4 proposal</a> for ES6, the feature has been warmtly welcomed.</p>
 <p>Node.js now Supports async/await since its version 7.6.</p>
 <h2 id="what-is-asyncawait">What is async/await?</h2>
@@ -85,18 +104,18 @@
 </ul>
 <h4 id="asyncawait-vs-promises-syntax">Async/Await Vs Promises (Syntax)</h4>
 <p>Lets write a function that returns a Promise, which resolves with some data object. When its called, it logs, and return something:</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#268bd2">const</span> bookTaxi <span style="color:#719e07">=</span> () =&gt; {
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="font-weight:bold">const</span> bookTaxi = () =&gt; {
 </span></span><span style="display:flex;"><span>    getAvailableDrivers()
 </span></span><span style="display:flex;"><span>        .then (drivers =&gt; {
 </span></span><span style="display:flex;"><span>            console.log(drivers)
-</span></span><span style="display:flex;"><span>            <span style="color:#719e07">return</span> <span style="color:#2aa198">&#34;done&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">return</span> <span style="font-style:italic">&#34;done&#34;</span>
 </span></span><span style="display:flex;"><span>        })
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>bookTaxi()
 </span></span></code></pre></div><p>Implementing same with async/await:</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#268bd2">const</span> bookTaxi <span style="color:#719e07">=</span> <span style="color:#268bd2">async</span> () =&gt; {
-</span></span><span style="display:flex;"><span>    console.log(<span style="color:#268bd2">await</span> getAvailableDrivers() )
-</span></span><span style="display:flex;"><span>    <span style="color:#719e07">return</span> <span style="color:#2aa198">&#34;done&#34;</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="font-weight:bold">const</span> bookTaxi = <span style="font-weight:bold">async</span> () =&gt; {
+</span></span><span style="display:flex;"><span>    console.log(<span style="font-weight:bold">await</span> getAvailableDrivers() )
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span> <span style="font-style:italic">&#34;done&#34;</span>
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>bookTaxi()
@@ -114,49 +133,49 @@
 <p>The <code>await</code> operator is used to wait fro a Promise. It can only be used inside an <code>async</code> function - MDN</p></blockquote>
 <h5 id="another-example">Another Example</h5>
 <p>A simple <code>async</code> function to resolve after a specific time.</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#586e75">// this function resolves after 5 seconds
-</span></span></span><span style="display:flex;"><span><span style="color:#586e75"></span><span style="color:#268bd2">const</span> resolveFive <span style="color:#719e07">=</span> (x) =&gt; {
-</span></span><span style="display:flex;"><span>    <span style="color:#719e07">return</span> <span style="color:#719e07">new</span> <span style="color:#b58900">Promise</span>( resolve =&gt; {
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="font-style:italic">// this function resolves after 5 seconds
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span><span style="font-weight:bold">const</span> resolveFive = (x) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span> <span style="font-weight:bold">new</span> Promise( resolve =&gt; {
 </span></span><span style="display:flex;"><span>        setTimeout( () =&gt; {
 </span></span><span style="display:flex;"><span>            resolve(x);
-</span></span><span style="display:flex;"><span>        }, <span style="color:#2aa198">5000</span>);
+</span></span><span style="display:flex;"><span>        }, 5000);
 </span></span><span style="display:flex;"><span>    });
 </span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span><span style="color:#586e75">// an async function
-</span></span></span><span style="display:flex;"><span><span style="color:#586e75"></span><span style="color:#268bd2">const</span> add <span style="color:#719e07">=</span> <span style="color:#268bd2">async</span> (x) =&gt; {
-</span></span><span style="display:flex;"><span>    <span style="color:#268bd2">let</span> a <span style="color:#719e07">=</span> resolveFive(<span style="color:#2aa198">30</span>);
-</span></span><span style="display:flex;"><span>    <span style="color:#268bd2">let</span> b <span style="color:#719e07">=</span> resolveFive(<span style="color:#2aa198">40</span>);
-</span></span><span style="display:flex;"><span>    <span style="color:#719e07">return</span> x <span style="color:#719e07">+</span> <span style="color:#268bd2">await</span> a <span style="color:#719e07">+</span> <span style="color:#268bd2">await</span> b;
+</span></span><span style="display:flex;"><span><span style="font-style:italic">// an async function
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span><span style="font-weight:bold">const</span> add = <span style="font-weight:bold">async</span> (x) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">let</span> a = resolveFive(30);
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">let</span> b = resolveFive(40);
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span> x + <span style="font-weight:bold">await</span> a + <span style="font-weight:bold">await</span> b;
 </span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span><span style="color:#586e75">// testing
-</span></span></span><span style="display:flex;"><span><span style="color:#586e75"></span>
-</span></span><span style="display:flex;"><span>add(<span style="color:#2aa198">20</span>).then( value =&gt; {
-</span></span><span style="display:flex;"><span>    console.log(value); <span style="color:#586e75">// prints 90 after 5 seconds.
-</span></span></span><span style="display:flex;"><span><span style="color:#586e75"></span>})
+</span></span><span style="display:flex;"><span><span style="font-style:italic">// testing
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>
+</span></span><span style="display:flex;"><span>add(20).then( value =&gt; {
+</span></span><span style="display:flex;"><span>    console.log(value); <span style="font-style:italic">// prints 90 after 5 seconds.
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>})
 </span></span></code></pre></div><h3 id="but-i-like-promises-">But I like Promises!! :(</h3>
 <p>Yeah Promises are super awesome, but here are some things that make these guys thick:</p>
 <h4 id="error-handling">Error handling</h4>
 <p>With the Async/wait literals, its possible to handle both synchronous and asynchronous errors with the same constructs, compared to using <code>try/catch</code> blocks. Lets compare error handling in Promises vs async/await.</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#586e75">// Promises....
-</span></span></span><span style="display:flex;"><span><span style="color:#586e75"></span>
-</span></span><span style="display:flex;"><span><span style="color:#268bd2">const</span> bookTaxi <span style="color:#719e07">=</span> () =&gt; {
-</span></span><span style="display:flex;"><span>    <span style="color:#719e07">try</span> {
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="font-style:italic">// Promises....
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">const</span> bookTaxi = () =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">try</span> {
 </span></span><span style="display:flex;"><span>        getAvailableDrivers()
 </span></span><span style="display:flex;"><span>            .then( result =&gt; {
-</span></span><span style="display:flex;"><span>                <span style="color:#268bd2">const</span> driversInfo <span style="color:#719e07">=</span> JSON.parse(result) <span style="color:#586e75">// this fails and is not tracked
-</span></span></span><span style="display:flex;"><span><span style="color:#586e75"></span>                console.log(driversInfo)
+</span></span><span style="display:flex;"><span>                <span style="font-weight:bold">const</span> driversInfo = JSON.parse(result) <span style="font-style:italic">// this fails and is not tracked
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>                console.log(driversInfo)
 </span></span><span style="display:flex;"><span>            })
-</span></span><span style="display:flex;"><span>    } <span style="color:#719e07">catch</span> (err) {
+</span></span><span style="display:flex;"><span>    } <span style="font-weight:bold">catch</span> (err) {
 </span></span><span style="display:flex;"><span>        console.log(err)
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>With async/await</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#268bd2">const</span> bookTaxi <span style="color:#719e07">=</span> <span style="color:#268bd2">async</span> () =&gt; {
-</span></span><span style="display:flex;"><span>    <span style="color:#719e07">try</span> {
-</span></span><span style="display:flex;"><span>        <span style="color:#586e75">// this may fail
-</span></span></span><span style="display:flex;"><span><span style="color:#586e75"></span>        <span style="color:#268bd2">const</span> driversInfo <span style="color:#719e07">=</span> JSON.parse(<span style="color:#268bd2">await</span> getAvailableDrivers() )
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="font-weight:bold">const</span> bookTaxi = <span style="font-weight:bold">async</span> () =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">try</span> {
+</span></span><span style="display:flex;"><span>        <span style="font-style:italic">// this may fail
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>        <span style="font-weight:bold">const</span> driversInfo = JSON.parse(<span style="font-weight:bold">await</span> getAvailableDrivers() )
 </span></span><span style="display:flex;"><span>        console.log(driversInfo)
-</span></span><span style="display:flex;"><span>    } <span style="color:#719e07">catch</span>(err) {
+</span></span><span style="display:flex;"><span>    } <span style="font-weight:bold">catch</span>(err) {
 </span></span><span style="display:flex;"><span>        console.log(err)
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
@@ -165,62 +184,62 @@
 <p>We can write much cleaner code (compare the examples from before). Unlike Promises, we didn&rsquo;t have to use <code>.then()</code> or create anonymous functions to handle responses, etc. This also makes one avoid nested Promises, which can sometimes be a mess.</p>
 <h4 id="error-stacks">Error Stacks</h4>
 <p>If you call multiple promises in a chain, and an error is thrown somewhere in the chain, the error stack gives no clue of where such error occured.</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#586e75">// Promise chain
-</span></span></span><span style="display:flex;"><span><span style="color:#586e75"></span><span style="color:#268bd2">const</span> bookTaxi <span style="color:#719e07">=</span> () =&gt; {
-</span></span><span style="display:flex;"><span>    <span style="color:#719e07">return</span> checkRides()
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="font-style:italic">// Promise chain
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span><span style="font-weight:bold">const</span> bookTaxi = () =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span> checkRides()
 </span></span><span style="display:flex;"><span>        .then( () =&gt; anotherPromise() )
 </span></span><span style="display:flex;"><span>        .then( () =&gt; anotherPromise() )
 </span></span><span style="display:flex;"><span>        .then( () =&gt; anotherPromise() )
-</span></span><span style="display:flex;"><span>        <span style="color:#586e75">// ...
-</span></span></span><span style="display:flex;"><span><span style="color:#586e75"></span>        .then( () =&gt; {
-</span></span><span style="display:flex;"><span>            <span style="color:#719e07">throw</span> <span style="color:#719e07">new</span> <span style="color:#b58900">Error</span>(<span style="color:#2aa198">&#34;something went wrong from our end :/&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="font-style:italic">// ...
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>        .then( () =&gt; {
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">throw</span> <span style="font-weight:bold">new</span> Error(<span style="font-style:italic">&#34;something went wrong from our end :/&#34;</span>);
 </span></span><span style="display:flex;"><span>        })
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>bookTaxi()
-</span></span><span style="display:flex;"><span>    .<span style="color:#719e07">catch</span>( err =&gt; {
+</span></span><span style="display:flex;"><span>    .<span style="font-weight:bold">catch</span>( err =&gt; {
 </span></span><span style="display:flex;"><span>        console.log(err)
 </span></span><span style="display:flex;"><span>    })
 </span></span></code></pre></div><p>When an error occures from the above, the stack trace is a disaster, you get something like: <code>Errpr: something went wrong from our end :/ at anotherPromise.then.then.then.then (file.js: x:y)</code></p>
 <p>The error stack from async/await, points to the function that contains the error:</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#268bd2">const</span> booxTaxi <span style="color:#719e07">=</span> <span style="color:#268bd2">async</span> () =&gt; {
-</span></span><span style="display:flex;"><span>    <span style="color:#268bd2">await</span> anotherPromise()
-</span></span><span style="display:flex;"><span>    <span style="color:#268bd2">await</span> anotherPromise()
-</span></span><span style="display:flex;"><span>    <span style="color:#268bd2">await</span> anotherPromise()
-</span></span><span style="display:flex;"><span>    <span style="color:#268bd2">await</span> anotherPromise()
-</span></span><span style="display:flex;"><span>    <span style="color:#719e07">throw</span> <span style="color:#719e07">new</span> <span style="color:#b58900">Error</span>(<span style="color:#2aa198">&#34;something went wrong :/&#34;</span>);
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="font-weight:bold">const</span> booxTaxi = <span style="font-weight:bold">async</span> () =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">await</span> anotherPromise()
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">await</span> anotherPromise()
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">await</span> anotherPromise()
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">await</span> anotherPromise()
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">throw</span> <span style="font-weight:bold">new</span> Error(<span style="font-style:italic">&#34;something went wrong :/&#34;</span>);
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>bookTaxi()
-</span></span><span style="display:flex;"><span>    .<span style="color:#719e07">catch</span>( err =&gt; {
-</span></span><span style="display:flex;"><span>        console.log(err); <span style="color:#586e75">// Error: something went wrong :/ at (file.js: x:x )
-</span></span></span><span style="display:flex;"><span><span style="color:#586e75"></span>    })
+</span></span><span style="display:flex;"><span>    .<span style="font-weight:bold">catch</span>( err =&gt; {
+</span></span><span style="display:flex;"><span>        console.log(err); <span style="font-style:italic">// Error: something went wrong :/ at (file.js: x:x )
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>    })
 </span></span></code></pre></div><h4 id="conditionals">Conditionals</h4>
 <p>You may have code that fetches some data and decides whether to return that or get more details based on the value of that data.</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#586e75">// Promise
-</span></span></span><span style="display:flex;"><span><span style="color:#586e75"></span><span style="color:#268bd2">const</span> bookTaxi <span style="color:#719e07">=</span> () =&gt; {
-</span></span><span style="display:flex;"><span>    <span style="color:#719e07">return</span> getRides()
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="font-style:italic">// Promise
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span><span style="font-weight:bold">const</span> bookTaxi = () =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span> getRides()
 </span></span><span style="display:flex;"><span>        .then( rides =&gt; {
-</span></span><span style="display:flex;"><span>            <span style="color:#719e07">if</span> ( rides.alreadyBooked ) {
-</span></span><span style="display:flex;"><span>                <span style="color:#719e07">return</span> getNoneBooked(rides)
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">if</span> ( rides.alreadyBooked ) {
+</span></span><span style="display:flex;"><span>                <span style="font-weight:bold">return</span> getNoneBooked(rides)
 </span></span><span style="display:flex;"><span>                    .then( moreRides =&gt; {
 </span></span><span style="display:flex;"><span>                        console.log(moreRides)
-</span></span><span style="display:flex;"><span>                        <span style="color:#719e07">return</span> moreRides
+</span></span><span style="display:flex;"><span>                        <span style="font-weight:bold">return</span> moreRides
 </span></span><span style="display:flex;"><span>                    })
-</span></span><span style="display:flex;"><span>            } <span style="color:#719e07">else</span> {
+</span></span><span style="display:flex;"><span>            } <span style="font-weight:bold">else</span> {
 </span></span><span style="display:flex;"><span>                console.log(rides)
-</span></span><span style="display:flex;"><span>                <span style="color:#719e07">return</span> rides
+</span></span><span style="display:flex;"><span>                <span style="font-weight:bold">return</span> rides
 </span></span><span style="display:flex;"><span>            }
 </span></span><span style="display:flex;"><span>        })
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>The above looks a bit messy, with all the nesting and unstable conditionals. The async/await version is much more readable.</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#268bd2">const</span> bookTaxi <span style="color:#719e07">=</span> <span style="color:#268bd2">async</span> () =&gt; {
-</span></span><span style="display:flex;"><span>    <span style="color:#268bd2">const</span> rides <span style="color:#719e07">=</span> <span style="color:#268bd2">await</span> getRides()
-</span></span><span style="display:flex;"><span>    <span style="color:#719e07">if</span> ( rides.alreadyBooked ) {
-</span></span><span style="display:flex;"><span>        <span style="color:#268bd2">const</span> moreRides <span style="color:#719e07">=</span> <span style="color:#268bd2">await</span> getNoneBooked(rides)
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="font-weight:bold">const</span> bookTaxi = <span style="font-weight:bold">async</span> () =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">const</span> rides = <span style="font-weight:bold">await</span> getRides()
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">if</span> ( rides.alreadyBooked ) {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">const</span> moreRides = <span style="font-weight:bold">await</span> getNoneBooked(rides)
 </span></span><span style="display:flex;"><span>        console.log(moreRides)
-</span></span><span style="display:flex;"><span>        <span style="color:#719e07">return</span> moreRides
-</span></span><span style="display:flex;"><span>    } <span style="color:#719e07">else</span> {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> moreRides
+</span></span><span style="display:flex;"><span>    } <span style="font-weight:bold">else</span> {
 </span></span><span style="display:flex;"><span>        console.log(rides)
-</span></span><span style="display:flex;"><span>        <span style="color:#719e07">return</span> rides
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> rides
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h3 id="conclusion">Conclusion</h3>
@@ -228,45 +247,37 @@
 <p>The async/await feature is one of the best that has been added to JavaScript. There are less syntactical mess met compared to using Promises, and debugging is far more shorter and less tiring.</p>
 <p>Did I miss anything? Let me know in the comments :)</p>
 
-		</div>
+  </div>
 
-		<div class="post-tags">
-			
-				
-					<nav class="nav tags">
-							<ul class="flat">
-								
-								<li><a href="/tags/javascript">javascript</a></li>
-								
-								<li><a href="/tags/async/await">async/await</a></li>
-								
-							</ul>
-					</nav>
-				
-			
-		</div>
-		<div id="disqus_thread"></div>
-<script type="text/javascript">
-	(function () {
-		
-		
-		if (window.location.hostname == "localhost")
-			return;
+  
+  <div class="mt-8 pt-4 border-t border-gray-200">
+    <h3 class="text-lg font-bold mb-2">Tags:</h3>
+    <div class="flex flex-wrap">
+      
+        <a href="/tags/javascript" class="tag">javascript</a>
+      
+        <a href="/tags/async/await" class="tag">async/await</a>
+      
+    </div>
+  </div>
+  
+</article>
 
-		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-		var disqus_shortname = 'codehakase-github-io';
-		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-	})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
-		Disqus.</a></noscript>
-<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>
-	<div class="footer wrapper">
-	<nav class="nav">
-		<div> Based on the <a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
-	</nav>
-</div><script>feather.replace()</script>
-</body>
-</html>
+      </main>
+      
+      <footer class="mt-8 pt-8 border-t border-gray-200">
+  <div class="flex flex-wrap justify-between items-center">
+    <div class="font-bold">
+      <a class="underline mr-4" href="/blog">/blog</a>
+      <a class="underline mr-4" href="https://x.com/codehakase">/X</a>
+      <a class="underline mr-4" href="https://linkedin.com/in/codehakase">/linkedin</a>
+      <a class="underline" href="https://github.com/codehakase">/github</a>
+    </div>
+    <div class="mt-4 md:mt-0 text-sm">
+      &copy; 2025 Francis Sunday
+    </div>
+  </div>
+</footer> 
+    </div>
+  </body>
+</html> 

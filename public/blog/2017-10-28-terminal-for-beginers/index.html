@@ -1,78 +1,102 @@
 <!DOCTYPE html>
-<html>
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Terminal for Beginners! - codehakase&#39;s logs</title><meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta property="og:url" content="http://localhost:1313/blog/2017-10-28-terminal-for-beginers/">
-  <meta property="og:site_name" content="codehakase&#39;s logs">
-  <meta property="og:title" content="Terminal for Beginners!">
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>Terminal for Beginners! | Francis Sunday</title>
+  
+  <meta name="description" content="A simple guide to getting started with the Terminal">
+  
+  
+  <meta property="og:title" content="Terminal for Beginners! | Francis Sunday"/>
   <meta property="og:description" content="A simple guide to getting started with the Terminal">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="blog">
-    <meta property="article:published_time" content="2017-10-28T00:00:00+00:00">
-    <meta property="article:modified_time" content="2017-10-28T00:00:00+00:00">
-    <meta property="article:tag" content="Unix">
-    <meta property="article:tag" content="Terminal">
-
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Terminal for Beginners!">
+  <meta property="og:type" content="article"/>
+  <meta property="og:url" content="http://localhost:1313/blog/2017-10-28-terminal-for-beginers/"/>
+  
+  
+  <meta name="twitter:title" content="Terminal for Beginners! | Francis Sunday"/>
   <meta name="twitter:description" content="A simple guide to getting started with the Terminal">
-<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
+  
+  <meta name="twitter:creator" property="twitter:creator" content="@codehakase"/>
+  
+  
+  
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Anonymous+Pro" rel="stylesheet">
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="http://localhost:1313/css/main.css">
+  
+  <style>
+    body {
+      font-family: "Anonymous Pro", monospace;
+      font-size: 1.1em;
+      line-height: 2;
+    }
+  </style>
+  
+  
+  </head> 
+  <body class="font-mono">
+    <div class="max-w-3xl mx-auto p-4">
+      <header class="flex flex-col md:flex-row justify-between items-center py-8">
+  <div>
+    <h1 class="text-4xl md:text-5xl font-bold">
+      <a href="http://localhost:1313/">Francis Sunday</a>
+    </h1>
+  </div>
+  
+  <nav class="mt-4 md:mt-0">
+    <ul class="flex space-x-4">
+      <li>
+        <a href="/about/" class="hover:underline font-bold">About</a>
+      </li>
+      <li>
+        <a href="/blog/" class="hover:underline font-bold">Blog</a>
+      </li>
+      <li>
+        <a href="/archive/" class="hover:underline font-bold">Archive</a>
+      </li>
+      <li>
+        <a href="/tags/" class="hover:underline font-bold">Tags</a>
+      </li>
+    </ul>
+  </nav>
+</header> 
+      
+      <main>
+        
+<article class="mb-8">
+  <header class="mb-8">
+    <h1 class="text-3xl font-bold mb-2">Terminal for Beginners!</h1>
+    <div class="text-sm">October 28, 2017</div>
+  </header>
 
-	<link rel="stylesheet" type="text/css" media="screen" href="http://localhost:1313/css/normalize.css" />
-	<link rel="stylesheet" type="text/css" media="screen" href="http://localhost:1313/css/main.css" />
+  
+  <div class="toc">
+    <h5 class="toc-title font-semibold">Jump to:</h5>
+    <div class="toc-content">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#what-is-a-terminal">What is a terminal?</a></li>
+        <li><a href="#basic-commands">Basic commands</a></li>
+        <li><a href="#setting-up-with-package-managers">Setting up with Package Managers</a></li>
+        <li><a href="#dotfiles">Dotfiles</a></li>
+        <li><a href="#git">Git</a></li>
+        <li><a href="#aliases">Aliases</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
+        <li><a href="#worth-checking-out">Worth Checking out</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </div>
+  
 
-	<script src="http://localhost:1313/js/feather.min.js"></script>
-	
-	<script src="http://localhost:1313/js/main.js"></script>
-</head>
-
-<body>
-	<div class="container wrapper post">
-		<div class="header">
-	<base href="http://localhost:1313/">
-	<h1 class="site-title"><a href="http://localhost:1313/blog">codehakase&#39;s logs</a></h1>
-	<div class="site-description"><h2>Notes mostly about software engineering and what I&rsquo;m working on.</h2><nav class="nav social">
-			<ul class="flat"><a href="https://twitter.com/codehakase" title="Twitter"><i data-feather="twitter"></i></a><a href="https://github.com/codehakase" title="Github"><i data-feather="github"></i></a></ul>
-		</nav>
-	</div>
-
-	<nav class="nav">
-		<ul class="flat">
-			
-			<li>
-				<a href="/blog">Home</a>
-			</li>
-			
-			<li>
-				<a href="/">About</a>
-			</li>
-			
-			<li>
-				<a href="/projects">Projects</a>
-			</li>
-			
-			<li>
-				<a href="/blog/archive">Archive</a>
-			</li>
-			
-			<li>
-				<a href="/tags">Tags</a>
-			</li>
-			
-		</ul>
-	</nav>
-</div>
-
-
-		<div class="post-header">
-			<h1 class="title">Terminal for Beginners!</h1>
-			<div class="meta">Posted at &mdash; Oct 28, 2017</div>
-		</div>
-
-		<div class="markdown">
-			<p>Getting into Software Development seem overwhelming (actually it is) these days. One has to go through the hassle of getting familiar with different languages, to organizing codebases, to libraries, frameworks, the list goes on. Every Job description (at least the sane ones), requires additional skills to get the job. Example of such, Version Control (Git or Mecurial), tasks runners, build tools, package managers, etc.</p>
+  <div class="prose max-w-none content-body">
+    <p>Getting into Software Development seem overwhelming (actually it is) these days. One has to go through the hassle of getting familiar with different languages, to organizing codebases, to libraries, frameworks, the list goes on. Every Job description (at least the sane ones), requires additional skills to get the job. Example of such, Version Control (Git or Mecurial), tasks runners, build tools, package managers, etc.</p>
 <p>Most of these extra tools are being accessed/used from a command line interface. The black hacker environment thingy stuff seem frightening kind of, but this article should get you familiar with the terminal interface. For those of us already familiar, after reading this article, you&rsquo;d wished you&rsquo;ve read it before you opened a terminal for the first time.</p>
 <blockquote>
 <p>Note, this article is directed towards unix based terminal environments</p></blockquote>
@@ -85,46 +109,46 @@
 <!-- raw HTML omitted -->
 <h3 id="basic-commands">Basic commands</h3>
 <p><strong>Changing directories:</strong> You can change into any directory from a terminal with the <code>cd</code> command. What it requires is a valid path to a directory. So using the command:</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ <span style="color:#b58900">cd</span> Downloads
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ cd Downloads
 </span></span></code></pre></div><p><strong>Listing files and directories:</strong> To list the contents of a directory, you can use the <code>ls</code> command.</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ <span style="color:#b58900">cd</span> Downloads
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ cd Downloads
 </span></span><span style="display:flex;"><span>Downloads$ ls
 </span></span><span style="display:flex;"><span>golang-1.9 file.txt ...
 </span></span></code></pre></div><blockquote>
 <p>You can also pass arguments to <code>ls</code> command to change its behaviour.</p></blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>Downloads$ ls -a -l
-</span></span><span style="display:flex;"><span>total <span style="color:#2aa198">12</span>
-</span></span><span style="display:flex;"><span>drwxr-xr-x  <span style="color:#2aa198">3</span> codehakase codehakase <span style="color:#2aa198">4096</span> Oct <span style="color:#2aa198">11</span> 20:25 .
-</span></span><span style="display:flex;"><span>drwxr-xr-x <span style="color:#2aa198">37</span> codehakase codehakase <span style="color:#2aa198">4096</span> Oct <span style="color:#2aa198">28</span> 15:22 ..
-</span></span><span style="display:flex;"><span>drwxr-xr-x  <span style="color:#2aa198">2</span> codehakase codehakase <span style="color:#2aa198">4096</span> Oct <span style="color:#2aa198">22</span> 17:04 talks
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>Downloads$ ls -a -l
+</span></span><span style="display:flex;"><span>total 12
+</span></span><span style="display:flex;"><span>drwxr-xr-x  3 codehakase codehakase 4096 Oct 11 20:25 .
+</span></span><span style="display:flex;"><span>drwxr-xr-x 37 codehakase codehakase 4096 Oct 28 15:22 ..
+</span></span><span style="display:flex;"><span>drwxr-xr-x  2 codehakase codehakase 4096 Oct 22 17:04 talks
 </span></span></code></pre></div><p>The <code>-a</code> and <code>-l</code> flags, shows all files (<code>-a</code> including hidden ones), and list them one file per line (<code>-l</code>).</p>
 <h4 id="essential-commands-for-file-and-directory-management">Essential commands for file and directory management</h4>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ls     <span style="color:#586e75"># List files</span>
-</span></span><span style="display:flex;"><span>cat    <span style="color:#586e75"># Show file content</span>
-</span></span><span style="display:flex;"><span>mkdir  <span style="color:#586e75"># Make directory</span>
-</span></span><span style="display:flex;"><span>rm     <span style="color:#586e75"># Remove file (or dir)</span>
-</span></span><span style="display:flex;"><span><span style="color:#b58900">pwd</span>    <span style="color:#586e75"># Output the current directory</span>
-</span></span><span style="display:flex;"><span><span style="color:#b58900">cd</span>     <span style="color:#586e75"># Change directory</span>
-</span></span><span style="display:flex;"><span>mv     <span style="color:#586e75"># Move or rename a file (or dir)</span>
-</span></span><span style="display:flex;"><span>cp     <span style="color:#586e75"># Copy file (or dir)</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ls     <span style="font-style:italic"># List files</span>
+</span></span><span style="display:flex;"><span>cat    <span style="font-style:italic"># Show file content</span>
+</span></span><span style="display:flex;"><span>mkdir  <span style="font-style:italic"># Make directory</span>
+</span></span><span style="display:flex;"><span>rm     <span style="font-style:italic"># Remove file (or dir)</span>
+</span></span><span style="display:flex;"><span>pwd    <span style="font-style:italic"># Output the current directory</span>
+</span></span><span style="display:flex;"><span>cd     <span style="font-style:italic"># Change directory</span>
+</span></span><span style="display:flex;"><span>mv     <span style="font-style:italic"># Move or rename a file (or dir)</span>
+</span></span><span style="display:flex;"><span>cp     <span style="font-style:italic"># Copy file (or dir)</span>
 </span></span></code></pre></div><h4 id="finding-your-way-around-commands-when-stuck">Finding your way around commands when stuck</h4>
 <p>Most commands (if not all) comes with a <code>--help</code> argument, which displays a list of available options for that commands, and what each option do.
 So executing <code>ls --help</code> from the terminal would display:</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>Usage: ls <span style="color:#719e07">[</span>OPTION<span style="color:#719e07">]</span>... <span style="color:#719e07">[</span>FILE<span style="color:#719e07">]</span>...
-</span></span><span style="display:flex;"><span>List information about the FILEs <span style="color:#719e07">(</span>the current directory by default<span style="color:#719e07">)</span>.
-</span></span><span style="display:flex;"><span>Sort entries alphabetically <span style="color:#719e07">if</span> none of -cftuvSUX nor --sort is specified.
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>Usage: ls [OPTION]... [FILE]...
+</span></span><span style="display:flex;"><span>List information about the FILEs (the current directory by default).
+</span></span><span style="display:flex;"><span>Sort entries alphabetically <span style="font-weight:bold">if</span> none of -cftuvSUX nor --sort is specified.
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Mandatory arguments to long options are mandatory <span style="color:#719e07">for</span> short options too.
-</span></span><span style="display:flex;"><span>  -a, --all                  <span style="color:#719e07">do</span> not ignore entries starting with .
-</span></span><span style="display:flex;"><span>  -A, --almost-all           <span style="color:#719e07">do</span> not list implied . and ..
+</span></span><span style="display:flex;"><span>Mandatory arguments to long options are mandatory <span style="font-weight:bold">for</span> short options too.
+</span></span><span style="display:flex;"><span>  -a, --all                  <span style="font-weight:bold">do</span> not ignore entries starting with .
+</span></span><span style="display:flex;"><span>  -A, --almost-all           <span style="font-weight:bold">do</span> not list implied . and ..
 </span></span><span style="display:flex;"><span>      --author               with -l, print the author of each file
-</span></span><span style="display:flex;"><span>  -b, --escape               print C-style escapes <span style="color:#719e07">for</span> nongraphic characters
-</span></span><span style="display:flex;"><span>      --block-size<span style="color:#719e07">=</span>SIZE      scale sizes by SIZE before printing them; e.g.,
-</span></span><span style="display:flex;"><span>                               <span style="color:#2aa198">&#39;--block-size=M&#39;</span> prints sizes in units of
+</span></span><span style="display:flex;"><span>  -b, --escape               print C-style escapes <span style="font-weight:bold">for</span> nongraphic characters
+</span></span><span style="display:flex;"><span>      --block-size=SIZE      scale sizes by SIZE before printing them; e.g.,
+</span></span><span style="display:flex;"><span>                               <span style="font-style:italic">&#39;--block-size=M&#39;</span> prints sizes in units of
 </span></span><span style="display:flex;"><span>                               1,048,576 bytes; see SIZE format below
-</span></span><span style="display:flex;"><span>  -B, --ignore-backups       <span style="color:#719e07">do</span> not list implied entries ending with ~
-</span></span><span style="display:flex;"><span>  -c                         with -lt: sort by, and show, ctime <span style="color:#719e07">(</span><span style="color:#b58900">time</span> of last
-</span></span><span style="display:flex;"><span>                               modification of file status information<span style="color:#719e07">)</span>;
+</span></span><span style="display:flex;"><span>  -B, --ignore-backups       <span style="font-weight:bold">do</span> not list implied entries ending with ~
+</span></span><span style="display:flex;"><span>  -c                         with -lt: sort by, and show, ctime (time of last
+</span></span><span style="display:flex;"><span>                               modification of file status information);
 </span></span><span style="display:flex;"><span>                               with -l: show ctime and sort by name;
 </span></span><span style="display:flex;"><span>                               otherwise: sort by ctime, newest first
 </span></span><span style="display:flex;"><span>...
@@ -155,18 +179,18 @@ So executing <code>ls --help</code> from the terminal would display:</p>
 <p>Git is a life saver!!!</p></blockquote>
 <p>Installing Git is easy, we can use either Homebrew (macOS), apt-get (Linux distros) and on windows, Git bash or Chocolatey.</p>
 <h4 id="linux">Linux</h4>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo apt-get install git
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo apt-get install git
 </span></span></code></pre></div><h4 id="macos">macOS</h4>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>brew install git
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>brew install git
 </span></span></code></pre></div><h4 id="windows">windows</h4>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#586e75"># chocolatey</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="font-style:italic"># chocolatey</span>
 </span></span><span style="display:flex;"><span>choco install git
 </span></span></code></pre></div><p><img src="http://res.cloudinary.com/hakase-labs/image/upload/c_scale,w_1230/v1509221564/git-shell_f7q4nc.png" alt="Git" title="git prompt"></p>
 <h3 id="aliases">Aliases</h3>
 <p>While using the terminal more often, you&rsquo;d probably note some commands you repeat. You can use an alias to abbreviate more complex commands. While I work, I normally have to commit, push, or clone stuff using git, I have some commands abbreviated:</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#b58900">alias</span> <span style="color:#268bd2">gc</span><span style="color:#719e07">=</span><span style="color:#2aa198">&#34;git commit -m&#34;</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>alias gc=<span style="font-style:italic">&#34;git commit -m&#34;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#586e75"># The above is used, gc &#34;initial commit&#34;</span>
+</span></span><span style="display:flex;"><span><span style="font-style:italic"># The above is used, gc &#34;initial commit&#34;</span>
 </span></span></code></pre></div><p>Note, if you define aliases, it will only be available on the terminal&rsquo;s session. If you close your terminal, everything resets. If you want a permanent alias, you&rsquo;d edit your terminal&rsquo;s profile (<code>.bashrc</code>, <code>.zshrc</code>, <code>.profile</code>). I use <a href="https://github.com/robbyrussell/oh-my-zsh">ZSH and oh-my-zsh</a> for my terminal environment, so I&rsquo;d edit my <code>.zshrc</code> file to add my alias same as before.</p>
 <h3 id="conclusion">Conclusion</h3>
 <p>Its been walking with you this far. If you&rsquo;re new to the terminal bla bla bla, I hope you feel comfortable now to use the terminal.</p>
@@ -174,45 +198,37 @@ So executing <code>ls --help</code> from the terminal would display:</p>
 <h3 id="worth-checking-out">Worth Checking out</h3>
 <p><a href="https://github.com/jlevy/the-art-of-command-line#the-art-of-command-line">The Art of Command Line</a></p>
 
-		</div>
+  </div>
 
-		<div class="post-tags">
-			
-				
-					<nav class="nav tags">
-							<ul class="flat">
-								
-								<li><a href="/tags/unix">unix</a></li>
-								
-								<li><a href="/tags/terminal">terminal</a></li>
-								
-							</ul>
-					</nav>
-				
-			
-		</div>
-		<div id="disqus_thread"></div>
-<script type="text/javascript">
-	(function () {
-		
-		
-		if (window.location.hostname == "localhost")
-			return;
+  
+  <div class="mt-8 pt-4 border-t border-gray-200">
+    <h3 class="text-lg font-bold mb-2">Tags:</h3>
+    <div class="flex flex-wrap">
+      
+        <a href="/tags/unix" class="tag">unix</a>
+      
+        <a href="/tags/terminal" class="tag">terminal</a>
+      
+    </div>
+  </div>
+  
+</article>
 
-		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-		var disqus_shortname = 'codehakase-github-io';
-		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-	})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
-		Disqus.</a></noscript>
-<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>
-	<div class="footer wrapper">
-	<nav class="nav">
-		<div> Based on the <a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
-	</nav>
-</div><script>feather.replace()</script>
-</body>
-</html>
+      </main>
+      
+      <footer class="mt-8 pt-8 border-t border-gray-200">
+  <div class="flex flex-wrap justify-between items-center">
+    <div class="font-bold">
+      <a class="underline mr-4" href="/blog">/blog</a>
+      <a class="underline mr-4" href="https://x.com/codehakase">/X</a>
+      <a class="underline mr-4" href="https://linkedin.com/in/codehakase">/linkedin</a>
+      <a class="underline" href="https://github.com/codehakase">/github</a>
+    </div>
+    <div class="mt-4 md:mt-0 text-sm">
+      &copy; 2025 Francis Sunday
+    </div>
+  </div>
+</footer> 
+    </div>
+  </body>
+</html> 

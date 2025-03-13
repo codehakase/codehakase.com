@@ -1,79 +1,103 @@
 <!DOCTYPE html>
-<html>
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Working with JSON in Go - codehakase&#39;s logs</title><meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta property="og:url" content="http://localhost:1313/blog/2021-05-03-json-in-go/">
-  <meta property="og:site_name" content="codehakase&#39;s logs">
-  <meta property="og:title" content="Working with JSON in Go">
-  <meta property="og:description" content="A guide to working with JSON in Go and some gotchas and surprises to take note of.">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="blog">
-    <meta property="article:published_time" content="2021-05-03T00:00:00+00:00">
-    <meta property="article:modified_time" content="2021-05-03T00:00:00+00:00">
-    <meta property="article:tag" content="Golang">
-    <meta property="article:tag" content="Go">
-    <meta property="article:tag" content="Json">
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>Working with JSON in Go | Francis Sunday</title>
+  
+  <meta name="description" content="A summary of the encoding/json package in Go">
+  
+  
+  <meta property="og:title" content="Working with JSON in Go | Francis Sunday"/>
+  <meta property="og:description" content="A summary of the encoding/json package in Go">
+  <meta property="og:type" content="article"/>
+  <meta property="og:url" content="http://localhost:1313/blog/2021-05-03-json-in-go/"/>
+  
+  
+  <meta name="twitter:title" content="Working with JSON in Go | Francis Sunday"/>
+  <meta name="twitter:description" content="A summary of the encoding/json package in Go">
+  
+  <meta name="twitter:creator" property="twitter:creator" content="@codehakase"/>
+  
+  
+  
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Anonymous+Pro" rel="stylesheet">
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="http://localhost:1313/css/main.css">
+  
+  <style>
+    body {
+      font-family: "Anonymous Pro", monospace;
+      font-size: 1.1em;
+      line-height: 2;
+    }
+  </style>
+  
+  
+  </head> 
+  <body class="font-mono">
+    <div class="max-w-3xl mx-auto p-4">
+      <header class="flex flex-col md:flex-row justify-between items-center py-8">
+  <div>
+    <h1 class="text-4xl md:text-5xl font-bold">
+      <a href="http://localhost:1313/">Francis Sunday</a>
+    </h1>
+  </div>
+  
+  <nav class="mt-4 md:mt-0">
+    <ul class="flex space-x-4 text-base">
+      <li>
+        <a href="/" class="underline font-bold">/home</a>
+      </li>
+      <li>
+        <a href="/blog/" class="underline font-bold">/posts</a>
+      </li>
+      <li>
+        <a href="/archive/" class="underline font-bold">/archive</a>
+      </li>
+      <li>
+        <a href="/tags/" class="underline font-bold">/tags</a>
+      </li>
+      <li>
+        <a href="/2025" class="underline font-bold">/2025</a>
+      </li>
+    </ul>
+  </nav>
+</header> 
+      
+      <main>
+        
+<article class="mb-8">
+  <header class="mb-8">
+    <h1 class="text-3xl font-bold mb-2">Working with JSON in Go</h1>
+    <div class="text-sm">May 3, 2021</div>
+  </header>
 
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Working with JSON in Go">
-  <meta name="twitter:description" content="A guide to working with JSON in Go and some gotchas and surprises to take note of.">
-<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
+  
+  <div class="mb-8">
+    <p class="text-base font-semibold">Table of Contents</p>
+    <div class="p-2 ml-4">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#encoding-and-decoding-data">Encoding and decoding data</a></li>
+        <li><a href="#http-handler-example"><strong>HTTP</strong> Handler Example</a></li>
+        <li><a href="#json-streaming">JSON Streaming</a></li>
+        <li><a href="#read-and-write-json-to-file">Read and Write JSON to file</a></li>
+        <li><a href="#json-gotchas-in-go">JSON Gotchas in Go</a></li>
+        <li><a href="#wrapping-up">Wrapping Up</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </div>
+  
 
-	<link rel="stylesheet" type="text/css" media="screen" href="http://localhost:1313/css/normalize.css" />
-	<link rel="stylesheet" type="text/css" media="screen" href="http://localhost:1313/css/main.css" />
-
-	<script src="http://localhost:1313/js/feather.min.js"></script>
-	
-	<script src="http://localhost:1313/js/main.js"></script>
-</head>
-
-<body>
-	<div class="container wrapper post">
-		<div class="header">
-	<base href="http://localhost:1313/">
-	<h1 class="site-title"><a href="http://localhost:1313/blog">codehakase&#39;s logs</a></h1>
-	<div class="site-description"><h2>Notes mostly about software engineering and what I&rsquo;m working on.</h2><nav class="nav social">
-			<ul class="flat"><a href="https://twitter.com/codehakase" title="Twitter"><i data-feather="twitter"></i></a><a href="https://github.com/codehakase" title="Github"><i data-feather="github"></i></a></ul>
-		</nav>
-	</div>
-
-	<nav class="nav">
-		<ul class="flat">
-			
-			<li>
-				<a href="/blog">Home</a>
-			</li>
-			
-			<li>
-				<a href="/">About</a>
-			</li>
-			
-			<li>
-				<a href="/projects">Projects</a>
-			</li>
-			
-			<li>
-				<a href="/blog/archive">Archive</a>
-			</li>
-			
-			<li>
-				<a href="/tags">Tags</a>
-			</li>
-			
-		</ul>
-	</nav>
-</div>
-
-
-		<div class="post-header">
-			<h1 class="title">Working with JSON in Go</h1>
-			<div class="meta">Posted at &mdash; May 3, 2021</div>
-		</div>
-
-		<div class="markdown">
-			<blockquote>
+  <div class="prose max-w-none content-body">
+    <blockquote>
 <p>Summary: I&rsquo;ve worked with JSON in various programming languages in context to
 data exchange/communication between applications. In this article, I&rsquo;ll give a brief overview of
 the encoding/json package in Go, and point some gotchas I&rsquo;ve
@@ -83,40 +107,40 @@ encountered.</p></blockquote>
 <h3 id="encoding-and-decoding-data">Encoding and decoding data</h3>
 <p>To encode or decode data we use the <a href="https://golang.org/pkg/encoding/json/#Marshal">Marshal</a> and <a href="https://golang.org/pkg/encoding/json/#Unmarshal">Unmarshal</a> functions from the json package.
 Both methods have the following signatures:</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#268bd2">func</span> <span style="color:#268bd2">Marshal</span>(v <span style="color:#268bd2">interface</span>{}) ([]<span style="color:#dc322f">byte</span>, <span style="color:#dc322f">error</span>)
-</span></span><span style="display:flex;"><span><span style="color:#268bd2">func</span> <span style="color:#268bd2">Unmarshal</span>(data []<span style="color:#dc322f">byte</span>, v <span style="color:#268bd2">interface</span>{}) <span style="color:#dc322f">error</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="font-weight:bold">func</span> Marshal(v <span style="font-weight:bold">interface</span>{}) ([]<span style="">byte</span>, <span style="">error</span>)
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">func</span> Unmarshal(data []<span style="">byte</span>, v <span style="font-weight:bold">interface</span>{}) <span style="">error</span>
 </span></span></code></pre></div><h4 id="encoding">Encoding</h4>
 <p>Here&rsquo;s a basic example of retrieving the JSON-encoded value of a <code>Config</code> struct instance:</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#268bd2">type</span> Config <span style="color:#268bd2">struct</span> {
-</span></span><span style="display:flex;"><span>  BuildDirPath <span style="color:#dc322f">string</span>
-</span></span><span style="display:flex;"><span>  MaxRefreshRate <span style="color:#dc322f">int</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="font-weight:bold">type</span> Config <span style="font-weight:bold">struct</span> {
+</span></span><span style="display:flex;"><span>  BuildDirPath <span style="">string</span>
+</span></span><span style="display:flex;"><span>  MaxRefreshRate <span style="">int</span>
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>c <span style="color:#719e07">:=</span> Config{BuildDirPath: <span style="color:#2aa198">&#34;/bin&#34;</span>}
-</span></span><span style="display:flex;"><span>b, err <span style="color:#719e07">:=</span> json.<span style="color:#268bd2">Marshal</span>(c)
-</span></span><span style="display:flex;"><span>fmt.<span style="color:#268bd2">Println</span>(<span style="color:#b58900">string</span>(b), err)
-</span></span><span style="display:flex;"><span><span style="color:#586e75">// output:</span>
-</span></span><span style="display:flex;"><span><span style="color:#586e75">// {&#34;BuildDirPath&#34;:&#34;/bin&#34;,&#34;MaxRefreshRate&#34;:0}</span>
+</span></span><span style="display:flex;"><span>c := Config{BuildDirPath: <span style="font-style:italic">&#34;/bin&#34;</span>}
+</span></span><span style="display:flex;"><span>b, err := json.Marshal(c)
+</span></span><span style="display:flex;"><span>fmt.Println(string(b), err)
+</span></span><span style="display:flex;"><span><span style="font-style:italic">// output:</span>
+</span></span><span style="display:flex;"><span><span style="font-style:italic">// {&#34;BuildDirPath&#34;:&#34;/bin&#34;,&#34;MaxRefreshRate&#34;:0}</span>
 </span></span></code></pre></div><p>By default, the <code>Marshal</code> function will include all <strong>zero-value</strong> exported fields as it treats the field names as the key of the JSON element. The code snippet above elaborates this &ndash; the <code>MaxRefreshRate</code> field had no value set but the JSON-encoded output included the field set to zero.</p>
 <h4 id="custom-json-keys">Custom JSON keys</h4>
 <p>From the previous code snippet, the JSON-encoded output uses the name of the
 struct fields. To control this we use the <a href="https://golang.org/ref/spec#Tag">struct tag</a> literal &ndash; here&rsquo;s an example:</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#268bd2">type</span> Config <span style="color:#268bd2">struct</span> {
-</span></span><span style="display:flex;"><span>  BuildDirPath <span style="color:#dc322f">string</span> <span style="color:#2aa198">`json:&#34;build_dir_path&#34;`</span>
-</span></span><span style="display:flex;"><span>  MaxRefreshRate <span style="color:#dc322f">string</span> <span style="color:#2aa198">`json:&#34;max_refresh_rate&#34;`</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="font-weight:bold">type</span> Config <span style="font-weight:bold">struct</span> {
+</span></span><span style="display:flex;"><span>  BuildDirPath <span style="">string</span> <span style="font-style:italic">`json:&#34;build_dir_path&#34;`</span>
+</span></span><span style="display:flex;"><span>  MaxRefreshRate <span style="">string</span> <span style="font-style:italic">`json:&#34;max_refresh_rate&#34;`</span>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Printing the JSON-encoded instance of the update <code>Config</code> struct will yield the
 following:</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{<span style="color:#268bd2">&#34;build_dir_path&#34;</span>:<span style="color:#2aa198">&#34;/bin&#34;</span>,<span style="color:#268bd2">&#34;max_refresh_rate&#34;</span>:<span style="color:#2aa198">0</span>}
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{<span style="font-weight:bold">&#34;build_dir_path&#34;</span>:<span style="font-style:italic">&#34;/bin&#34;</span>,<span style="font-weight:bold">&#34;max_refresh_rate&#34;</span>:0}
 </span></span></code></pre></div><h4 id="decoding">Decoding</h4>
 <p>To decode JSON data we need to define a data structure (struct or map) where the
 value will be decoded to. Here&rsquo;s what it looks like:</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>configJSON <span style="color:#719e07">:=</span> <span style="color:#2aa198">`{&#34;build_dir_path&#34;:&#34;/bin&#34;,&#34;max_refresh_rate&#34;:0}`</span>
-</span></span><span style="display:flex;"><span><span style="color:#586e75">// create struct to decode JSON string to</span>
-</span></span><span style="display:flex;"><span><span style="color:#268bd2">var</span> config Config
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>configJSON := <span style="font-style:italic">`{&#34;build_dir_path&#34;:&#34;/bin&#34;,&#34;max_refresh_rate&#34;:0}`</span>
+</span></span><span style="display:flex;"><span><span style="font-style:italic">// create struct to decode JSON string to</span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">var</span> config Config
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>err <span style="color:#719e07">:=</span> json.<span style="color:#268bd2">Unmarshal</span>([]<span style="color:#b58900">byte</span>(configJSON), <span style="color:#719e07">&amp;</span>config)
-</span></span><span style="display:flex;"><span><span style="color:#586e75">// handle err</span>
+</span></span><span style="display:flex;"><span>err := json.Unmarshal([]byte(configJSON), &amp;config)
+</span></span><span style="display:flex;"><span><span style="font-style:italic">// handle err</span>
 </span></span></code></pre></div><h5 id="destination-field-identification">Destination field identification</h5>
 <p><code>Unmarshal</code> will decode only the fields that it can find in the destination type (<code>config</code>). In our example, only the <code>build_dir_path</code> and <code>max_refresh_rate</code> field of m will be populated, ignoring any other fields not defined in the destination type.</p>
 <p>The <code>Unmarshal</code> function identifies each JSON key on the destination struct by
@@ -132,62 +156,62 @@ decoding, or the data source is subject to changing its structure &ndash; teleme
 data for instance. We can decode the JSON data into an <code>interface{}</code> or
 <code>map[string]interface{}</code> value, and
 use type assertions to acess the underlying data structures. Here&rsquo;s an example:</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>unknownData <span style="color:#719e07">:=</span> <span style="color:#2aa198">`{&#34;status&#34;: &#34;online&#34;, &#34;available_items&#34;: 200, &#34;stats&#34;: [{&#34;p1&#34;:
-</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">&#34;-2&#34;, &#34;p2&#34;: &#34;0&#34;}]}`</span>
-</span></span><span style="display:flex;"><span><span style="color:#268bd2">var</span> data <span style="color:#268bd2">interface</span>{}
-</span></span><span style="display:flex;"><span>_ = json.<span style="color:#268bd2">Unmarshal</span>([]<span style="color:#b58900">byte</span>(unknownData), <span style="color:#719e07">&amp;</span>data)
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>unknownData := <span style="font-style:italic">`{&#34;status&#34;: &#34;online&#34;, &#34;available_items&#34;: 200, &#34;stats&#34;: [{&#34;p1&#34;:
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic">&#34;-2&#34;, &#34;p2&#34;: &#34;0&#34;}]}`</span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">var</span> data <span style="font-weight:bold">interface</span>{}
+</span></span><span style="display:flex;"><span>_ = json.Unmarshal([]byte(unknownData), &amp;data)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#586e75">// access underlying data</span>
-</span></span><span style="display:flex;"><span>m <span style="color:#719e07">:=</span> f.(<span style="color:#268bd2">map</span>[<span style="color:#dc322f">string</span>]<span style="color:#268bd2">interface</span>{})
-</span></span><span style="display:flex;"><span>status <span style="color:#719e07">:=</span> m[<span style="color:#2aa198">&#34;status&#34;</span>]
-</span></span><span style="display:flex;"><span>fmt.<span style="color:#268bd2">Println</span>(status) <span style="color:#586e75">// online</span>
+</span></span><span style="display:flex;"><span><span style="font-style:italic">// access underlying data</span>
+</span></span><span style="display:flex;"><span>m := f.(<span style="font-weight:bold">map</span>[<span style="">string</span>]<span style="font-weight:bold">interface</span>{})
+</span></span><span style="display:flex;"><span>status := m[<span style="font-style:italic">&#34;status&#34;</span>]
+</span></span><span style="display:flex;"><span>fmt.Println(status) <span style="font-style:italic">// online</span>
 </span></span></code></pre></div><h3 id="http-handler-example"><strong>HTTP</strong> Handler Example</h3>
 <p>The json package enables encoding and decoding json over HTTP hassle-free.
 Here&rsquo;s an example of a HTTP POST request handler.</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#268bd2">type</span> BoxhubSync <span style="color:#268bd2">struct</span> {
-</span></span><span style="display:flex;"><span>  IP <span style="color:#dc322f">string</span> <span style="color:#2aa198">`json:&#34;ip&#34;`</span>
-</span></span><span style="display:flex;"><span>  LastSyncUpdate <span style="color:#dc322f">string</span> <span style="color:#2aa198">`json:&#34;last_sync_update&#34;`</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#586e75">// ... other fields omitted for brevity</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="font-weight:bold">type</span> BoxhubSync <span style="font-weight:bold">struct</span> {
+</span></span><span style="display:flex;"><span>  IP <span style="">string</span> <span style="font-style:italic">`json:&#34;ip&#34;`</span>
+</span></span><span style="display:flex;"><span>  LastSyncUpdate <span style="">string</span> <span style="font-style:italic">`json:&#34;last_sync_update&#34;`</span>
+</span></span><span style="display:flex;"><span>  <span style="font-style:italic">// ... other fields omitted for brevity</span>
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#268bd2">func</span> <span style="color:#268bd2">readBoxhubSyncRequest</span>(w http.ResponseWriter, r <span style="color:#719e07">*</span>http.Request){
-</span></span><span style="display:flex;"><span>  <span style="color:#268bd2">var</span> reqArgs BoxhubSync
-</span></span><span style="display:flex;"><span>  err <span style="color:#719e07">:=</span> <span style="color:#268bd2">decodeReqBody</span>(r, <span style="color:#719e07">&amp;</span>reqArgs)
-</span></span><span style="display:flex;"><span>  <span style="color:#719e07">if</span> err <span style="color:#719e07">!=</span> <span style="color:#cb4b16">nil</span> {
-</span></span><span style="display:flex;"><span>    log.<span style="color:#268bd2">Fatal</span>(err)
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">func</span> readBoxhubSyncRequest(w http.ResponseWriter, r *http.Request){
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">var</span> reqArgs BoxhubSync
+</span></span><span style="display:flex;"><span>  err := decodeReqBody(r, &amp;reqArgs)
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">if</span> err != <span style="font-weight:bold">nil</span> {
+</span></span><span style="display:flex;"><span>    log.Fatal(err)
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#586e75">// process reqArgs</span>
+</span></span><span style="display:flex;"><span>  <span style="font-style:italic">// process reqArgs</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#586e75">// send response to client</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#268bd2">resJSON</span>(w, http.StatusCreated, <span style="color:#268bd2">map</span>[<span style="color:#dc322f">string</span>]<span style="color:#268bd2">interface</span>{}{
-</span></span><span style="display:flex;"><span>    <span style="color:#2aa198">&#34;status&#34;</span>: <span style="color:#2aa198">&#34;success&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#2aa198">&#34;message&#34;</span>: <span style="color:#2aa198">&#34;sync requested processed&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="font-style:italic">// send response to client</span>
+</span></span><span style="display:flex;"><span>  resJSON(w, http.StatusCreated, <span style="font-weight:bold">map</span>[<span style="">string</span>]<span style="font-weight:bold">interface</span>{}{
+</span></span><span style="display:flex;"><span>    <span style="font-style:italic">&#34;status&#34;</span>: <span style="font-style:italic">&#34;success&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="font-style:italic">&#34;message&#34;</span>: <span style="font-style:italic">&#34;sync requested processed&#34;</span>,
 </span></span><span style="display:flex;"><span>  })
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#586e75">// decodeReqBody decodes from [r.Body] to [v]</span>
-</span></span><span style="display:flex;"><span><span style="color:#268bd2">func</span> <span style="color:#268bd2">decodeReqBody</span>(r <span style="color:#719e07">*</span>http.Request, v <span style="color:#268bd2">interface</span>{}) <span style="color:#dc322f">error</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#719e07">defer</span> r.Body.<span style="color:#268bd2">Close</span>()
-</span></span><span style="display:flex;"><span>  b, _ <span style="color:#719e07">:=</span> ioutil.<span style="color:#268bd2">ReadAll</span>(r.Body)
-</span></span><span style="display:flex;"><span>  err <span style="color:#719e07">:=</span> json.<span style="color:#268bd2">Unmarshal</span>(b, v)
-</span></span><span style="display:flex;"><span>  <span style="color:#719e07">if</span> err <span style="color:#719e07">!=</span> <span style="color:#cb4b16">nil</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#719e07">return</span> err
+</span></span><span style="display:flex;"><span><span style="font-style:italic">// decodeReqBody decodes from [r.Body] to [v]</span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">func</span> decodeReqBody(r *http.Request, v <span style="font-weight:bold">interface</span>{}) <span style="">error</span> {
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">defer</span> r.Body.Close()
+</span></span><span style="display:flex;"><span>  b, _ := ioutil.ReadAll(r.Body)
+</span></span><span style="display:flex;"><span>  err := json.Unmarshal(b, v)
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">if</span> err != <span style="font-weight:bold">nil</span> {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span> err
 </span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>  r.Body = ioutil.<span style="color:#268bd2">NopCloser</span>(bytes.<span style="color:#268bd2">NewBuffer</span>(b))
-</span></span><span style="display:flex;"><span>  <span style="color:#719e07">return</span> <span style="color:#cb4b16">nil</span>
+</span></span><span style="display:flex;"><span>  r.Body = ioutil.NopCloser(bytes.NewBuffer(b))
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">return</span> <span style="font-weight:bold">nil</span>
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#586e75">// resJSON writes a response to the http client</span>
-</span></span><span style="display:flex;"><span><span style="color:#268bd2">func</span> <span style="color:#268bd2">resJSON</span>(w http.ResponseWriter, code <span style="color:#dc322f">int</span>, payload <span style="color:#268bd2">interface</span>{}) {
-</span></span><span style="display:flex;"><span>  res, err <span style="color:#719e07">:=</span> json.<span style="color:#268bd2">Marshal</span>(payload)
-</span></span><span style="display:flex;"><span>  <span style="color:#719e07">if</span> err <span style="color:#719e07">!=</span> <span style="color:#cb4b16">nil</span> {
-</span></span><span style="display:flex;"><span>    log.<span style="color:#268bd2">Fatal</span>(err)
+</span></span><span style="display:flex;"><span><span style="font-style:italic">// resJSON writes a response to the http client</span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">func</span> resJSON(w http.ResponseWriter, code <span style="">int</span>, payload <span style="font-weight:bold">interface</span>{}) {
+</span></span><span style="display:flex;"><span>  res, err := json.Marshal(payload)
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">if</span> err != <span style="font-weight:bold">nil</span> {
+</span></span><span style="display:flex;"><span>    log.Fatal(err)
 </span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>  w.<span style="color:#268bd2">Header</span>().<span style="color:#268bd2">Set</span>(<span style="color:#2aa198">&#34;Content-Type&#34;</span>, <span style="color:#2aa198">&#34;application/json&#34;</span>)
-</span></span><span style="display:flex;"><span>  w.<span style="color:#268bd2">WriteHeader</span>(code)
-</span></span><span style="display:flex;"><span>  w.<span style="color:#268bd2">Write</span>(res)
-</span></span><span style="display:flex;"><span>  <span style="color:#719e07">return</span>
+</span></span><span style="display:flex;"><span>  w.Header().Set(<span style="font-style:italic">&#34;Content-Type&#34;</span>, <span style="font-style:italic">&#34;application/json&#34;</span>)
+</span></span><span style="display:flex;"><span>  w.WriteHeader(code)
+</span></span><span style="display:flex;"><span>  w.Write(res)
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">return</span>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h3 id="json-streaming">JSON Streaming</h3>
 <p>The json package provides <code>NewEncoder</code> and <code>NewDecoder</code> functions to
@@ -195,50 +219,50 @@ encode/decode JSON data from/to a stream. This is helpful if your data is coming
 <p><strong>Encoder</strong></p>
 <p>The <code>json.NewEncoder</code> function returns a new encoder that writes to a
 <code>io.Writer</code> stream:</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#268bd2">func</span> <span style="color:#268bd2">NewEncoder</span>(w io.Writer) <span style="color:#719e07">*</span>Encoder
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="font-weight:bold">func</span> NewEncoder(w io.Writer) *Encoder
 </span></span></code></pre></div><p>The <code>Encoder.Encode</code> function is responsible for writing JSON-encoded data to the
 stream. Each time the <code>Encode</code> function is called, JSON is marshalled from <code>v</code> and appended to the <code>io.Writer</code> with a trailing newline.</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#268bd2">func</span> (enc <span style="color:#719e07">*</span>Encoder) <span style="color:#268bd2">Encode</span>(v <span style="color:#268bd2">interface</span>{}) <span style="color:#dc322f">error</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="font-weight:bold">func</span> (enc *Encoder) Encode(v <span style="font-weight:bold">interface</span>{}) <span style="">error</span>
 </span></span></code></pre></div><p>Here&rsquo;s an example of how to encode JSON data to a buffer:</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#268bd2">func</span> <span style="color:#268bd2">main</span>() {
-</span></span><span style="display:flex;"><span>  buf <span style="color:#719e07">:=</span> <span style="color:#b58900">new</span>(bytes.Buffer)
-</span></span><span style="display:flex;"><span>  config <span style="color:#719e07">:=</span> Config{
-</span></span><span style="display:flex;"><span>    BuildDirPath: <span style="color:#2aa198">&#34;/bin&#34;</span>,
-</span></span><span style="display:flex;"><span>    MaxRefreshRate: <span style="color:#2aa198">80</span>,
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="font-weight:bold">func</span> main() {
+</span></span><span style="display:flex;"><span>  buf := new(bytes.Buffer)
+</span></span><span style="display:flex;"><span>  config := Config{
+</span></span><span style="display:flex;"><span>    BuildDirPath: <span style="font-style:italic">&#34;/bin&#34;</span>,
+</span></span><span style="display:flex;"><span>    MaxRefreshRate: 80,
 </span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>  err <span style="color:#719e07">:=</span> json.<span style="color:#268bd2">NewEncoder</span>(buf).<span style="color:#268bd2">Encode</span>(u)
-</span></span><span style="display:flex;"><span>  <span style="color:#719e07">if</span> err <span style="color:#719e07">!=</span> <span style="color:#cb4b16">nil</span> {
-</span></span><span style="display:flex;"><span>    log.<span style="color:#268bd2">Fatal</span>(err)
+</span></span><span style="display:flex;"><span>  err := json.NewEncoder(buf).Encode(u)
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">if</span> err != <span style="font-weight:bold">nil</span> {
+</span></span><span style="display:flex;"><span>    log.Fatal(err)
 </span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>  fmt.<span style="color:#268bd2">Print</span>(buf.<span style="color:#268bd2">String</span>())
-</span></span><span style="display:flex;"><span>  <span style="color:#586e75">// output:</span>
-</span></span><span style="display:flex;"><span>  {<span style="color:#2aa198">&#34;build_dir_path&#34;</span>:<span style="color:#2aa198">&#34;/bin&#34;</span>,<span style="color:#2aa198">&#34;max_refresh_rate&#34;</span>:<span style="color:#2aa198">80</span>}
+</span></span><span style="display:flex;"><span>  fmt.Print(buf.String())
+</span></span><span style="display:flex;"><span>  <span style="font-style:italic">// output:</span>
+</span></span><span style="display:flex;"><span>  {<span style="font-style:italic">&#34;build_dir_path&#34;</span>:<span style="font-style:italic">&#34;/bin&#34;</span>,<span style="font-style:italic">&#34;max_refresh_rate&#34;</span>:80}
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p><strong>Decoder</strong></p>
 <p>The <code>json.NewDecoder</code> function returns a new decoder that reads from an
 <code>io.Reader</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#268bd2">func</span> <span style="color:#268bd2">NewDecoder</span>(r io.Reader) <span style="color:#719e07">*</span>Decoder
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="font-weight:bold">func</span> NewDecoder(r io.Reader) *Decoder
 </span></span></code></pre></div><p>The <code>Decoder.Decode</code> function decodes the JSON-encoded data. <code>Decode</code> reads the next JSON-encoded value from its input and stores it in the value pointed to by <code>v</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#268bd2">func</span> (dec <span style="color:#719e07">*</span>Decoder) <span style="color:#268bd2">Decode</span>(v <span style="color:#268bd2">interface</span>{}) <span style="color:#dc322f">error</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="font-weight:bold">func</span> (dec *Decoder) Decode(v <span style="font-weight:bold">interface</span>{}) <span style="">error</span>
 </span></span></code></pre></div><p>Here&rsquo;s an example of how to decode JSON-data from a Stdin stream:</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#268bd2">func</span> <span style="color:#268bd2">main</span>() {
-</span></span><span style="display:flex;"><span>	decoder <span style="color:#719e07">:=</span> json.<span style="color:#268bd2">NewDecoder</span>(os.Stdin)
-</span></span><span style="display:flex;"><span>	output <span style="color:#719e07">:=</span> <span style="color:#b58900">make</span>(<span style="color:#268bd2">map</span>[<span style="color:#dc322f">string</span>]<span style="color:#268bd2">interface</span>{})
-</span></span><span style="display:flex;"><span>	<span style="color:#719e07">for</span> {
-</span></span><span style="display:flex;"><span>		err <span style="color:#719e07">:=</span> decoder.<span style="color:#268bd2">Decode</span>(<span style="color:#719e07">&amp;</span>output)
-</span></span><span style="display:flex;"><span>		<span style="color:#719e07">if</span> err <span style="color:#719e07">!=</span> <span style="color:#cb4b16">nil</span> {
-</span></span><span style="display:flex;"><span>			log.<span style="color:#268bd2">Fatal</span>(err)
-</span></span><span style="display:flex;"><span>		} <span style="color:#719e07">else</span> {
-</span></span><span style="display:flex;"><span>			fmt.<span style="color:#268bd2">Println</span>(<span style="color:#2aa198">&#34;JSON output:&#34;</span>)
-</span></span><span style="display:flex;"><span>			fmt.<span style="color:#268bd2">Println</span>(output)
-</span></span><span style="display:flex;"><span>			output = <span style="color:#b58900">make</span>(<span style="color:#268bd2">map</span>[<span style="color:#dc322f">string</span>]<span style="color:#268bd2">interface</span>{})
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="font-weight:bold">func</span> main() {
+</span></span><span style="display:flex;"><span>	decoder := json.NewDecoder(os.Stdin)
+</span></span><span style="display:flex;"><span>	output := make(<span style="font-weight:bold">map</span>[<span style="">string</span>]<span style="font-weight:bold">interface</span>{})
+</span></span><span style="display:flex;"><span>	<span style="font-weight:bold">for</span> {
+</span></span><span style="display:flex;"><span>		err := decoder.Decode(&amp;output)
+</span></span><span style="display:flex;"><span>		<span style="font-weight:bold">if</span> err != <span style="font-weight:bold">nil</span> {
+</span></span><span style="display:flex;"><span>			log.Fatal(err)
+</span></span><span style="display:flex;"><span>		} <span style="font-weight:bold">else</span> {
+</span></span><span style="display:flex;"><span>			fmt.Println(<span style="font-style:italic">&#34;JSON output:&#34;</span>)
+</span></span><span style="display:flex;"><span>			fmt.Println(output)
+</span></span><span style="display:flex;"><span>			output = make(<span style="font-weight:bold">map</span>[<span style="">string</span>]<span style="font-weight:bold">interface</span>{})
 </span></span><span style="display:flex;"><span>		}
 </span></span><span style="display:flex;"><span>	}
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Running the above snippet and passing JSON to Stdin will print the decoded
 version:</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span># sample json gotten from: https://jsonapi.org/examples
-</span></span><span style="display:flex;"><span>$ go run stream.go
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="font-weight:bold">#</span> sample json gotten from: https://jsonapi.org/examples
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">$</span> go run stream.go
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>  &#34;data&#34;: [{
 </span></span><span style="display:flex;"><span>    &#34;type&#34;: &#34;articles&#34;,
@@ -267,37 +291,37 @@ version:</p>
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>  ]
 </span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>JSON out:
+</span></span><span style="display:flex;"><span><span style="">
+</span></span></span><span style="display:flex;"><span><span style=""></span>JSON out:
 </span></span><span style="display:flex;"><span>map[data:[map[attributes:map[body:The shortest article. Ever. created:2015-05-22T14:56:29.000Z title:JSON:API paints my bikeshed! updated:2015-05-22T14:56:28.000Z] id:1 relationships:map[author:map[data:map[id:42 type:people]]] type:articles]] included:[map[attributes:map[age:80 gender:male name:John] id:42 type:people]]]
 </span></span></code></pre></div><h3 id="read-and-write-json-to-file">Read and Write JSON to file</h3>
 <p>I&rsquo;ve needed to read and write json to and from a file. This can come in handy
 when you have some sort of state stored in files you want to read and write to.
 Here&rsquo;s an example of reading and writing a config file:</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#586e75">// using Config struct from previous examples</span>
-</span></span><span style="display:flex;"><span><span style="color:#268bd2">var</span> config Config
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="font-style:italic">// using Config struct from previous examples</span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">var</span> config Config
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#586e75">// read file</span>
-</span></span><span style="display:flex;"><span>b, err <span style="color:#719e07">:=</span> io.<span style="color:#268bd2">ReadFile</span>(<span style="color:#2aa198">&#34;path/to/config.json&#34;</span>)
-</span></span><span style="display:flex;"><span><span style="color:#719e07">if</span> err <span style="color:#719e07">!=</span> <span style="color:#cb4b16">nil</span> {
-</span></span><span style="display:flex;"><span>  log.<span style="color:#268bd2">Fatal</span>(err) <span style="color:#586e75">// handle err</span>
+</span></span><span style="display:flex;"><span><span style="font-style:italic">// read file</span>
+</span></span><span style="display:flex;"><span>b, err := io.ReadFile(<span style="font-style:italic">&#34;path/to/config.json&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">if</span> err != <span style="font-weight:bold">nil</span> {
+</span></span><span style="display:flex;"><span>  log.Fatal(err) <span style="font-style:italic">// handle err</span>
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>err = json.<span style="color:#268bd2">Unmarshal</span>(b, <span style="color:#719e07">&amp;</span>config)
-</span></span><span style="display:flex;"><span><span style="color:#719e07">if</span> err <span style="color:#719e07">!=</span> <span style="color:#cb4b16">nil</span> {
-</span></span><span style="display:flex;"><span>  log.<span style="color:#268bd2">Fatal</span>(err)
+</span></span><span style="display:flex;"><span>err = json.Unmarshal(b, &amp;config)
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">if</span> err != <span style="font-weight:bold">nil</span> {
+</span></span><span style="display:flex;"><span>  log.Fatal(err)
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#586e75">// write file</span>
-</span></span><span style="display:flex;"><span>config.MaxRefreshRate = <span style="color:#2aa198">300</span>
-</span></span><span style="display:flex;"><span>b, err <span style="color:#719e07">:=</span> json.<span style="color:#268bd2">Marshal</span>(config)
-</span></span><span style="display:flex;"><span><span style="color:#719e07">if</span> err <span style="color:#719e07">!=</span> <span style="color:#cb4b16">nil</span> {
-</span></span><span style="display:flex;"><span>  log.<span style="color:#268bd2">Fatal</span>(err)
+</span></span><span style="display:flex;"><span><span style="font-style:italic">// write file</span>
+</span></span><span style="display:flex;"><span>config.MaxRefreshRate = 300
+</span></span><span style="display:flex;"><span>b, err := json.Marshal(config)
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">if</span> err != <span style="font-weight:bold">nil</span> {
+</span></span><span style="display:flex;"><span>  log.Fatal(err)
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>err = io.<span style="color:#268bd2">WriteFile</span>(<span style="color:#2aa198">&#34;path/to/config.json&#34;</span>, b, FILE_PERM)
-</span></span><span style="display:flex;"><span><span style="color:#719e07">if</span> err <span style="color:#719e07">!=</span> <span style="color:#cb4b16">nil</span> {
-</span></span><span style="display:flex;"><span>  log.<span style="color:#268bd2">Fatal</span>(err)
+</span></span><span style="display:flex;"><span>err = io.WriteFile(<span style="font-style:italic">&#34;path/to/config.json&#34;</span>, b, FILE_PERM)
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">if</span> err != <span style="font-weight:bold">nil</span> {
+</span></span><span style="display:flex;"><span>  log.Fatal(err)
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h3 id="json-gotchas-in-go">JSON Gotchas in Go</h3>
 <p>While working with JSON inputs, I&rsquo;ve come across things that surprised or
@@ -307,112 +331,101 @@ noted down below:</p>
 <h4 id="unexported-fields-cant-have-data-decoded-as-values">Unexported fields can&rsquo;t have data decoded as values</h4>
 <p>When decoding JSON data to a struct, if there are fields unexported by the
 struct present in the json blob, the field is skipped:</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#268bd2">type</span> User <span style="color:#268bd2">struct</span> {
-</span></span><span style="display:flex;"><span>  FirstName <span style="color:#dc322f">string</span> <span style="color:#2aa198">`json:&#34;first_name&#34;`</span>
-</span></span><span style="display:flex;"><span>  LastName <span style="color:#dc322f">string</span> <span style="color:#2aa198">`json:&#34;last_name&#34;`</span>
-</span></span><span style="display:flex;"><span>  photoURL <span style="color:#dc322f">string</span> <span style="color:#2aa198">`json:&#34;photoURL&#34;`</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="font-weight:bold">type</span> User <span style="font-weight:bold">struct</span> {
+</span></span><span style="display:flex;"><span>  FirstName <span style="">string</span> <span style="font-style:italic">`json:&#34;first_name&#34;`</span>
+</span></span><span style="display:flex;"><span>  LastName <span style="">string</span> <span style="font-style:italic">`json:&#34;last_name&#34;`</span>
+</span></span><span style="display:flex;"><span>  photoURL <span style="">string</span> <span style="font-style:italic">`json:&#34;photoURL&#34;`</span>
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>data <span style="color:#719e07">:=</span> <span style="color:#2aa198">`{&#34;first_name&#34;: &#34;Jane&#34;, &#34;last_name&#34;: &#34;Doe&#34;, &#34;photoURL&#34;: &#34;xx.io/xx&#34;}`</span>
-</span></span><span style="display:flex;"><span><span style="color:#268bd2">var</span> user User
-</span></span><span style="display:flex;"><span>_ = json.<span style="color:#268bd2">Unmarshal</span>([]<span style="color:#b58900">byte</span>(data), <span style="color:#719e07">&amp;</span>user)
-</span></span><span style="display:flex;"><span>fmt.<span style="color:#268bd2">Println</span>(user)
+</span></span><span style="display:flex;"><span>data := <span style="font-style:italic">`{&#34;first_name&#34;: &#34;Jane&#34;, &#34;last_name&#34;: &#34;Doe&#34;, &#34;photoURL&#34;: &#34;xx.io/xx&#34;}`</span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">var</span> user User
+</span></span><span style="display:flex;"><span>_ = json.Unmarshal([]byte(data), &amp;user)
+</span></span><span style="display:flex;"><span>fmt.Println(user)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#586e75">// output:</span>
+</span></span><span style="display:flex;"><span><span style="font-style:italic">// output:</span>
 </span></span><span style="display:flex;"><span>{Jane Doe }
 </span></span></code></pre></div><h4 id="nil-and-empty-slices-are-decoded-differently">Nil and empty slices are decoded differently</h4>
 <p>A JSON-encoded nil slice value is <code>null</code>, while for an empty slice, is an
 empty JSON array:</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>d <span style="color:#719e07">:=</span> <span style="color:#268bd2">map</span>[<span style="color:#dc322f">string</span>]<span style="color:#268bd2">interface</span>{}{
-</span></span><span style="display:flex;"><span>  <span style="color:#2aa198">&#34;nil_slice&#34;</span>: []<span style="color:#dc322f">int</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#2aa198">&#34;empty_slice&#34;</span>: []<span style="color:#dc322f">int</span>{},
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>d := <span style="font-weight:bold">map</span>[<span style="">string</span>]<span style="font-weight:bold">interface</span>{}{
+</span></span><span style="display:flex;"><span>  <span style="font-style:italic">&#34;nil_slice&#34;</span>: []<span style="">int</span>,
+</span></span><span style="display:flex;"><span>  <span style="font-style:italic">&#34;empty_slice&#34;</span>: []<span style="">int</span>{},
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#586e75">// encoding d will output:</span>
-</span></span><span style="display:flex;"><span>{<span style="color:#2aa198">&#34;empty_slice&#34;</span>:[],<span style="color:#2aa198">&#34;nil_slice&#34;</span>:null}
+</span></span><span style="display:flex;"><span><span style="font-style:italic">// encoding d will output:</span>
+</span></span><span style="display:flex;"><span>{<span style="font-style:italic">&#34;empty_slice&#34;</span>:[],<span style="font-style:italic">&#34;nil_slice&#34;</span>:null}
 </span></span></code></pre></div><h4 id="maps-are-sorted-alphabetically">Maps are sorted alphabetically</h4>
 <p>Encoding a map to JSON will sort its keys alphabetically:</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>d <span style="color:#719e07">:=</span> <span style="color:#268bd2">map</span>[<span style="color:#dc322f">string</span>]<span style="color:#268bd2">interface</span>{}{
-</span></span><span style="display:flex;"><span>  <span style="color:#2aa198">&#34;status&#34;</span>: <span style="color:#2aa198">&#34;success&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#2aa198">&#34;code&#34;</span>: <span style="color:#2aa198">201</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#2aa198">&#34;0&#34;</span>: <span style="color:#cb4b16">nil</span>,
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>d := <span style="font-weight:bold">map</span>[<span style="">string</span>]<span style="font-weight:bold">interface</span>{}{
+</span></span><span style="display:flex;"><span>  <span style="font-style:italic">&#34;status&#34;</span>: <span style="font-style:italic">&#34;success&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="font-style:italic">&#34;code&#34;</span>: 201,
+</span></span><span style="display:flex;"><span>  <span style="font-style:italic">&#34;0&#34;</span>: <span style="font-weight:bold">nil</span>,
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#586e75">// output:</span>
-</span></span><span style="display:flex;"><span>{<span style="color:#2aa198">&#34;0&#34;</span>:null,<span style="color:#2aa198">&#34;code&#34;</span>:<span style="color:#2aa198">201</span>,<span style="color:#2aa198">&#34;status&#34;</span>:<span style="color:#2aa198">&#34;success&#34;</span>}
+</span></span><span style="display:flex;"><span><span style="font-style:italic">// output:</span>
+</span></span><span style="display:flex;"><span>{<span style="font-style:italic">&#34;0&#34;</span>:null,<span style="font-style:italic">&#34;code&#34;</span>:201,<span style="font-style:italic">&#34;status&#34;</span>:<span style="font-style:italic">&#34;success&#34;</span>}
 </span></span></code></pre></div><h4 id="byte-is-encoded-as-base64-string"><code>[]byte</code> is encoded as base64 string</h4>
 <p>When encoding a <code>[]byte</code> to JSON, the value is converted to a base64-encoded string:</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>d <span style="color:#719e07">:=</span> <span style="color:#268bd2">map</span>[<span style="color:#dc322f">string</span>]<span style="color:#268bd2">interface</span>{}{
-</span></span><span style="display:flex;"><span>  <span style="color:#2aa198">&#34;public_key&#34;</span>: []<span style="color:#b58900">byte</span>(<span style="color:#2aa198">&#34;public_key&#34;</span>),
-</span></span><span style="display:flex;"><span>  <span style="color:#719e07">...</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>d := <span style="font-weight:bold">map</span>[<span style="">string</span>]<span style="font-weight:bold">interface</span>{}{
+</span></span><span style="display:flex;"><span>  <span style="font-style:italic">&#34;public_key&#34;</span>: []byte(<span style="font-style:italic">&#34;public_key&#34;</span>),
+</span></span><span style="display:flex;"><span>  ...
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#586e75">// output:</span>
-</span></span><span style="display:flex;"><span>{<span style="color:#2aa198">&#34;public_key&#34;</span>:<span style="color:#2aa198">&#34;cHVibGljX2tleQ==&#34;</span>}
+</span></span><span style="display:flex;"><span><span style="font-style:italic">// output:</span>
+</span></span><span style="display:flex;"><span>{<span style="font-style:italic">&#34;public_key&#34;</span>:<span style="font-style:italic">&#34;cHVibGljX2tleQ==&#34;</span>}
 </span></span></code></pre></div><h4 id="trailing-zeros-are-removed-from-floats">Trailing zeros are removed from floats</h4>
 <p>When encoding a floating-point number, any trailing zeroes will not appear in the JSON-encoded value:</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>d <span style="color:#719e07">:=</span> <span style="color:#268bd2">map</span>[<span style="color:#dc322f">string</span>]<span style="color:#268bd2">interface</span>{}{
-</span></span><span style="display:flex;"><span>  <span style="color:#2aa198">&#34;starting_balance&#34;</span>: <span style="color:#2aa198">80.0</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#2aa198">&#34;upgrade_perc&#34;</span>: <span style="color:#2aa198">30.23</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#719e07">...</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>d := <span style="font-weight:bold">map</span>[<span style="">string</span>]<span style="font-weight:bold">interface</span>{}{
+</span></span><span style="display:flex;"><span>  <span style="font-style:italic">&#34;starting_balance&#34;</span>: 80.0,
+</span></span><span style="display:flex;"><span>  <span style="font-style:italic">&#34;upgrade_perc&#34;</span>: 30.23,
+</span></span><span style="display:flex;"><span>  ...
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#586e75">// output:</span>
-</span></span><span style="display:flex;"><span>{<span style="color:#2aa198">&#34;starting_balance&#34;</span>:<span style="color:#2aa198">80</span>,<span style="color:#2aa198">&#34;upgrade_perc&#34;</span>:<span style="color:#2aa198">30.23</span>}
+</span></span><span style="display:flex;"><span><span style="font-style:italic">// output:</span>
+</span></span><span style="display:flex;"><span>{<span style="font-style:italic">&#34;starting_balance&#34;</span>:80,<span style="font-style:italic">&#34;upgrade_perc&#34;</span>:30.23}
 </span></span></code></pre></div><h4 id="decoding-numbers-to-interface-resolves-to-float64">Decoding numbers to <code>interface{}</code> resolves to <code>float64</code></h4>
 <p>When decoding a JSON number into an <code>interface{}</code>, the value will have the type <code>float64</code>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>data <span style="color:#719e07">:=</span> <span style="color:#2aa198">`{&#34;type&#34;: &#34;tx&#34;, &#34;amount&#34;: 230}`</span>
-</span></span><span style="display:flex;"><span><span style="color:#268bd2">var</span> out <span style="color:#268bd2">map</span>[<span style="color:#dc322f">string</span>]<span style="color:#268bd2">interface</span>{}
-</span></span><span style="display:flex;"><span>_ = json.<span style="color:#268bd2">Unmarshal</span>([]<span style="color:#b58900">byte</span>(data), <span style="color:#719e07">&amp;</span>out)
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>data := <span style="font-style:italic">`{&#34;type&#34;: &#34;tx&#34;, &#34;amount&#34;: 230}`</span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">var</span> out <span style="font-weight:bold">map</span>[<span style="">string</span>]<span style="font-weight:bold">interface</span>{}
+</span></span><span style="display:flex;"><span>_ = json.Unmarshal([]byte(data), &amp;out)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>fmt.<span style="color:#268bd2">Printf</span>(<span style="color:#2aa198">&#34;%T&#34;</span>, out[<span style="color:#2aa198">&#34;amount&#34;</span>]) <span style="color:#586e75">// float64</span>
+</span></span><span style="display:flex;"><span>fmt.Printf(<span style="font-style:italic">&#34;%T&#34;</span>, out[<span style="font-style:italic">&#34;amount&#34;</span>]) <span style="font-style:italic">// float64</span>
 </span></span></code></pre></div><h3 id="wrapping-up">Wrapping Up</h3>
-<p>There’s much more to say about the json package and its various applications, but hopefully, this is a helpful introduction. To learn more, I highly recommend the package documentation found <a href="https://golang.org/pkg/encoding/json">HERE</a>.</p>
+<p>There&rsquo;s much more to say about the json package and its various applications, but hopefully, this is a helpful introduction. To learn more, I highly recommend the package documentation found <a href="https://golang.org/pkg/encoding/json">HERE</a>.</p>
 <p>Let me know your thoughts or feedback, or send ideas for improvements. You can
 also go the discussions on <a href="https://twitter.com/codehakase/status/1389247089541005313">Twitter</a>, <a href="">Reddit</a>, and <a href="">Hacker News</a></p>
 <hr>
 
-		</div>
+  </div>
 
-		<div class="post-tags">
-			
-				
-					<nav class="nav tags">
-							<ul class="flat">
-								
-								<li><a href="/tags/golang">golang</a></li>
-								
-								<li><a href="/tags/go">go</a></li>
-								
-								<li><a href="/tags/json">json</a></li>
-								
-							</ul>
-					</nav>
-				
-			
-		</div>
-		<div id="disqus_thread"></div>
-<script type="text/javascript">
-	(function () {
-		
-		
-		if (window.location.hostname == "localhost")
-			return;
+  
+  <div class="mt-8 pt-4 border-t border-gray-200">
+    <h3 class="text-lg font-bold mb-2">Tags:</h3>
+    <div class="flex flex-wrap">
+      
+        <a href="/tags/go" class="tag">go</a>
+      
+        <a href="/tags/json" class="tag">json</a>
+      
+    </div>
+  </div>
+  
+</article>
 
-		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-		var disqus_shortname = 'codehakase-github-io';
-		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-	})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
-		Disqus.</a></noscript>
-<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>
-	<div class="footer wrapper">
-	<nav class="nav">
-		<div> Based on the <a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
-	</nav>
-</div><script>feather.replace()</script>
-</body>
-</html>
+      </main>
+      
+      <footer class="mt-8 pt-8">
+  <div class="flex flex-wrap justify-between items-center">
+    <div class="font-bold">
+      <a class="underline" href="https://x.com/codehakase">/@codehakase</a>
+      <a class="underline" href="https://linkedin.com/in/codehakase">/linkedin</a>
+      <a class="underline" href="https://github.com/codehakase">/github</a>
+    </div>
+    <div class="mt-4 md:mt-0 text-sm">
+      &copy; 2025 Francis Sunday
+    </div>
+  </div>
+</footer> 
+    </div>
+  </body>
+</html> 

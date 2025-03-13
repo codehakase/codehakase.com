@@ -1,7 +1,7 @@
 {{ define "main" }}
 <div class="mb-8">
   {{ if eq .RelPermalink "/blog/" }}
-    <h1 class="text-3xl font-bold mb-6">Blog</h1>
+    <h1 class="text-3xl font-bold mb-6">Posts</h1>
   {{ else if isset .Data "Term" }}
     <h1 class="text-3xl font-bold mb-6">Posts tagged "{{ .Data.Term }}"</h1>
   {{ else }}

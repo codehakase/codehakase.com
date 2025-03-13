@@ -1,97 +1,106 @@
 <!DOCTYPE html>
-<html>
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Enum Stringer Interface optimisation in Go - codehakase&#39;s logs</title><meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta property="og:url" content="http://localhost:1313/blog/2021-04-08-enum-stringer-optimization-go/">
-  <meta property="og:site_name" content="codehakase&#39;s logs">
-  <meta property="og:title" content="Enum Stringer Interface optimisation in Go">
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>Enum Stringer Interface optimisation in Go | Francis Sunday</title>
+  
+  <meta name="description" content="A tip on how to optimise enum stringer interface">
+  
+  
+  <meta property="og:title" content="Enum Stringer Interface optimisation in Go | Francis Sunday"/>
   <meta property="og:description" content="A tip on how to optimise enum stringer interface">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="blog">
-    <meta property="article:published_time" content="2021-04-08T00:00:00+00:00">
-    <meta property="article:modified_time" content="2021-04-08T00:00:00+00:00">
-    <meta property="article:tag" content="Golang">
-    <meta property="article:tag" content="Go">
-
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Enum Stringer Interface optimisation in Go">
+  <meta property="og:type" content="article"/>
+  <meta property="og:url" content="http://localhost:1313/blog/2021-04-08-enum-stringer-optimization-go/"/>
+  
+  
+  <meta name="twitter:title" content="Enum Stringer Interface optimisation in Go | Francis Sunday"/>
   <meta name="twitter:description" content="A tip on how to optimise enum stringer interface">
-<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
+  
+  <meta name="twitter:creator" property="twitter:creator" content="@codehakase"/>
+  
+  
+  
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Anonymous+Pro" rel="stylesheet">
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="http://localhost:1313/css/main.css">
+  
+  <style>
+    body {
+      font-family: "Anonymous Pro", monospace;
+      font-size: 1.1em;
+      line-height: 2;
+    }
+  </style>
+  
+  
+  </head> 
+  <body class="font-mono">
+    <div class="max-w-3xl mx-auto p-4">
+      <header class="flex flex-col md:flex-row justify-between items-center py-8">
+  <div>
+    <h1 class="text-4xl md:text-5xl font-bold">
+      <a href="http://localhost:1313/">Francis Sunday</a>
+    </h1>
+  </div>
+  
+  <nav class="mt-4 md:mt-0">
+    <ul class="flex space-x-4">
+      <li>
+        <a href="/about/" class="hover:underline font-bold">About</a>
+      </li>
+      <li>
+        <a href="/blog/" class="hover:underline font-bold">Blog</a>
+      </li>
+      <li>
+        <a href="/archive/" class="hover:underline font-bold">Archive</a>
+      </li>
+      <li>
+        <a href="/tags/" class="hover:underline font-bold">Tags</a>
+      </li>
+    </ul>
+  </nav>
+</header> 
+      
+      <main>
+        
+<article class="mb-8">
+  <header class="mb-8">
+    <h1 class="text-3xl font-bold mb-2">Enum Stringer Interface optimisation in Go</h1>
+    <div class="text-sm">April 8, 2021</div>
+  </header>
 
-	<link rel="stylesheet" type="text/css" media="screen" href="http://localhost:1313/css/normalize.css" />
-	<link rel="stylesheet" type="text/css" media="screen" href="http://localhost:1313/css/main.css" />
+  
+  <div class="toc">
+    <h5 class="toc-title font-semibold">Jump to:</h5>
+    <div class="toc-content">
+      <nav id="TableOfContents"></nav>
+    </div>
+  </div>
+  
 
-	<script src="http://localhost:1313/js/feather.min.js"></script>
-	
-	<script src="http://localhost:1313/js/main.js"></script>
-</head>
-
-<body>
-	<div class="container wrapper post">
-		<div class="header">
-	<base href="http://localhost:1313/">
-	<h1 class="site-title"><a href="http://localhost:1313/blog">codehakase&#39;s logs</a></h1>
-	<div class="site-description"><h2>Notes mostly about software engineering and what I&rsquo;m working on.</h2><nav class="nav social">
-			<ul class="flat"><a href="https://twitter.com/codehakase" title="Twitter"><i data-feather="twitter"></i></a><a href="https://github.com/codehakase" title="Github"><i data-feather="github"></i></a></ul>
-		</nav>
-	</div>
-
-	<nav class="nav">
-		<ul class="flat">
-			
-			<li>
-				<a href="/blog">Home</a>
-			</li>
-			
-			<li>
-				<a href="/">About</a>
-			</li>
-			
-			<li>
-				<a href="/projects">Projects</a>
-			</li>
-			
-			<li>
-				<a href="/blog/archive">Archive</a>
-			</li>
-			
-			<li>
-				<a href="/tags">Tags</a>
-			</li>
-			
-		</ul>
-	</nav>
-</div>
-
-
-		<div class="post-header">
-			<h1 class="title">Enum Stringer Interface optimisation in Go</h1>
-			<div class="meta">Posted at &mdash; Apr 8, 2021</div>
-		</div>
-
-		<div class="markdown">
-			<p>The most idiomatic way of describing an enum type in Go is to use constants, often in conjunction with <a href="https://golang.org/ref/spec#Iota">iota</a>.</p>
+  <div class="prose max-w-none content-body">
+    <p>The most idiomatic way of describing an enum type in Go is to use constants, often in conjunction with <a href="https://golang.org/ref/spec#Iota">iota</a>.</p>
 <p>A pattern I&rsquo;ve used to implement the <code>Stringer</code> interface for an enum type is to
 lookup the string representation in a slice. Consider this snippet from a
 project I&rsquo;m working on:</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#586e75">// Status ...</span>
-</span></span><span style="display:flex;"><span><span style="color:#268bd2">type</span> Status <span style="color:#dc322f">uint32</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="font-style:italic">// Status ...</span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">type</span> Status <span style="">uint32</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#586e75">// List of possible status values</span>
-</span></span><span style="display:flex;"><span><span style="color:#268bd2">const</span> (
-</span></span><span style="display:flex;"><span>  <span style="color:#586e75">// The operation is known, but hasn&#39;t been decided yet</span>
-</span></span><span style="display:flex;"><span>	Processing Status = <span style="color:#cb4b16">iota</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#586e75">// The operation will never be accepted</span>
+</span></span><span style="display:flex;"><span><span style="font-style:italic">// List of possible status values</span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">const</span> (
+</span></span><span style="display:flex;"><span>  <span style="font-style:italic">// The operation is known, but hasn&#39;t been decided yet</span>
+</span></span><span style="display:flex;"><span>	Processing Status = <span style="font-weight:bold">iota</span>
+</span></span><span style="display:flex;"><span>  <span style="font-style:italic">// The operation will never be accepted</span>
 </span></span><span style="display:flex;"><span>	Rejected
-</span></span><span style="display:flex;"><span>  <span style="color:#586e75">// The operation was accepted</span>
+</span></span><span style="display:flex;"><span>  <span style="font-style:italic">// The operation was accepted</span>
 </span></span><span style="display:flex;"><span>	Accepted
-</span></span><span style="display:flex;"><span>  <span style="color:#719e07">...</span>
+</span></span><span style="display:flex;"><span>  ...
 </span></span><span style="display:flex;"><span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#268bd2">func</span> (s Status) <span style="color:#268bd2">String</span>() <span style="color:#dc322f">string</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#719e07">return</span> []<span style="color:#dc322f">string</span>{<span style="color:#2aa198">&#34;processing&#34;</span>, <span style="color:#2aa198">&#34;rejected&#34;</span>, <span style="color:#2aa198">&#34;accepted&#34;</span>}[s]
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">func</span> (s Status) String() <span style="">string</span> {
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">return</span> []<span style="">string</span>{<span style="font-style:italic">&#34;processing&#34;</span>, <span style="font-style:italic">&#34;rejected&#34;</span>, <span style="font-style:italic">&#34;accepted&#34;</span>}[s]
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>The snippet above works correct but has a few glitches &ndash; passing
 <code>Status(-2)</code> or <code>Status(300)</code>  will cause the <code>String()</code> method to panic, and
@@ -99,61 +108,53 @@ when appending to the slice, the order of the enum constants has to be taken
 into consideration.</p>
 <p>A way to optimise this is to use a map which provides <code>O(1)</code> access time rather
 than the linear <code>O(n)</code> time in the string slice version.</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#719e07">...</span>
-</span></span><span style="display:flex;"><span><span style="color:#586e75">// Map of Status values back to their constant names for pretty printing.</span>
-</span></span><span style="display:flex;"><span><span style="color:#268bd2">var</span> txStatuses = <span style="color:#268bd2">map</span>[Status]<span style="color:#dc322f">string</span>{
-</span></span><span style="display:flex;"><span>	Processing: <span style="color:#2aa198">&#34;processing&#34;</span>,
-</span></span><span style="display:flex;"><span>	Rejected:   <span style="color:#2aa198">&#34;rejected&#34;</span>,
-</span></span><span style="display:flex;"><span>	Accepted:   <span style="color:#2aa198">&#34;accepted&#34;</span>,
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span><span style="font-style:italic">// Map of Status values back to their constant names for pretty printing.</span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">var</span> txStatuses = <span style="font-weight:bold">map</span>[Status]<span style="">string</span>{
+</span></span><span style="display:flex;"><span>	Processing: <span style="font-style:italic">&#34;processing&#34;</span>,
+</span></span><span style="display:flex;"><span>	Rejected:   <span style="font-style:italic">&#34;rejected&#34;</span>,
+</span></span><span style="display:flex;"><span>	Accepted:   <span style="font-style:italic">&#34;accepted&#34;</span>,
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#586e75">// String returns the ErrorCode as a human-readable name.</span>
-</span></span><span style="display:flex;"><span><span style="color:#268bd2">func</span> (s Status) <span style="color:#268bd2">String</span>() <span style="color:#dc322f">string</span> {
-</span></span><span style="display:flex;"><span>	<span style="color:#719e07">if</span> s <span style="color:#719e07">:=</span> txStatuses[s]; s <span style="color:#719e07">!=</span> <span style="color:#2aa198">&#34;&#34;</span> {
-</span></span><span style="display:flex;"><span>		<span style="color:#719e07">return</span> s
+</span></span><span style="display:flex;"><span><span style="font-style:italic">// String returns the ErrorCode as a human-readable name.</span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">func</span> (s Status) String() <span style="">string</span> {
+</span></span><span style="display:flex;"><span>	<span style="font-weight:bold">if</span> s := txStatuses[s]; s != <span style="font-style:italic">&#34;&#34;</span> {
+</span></span><span style="display:flex;"><span>		<span style="font-weight:bold">return</span> s
 </span></span><span style="display:flex;"><span>	}
-</span></span><span style="display:flex;"><span>	<span style="color:#719e07">return</span> fmt.<span style="color:#268bd2">Sprintf</span>(<span style="color:#2aa198">&#34;Unknown Status (%d)&#34;</span>, <span style="color:#b58900">uint32</span>(s))
+</span></span><span style="display:flex;"><span>	<span style="font-weight:bold">return</span> fmt.Sprintf(<span style="font-style:italic">&#34;Unknown Status (%d)&#34;</span>, uint32(s))
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div>
-		</div>
+  </div>
 
-		<div class="post-tags">
-			
-				
-					<nav class="nav tags">
-							<ul class="flat">
-								
-								<li><a href="/tags/golang">golang</a></li>
-								
-								<li><a href="/tags/go">go</a></li>
-								
-							</ul>
-					</nav>
-				
-			
-		</div>
-		<div id="disqus_thread"></div>
-<script type="text/javascript">
-	(function () {
-		
-		
-		if (window.location.hostname == "localhost")
-			return;
+  
+  <div class="mt-8 pt-4 border-t border-gray-200">
+    <h3 class="text-lg font-bold mb-2">Tags:</h3>
+    <div class="flex flex-wrap">
+      
+        <a href="/tags/golang" class="tag">golang</a>
+      
+        <a href="/tags/go" class="tag">go</a>
+      
+    </div>
+  </div>
+  
+</article>
 
-		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-		var disqus_shortname = 'codehakase-github-io';
-		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-	})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
-		Disqus.</a></noscript>
-<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>
-	<div class="footer wrapper">
-	<nav class="nav">
-		<div> Based on the <a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
-	</nav>
-</div><script>feather.replace()</script>
-</body>
-</html>
+      </main>
+      
+      <footer class="mt-8 pt-8 border-t border-gray-200">
+  <div class="flex flex-wrap justify-between items-center">
+    <div class="font-bold">
+      <a class="underline mr-4" href="/blog">/blog</a>
+      <a class="underline mr-4" href="https://x.com/codehakase">/X</a>
+      <a class="underline mr-4" href="https://linkedin.com/in/codehakase">/linkedin</a>
+      <a class="underline" href="https://github.com/codehakase">/github</a>
+    </div>
+    <div class="mt-4 md:mt-0 text-sm">
+      &copy; 2025 Francis Sunday
+    </div>
+  </div>
+</footer> 
+    </div>
+  </body>
+</html> 

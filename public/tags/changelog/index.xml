@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Changelog on codehakase&#39;s logs</title>
+    <title>Changelog on Francis Sunday</title>
     <link>http://localhost:1313/tags/changelog/</link>
-    <description>Recent content in Changelog on codehakase&#39;s logs</description>
+    <description>Recent content in Changelog on Francis Sunday</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 06 Mar 2018 00:00:00 +0000</lastBuildDate>
@@ -13,7 +13,7 @@
       <link>http://localhost:1313/blog/2018-03-05-whats-new-in-golang-1-dot-10/</link>
       <pubDate>Tue, 06 Mar 2018 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/blog/2018-03-05-whats-new-in-golang-1-dot-10/</guid>
-      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;Go 1.8 is one year old (Happy belated Birthday 🎊 🎉)&#xA;Go 1.9 is already 6 months old!&#xA;Go 1.10 is out ✌&lt;/p&gt;</description>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;Go 1.8 is one year old (Happy belated Birthday 🎊 🎉)&#xA;Go 1.9 is already 6 months old!&#xA;Go 1.10 is out ✌&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;The latest Go release, &lt;strong&gt;v1.10&lt;/strong&gt; arrived six months after V1.9. This release was stated in the change-logs and the Go blog. I&amp;rsquo;m gonna share some interesting changes I&amp;rsquo;ve found in Go 1.10 with you.&lt;/p&gt;&#xA;&lt;h2 id=&#34;new-features&#34;&gt;New Features&lt;/h2&gt;&#xA;&lt;h3 id=&#34;the-language&#34;&gt;The Language&lt;/h3&gt;&#xA;&lt;p&gt;Go 1.10 offers compiler tool chain and performance improvements, but no significant changes was made to the language&amp;rsquo;s specification.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

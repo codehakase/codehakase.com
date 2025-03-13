@@ -2,10 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/blog/</loc>
-    <lastmod>2025-02-07T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/2025/</loc>
+    <lastmod>2025-03-13T04:08:01+01:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/</loc>
+    <lastmod>2025-03-13T04:08:01+01:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/</loc>
     <lastmod>2025-02-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/haskell/</loc>
@@ -20,9 +23,6 @@
     <loc>http://localhost:1313/tags/go/</loc>
     <lastmod>2021-05-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/golang/</loc>
-    <lastmod>2021-05-03T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/tags/json/</loc>
     <lastmod>2021-05-03T00:00:00+00:00</lastmod>
   </url><url>
@@ -33,6 +33,9 @@
     <lastmod>2021-04-08T10:52:01+01:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/blog/2021-04-08-enum-stringer-optimization-go/</loc>
+    <lastmod>2021-04-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/golang/</loc>
     <lastmod>2021-04-08T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/development/</loc>
@@ -179,12 +182,22 @@
     <loc>http://localhost:1313/tags/php/</loc>
     <lastmod>2017-05-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/adonisjs/</loc>
+    <loc>http://localhost:1313/tags/framework/</loc>
     <lastmod>2017-05-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/blog/2017-05-09-introducing-adonis-js/</loc>
     <lastmod>2017-05-09T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/tags/adonisjs/</loc>
+  </url><url>
+    <loc>http://localhost:1313/archive/</loc>
+  </url><url>
     <loc>http://localhost:1313/blog/archive/</loc>
+  </url><url>
+    <loc>http://localhost:1313/tags/sample/</loc>
+  </url><url>
+    <loc>http://localhost:1313/tags/toc/</loc>
+  </url><url>
+    <loc>http://localhost:1313/tags/tools/</loc>
   </url>
 </urlset>

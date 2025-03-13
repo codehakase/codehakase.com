@@ -7,7 +7,10 @@ modified: 2025-02-07
 tags: [haskell]
 share: true
 category: haskell
+toc: true
 ---
+
+## Introduction
 
 First post on this blog after a long hiatus -- hopefully, this will stick. I was cleaning up my browser tabs, and found a Project Euler window open and decided to attempt some problems in Haskell. I've been writing Haskell for a couple of months now, and it was a great way to test myself. 
 I picked one of the problems I attempted, a simple one -- [Problem 8: Largest product in a series](https://projecteuler.net/problem=8).
@@ -22,7 +25,11 @@ The four adjacent digits in the 1000-digit number that have the greatest product
 Find the thirteen adjacent digits in the 1000-digit number that have the greatest product. What is the value of this product?
 ```
 
+## Approach
+
 Initially, I approached this with an imperative mindset -- splitting the string, iterating over possible windows, using index-based iterations, etc. However, I stuck to a functional way:
+
+## Implementation
 
 First, I did a little trick to retrieve just the string digits. I opened the browser terminal and ran the following:
 ```js 
@@ -40,8 +47,22 @@ let digitsM = map digitToInt "73167176531330624919225119674426574742355349194934
 
 Next step is to compute the greatest product by generating all contiguous substrings matching the expected length (13), and tracking the maxium from all computed products.
 ```haskell
-maximum $ map (product) [take 13 x | x <- tails digits, length x >= 13]
+maximum $ map product [take 13 xs | xs <- tails digitsM, length xs >= 13]
 -- => 23514624000
 ```
 
-I plan to keep tackling more Project Euler problems and writing about Haskell and functional programming here. Let’s see if I can keep up the habit—should be fun.
+For a more idiomatic solution, we could also write it as:
+```haskell
+-- Define a function to solve the problem
+largestProductInSeries :: Int -> String -> Int
+largestProductInSeries n digits = 
+    maximum $ map (product . take n) $ filter (\xs -> length xs >= n) $ tails $ map digitToInt digits
+
+-- Then call it with our parameters
+largestProductInSeries 13 "73167176531330624919225119674426574742355349194934..."
+-- => 23514624000
+```
+
+## Conclusion
+
+I plan to keep tackling more Project Euler problems and writing about Haskell and functional programming here. Let's see if I can keep up the habit—should be fun.
