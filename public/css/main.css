@@ -133,34 +133,30 @@ a:focus {
 
 .toc {
   font-size: 1em;
-  line-height: calc(.9 * 1.5em);
+  line-height: calc(0.9 * 1.5em);
   margin-top: 2rem;
   margin-bottom: 3rem;
+  padding-left: 1.5rem; 
 }
 
-.toc ul {
-  margin-top: .1rem;
-  margin-bottom: .1rem;
-}
-
-.toc li {
-  list-style-type: disc;
-  margin-top: .1rem;
-  margin-bottom: .1rem;
+.toc > nav > ul > li > ul { 
   margin-left: 1.5rem;
+  margin-top: 0.1rem;
+  margin-bottom: 0.1rem;
+  list-style-type: disc; 
 }
 
-.toc li ul li {
-  list-style-type: circle;
+.toc > nav > ul > li > ul > li > ul { 
+  list-style-type: circle; 
+  margin-left: 1.5rem; 
+}
+
+.toc > nav > ul > li > ul li {
+  margin-top: 0.1rem;
+  margin-bottom: 0.1rem;
 }
 
 .toc a {
-  box-shadow: 0 1px;
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
-}
-
-.feed h4 {
   box-shadow: 0 1px;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
