@@ -2,38 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Golang on Francis Sunday</title>
-    <link>http://localhost:1313/tags/golang/</link>
+    <link>https://codehakase.com/tags/golang/</link>
     <description>Recent content in Golang on Francis Sunday</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 08 Apr 2021 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://codehakase.com/tags/golang/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Enum Stringer Interface optimisation in Go</title>
-      <link>http://localhost:1313/blog/2021-04-08-enum-stringer-optimization-go/</link>
+      <link>https://codehakase.com/blog/2021-04-08-enum-stringer-optimization-go/</link>
       <pubDate>Thu, 08 Apr 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/2021-04-08-enum-stringer-optimization-go/</guid>
+      <guid>https://codehakase.com/blog/2021-04-08-enum-stringer-optimization-go/</guid>
       <description>&lt;p&gt;The most idiomatic way of describing an enum type in Go is to use constants, often in conjunction with &lt;a href=&#34;https://golang.org/ref/spec#Iota&#34;&gt;iota&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;A pattern I&amp;rsquo;ve used to implement the &lt;code&gt;Stringer&lt;/code&gt; interface for an enum type is to&#xA;lookup the string representation in a slice. Consider this snippet from a&#xA;project I&amp;rsquo;m working on:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;font-style:italic&#34;&gt;// Status ...&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;font-weight:bold&#34;&gt;type&lt;/span&gt; Status &lt;span style=&#34;&#34;&gt;uint32&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;font-style:italic&#34;&gt;// List of possible status values&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;font-weight:bold&#34;&gt;const&lt;/span&gt; (&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;font-style:italic&#34;&gt;// The operation is known, but hasn&amp;#39;t been decided yet&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#x9;Processing Status = &lt;span style=&#34;font-weight:bold&#34;&gt;iota&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;font-style:italic&#34;&gt;// The operation will never be accepted&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#x9;Rejected&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;font-style:italic&#34;&gt;// The operation was accepted&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#x9;Accepted&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  ...&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;font-weight:bold&#34;&gt;func&lt;/span&gt; (s Status) String() &lt;span style=&#34;&#34;&gt;string&lt;/span&gt; {&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;font-weight:bold&#34;&gt;return&lt;/span&gt; []&lt;span style=&#34;&#34;&gt;string&lt;/span&gt;{&lt;span style=&#34;font-style:italic&#34;&gt;&amp;#34;processing&amp;#34;&lt;/span&gt;, &lt;span style=&#34;font-style:italic&#34;&gt;&amp;#34;rejected&amp;#34;&lt;/span&gt;, &lt;span style=&#34;font-style:italic&#34;&gt;&amp;#34;accepted&amp;#34;&lt;/span&gt;}[s]&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The snippet above works correct but has a few glitches &amp;ndash; passing&#xA;&lt;code&gt;Status(-2)&lt;/code&gt; or &lt;code&gt;Status(300)&lt;/code&gt;  will cause the &lt;code&gt;String()&lt;/code&gt; method to panic, and&#xA;when appending to the slice, the order of the enum constants has to be taken&#xA;into consideration.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Building Small Containers for Kubernetes</title>
-      <link>http://localhost:1313/blog/2018-01-12-building-small-containers-for-kubernetes/</link>
+      <link>https://codehakase.com/blog/2018-01-12-building-small-containers-for-kubernetes/</link>
       <pubDate>Sat, 01 Dec 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/2018-01-12-building-small-containers-for-kubernetes/</guid>
+      <guid>https://codehakase.com/blog/2018-01-12-building-small-containers-for-kubernetes/</guid>
       <description>&lt;p&gt;The first step to deploying any app to &lt;a href=&#34;https://kubernetes.io&#34;&gt;Kubernetes&lt;/a&gt;, is to bundle the app in a&#xA;container. There are several official, and community-backed container images for&#xA;various languages and distros, and most of these containers can be really large,&#xA;or sometimes contain overheads your app may never need/use.&lt;/p&gt;&#xA;&lt;p&gt;Thanks to &lt;a href=&#34;https://docker.io&#34;&gt;Docker&lt;/a&gt;, you can easily create container images in&#xA;a few steps; specify a base image, add your app-specific changes, and build your&#xA;container.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Building a Web App With Go, Gin and React</title>
-      <link>http://localhost:1313/blog/2018-04-20-building-a-web-app-with-go-gin-and-react/</link>
+      <link>https://codehakase.com/blog/2018-04-20-building-a-web-app-with-go-gin-and-react/</link>
       <pubDate>Fri, 20 Apr 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/2018-04-20-building-a-web-app-with-go-gin-and-react/</guid>
+      <guid>https://codehakase.com/blog/2018-04-20-building-a-web-app-with-go-gin-and-react/</guid>
       <description>&lt;p&gt;&lt;strong&gt;TL;DR:&lt;/strong&gt; In this tutorial, I&amp;rsquo;ll show you how easy it is to build a web application with Go and the Gin framework and add authentication to it. Check out the Github &lt;a href=&#34;https://github.com/codehakase/golang-gin&#34;&gt;repo&lt;/a&gt; for the code we&amp;rsquo;re going to write.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;&lt;strong&gt;Gin&lt;/strong&gt; is a high-performance micro-framework that delivers a very minimalistic framework that carries with it only the most essential features, libraries, and functionalities needed to build web applications and microservices. It makes it simple to build a request handling pipeline from modular, reusable pieces. It does this by allowing you to write middleware that can be plugged into one or more request handlers or groups of request handlers.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Here&#39;s What&#39;s New  In Go 1.10</title>
-      <link>http://localhost:1313/blog/2018-03-05-whats-new-in-golang-1-dot-10/</link>
+      <link>https://codehakase.com/blog/2018-03-05-whats-new-in-golang-1-dot-10/</link>
       <pubDate>Tue, 06 Mar 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/2018-03-05-whats-new-in-golang-1-dot-10/</guid>
+      <guid>https://codehakase.com/blog/2018-03-05-whats-new-in-golang-1-dot-10/</guid>
       <description>&lt;blockquote&gt;&#xA;&lt;p&gt;Go 1.8 is one year old (Happy belated Birthday 🎊 🎉)&#xA;Go 1.9 is already 6 months old!&#xA;Go 1.10 is out ✌&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;The latest Go release, &lt;strong&gt;v1.10&lt;/strong&gt; arrived six months after V1.9. This release was stated in the change-logs and the Go blog. I&amp;rsquo;m gonna share some interesting changes I&amp;rsquo;ve found in Go 1.10 with you.&lt;/p&gt;&#xA;&lt;h2 id=&#34;new-features&#34;&gt;New Features&lt;/h2&gt;&#xA;&lt;h3 id=&#34;the-language&#34;&gt;The Language&lt;/h3&gt;&#xA;&lt;p&gt;Go 1.10 offers compiler tool chain and performance improvements, but no significant changes was made to the language&amp;rsquo;s specification.&lt;/p&gt;</description>
     </item>
   </channel>

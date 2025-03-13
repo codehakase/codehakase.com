@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Rest on Francis Sunday</title>
-    <link>http://localhost:1313/tags/rest/</link>
+    <link>https://codehakase.com/tags/rest/</link>
     <description>Recent content in Rest on Francis Sunday</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 13 Jun 2017 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/rest/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://codehakase.com/tags/rest/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Build your first RESTful API with Node.js</title>
-      <link>http://localhost:1313/blog/2017-06-13-building-a-restful-api-nodejs/</link>
+      <link>https://codehakase.com/blog/2017-06-13-building-a-restful-api-nodejs/</link>
       <pubDate>Tue, 13 Jun 2017 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/2017-06-13-building-a-restful-api-nodejs/</guid>
+      <guid>https://codehakase.com/blog/2017-06-13-building-a-restful-api-nodejs/</guid>
       <description>&lt;p&gt;&lt;img src=&#34;https://softwareengineeringdaily.com/wp-content/uploads/2015/08/nodejs_logo_green.jpg&#34; alt=&#34;Node.js&#34; title=&#34;Node.js&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Node.js&lt;/strong&gt; is one intimidating JavaScript framework, especially for beginners. This article serves as a quick quide to Node.js, Express.js and MongoDB. We&amp;rsquo;ll building a simple REST API that&amp;rsquo;ll serve as a basic foundation for an application.&lt;/p&gt;&#xA;&lt;p&gt;For the purpose of this tutorial, you&amp;rsquo;ll be creating the base for a &lt;em&gt;ToDo List&lt;/em&gt; application (yeah its kinda like the convention to start with ToDo list apps). You&amp;rsquo;ll use all CRUD (create, read, update and delete) actions on the API.&lt;/p&gt;</description>
     </item>
   </channel>

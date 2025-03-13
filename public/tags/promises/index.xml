@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Promises on Francis Sunday</title>
-    <link>http://localhost:1313/tags/promises/</link>
+    <link>https://codehakase.com/tags/promises/</link>
     <description>Recent content in Promises on Francis Sunday</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 21 May 2017 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/promises/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://codehakase.com/tags/promises/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Introduction to JavaScript Promises</title>
-      <link>http://localhost:1313/blog/2017-05-21-intro-to-javascript-promises/</link>
+      <link>https://codehakase.com/blog/2017-05-21-intro-to-javascript-promises/</link>
       <pubDate>Sun, 21 May 2017 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/2017-05-21-intro-to-javascript-promises/</guid>
+      <guid>https://codehakase.com/blog/2017-05-21-intro-to-javascript-promises/</guid>
       <description>&lt;p&gt;JavaScript promises have become a popular way to handle the tangled mess that JavaScript’s asynchronous nature often creates for us.&#xA;Synchronous code is eaiser to follow and debug, async is better for flexibiity. Promises are becomming a big part of the JavaScript world, with awesome APIs implemented with it.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-is-a-promise&#34;&gt;What is a Promise?&lt;/h2&gt;&#xA;&lt;p&gt;A Promise is a proxy for a value not necessarily known when the promise is created. It allows you to associate handlers with an asynchronous action&amp;rsquo;s eventual success value or failure reason. This lets asynchronous methods return values like synchronous methods: instead of immediately returning the final value, the asynchronous method returns a promise to supply the value at some point in the future. - &lt;strong&gt;Mozilla Developer Network (MDN)&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
   </channel>

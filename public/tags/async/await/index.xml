@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Async/Await on Francis Sunday</title>
-    <link>http://localhost:1313/tags/async/await/</link>
+    <link>https://codehakase.com/tags/async/await/</link>
     <description>Recent content in Async/Await on Francis Sunday</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 12 Aug 2017 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/async/await/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://codehakase.com/tags/async/await/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>JavaScript Async/Await 101</title>
-      <link>http://localhost:1313/blog/2017-08-02-show-me-async-await-like-am-5/</link>
+      <link>https://codehakase.com/blog/2017-08-02-show-me-async-await-like-am-5/</link>
       <pubDate>Sat, 12 Aug 2017 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/2017-08-02-show-me-async-await-like-am-5/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/aysnc-await.png&#34; alt=&#34;async/await&#34; title=&#34;Async/await&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Async and Await has been a blessing to most JavaScript Developers. Even while it was on the &lt;a href=&#34;https://github.com/tc39/ecma262/tree/82bebe057c9fca355cfbfeb36be8e42f18c61e94&#34;&gt;Stage 4 proposal&lt;/a&gt; for ES6, the feature has been warmtly welcomed.&lt;/p&gt;&#xA;&lt;p&gt;Node.js now Supports async/await since its version 7.6.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-is-asyncawait&#34;&gt;What is async/await?&lt;/h2&gt;&#xA;&lt;p&gt;If this is your first time seeing/hearing of this term, here&amp;rsquo;s it in plain English:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Its the newest way/pattern of writing asychronous code in JavaScript, asides Promises and callbacks.&lt;/li&gt;&#xA;&lt;li&gt;Async/await compared to Promises, are non-blocking&lt;/li&gt;&#xA;&lt;li&gt;Async/await makes aysnchronous code appear and behave like synchronous code.&lt;/li&gt;&#xA;&lt;li&gt;Aysnc/await cannot be used with plain callbacks&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h4 id=&#34;asyncawait-vs-promises-syntax&#34;&gt;Async/Await Vs Promises (Syntax)&lt;/h4&gt;&#xA;&lt;p&gt;Lets write a function that returns a Promise, which resolves with some data object. When its called, it logs, and return something:&lt;/p&gt;</description>
+      <guid>https://codehakase.com/blog/2017-08-02-show-me-async-await-like-am-5/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://codehakase.com/images/aysnc-await.png&#34; alt=&#34;async/await&#34; title=&#34;Async/await&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Async and Await has been a blessing to most JavaScript Developers. Even while it was on the &lt;a href=&#34;https://github.com/tc39/ecma262/tree/82bebe057c9fca355cfbfeb36be8e42f18c61e94&#34;&gt;Stage 4 proposal&lt;/a&gt; for ES6, the feature has been warmtly welcomed.&lt;/p&gt;&#xA;&lt;p&gt;Node.js now Supports async/await since its version 7.6.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-is-asyncawait&#34;&gt;What is async/await?&lt;/h2&gt;&#xA;&lt;p&gt;If this is your first time seeing/hearing of this term, here&amp;rsquo;s it in plain English:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Its the newest way/pattern of writing asychronous code in JavaScript, asides Promises and callbacks.&lt;/li&gt;&#xA;&lt;li&gt;Async/await compared to Promises, are non-blocking&lt;/li&gt;&#xA;&lt;li&gt;Async/await makes aysnchronous code appear and behave like synchronous code.&lt;/li&gt;&#xA;&lt;li&gt;Aysnc/await cannot be used with plain callbacks&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h4 id=&#34;asyncawait-vs-promises-syntax&#34;&gt;Async/Await Vs Promises (Syntax)&lt;/h4&gt;&#xA;&lt;p&gt;Lets write a function that returns a Promise, which resolves with some data object. When its called, it logs, and return something:&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
