@@ -24,14 +24,6 @@
   <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
   <link rel="stylesheet" href="{{ .Site.BaseURL }}css/main.css">
   
-  <style>
-    body {
-      font-family: "Anonymous Pro", monospace;
-      font-size: 1.1em;
-      line-height: 2;
-    }
-  </style>
-  
   <!-- RSS -->
   {{ with .OutputFormats.Get "rss" -}}
   {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
