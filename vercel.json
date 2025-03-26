@@ -1,0 +1,8 @@
+{
+  "version": 2,
+  "build": {
+    "env": {
+      "HUGO_VERSION": "0.143.1"
+    }
+  }
+}
