@@ -13,7 +13,7 @@ theme = "clean"
     codeFences = true
     guessSyntax = true
     lineNumbersInTable = true
-    style = "bw"
+    style = "colorful"
     tabWidth = 4
     lineNos = false
     noClasses = true
@@ -22,44 +22,15 @@ theme = "clean"
     endLevel = 3
     ordered = false
     startLevel = 2
+ 
+ [markup.goldmark]
+  [markup.goldmark.renderer]
+    unsafe = true
+    
 
 summaryLength = 20
 showAllPostsArchive = true
 
-[[menu.main]]
-name = "Home"
-url = "/blog"
-weight = 1
-
-[[menu.main]]
-name = "About"
-url = "/about/"
-weight = 2
-
-[[menu.main]]
-name = "Projects"
-url = "/projects"
-weight = 3
-
-[[menu.main]]
-name = "Archive"
-url = "/archive/"
-weight = 4
-
-[[menu.main]]
-name = "Tags"
-url = "/tags"
-weight = 5
-
-[[params.social]]
-name = "Twitter"
-icon = "twitter"
-url = "https://twitter.com/codehakase"
-
-[[params.social]]
-name = "Github"
-icon = "github"
-url = "https://github.com/codehakase"
 
 [taxonomies]
    tag = "tags"
