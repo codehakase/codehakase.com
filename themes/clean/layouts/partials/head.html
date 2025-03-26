@@ -25,6 +25,12 @@
     <link rel="stylesheet" href="{{ .Permalink }}" media="screen">
   {{ end }}
   <link rel="stylesheet" href="{{ .Site.BaseURL }}css/main.css">
+
+  {{ if .Params.canonical }}
+  <link rel="canonical" href="{{ .Params.canonical }}">
+  {{ else }}
+  <link rel="canonical" href="{{ .Permalink }}">
+  {{ end }}
   
   <!-- RSS -->
   {{ with .OutputFormats.Get "rss" -}}
