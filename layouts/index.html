@@ -14,7 +14,9 @@
     <meta property="twitter:url" content="https://codehakase.com"/>
     <meta name="google-site-verification" content="7vov0rUbQyKAwE63r2_AJWzknxbi7wZ1JvQ9ywVCSwA" />
     <link href="https://fonts.googleapis.com/css?family=Roboto|Anonymous+Pro" rel="stylesheet">
-    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    {{ with resources.Get "css/output.css" }}
+      <link rel="stylesheet" href="{{ .Permalink }}" media="screen">
+    {{ end }}
     <style>
       body {
         font-family: "Anonymous Pro", monospace;
@@ -22,7 +24,8 @@
       }
     </style>
   </head>
-  <body class="antialiased bg-[#f6eee9]">
+
+  <body class="antialiased">
     <div class="max-w-3xl mx-auto p-4">
       <header>
         <h1 class="text-4xl md:text-5xl font-bold pt-10 mb-8">Francis Sunday</h1>

@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("main.css");
+
+@layer base {
+  body {
+    @apply bg-[#fcfbf0] text-base font-light;
+  }
+}
+
+@layer components {
+  .content-body h1 {
+    @apply text-h1 font-bold mb-4;
+  }
+
+  .content-body h2 {
+    @apply text-h2 mt-8 mb-4;
+  }
+
+  .content-body h3 {
+    @apply text-h3 mb-4;
+  }
+
+  .content-body h4 {
+    @apply text-h4 mb-4;
+  }
+
+  .content-body h5 {
+    @apply text-h5 mb-4;
+  }
+
+  .content-body pre {
+    @apply relative p-code my-4 mx-auto rounded overflow-x-auto bg-code-bg leading-code;
+  }
+
+  .content-body pre::-webkit-scrollbar {
+    @apply hidden;
+  }
+
+  .content-body pre code {
+    @apply text-sm leading-relaxed whitespace-pre-wrap break-words block;
+  }
+
+  .content-body :not(pre) > code {
+    @apply px-2 py-1 bg-code-bg rounded text-sm text-code-text;
+  }
+}

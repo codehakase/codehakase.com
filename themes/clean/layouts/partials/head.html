@@ -21,7 +21,9 @@
   
   <!-- Fonts and Styles -->
   <link href="https://fonts.googleapis.com/css?family=Roboto|Anonymous+Pro" rel="stylesheet">
-  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  {{ with resources.Get "css/output.css" }}
+    <link rel="stylesheet" href="{{ .Permalink }}" media="screen">
+  {{ end }}
   <link rel="stylesheet" href="{{ .Site.BaseURL }}css/main.css">
   
   <!-- RSS -->
