@@ -3,11 +3,11 @@ html {
 }
 
 body {
-  font-family: "Anonymous Pro", monospace;
+  font-family: "PT Serif", serif;
   background-color: #fcfbf0;
   font-size: 1.1em;
   font-weight: 300;
-  line-height: 2;
+  line-height: 1.6;
 }
 
 ul, ol {
@@ -31,7 +31,7 @@ ul, ol {
 .content-body h4,
 .content-body h5,
 .content-body h6 {
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .content-body h1 {
@@ -80,10 +80,14 @@ pre {
   scrollbar-width: none;
   background-color: #f7f6eb !important;
   line-height: 1.75em;
+  -webkit-overflow-scrolling: touch;
 }
 
 pre code {
   font-size: 0.9em;
+  font-family: "Fira Code", monospace;
+  font-variant-ligatures: none;
+  font-weight: 400;
   line-height: 1.6;
   white-space: pre-wrap;
   word-wrap: break-word;
