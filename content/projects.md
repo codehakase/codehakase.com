@@ -2,6 +2,7 @@
 title: "Projects I've Authored"
 date: 2021-04-08T10:52:01+01:00
 category: [projects]
+hidden: true
 ---
 Below are some small open source software projects I've authored or helped develop. Enjoy!
 

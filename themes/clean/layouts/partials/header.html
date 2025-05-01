@@ -8,22 +8,19 @@
   <nav>
     <ul class="flex items-center justify-between gap-2 text-sm md:text-base">
       <li>
-        <a href="/" class="underline font-bold">/home</a>
+        <a href="/blog" class="underline font-bold">posts</a>
       </li>
       <li>
-        <a href="/blog/" class="underline font-bold">/posts</a>
+        <a href="/shorts" class="underline font-bold">shorts</a>
       </li>
       <li>
-        <a href="/about/" class="underline font-bold">/about</a>
+        <a href="/archive" class="underline font-bold">archive</a>
       </li>
       <li>
-        <a href="/archive/" class="underline font-bold">/archive</a>
+        <a href="/about" class="underline font-bold">about</a>
       </li>
       <li>
-        <a href="/tags/" class="underline font-bold">/tags</a>
-      </li>
-      <li>
-        <a href="/{{ now.Format "2006" }}" class="underline font-bold">/{{ now.Format "2006" }}</a>
+        <a href="/{{ now.Format "2006" }}" class="underline font-bold">{{ now.Format "2006" }}</a>
       </li>
     </ul>
   </nav>

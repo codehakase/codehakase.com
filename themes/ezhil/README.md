@@ -65,7 +65,7 @@ summaryLength = 20
     subtitle = "Clean and minimal personal [blog theme for Hugo](https://github.com/vividvilla/ezhil)"
 
     # Content types which are included in home page recent posts list.
-    mainSections = ["posts"]
+    mainSections = ["posts", "shorts", "blog"]
 
     # Content types which are excludes Disqus comments.
     disableDisqusTypes = ["page"]

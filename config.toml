@@ -4,7 +4,7 @@ title = "Francis Sunday"
 theme = "clean"
 
 [params]
-  mainSections = ["post", "posts", "blog"]
+  mainSections = ["blog", "shorts"]
   description = "Francis Sunday's personal website"
   twitter = "@codehakase"
 
@@ -28,7 +28,7 @@ theme = "clean"
     unsafe = true
     
 
-summaryLength = 20
+summaryLength = 10
 showAllPostsArchive = true
 
 
@@ -36,4 +36,5 @@ showAllPostsArchive = true
    tag = "tags"
 
 [permalinks]
-  posts = "/:year-:month-:day/:title"
+  blog = "/blog/:title"
+  shorts = "/shorts/:title"

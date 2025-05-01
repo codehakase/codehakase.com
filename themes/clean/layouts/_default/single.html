@@ -26,5 +26,21 @@
     </div>
   </div>
   {{ end }}
+  {{ if ne .Params.hidden true }}
+    {{ $currentPage := . }}
+    {{ $recentPages := where (where .Site.RegularPages "Layout" .Layout) "Permalink" "ne" .Permalink }}
+    {{ if gt (len $recentPages) 1 }}
+      <div class="mt-8 pt-4">
+        <h3 class="text-lg font-bold mb-2">Recent posts:</h3>
+        <div class="ml-8">
+          <ul class="list-disc">
+            {{ range first 5 $recentPages }}
+              <li><a href="{{ .RelPermalink }}" class="text-base font-medium underline">{{ .Title }}</a></li>
+            {{ end }}
+          </ul>
+        </div>
+      </div>
+    {{ end }}
+  {{ end }}
 </article>
 {{ end }} 

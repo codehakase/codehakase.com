@@ -51,10 +51,10 @@
         </div>
       </div>
 
-      <div class="mb-8">
+      <div>
         <h2 class="font-bold text-lg mb-2">Writing</h2>
         <ul class="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {{ range first 4 (where site.RegularPages "Type" "in" .Site.Params.mainSections) }}
+          {{ range first 4 (where site.RegularPages "Layout" "post") }}
             <li>
               <a class="font-semibold hover:underline" href="{{.RelPermalink}}">{{.Title}}</a>
               <p class="text-sm">{{ dateFormat "January 2, 2006" .Date }}</p>
@@ -63,12 +63,13 @@
         </ul>
       </div>
 
-      <div class="flex items-center gap-2 font-bold">
-        <a class="underline" href="/blog">/blog</a>
-        <!--<a class="underline" href="/library">/library</a>-->
-        <a class="underline" href="https://x.com/codehakase?ref=codehakase.com">/@codehakase</a>
-        <a class="underline" href="https://linkedin.com/in/codehakase?ref=codehakase.com">/linkedin</a>
-        <a class="underline" href="https://github.com/codehakase?ref=codehakase.com">/github</a>
+      <div class="font-bold text-sm mt-16 text-center">
+        <div class="flex items-center gap-2 justify-center underline">
+          <a href="https://github.com/codehakase?ref=codehakase.com">github</a>
+          <a href="https://linkedin.com/in/codehakase?ref=codehakase.com">linkedin</a>
+          <a href="https://bsky.app/profile/codehakase.com?ref=codehakase.com">bsky</a>
+          <a href="https://x.com/codehakase?ref=codehakase.com">twitter</a>
+        </div>
       </div>
     </div>
   </body>

@@ -2,6 +2,7 @@
 title: "About"
 date: 2025-02-08T10:52:01+01:00
 category: [about]
+hidden: true
 ---
 
 Hi,

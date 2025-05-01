@@ -1,0 +1,32 @@
+{{ define "main" }}
+<div class="mb-8">
+  <h1 class="text-3xl font-bold mb-6">{{ .Title }}</h1>
+
+  {{ with .Content }}
+    <div class="mb-8">{{ . }}</div>
+  {{ end }}
+
+  <div class="space-y-8">
+    {{ $shortsPages := where .Site.RegularPages "Layout" "shorts" }}
+    {{ $paginator := .Paginate $shortsPages 10 }}
+    {{ range $paginator.Pages }}
+      <article class="border-b border-gray-200 pb-6">
+        <h2 class="text-xl font-bold mb-2">
+          <a href="{{ .RelPermalink }}" class="hover:underline">{{ .Title }}</a>
+        </h2>
+        <div class="text-sm mb-2">{{ dateFormat "January 2, 2006" .Date }}</div>
+        {{ with .Description }}
+          <div class="text-gray-700">{{ . }}</div>
+        {{ else }}
+          <div class="text-gray-700">
+            {{ $truncated := .Plain | truncate 160 }}
+            {{ $truncated }}
+          </div>
+        {{ end }}
+      </article>
+    {{ end }}
+  </div>
+
+  {{ partial "pagination.html" . }}
+</div>
+{{ end }} 
