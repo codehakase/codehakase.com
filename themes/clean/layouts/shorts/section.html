@@ -19,7 +19,7 @@
           <div class="text-gray-700">{{ . }}</div>
         {{ else }}
           <div class="text-gray-700">
-            {{ $truncated := .Plain | truncate 160 }}
+            {{ $truncated := .Summary | truncate 160 }}
             {{ $truncated }}
           </div>
         {{ end }}
