@@ -36,7 +36,7 @@
   {{ if .Params.canonical }}
   <link rel="canonical" href="{{ .Params.canonical }}">
   {{ else }}
-  <link rel="canonical" href="{{ .Permalink }}">
+  <link rel="canonical" href="{{ .RelPermalink }}">
   {{ end }}
   
   <!-- RSS -->

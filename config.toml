@@ -2,6 +2,7 @@ baseURL = "https://codehakase.com/"
 languageCode = "en-us"
 title = "Francis Sunday"
 theme = "clean"
+enableRobotsTXT = true
 
 [params]
   mainSections = ["blog", "shorts"]
