@@ -31,7 +31,7 @@
   {{ with resources.Get "css/output.css" }}
     <link rel="stylesheet" href="{{ .Permalink }}" media="screen">
   {{ end }}
-  <link rel="stylesheet" href="{{ .Site.BaseURL }}css/main.css">
+  <link rel="stylesheet" href="{{ .Site.BaseURL }}css/main.css" media="screen">
 
   {{ if .Params.canonical }}
   <link rel="canonical" href="{{ .Params.canonical }}">

@@ -22,20 +22,6 @@ A terminal is an interface where you can type and execute text based commands. E
 
 ![terminal window](http://res.cloudinary.com/hakase-labs/image/upload/c_scale,w_1230/v1509199976/terminal-1.png "An opened Terminal window on Linux")
 
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-6516758593918018"
-     data-ad-slot="6205547097"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
-
-
-
 
 ### Basic commands
 **Changing directories:** You can change into any directory from a terminal with the `cd` command. What it requires is a valid path to a directory. So using the command:
