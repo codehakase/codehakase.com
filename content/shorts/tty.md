@@ -4,11 +4,12 @@ title: "TTYs"
 modified: 2025-05-13
 tags: [terminal, tty]
 category: terminal
+description: "Learn about the `tty` command, which returns the current user's terminal name."
 ---
 
 Today I learned about the `tty` command. It returns the current user's terminal name.
 
-```shell
+```man
 TTY(1)                      General Commands Manual                     TTY(1)
 
 NAME

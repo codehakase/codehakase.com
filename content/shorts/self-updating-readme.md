@@ -2,6 +2,8 @@
 title: "Scripting a self-updating Github Readme"
 date: 2025-05-01
 layout: shorts
+tags: [github, automation, go]
+description: "Automating the update of my Github profile README using Go and Github Actions to fetch blog posts and render a template."
 ---
 
 I recently updated the README [^1] on my [Github profile](https://github.com/codehakase/codehakase) to add a new blog post entry, which made me realise this manual process was a good candidate for automation.

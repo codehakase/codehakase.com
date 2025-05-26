@@ -3,6 +3,7 @@ title: "GADTs for Type-Level Domain Logic"
 modified: 2025-05-07
 layout: shorts
 tags: [haskell]
+description: "Using Generalized Algebraic Data Types (GADTs) in Haskell to encode domain-specific rules and state transitions."
 ---
 
 I've been leveraging Generalized Algebraic Data Types (GADTs) in Haskell and found them exceptionally powerful for encoding domain-specific rules and state transitions directly into the type system. This is particularly useful for defining operations that are based on explicitly tagged types or state, and behave differently.

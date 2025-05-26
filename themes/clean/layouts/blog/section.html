@@ -1,15 +1,13 @@
 {{ define "main" }}
 <div class="mb-8">
-  <h1 class="text-3xl font-bold mb-6">Posts</h1>
+  <h1 class="text-3xl font-bold mb-6">All Posts</h1>
 
   {{ with .Content }}
     <div class="mb-8">{{ . }}</div>
   {{ end }}
 
   <div class="space-y-8">
-    {{ $pages := where .Site.RegularPages "Section" "blog" }}
-    {{ $pages = where $pages ".CurrentSection.RelPermalink" "eq" "/blog/" }}
-    {{ $pages = where $pages "Layout" "ne" "shorts" }}
+    {{ $pages := where .Site.RegularPages "Section" "in" (slice "blog" "shorts") }}
     
     {{ $paginator := .Paginate $pages 10 }}
     {{ range $paginator.Pages }}

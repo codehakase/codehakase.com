@@ -3,6 +3,7 @@ title: "Composable Parsers with Attoparsec"
 modified: 2025-05-06
 layout: shorts
 tags: [haskell, parsers]
+description: "Using Attoparsec in Haskell to create efficient and composable parsers for structured text data."
 ---
 
 I've been diving into Haskell's [attoparsec](https://hackage.haskell.org/package/attoparsec) and I'm impressed by how it simplifies building complex parsers. Here's a quick example for a DSL snippet like `"name=Some Name;age=42;"`, using `Data.Attoparsec.Text`:

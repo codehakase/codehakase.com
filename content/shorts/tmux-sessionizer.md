@@ -3,6 +3,7 @@ title: "Tmux sessionizer"
 modified: 2025-05-05
 layout: shorts
 tags: [tmux, productivity]
+description: "Using tmux-sessionizer to manage tmux sessions efficiently, with custom modifications for a streamlined development workflow."
 ---
 
 

@@ -3,6 +3,7 @@ title: "Implementing Non-Copyable Embedded Structs"
 modified: 2025-05-06
 layout: shorts
 tags: [go]
+description: "Using a noCopy marker in Go to prevent accidental copying of embedded structs, ensuring safe concurrent access to shared resources."
 ---
 
 While working with embedded structs, I learned that even implicitly promoted fields can be silently copied if the parent struct is passed by value. This becomes dangerous when the embedded struct holds resources like mutexes, buffers, or channels.
