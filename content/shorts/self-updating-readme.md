@@ -8,7 +8,7 @@ description: "Automating the update of my Github profile README using Go and Git
 
 I recently updated the README [^1] on my [Github profile](https://github.com/codehakase/codehakase) to add a new blog post entry, which made me realise this manual process was a good candidate for automation.
 
-![Github profile for codehakase](/images/shorts/self-updating-readme/github-readme.png)
+![Github profile for codehakase](https://blob.codehakase.com/static/images/shorts/self-updating-readme/github-readme.png)
 
 I took inspiration from [Simon Willison's blog](https://simonwillison.net/2020/Jul/10/self-updating-profile-readme/) to utilise Github Actions for this. The [Github Action](https://github.com/codehakase/codehakase/blob/master/.github/workflows/push.yml) calls a [script](https://github.com/codehakase/codehakase/tree/master/up) that:
 

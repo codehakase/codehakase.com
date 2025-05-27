@@ -8,6 +8,7 @@ enableRobotsTXT = true
   mainSections = ["blog", "shorts"]
   description = "Francis Sunday's personal website"
   twitter = "@codehakase"
+  maths = true
 
 [markup]
   [markup.highlight]
@@ -27,6 +28,12 @@ enableRobotsTXT = true
  [markup.goldmark]
   [markup.goldmark.renderer]
     unsafe = true
+  [markup.goldmark.extensions]
+    [markup.goldmark.extensions.passthrough]
+      enable = true
+      [markup.goldmark.extensions.passthrough.delimiters]
+        block = [['\[', '\]'], ['$$', '$$']]
+        inline = [['\(', '\)']]
     
 
 summaryLength = 10

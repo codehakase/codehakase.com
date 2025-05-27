@@ -10,7 +10,7 @@ description: "Using tmux-sessionizer to manage tmux sessions efficiently, with c
 I came across [tmux-sessionizer](https://github.com/ThePrimeagen/tmux-sessionizer) today, and this has become handy in how I'm managing tmux sesisons. 
 
 For my workflow, I added an alias that'll launch `tmux-sessionizer`. 
-![tmux-sessionizer](/images/shorts/tmux-sessionizer/tmux-sessionizer.png)
+![tmux-sessionizer](https://blob.codehakase.com/static/images/shorts/tmux-sessionizer/tmux-sessionizer.png)
 
 I've made some slight modifications to fit my dev setup. 
 

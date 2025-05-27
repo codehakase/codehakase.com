@@ -34,4 +34,4 @@ EXIT STATUS
 ```
 
 One cool thing I found was if you get the tty of a terminal tab, you can push text to it. For instance, running `echo "some text" > /dev/tty-{num}` will push the text `some text` to the terminal with the tty.
-![TTY sample](/images/shorts/tty/tty.gif)
+![TTY sample](https://blob.codehakase.com/static/images/shorts/tty/tty.gif)
