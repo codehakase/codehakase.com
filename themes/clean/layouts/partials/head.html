@@ -15,7 +15,10 @@
   <meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{ if .IsPage }}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
   {{ with .Site.Params.twitter }}
   <meta name="twitter:creator" property="twitter:creator" content="{{ . }}"/>
+  <meta name="twitter:site" content="{{ . }}"/>
   {{ end }}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://blob.codehakase.com/static/images/cover-codehakase.png">
   
   <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
