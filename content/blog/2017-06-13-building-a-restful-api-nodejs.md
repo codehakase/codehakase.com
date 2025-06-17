@@ -2,7 +2,7 @@
 layout: post
 title: "Build your first RESTful API with Node.js"
 author: "@codehakase"
-tags: [node.js, api, rest, nodejs]
+tags: [nodejs, api, rest]
 description: "A simple guide to building RESTful apis with Node.js"
 modified: 2017-06-13
 comments: true

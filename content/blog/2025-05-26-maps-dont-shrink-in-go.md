@@ -4,9 +4,9 @@ title: "Maps Don't Shrink in Go"
 author: "@codehakase"
 description: "A note on how Go maps handle memory allocation and why they don't shrink automatically."
 modified: 2025-05-27
-tags: [go, golang, maps]
+tags: [go, maps]
 share: true
-category: "golang"
+category: "go"
 ---
 
 Maps in Go are built-in data structures that provide a way to store key-value pairs. They are similar to dictionaries or hash tables in other programming languages. Maps are unordered collections, meaning that the order of elements is not guaranteed.

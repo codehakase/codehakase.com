@@ -5,7 +5,7 @@ comments: true
 author: "@codehakase"
 description: "A simple guide to getting started with Async and Await in JavaScript"
 modified: 2017-08-12
-tags: [javascript, async/await]
+tags: [javascript, async-await]
 share: true
 category: javascript
 ---

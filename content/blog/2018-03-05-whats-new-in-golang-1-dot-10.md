@@ -5,10 +5,10 @@ author: "@codehakase"
 imagefeature: "http://www.confusedcoders.com/wp-content/uploads/2016/10/golang-1.jpg"
 description: "The latest Go release, v1.10 arrived six months after V1.9. This release was stated in the change-logs and the Go blog. I'm gonna share some interesting changes I've found in Go 1.10 with you."
 modified: 2018-03-06
-tags: [changelog, golang, go]
+tags: [changelog, go]
 share: true
 comments: true
-category: [go,golang]
+category: [go]
 ---
 > Go 1.8 is one year old (Happy belated Birthday 🎊 🎉)
 > Go 1.9 is already 6 months old!

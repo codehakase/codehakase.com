@@ -7,10 +7,10 @@ hakase:
     url: "https://res.cloudinary.com/hakase-labs/image/upload/v1543635780/Screen_Shot_2018-12-01_at_4.36.33_AM_n2pane.png"
 description: "This article will show you how you can build small containers to make your Kubernetes deployments faster and more secure."
 modified: 2018-12-01
-tags: [go,docker,kubernetes,golang]
+tags: [go,docker,kubernetes]
 share: true
 comments: true
-category: [go,docker,kubernetes,golang]
+category: [go,docker,kubernetes]
 ---
 
 The first step to deploying any app to [Kubernetes](https://kubernetes.io), is to bundle the app in a

@@ -4,7 +4,7 @@ title: "Getting Started with Go - Variables"
 author: "@codehakase"
 description: "Learn about variables in Go"
 modified: 2017-11-19
-tags: [unix, terminal]
+tags: [go, variables]
 share: true
 category: workflow/tools
 comments: true

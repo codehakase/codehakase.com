@@ -7,7 +7,7 @@ hakase:
     url: "https://cdn.filestackcontent.com/f3FkzG3jSSKlokzDerWq"
 description: "In this tutorial, I'll show you how easy it is to build a web application with Go and the Gin framework and add authentication to it."
 modified: 2018-04-20
-tags: [go,gin-gonic,react,golang]
+tags: [go,gin-gonic,react]
 share: true
 comments: true
 category: [go,react,webapps,gin-gonic]

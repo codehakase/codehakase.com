@@ -4,9 +4,9 @@ title: "Enum Stringer Interface optimisation in Go"
 author: "@codehakase"
 description: "A tip on how to optimise enum stringer interface"
 modified: 2021-04-08
-tags: [golang, go]
+tags: [go]
 share: true
-category: [golang]
+category: [go]
 ---
 The most idiomatic way of describing an enum type in Go is to use constants, often in conjunction with [iota](https://golang.org/ref/spec#Iota).
 
