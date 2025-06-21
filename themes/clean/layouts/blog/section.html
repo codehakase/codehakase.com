@@ -1,30 +1,41 @@
 {{ define "main" }}
 <div class="mb-8">
-  <h1 class="text-3xl font-bold mb-6">All Posts</h1>
-
   {{ with .Content }}
     <div class="mb-8">{{ . }}</div>
   {{ end }}
 
-  <div class="space-y-8">
+  {{ if .Site.Taxonomies.tags }}
+    <div class="mb-8">
+      <div class="flex flex-wrap gap-2">
+        {{ range first 20 .Site.Taxonomies.tags.ByCount }}
+          <a href="{{ printf "/tags/%s/" .Name | relLangURL }}" class="bg-[#f1f0e8] border-b border-[#aaa] px-2 py-1 text-xs">{{ .Name | lower }} ({{ .Count }})</a>
+        {{ end }}
+      </div>
+      <a href="/tags/" class="text-sm mt-2 underline">View all</a>
+    </div>
+  {{ end }}
+
+  <div>
     {{ $pages := where .Site.RegularPages "Section" "in" (slice "blog" "shorts") }}
     
-    {{ $paginator := .Paginate $pages 10 }}
-    {{ range $paginator.Pages }}
-      <article class="border-b border-gray-200 pb-6">
-        <h2 class="text-xl font-bold mb-2">
-          <a href="{{ .RelPermalink }}" class="hover:underline">{{ .Title }}</a>
-        </h2>
-        <div class="text-sm mb-2">{{ dateFormat "January 2, 2006" .Date }}</div>
-        {{ with .Description }}
-          <div class="text-gray-700">{{ . }}</div>
-        {{ else }}
-          <div class="text-gray-700">{{ .Summary }}</div>
-        {{ end }}
-      </article>
+    {{ range ($pages.GroupByDate "2006") }}
+      <div class="mb-8">
+        <h1 class="text-2xl font-semibold mb-4">{{ .Key }}</h1>
+        <div class="space-y-10">
+          {{ range .Pages }}
+            <div>
+              <a href="{{ .RelPermalink }}" class="border-b border-[#aaa]">{{ .Title }}</a>
+              <div class="text-sm mb-2">{{ dateFormat "January 2, 2006" .Date }}</div>
+              <div class="flex items-center gap-2 mt-1">
+                {{ range .Params.tags }}
+                  <a href="{{ printf "/tags/%s/" . | relLangURL }}" class="bg-[#f1f0e8] border-b border-[#aaa] px-2 py-1 text-xs">{{ . }}</a>
+                {{ end }}
+              </div>
+            </div>
+          {{ end }}
+        </div>
+      </div>
     {{ end }}
   </div>
-
-  {{ partial "pagination.html" . }}
 </div>
 {{ end }} 

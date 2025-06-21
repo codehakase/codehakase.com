@@ -3,7 +3,7 @@
   {{ if eq .RelPermalink "/blog/" }}
     <h1 class="text-3xl font-bold mb-6">Posts</h1>
   {{ else if isset .Data "Term" }}
-    <h1 class="text-3xl font-bold mb-6">Posts tagged "{{ .Data.Term }}"</h1>
+    <h1 class="text-2xl font-bold mb-6">{{ .Data.Term | lower}}</h1>
   {{ else }}
     <h1 class="text-3xl font-bold mb-6">{{ .Title }}</h1>
   {{ end }}
@@ -13,22 +13,26 @@
   {{ end }}
 
   <div class="space-y-8">
-    {{ $paginator := .Paginate (where .Pages "Type" "in" .Site.Params.mainSections) 10 }}
-    {{ range $paginator.Pages }}
-      <article class="border-b border-gray-200 pb-6">
-        <h2 class="text-xl font-bold mb-2">
-          <a href="{{ .RelPermalink }}" class="hover:underline">{{ .Title }}</a>
-        </h2>
-        <div class="text-sm mb-2">{{ dateFormat "January 2, 2006" .Date }}</div>
-        {{ with .Description }}
-          <div class="text-gray-700">{{ . }}</div>
-        {{ else }}
-          <div class="text-gray-700">{{ .Summary }}</div>
-        {{ end }}
-      </article>
+    {{ if isset .Data "Term" }}
+      {{ range .Pages }}
+        <div>
+          <a href="{{ .RelPermalink }}" class="border-b border-[#aaa]">{{ .Title }}</a>
+          <div class="text-sm mb-2">{{ dateFormat "January 2, 2006" .Date }}</div>
+        </div>
+      {{ end }}
+    {{ else }}
+      {{ $paginator := .Paginate (where .Pages "Type" "in" .Site.Params.mainSections) 10 }}
+      {{ range $paginator.Pages }}
+        <div>
+          <a href="{{ .RelPermalink }}" class="border-b border-[#aaa]">{{ .Title }}</a>
+          <div class="text-sm mb-2">{{ dateFormat "January 2, 2006" .Date }}</div>
+        </div>
+      {{ end }}
     {{ end }}
   </div>
 
-  {{ partial "pagination.html" . }}
+  {{ if not (isset .Data "Term") }}
+    {{ partial "pagination.html" . }}
+  {{ end }}
 </div>
 {{ end }} 

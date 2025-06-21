@@ -2,14 +2,9 @@
 <div class="mb-8">
   <h1 class="text-3xl font-bold mb-6">{{ .Title }}</h1>
 
-  <div class="flex flex-wrap gap-4">
-    {{ range .Data.Terms.Alphabetical }}
-      <div class="mb-2">
-        <a href="{{ .Page.RelPermalink }}" class="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-md inline-flex items-center">
-          <span>{{ .Page.Title }}</span>
-          <span class="ml-2 px-2 py-1 bg-gray-200 rounded-full text-xs">{{ .Count }}</span>
-        </a>
-      </div>
+  <div class="flex flex-wrap gap-2">
+    {{ range .Data.Terms.ByCount }}
+      <a href="{{ .Page.RelPermalink }}" class="bg-[#f1f0e8] border-b border-[#aaa] px-2 py-1 text-xs">{{ .Page.Title | lower }} ({{ .Count }})</a>
     {{ end }}
   </div>
 </div>
