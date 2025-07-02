@@ -16,3 +16,7 @@ I care about building reliable systems. My work sits at the intersection of back
 Outside work, I spend time with my wonderful wife and kids, and I unwind at the piano. My favourite pieces include *Zadok the Priest, Water Music Suites Nos. 1-3, Kreutzer Violin Sonata, and How Excellent is Thy Loving Kindness*. 
 
 You can find me on [BlueSky](https://bsky.app/profile/codehakase.com?ref=codehakase.com) or [Twitter (X)](https://x.com/codehakase?ref=codehakase) as **@codehakase**, and my code lives on [Github](https://github.com/codehakase?ref=codehakase.com). For more on my professional experience, check out my [LinkedIn](https://linkedin.com/in/codehakase?ref=codehakase.com).
+
+#### Colophon
+
+This site is built with [Hugo](https://gohugo.io) and [TailwindCSS](https://tailwindcss.com), and hosted on [Vercel](https://vercel.com).
