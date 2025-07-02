@@ -43,11 +43,9 @@ AdonisJs focuses on the key aspects of creating stable and scalable web applicat
 ### Developer Experience
 
 The framework makes use of latest inbuilt ES2015 features to get rid of spaghetti code. You will hardly find yourself writing callbacks since there is a solid support for ES2015 generators. Also, the OOP nature of the framework helps you in abstracting your code into multiple re-usable chunks.
-Consistent API
 
 ### Consistent API
 The API throughout the code base is so consistent that after working for a while, you will be able to guess the method names, expected output, etc.
-Speed & Productivity
 
 ### Speed and Productivity
 AdonisJs ships with a bunch of 1st party components known as providers. Writing entire web server is a matter of weeks(if not days). It ships with solid support for **Mailing, Authentication, Redis, SQL ORM, Data validation and sanitization**, etc.
@@ -83,7 +81,8 @@ scaffolding a new project with adonis-cli
 
 Now you've created a new project, lets move into the directory and launch the HTTP server.
 ```
-cd holla-adonis thennpm run serve:dev
+cd holla-adonis
+npm run serve:dev
 ```
 Now open up your favourite browser and navigate to http://localhost:3333 and you should see the welcome screen.
 ![welcome screen](http://i0.wp.com/cdn-images-1.medium.com/max/1600/1*xA3sJQFPVwMangNEKs0QRw.png)

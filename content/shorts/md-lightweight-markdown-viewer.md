@@ -6,9 +6,7 @@ tags: [go, markdown]
 description: "Using ASTs over regex to build a predictable, lightweight, theme-aware Markdown renderer in Go."
 ---
 
-Markdown rendering in the terminal is usually done with string replacements or regex. This doesn’t scale. 
-
-Goldmark exposes a proper AST. Each node has type, position, and content. Rendering becomes walking the tree:
+Markdown rendering in the terminal is usually done with string replacements or regex. This doesn’t scale. Goldmark exposes a proper AST. Each node has type, position, and content. Rendering becomes walking the tree:
 ```go
 // render renders the AST node to the writer
 func (tr *terminalRenderer) render(w io.Writer, source []byte, node ast.Node) error {

@@ -9,8 +9,7 @@ share: true
 category: haskell
 ---
 
-First post on this blog after a long hiatus -- hopefully, this will stick. I was cleaning up my browser tabs, and found a Project Euler window open and decided to attempt some problems in Haskell. I've been writing Haskell for a couple of months now, and it was a great way to test myself. 
-I picked one of the problems I attempted, a simple one -- [Problem 8: Largest product in a series](https://projecteuler.net/problem=8).
+First post on this blog after a long hiatus -- hopefully, this will stick. I was cleaning up my browser tabs, and found a Project Euler window open and decided to attempt some problems in Haskell. I've been writing Haskell for a couple of months now, and it was a great way to test myself. I picked one of the problems I attempted, a simple one -- [Problem 8: Largest product in a series](https://projecteuler.net/problem=8).
 
 ```text
 The four adjacent digits in the 1000-digit number that have the greatest product are 9 × 9 × 8 × 9 = 5832.
@@ -42,7 +41,7 @@ let digitsM = map digitToInt "731671765313...428252483600823257530420752963450"
 -- [7,3,1,6,7,1,7,6,5,3,1,3,3,0,6,2,4,9,1,9...]
 ```
 
-Next step is to compute the greatest product by generating all contiguous substrings matching the expected length (13), and tracking the maxium from all computed products.
+Next step is to compute the greatest product by generating all contiguous substrings matching the expected length (13), and tracking the maximum from all computed products.
 ```haskell
 maximum $ map product [take 13 xs | xs <- tails digitsM, length xs >= 13]
 -- => 23514624000

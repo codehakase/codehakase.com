@@ -10,9 +10,7 @@ category: [go]
 ---
 The most idiomatic way of describing an enum type in Go is to use constants, often in conjunction with [iota](https://golang.org/ref/spec#Iota).
 
-A pattern I've used to implement the `Stringer` interface for an enum type is to
-lookup the string representation in a slice. Consider this snippet from a
-project I'm working on:
+A pattern I've used to implement the `Stringer` interface for an enum type is to lookup the string representation in a slice. Consider this snippet from a project I'm working on:
 ```go
 // Status ...
 type Status uint32
@@ -33,13 +31,9 @@ func (s Status) String() string {
 }
 ```
 
-The snippet above works correct but has a few glitches -- passing
-`Status(-2)` or `Status(300)`  will cause the `String()` method to panic, and
-when appending to the slice, the order of the enum constants has to be taken
-into consideration.
+The snippet above works correct but has a few glitches -- passing `Status(-2)` or `Status(300)` will cause the `String()` method to panic, and when appending to the slice, the order of the enum constants has to be taken into consideration.
 
-A way to optimise this is to use a map which provides `O(1)` access time rather
-than the linear `O(n)` time in the string slice version.
+A way to optimise this is to use a map which provides `O(1)` access time rather than the linear `O(n)` time in the string slice version.
 
 ```go
 ...

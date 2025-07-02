@@ -40,16 +40,20 @@ Go 1.10 is the last release that will run on Windows XP or Windows Vista. Go 1.1
 ### Tooling
 
 #### Default GOROOT & GOTMPDIR
-In Go 1.10, if the environment variable `$GOROOT` is not set, the go tool uses the default `GOROOT` during compilation, by deducing `GOROOT` from its own executable path. This change was made, to allow binary distributions to be unpacked anywhere in the file system and then be used without setting `GOROOT` explicitly.  A new variable `$GOTMPDIR` was added to control where temporary files are created.
+In Go 1.10, if the environment variable `$GOROOT` is not set, the go tool uses the default `GOROOT` during compilation, by deducing `GOROOT` from its own executable path. This change was made, to allow binary distributions to be unpacked anywhere in the file system and then be used without setting `GOROOT` explicitly. A new variable `$GOTMPDIR` was added to control where temporary files are created.
 
 #### Go Build & Go Install
 In previous versions, running `go build `, detects changes of packages based on the time it was modified. The `go build` command now detects out-of-date packages purely based on th content of source files, specified build flags, and metadata stored in the compiled packages.
+
 The `go build -asmflags, -gcflags, -gccgoflags,` and `ldflags` options are applied by default only to packages listed directly on the command line. For example, `go build -gcflags=-m mypackage` passes the compiler the `-m` flag when building `mypackage` but not its dependencies. `go build -asmflags=pattern=flags ...` applies the flags only to the packages matching the pattern. For example `go install -ldflags=cmd/gofmt=-X=main.version=1.2.3 cmd/ ...` installs all the commands matching `cmd/...` but only applies the `-X` option to the linker flags for `cmd/gofmt`.
 
 #### Testing
 The `go test ..` command now caches test result if the test executable and command line matches a previous run, and the files and environment variables consulted by the run have not changed. `go test` will print the previous test output,  replacing the elapsed time with the string **"cached"**.  The `go test` command now runs `go vet` on the testing package to identify significant problems before running the test(s). `go vet` can be disabled by passing the `-vet=off` flag to the `go test` command - `go test -vet=off`
+
 The `go test -coverpkg` flag now interprets its argument as a comma-separated list of patterns to match against the dependencies of each test. For example, `go test -coverpkg=all` is now a more meaningful way to run a test with coverage enabled for the test package and all its dependencies.
+
 Passing the `-failfast` flag to `go test` disables running additional tests after any test fails.
+
 There's a new flag `-json` when used with `go test`, converts the test output to JSON format - `go test -json`
 
 #### GoDoc

@@ -44,9 +44,11 @@ class Functor f where
     fmap :: (a -> b) -> f a -> f b
 ```
 
-This typeclass defines only one function, `fmap`. This polymorphic function, works for any type constructor `f` that is an instance of the `Functor` typeclass. It takes :
+This typeclass defines only one function, `fmap`. This polymorphic function, works for any type constructor `f` that is an instance of the `Functor` typeclass. It takes:
 1. A function of type `a -> b`, which transforms a value of type `a` into a value of type `b`.
-2. A value of type `f a`, which represents a value of type `a` within a functorial context `f`. It then returns a value of type `f b`, which is a value of type `b` within the same functorial context `f`. Essentially, `fmap` applies the function to the value(s) inside the functorial context.
+2. A value of type `f a`, which represents a value of type `a` within a functorial context `f`.
+
+It then returns a value of type `f b`, which is a value of type `b` within the same functorial context `f`. Essentially, `fmap` applies the function to the value(s) inside the functorial context.
 
 As demonstrated earlier, we can use `fmap (+4) (Just 2)` because `Maybe` is a functor. `fmap` applies the function to the values inside the `Maybe` context. The `Maybe` type itself is defined as:
 

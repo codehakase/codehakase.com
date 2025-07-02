@@ -19,6 +19,7 @@ Many frameworks built upon PHP are using the OOP paradigm and if you intend lear
 
 ## Objects and Classes
 In OOP there are two major concepts you'd see often (they really make up OOP), they are **objects** and **classes**. These terms sometimes appear to be interchangeable. That is not the case.
+
 A class for example, stands as a **structure** or *blueprint*. Relate that to a Building, say a Bank, a blueprint is presented which defines the properties of the buildings, and once accepted they proceed to errect the building. *Classes* form the structure of data needed to build objects. That same bank can use the same bluprint and errect same structure in a different location with slight differences (branch manager, number of staff, etc).
 
 ### Creating Classes

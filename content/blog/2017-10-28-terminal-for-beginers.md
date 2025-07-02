@@ -11,8 +11,8 @@ category: workflow/tools
 ---
 Getting into Software Development seem overwhelming (actually it is) these days. One has to go through the hassle of getting familiar with different languages, to organizing codebases, to libraries, frameworks, the list goes on. Every Job description (at least the sane ones), requires additional skills to get the job. Example of such, Version Control (Git or Mecurial), tasks runners, build tools, package managers, etc.
 
-
 Most of these extra tools are being accessed/used from a command line interface. The black hacker environment thingy stuff seem frightening kind of, but this article should get you familiar with the terminal interface. For those of us already familiar, after reading this article, you'd wished you've read it before you opened a terminal for the first time.
+
 > Note, this article is directed towards unix based terminal environments
 
 

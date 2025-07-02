@@ -17,6 +17,7 @@ For the purpose of this tutorial, you'll be creating the base for a *ToDo List* 
 
 # What is REST?
 REST is an acronym for Representational State Transfer. It is a web standards architecture and HTTP Protocol. The REST protocol, decribes six (6) constraints:
+
 1. Uniform Interface
 2. Cacheable
 3. Client-Server
@@ -96,12 +97,10 @@ We need to structure or directory so we have dedicated files for various actions
     - package.json
     ...
 ```
-We create the dedicated files in their directories-
-`
-api/models/todoModel.js
-api/controllers/todoController.js
-api/routes/todoRoutes.js
-`
+We create the dedicated files in their directories:
+- `api/models/todoModel.js`
+- `api/controllers/todoController.js`
+- `api/routes/todoRoutes.js`
 
 Your directory structure should look like this now:
 ```txt

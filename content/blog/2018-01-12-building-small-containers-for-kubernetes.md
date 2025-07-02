@@ -13,14 +13,9 @@ comments: true
 category: [go,docker,kubernetes]
 ---
 
-The first step to deploying any app to [Kubernetes](https://kubernetes.io), is to bundle the app in a
-container. There are several official, and community-backed container images for
-various languages and distros, and most of these containers can be really large,
-or sometimes contain overheads your app may never need/use.
+The first step to deploying any app to [Kubernetes](https://kubernetes.io), is to bundle the app in a container. There are several official, and community-backed container images for various languages and distros, and most of these containers can be really large, or sometimes contain overheads your app may never need/use.
 
-Thanks to [Docker](https://docker.io), you can easily create container images in
-a few steps; specify a base image, add your app-specific changes, and build your
-container.
+Thanks to [Docker](https://docker.io), you can easily create container images in a few steps; specify a base image, add your app-specific changes, and build your container.
 
 ```dockerfile
 FROM golang:alpine
@@ -34,22 +29,16 @@ EXPOSE 8080
 ENTRYPOINT ["/app/run"]
 ```
 
-We specified a base image (Linux alpine in this case), set the working directory
-to be used in the container, exposed a network port, and an entry point, which
-will start the app in the container. With the Dockerfile set, we can build the
-container.
+We specified a base image (Linux alpine in this case), set the working directory to be used in the container, exposed a network port, and an entry point, which will start the app in the container. With the Dockerfile set, we can build the container.
 
 ```shell
 $ docker build myapp .
 ```
 
-While the above process is pretty straight forward, there are some issues
-to put into consideration. Using the default images can lead to large container
-images, security vulnerabilities, and memory overheads.
+While the above process is pretty straight forward, there are some issues to put into consideration. Using the default images can lead to large container images, security vulnerabilities, and memory overheads.
 
 #### Let's flesh out a sample app
-We'll write a simple app in Go, that exposes a single HTTP route that returns a
-string when hit. We will build a Docker image from it.
+We'll write a simple app in Go, that exposes a single HTTP route that returns a string when hit. We will build a Docker image from it.
 
 ```go
 package main
@@ -95,31 +84,22 @@ Build the image.
 $ docker build -t codehakase/goapp .
 ```
 
-That's it! We just Dockerized a simple Go app. Let's take a look at the image we
-just built.
+That's it! We just Dockerized a simple Go app. Let's take a look at the image we just built.
 ![docker images list](https://res.cloudinary.com/hakase-labs/image/upload/v1543632543/Screen_Shot_2018-12-01_at_3.47.19_AM_wgpi3m.png)
 
-For a simple Go app, the image is over 700 megabytes. The Go binary itself is
-probably a few megabytes in size, and the additional overhead is wasted space,
-and can also be a hiding place for bugs and security vulnerabilities.
+For a simple Go app, the image is over 700 megabytes. The Go binary itself is probably a few megabytes in size, and the additional overhead is wasted space, and can also be a hiding place for bugs and security vulnerabilities.
 
-What is taking up so much space? In this scenario, the container needs Go
-installed, along with all the dependencies Go relies on, and all of this sits on
-top of a Debian or Linux distro.
+What is taking up so much space? In this scenario, the container needs Go installed, along with all the dependencies Go relies on, and all of this sits on top of a Debian or Linux distro.
 
-There are two ways to reduce container image sizes, actually three of which the
-third is more often used in the Go community:
+There are two ways to reduce container image sizes, actually three of which the third is more often used in the Go community:
 
 1. Using Small Base Images
 2. The Builder Pattern
 3. Using Empty Images
 
-Using small base images are the easiest way to reduce container image size. The
-stack/language in use probably provides an official image that's much smaller
-than the default image.
+Using small base images are the easiest way to reduce container image size. The stack/language in use probably provides an official image that's much smaller than the default image.
 
-Let's update the Dockerfile to use a small base image. We're going to use
-`golang:alpine` in this case.
+Let's update the Dockerfile to use a small base image. We're going to use `golang:alpine` in this case.
 
 ```docker
 FROM golang:alpine
