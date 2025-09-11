@@ -26,6 +26,41 @@
     {{ with resources.Get "css/output.css" }}
     <link rel="stylesheet" href="{{ .Permalink }}" media="screen">
     {{ end }}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Francis Sunday",
+      "alternateName": "codehakase",
+      "jobTitle": "Software Engineer",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Talstack",
+        "url": "https://talstack.com"
+      },
+      "url": "https://codehakase.com",
+      "sameAs": [
+        "https://www.linkedin.com/in/codehakase",
+        "https://github.com/codehakase",
+        "https://twitter.com/codehakase",
+        "https://codehakase.com"
+      ],
+      "knowsAbout": [
+        "Go",
+        "Golang",
+        "Haskell",
+        "Functional Programming",
+        "Backend Engineering",
+        "Infrastructure",
+        "Distributed Systems",
+        "Databases",
+        "SQL",
+        "Postgres"
+      ],
+      "image": "https://blob.codehakase.com/static/images/dp.jpeg",
+      "description": "Francis Sunday is a software engineer with over 6 years of experience building financial systems, compliance workflows, monitoring tools, and developer tools. He works primarily with Go and Haskell, with interests in distributed systems, databases, and functional programming."
+    }
+    </script>
     <style>
     body {
       font-family: "PT Serif", serif;
