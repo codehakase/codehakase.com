@@ -24,15 +24,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     {{ with resources.Get "css/output.css" }}
-      <link rel="stylesheet" href="{{ .Permalink }}" media="screen">
+    <link rel="stylesheet" href="{{ .Permalink }}" media="screen">
     {{ end }}
     <style>
-      body {
-        font-family: "PT Serif", serif;
-        font-size: 1.1em;
-        line-height: 1.6;
-        background-color: #fcfbf0;
-      }
+    body {
+      font-family: "PT Serif", serif;
+      font-size: 1.1em;
+      line-height: 1.6;
+      background-color: #fcfbf0;
+    }
     </style>
   </head>
 
@@ -43,54 +43,40 @@
       </header>
 
       <div class="mb-8">
-        <h2 class="text-3xl font-bold mb-5">Hi 👋🏾</h2>
+        <img src="https://blob.codehakase.com/static/images/dp.jpeg" alt="A photo of Francis Sunday" class="w-32 h-32 mb-4 grayscale">
         <div class="text-lg leading-7 space-y-4">
-          <p>I'm a <span title="Flag of Nigeria">🇳🇬 </span> software engineer with a strong foundation in backend and infra development and a passion for tackling complex challenges. 
-            I'm fascinated by distributed systems, databases, and functional programming, and I primarily work with Go and Haskell.</p>
-          <p>Feel free to read <a class="underline" href="/about">about</a> myself or to look at my <a class="underline" href="/blog">posts</a>.</p>
+          <p>Hi 👋🏾&nbsp;I'm Francis, a software engineer with 6+ years of experience. In the past I've built financial systems, compliance workflows, monitoring tools, and developer tools. I primarily work with Go and Haskell, and I'm mostly interested in distributed systems, databases, and functional programming.
+          <p>Feel free to read <a class="underline" href="/about">about</a> myself, look at my <a class="underline" href="/blog">posts</a>, or  <a class="underline" href="https://calendar.app.google/25LQtt9mAm2PuhG19?ref=codehakase.com" target="_blank">book a chat</a> with me.</p>
         </div>
       </div>
 
-      <div class="flex flex-col gap-4 md:flex-row md:gap-10 justify-center">
-        <div class="flex-1 flex-grow">
-          <h2 class="font-semibold text-lg mb-2">Writing</h2>
-          <ul class="space-y-3">
-            {{ range first 4 (where site.RegularPages "Layout" "post") }}
-              <li>
-                <a class="font-medium hover:underline" href="{{.RelPermalink}}">{{.Title}}</a> 
-                <p class="text-sm">{{ dateFormat "January 2, 2006" .Date }}</p>
-              </li> 
-            {{ end }}
-          </ul>
-        </div>
-
-        <div class="flex-1 flex-grow">
-          <h2 class="font-semibold text-lg mb-2">Short Notes</h2>
-          <ul class="space-y-3">
-            {{ range first 4 (where site.RegularPages "Layout" "shorts") }}
-              <li>
-                <a class="font-medium hover:underline" href="{{.RelPermalink}}">{{.Title}}</a>
-                <p class="text-sm">{{ dateFormat "January 2, 2006" .Date }}</p>
-              </li> 
-            {{ end }}
-          </ul>
+      <div class="mb-8">
+        <h2 class="font-semibold text-lg mb-2">Writing</h2>
+        <ul class="space-y-3 ml-6">
+          {{ range first 6 (where site.RegularPages "Layout" "in" (slice "post" "shorts")) }}
+          <li class="list-disc">
+            <a class="font-medium hover:underline" href="{{.RelPermalink}}">{{.Title}}</a> 
+            <p class="text-sm text-gray-600">{{ dateFormat "January 2, 2006" .Date }}</p>
+          </li> 
+          {{ end }}
+        </ul>
+        <div class="mt-4 ml-6">
+          <a class="text-sm underline" href="/blog">more posts →</a>
         </div>
       </div>
 
-      <div class="mb-8 mt-12">
-        <a href="https://calendar.app.google/25LQtt9mAm2PuhG19?ref=codehakase.com" class="bg-[#f1f0e8] border-b border-[#aaa] px-2 py-1 text-xs" target="_blank">
-          Want to chat?
-        </a>
-      </div>
-
-      <div class="font-bold text-sm mt-16 text-center">
-        <div class="flex items-center gap-2 justify-center underline">
-          <a href="https://github.com/codehakase?ref=codehakase.com">github</a>
-          <a href="https://linkedin.com/in/codehakase?ref=codehakase.com">linkedin</a>
-          <a href="https://bsky.app/profile/codehakase.com?ref=codehakase.com">bsky</a>
-          <a href="https://x.com/codehakase?ref=codehakase.com">X</a>
+      <footer class="mt-8 mb-8 pt-8">
+        <div class="text-sm font-medium max-w-sm">
+          <p class="mb-3">Got any thoughts, comments, corrections or suggestions? <a class="underline" href="mailto:me@codehakase.com">Email me</a> or <a href="https://calendar.app.google/25LQtt9mAm2PuhG19?ref=codehakase.com" target="_blank" class="underline">Book a call</a>. I’d like to hear from you.</p>
+          <div class="flex flex-col underline">
+            <a href="/blog/index.xml">rss</a>
+            <a href="https://github.com/codehakase?ref=codehakase.com">github</a>
+            <a href="https://linkedin.com/in/codehakase?ref=codehakase.com">linkedin</a>
+            <a href="https://bsky.app/profile/codehakase.com?ref=codehakase.com">bsky</a>
+            <a href="https://x.com/codehakase?ref=codehakase.com">X</a>
+          </div>
         </div>
-      </div>
+      </footer> 
     </div>
   </body>
 </html>
