@@ -43,7 +43,7 @@
       </header>
 
       <div class="mb-8">
-        <img src="https://blob.codehakase.com/static/images/dp.jpeg" alt="A photo of Francis Sunday" class="w-32 h-32 mb-4 grayscale">
+        <img src="https://blob.codehakase.com/static/images/dp.jpeg" alt="A photo of Francis Sunday" class="w-32 h-32 mb-4 mx-auto md:mx-0">
         <div class="text-lg leading-7 space-y-4">
           <p>Hi 👋🏾&nbsp;I'm Francis, a software engineer with 6+ years of experience. In the past I've built financial systems, compliance workflows, monitoring tools, and developer tools. I primarily work with Go and Haskell, and I'm mostly interested in distributed systems, databases, and functional programming.
           <p>Feel free to read <a class="underline" href="/about">about</a> myself, look at my <a class="underline" href="/blog">posts</a>, or  <a class="underline" href="https://calendar.app.google/25LQtt9mAm2PuhG19?ref=codehakase.com" target="_blank">book a chat</a> with me.</p>
@@ -52,11 +52,16 @@
 
       <div class="mb-8">
         <h2 class="font-semibold text-lg mb-2">Writing</h2>
-        <ul class="space-y-3 ml-6">
+        <ul class="space-y-4 ml-6">
           {{ range first 6 (where site.RegularPages "Layout" "in" (slice "post" "shorts")) }}
           <li class="list-disc">
-            <a class="font-medium hover:underline" href="{{.RelPermalink}}">{{.Title}}</a> 
-            <p class="text-sm text-gray-600">{{ dateFormat "January 2, 2006" .Date }}</p>
+            <div class="flex justify-between items-start">
+              <a class="font-medium hover:underline" href="{{.RelPermalink}}">{{.Title}}</a>
+              <span class="text-sm text-gray-600 ml-4 flex-shrink-0">{{ dateFormat "Jan 2, 2006" .Date }}</span>
+            </div>
+            {{ with .Description }}
+            <p class="text-sm text-gray-700 mt-1">{{ . }}</p>
+            {{ end }}
           </li> 
           {{ end }}
         </ul>
