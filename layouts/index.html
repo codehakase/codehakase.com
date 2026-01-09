@@ -84,26 +84,67 @@
           <p>Feel free to read <a class="underline" href="/about">about</a> myself, look at my <a class="underline" href="/blog">posts</a>, or  <a class="underline" href="https://calendar.app.google/25LQtt9mAm2PuhG19?ref=codehakase.com" target="_blank">book a chat</a> with me.</p>
         </div>
       </div>
+      
+      <div class="mb-8">
+        <h2 class="font-semibold text-lg mb-2">Projects</h2>
+        <div class="grid md:grid-cols-2 gap-6 space-y-2">
+          <div>
+            <a class="font-medium border-b border-[#aaa]" href="https://github.com/codehakase/alpf">alpf</a>
+            <p class="text-sm text-gray-600 mt-1">Agentic Loop with Promise Fulfilment, a deterministic framework for agents to retry tasks until a promise is fulfilled.</p>
+            <div class="flex items-center gap-2 mt-1">
+              <span class="bg-[#f1f0e8] border-b border-[#aaa] px-2 py-1 text-xs">go</span>
+            </div>
+          </div>
+          <div>
+            <a class="font-medium border-b border-[#aaa]" href="https://github.com/codehakase/snipp">snipp</a>
+            <p class="text-sm text-gray-600 mt-1">Minimalist macOS screenshot utility built with Rust + Tauri v2.</p>
+            <div class="flex items-center gap-2 mt-1">
+              <span class="bg-[#f1f0e8] border-b border-[#aaa] px-2 py-1 text-xs">rust</span>
+              <span class="bg-[#f1f0e8] border-b border-[#aaa] px-2 py-1 text-xs">tauri</span>
+            </div>
+          </div>
+          <div>
+            <a class="font-medium border-b border-[#aaa]" href="https://github.com/codehakase/Fake.hs">Fake.hs</a>
+            <p class="text-sm text-gray-600 mt-1">A minimalist Haskell faker library for generating fake data in tests, built with the State monad.</p>
+            <div class="flex items-center gap-2 mt-1">
+              <span class="bg-[#f1f0e8] border-b border-[#aaa] px-2 py-1 text-xs">haskell</span>
+            </div>
+          </div>
+          <div>
+            <a class="font-medium border-b border-[#aaa]" href="https://github.com/codehakase/md">md</a>
+            <p class="text-sm text-gray-600 mt-1">A fast, lightweight CLI utility for rendering Markdown files with rich formatting and syntax highlighting.</p>
+            <div class="flex items-center gap-2 mt-1">
+              <span class="bg-[#f1f0e8] border-b border-[#aaa] px-2 py-1 text-xs">go</span>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4">
+          <a class="text-sm underline" href="https://github.com/codehakase">more projects →</a>
+        </div>
+      </div>
 
       <div class="mb-8">
         <h2 class="font-semibold text-lg mb-2">Writing</h2>
-        <ul class="space-y-4 ml-6">
+        <div class="grid md:grid-cols-2 gap-6 space-y-2">
           {{ range first 6 (where site.RegularPages "Layout" "in" (slice "post" "shorts")) }}
-          <li class="list-disc">
-            <div class="flex justify-between items-start">
-              <a class="font-medium hover:underline" href="{{.RelPermalink}}">{{.Title}}</a>
-              <span class="text-sm text-gray-600 ml-4 flex-shrink-0">{{ dateFormat "Jan 2, 2006" .Date }}</span>
+          <div>
+            <a class="font-medium border-b border-[#aaa]" href="{{.RelPermalink}}">{{.Title}}</a>
+            <span class="text-sm text-gray-600 block mt-1">{{ dateFormat "January 2, 2006" .Date }}</span>
+            {{ with .Params.tags }}
+            <div class="flex items-center gap-2 mt-1">
+              {{ range . }}
+              <span class="bg-[#f1f0e8] border-b border-[#aaa] px-2 py-1 text-xs">{{ . }}</span>
+              {{ end }}
             </div>
-            {{ with .Description }}
-            <p class="text-sm text-gray-700 mt-1">{{ . }}</p>
             {{ end }}
-          </li> 
+          </div>
           {{ end }}
-        </ul>
-        <div class="mt-4 ml-6">
+        </div>
+        <div class="mt-4">
           <a class="text-sm underline" href="/blog">more posts →</a>
         </div>
       </div>
+
 
       <footer class="mt-8 mb-8 pt-8">
         <div class="text-sm font-medium max-w-sm">
