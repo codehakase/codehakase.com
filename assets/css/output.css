@@ -722,14 +722,6 @@ body {
   margin-bottom: 2rem;
 }
 
-.ml-4 {
-  margin-left: 1rem;
-}
-
-.ml-6 {
-  margin-left: 1.5rem;
-}
-
 .ml-8 {
   margin-left: 2rem;
 }
@@ -834,10 +826,6 @@ body {
   flex-wrap: wrap;
 }
 
-.items-start {
-  align-items: flex-start;
-}
-
 .items-center {
   align-items: center;
 }
@@ -860,6 +848,10 @@ body {
 
 .gap-5 {
   gap: 1.25rem;
+}
+
+.gap-6 {
+  gap: 1.5rem;
 }
 
 .space-x-2 > :not([hidden]) ~ :not([hidden]) {
@@ -1095,6 +1087,10 @@ body {
 
   .md\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .md\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .md\:flex-row {
