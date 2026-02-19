@@ -1,8 +1,27 @@
 {
   "version": 2,
+  "buildCommand": "hugo --gc --minify",
+  "outputDirectory": "public",
   "build": {
     "env": {
       "HUGO_VERSION": "0.143.1"
     }
-  }
+  },
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "headers": [
+    {
+      "source": "/llms.txt",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
+      ]
+    }
+  ]
 }

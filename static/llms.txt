@@ -1,0 +1,44 @@
+# Francis Sunday
+> Software engineer building reliable backend systems, with interests in distributed systems, databases, and functional programming.
+
+## About
+Francis Sunday (@codehakase) is a software engineer who works at the intersection of backend infrastructure, developer tools, and functional design. He primarily works with Go and Haskell, and cares deeply about building systems that are correct and reliable.
+
+He currently works as a full stack engineer at [Talstack](https://talstack.com), building tools powering Africa's workforce. Previously at [Nala](https://nala.com), he contributed to the [Rafiki API](https://rafiki.com), building payment rails for remittances from Europe to Africa, integrating payout solutions across diverse African regions, and developing internal tools including a real-time transaction monitoring dashboard.
+
+He also runs [Hakase Development Studio](https://hakasestudio.com), a small consultancy for technical founders and engineering teams building infrastructure-heavy products, focused on distributed systems, blockchain infrastructure, and long-term reliability.
+
+## Technical Expertise
+- **Languages:** Go, Haskell, Rust, TypeScript, Python
+- **Domains:** Distributed systems, databases, backend infrastructure, developer tooling
+- **Interests:** Functional programming, runtime internals, performance optimization, AI coding agents
+
+## Writing
+Francis writes long-form blog posts and short-form technical notes at [codehakase.com/blog](https://codehakase.com/blog/).
+
+### Recent and Notable Posts
+- [Bounded Execution for AI Coding Agents](https://codehakase.com/blog/bounded-execution-for-ai-coding-agents): Deterministic frameworks for agent retry loops and promise fulfilment.
+- [Idiomatic Haskell Refactors](https://codehakase.com/blog/idiomatic-haskell-refactors): Practical refactoring patterns using LambdaCase, guards, and type-level logic.
+- [Maps Don't Shrink in Go](https://codehakase.com/blog/maps-dont-shrink-in-go): Go runtime internals on map memory behaviour and bucket allocation.
+- [Notes on Building a Coding Agent](https://codehakase.com/blog/notes-on-building-a-coding-agent): Practical lessons from building AI coding agents from scratch.
+- [On Functors](https://codehakase.com/blog/on-functors): Functors explained through Haskell with real-world motivation.
+
+### Short-form Notes
+- [GADTs for Type-Level Domain Logic](https://codehakase.com/shorts/domain-logic-gadts): Using GADTs in Haskell for encoding domain rules at the type level.
+- [Composable Parsers with Attoparsec](https://codehakase.com/shorts/parsing-with-attoparsec): Building parsers with Attoparsec in Haskell.
+- [Implementing Non-Copyable Structs in Go](https://codehakase.com/shorts/prevent-go-struct-copy): Preventing struct copies using embedded sync types.
+
+## Projects
+- [alpf](https://github.com/codehakase/alpf): Agentic Loop with Promise Fulfilment — a deterministic framework for agents to retry tasks until a promise is fulfilled.
+- [snipp](https://github.com/codehakase/snipp): Minimalist macOS screenshot utility built with Rust and Tauri v2.
+- [Fake.hs](https://github.com/codehakase/Fake.hs): A Haskell faker library for generating test data, built with the State monad.
+- [md](https://github.com/codehakase/md): Fast CLI utility for rendering Markdown with rich formatting and syntax highlighting.
+
+## Contact
+- **Website:** https://codehakase.com
+- **GitHub:** https://github.com/codehakase
+- **LinkedIn:** https://linkedin.com/in/codehakase
+- **BlueSky:** https://bsky.app/profile/codehakase.com
+- **X:** https://x.com/codehakase
+- **Email:** me@codehakase.com
+- **Studio:** https://hakasestudio.com
