@@ -51,3 +51,7 @@ This is early thinking, and there are real open problems:
 - Treating source documents as the canonical record raises hard compliance questions. The right to deletion is straightforward in a database, less so when the record is a PDF you may be legally required to retain.
 
 None of these are reasons to dismiss the model, but they're the problems that need solving before file-first moves from interesting to production-grade.
+
+<div class="mx-auto" style="display: flex; justify-content: center;">
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Wrote a new note on file-first systems and agents as a query layer over source documents. <a href="https://t.co/lxrHdpIGkm">pic.twitter.com/lxrHdpIGkm</a></p>&mdash; Sir Hakase (@codehakase) <a href="https://twitter.com/codehakase/status/2028803058549866589?ref_src=twsrc%5Etfw">March 3, 2026</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
