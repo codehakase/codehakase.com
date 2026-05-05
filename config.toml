@@ -18,7 +18,7 @@ enableRobotsTXT = true
     style = "xcode"
     tabWidth = 4
     lineNos = false
-    noClasses = true
+    noClasses = false
 
   [markup.tableOfContents]
     endLevel = 3

@@ -738,6 +738,10 @@ body {
   margin-top: 1rem;
 }
 
+.mt-5 {
+  margin-top: 1.25rem;
+}
+
 .mt-8 {
   margin-top: 2rem;
 }
@@ -770,20 +774,16 @@ body {
   display: none;
 }
 
-.h-32 {
-  height: 8rem;
-}
-
 .w-24 {
   width: 6rem;
 }
 
-.w-32 {
-  width: 8rem;
-}
-
 .max-w-3xl {
   max-width: 48rem;
+}
+
+.max-w-\[36rem\] {
+  max-width: 36rem;
 }
 
 .max-w-none {
@@ -792,6 +792,10 @@ body {
 
 .max-w-sm {
   max-width: 24rem;
+}
+
+.flex-shrink {
+  flex-shrink: 1;
 }
 
 .flex-shrink-0 {
@@ -954,10 +958,6 @@ body {
   padding-bottom: 1.5rem;
 }
 
-.pt-10 {
-  padding-top: 2.5rem;
-}
-
 .pt-4 {
   padding-top: 1rem;
 }
@@ -1022,8 +1022,8 @@ body {
   font-weight: 600;
 }
 
-.leading-7 {
-  line-height: 1.75rem;
+.leading-\[1\.7\] {
+  line-height: 1.7;
 }
 
 .text-gray-400 {
@@ -1034,11 +1034,6 @@ body {
 .text-gray-500 {
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity, 1));
-}
-
-.text-gray-600 {
-  --tw-text-opacity: 1;
-  color: rgb(75 85 99 / var(--tw-text-opacity, 1));
 }
 
 .text-gray-700 {
@@ -1080,11 +1075,6 @@ body {
     order: 2;
   }
 
-  .md\:mx-0 {
-    margin-left: 0px;
-    margin-right: 0px;
-  }
-
   .md\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1100,10 +1090,5 @@ body {
   .md\:text-5xl {
     font-size: 3rem;
     line-height: 1;
-  }
-
-  .md\:text-base {
-    font-size: 1em;
-    line-height: 2;
   }
 }

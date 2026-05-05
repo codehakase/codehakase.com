@@ -15,11 +15,11 @@
           <div class="space-y-10">
             {{ range .Pages }}
               <div>
-                <a href="{{ .RelPermalink }}" class="border-b border-[#aaa]">{{ .Title }}</a>
+                <a href="{{ .RelPermalink }}" class="post-title-link">{{ .Title }}</a>
                 <div class="text-sm mb-2">{{ dateFormat "January 2, 2006" .Date }}</div>
                 <div class="flex items-center gap-2 mt-1">
                   {{ range .Params.tags }}
-                    <a href="{{ printf "/tags/%s/" . | relLangURL }}" class="bg-[#f1f0e8] border-b border-[#aaa] px-2 py-1 text-xs">{{ . }}</a>
+                    <a href="{{ printf "/tags/%s/" . | relLangURL }}" class="post-tag">{{ . }}</a>
                   {{ end }}
                 </div>
               </div>
@@ -33,7 +33,7 @@
         <h3 class="text-xl font-semibold mb-4">Featured</h3>
         <div class="flex flex-wrap gap-2">
           {{ range first 20 .Site.Taxonomies.tags.ByCount }}
-            <a href="{{ printf "/tags/%s/" .Name | relLangURL }}" class="bg-[#f1f0e8] border-b border-[#aaa] px-2 py-1 text-xs">{{ .Name | lower }} ({{ .Count }})</a>
+            <a href="{{ printf "/tags/%s/" .Name | relLangURL }}" class="post-tag">{{ .Name | lower }} ({{ .Count }})</a>
           {{ end }}
         </div>
         <a href="/tags/" class="text-sm mt-2 underline">View all</a>

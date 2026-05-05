@@ -1,4 +1,10 @@
 <head>
+  <script>
+  (function() {
+    var s = localStorage.getItem('theme');
+    if (s) document.documentElement.setAttribute('data-theme', s);
+  })();
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
@@ -9,7 +15,7 @@
   <meta property="og:image" content="https://blob.codehakase.com/static/images/cover-codehakase.png">
   <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}"/>
   <meta property="og:url" content="{{ .Permalink }}"/>
-  
+
   <!-- Twitter Card -->
   <meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}"/>
   <meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{ if .IsPage }}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
@@ -19,7 +25,7 @@
   {{ end }}
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://blob.codehakase.com/static/images/cover-codehakase.png">
-  
+
   <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
@@ -36,17 +42,19 @@
     <link rel="stylesheet" href="{{ .Permalink }}" media="screen">
   {{ end }}
   <link rel="stylesheet" href="{{ .Site.BaseURL }}css/main.css" media="screen">
+  <link rel="stylesheet" href="{{ .Site.BaseURL }}css/syntax-light.css" media="screen">
+  <link rel="stylesheet" href="{{ .Site.BaseURL }}css/syntax-dark.css" media="screen">
 
   {{ if .Params.canonical }}
   <link rel="canonical" href="{{ .Params.canonical }}">
   {{ else }}
   <link rel="canonical" href="{{ .RelPermalink }}">
   {{ end }}
-  
+
   <!-- RSS -->
   {{ with .OutputFormats.Get "rss" -}}
   {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
   {{ end -}}
-  
+
   {{ partialCached "maths.html" . }}
-</head> 
+</head>

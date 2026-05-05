@@ -1,10 +1,60 @@
+/* ── Color tokens ─────────────────────────────────────────── */
+:root {
+  --body-bg:      #fcfbf0;
+  --body-text:    #1c1b14;
+  --code-bg:      #f7f6eb;
+  --code-text:    #689d6a;
+  --border:       #e2e8f0;
+  --table-head-bg:#f8f8f8;
+  --tag-bg:       #f1f0e8;
+  --tag-border:   #aaa;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --body-bg:      #1c1b10;
+    --body-text:    #e8e4c8;
+    --code-bg:      #262519;
+    --code-text:    #8ec07c;
+    --border:       #3a3928;
+    --table-head-bg:#262519;
+    --tag-bg:       #2a2916;
+    --tag-border:   #504f40;
+  }
+}
+
+/* JS manual override — higher specificity than :root */
+html[data-theme="dark"] {
+  --body-bg:      #1c1b10;
+  --body-text:    #e8e4c8;
+  --code-bg:      #262519;
+  --code-text:    #8ec07c;
+  --border:       #3a3928;
+  --table-head-bg:#262519;
+  --tag-bg:       #2a2916;
+  --tag-border:   #504f40;
+}
+
+html[data-theme="light"] {
+  --body-bg:      #fcfbf0;
+  --body-text:    #1c1b14;
+  --code-bg:      #f7f6eb;
+  --code-text:    #689d6a;
+  --border:       #e2e8f0;
+  --table-head-bg:#f8f8f8;
+  --tag-bg:       #f1f0e8;
+  --tag-border:   #aaa;
+}
+
+/* ── Base ─────────────────────────────────────────────────── */
 html {
   scroll-behavior: smooth;
 }
 
 body {
   font-family: "PT Serif", serif;
-  background-color: #fcfbf0;
+  background-color: var(--body-bg);
+  color: var(--body-text);
   font-size: 1.1em;
   font-weight: 300;
   line-height: 1.6;
@@ -14,6 +64,7 @@ ul, ol {
   padding: 0;
 }
 
+/* ── Content body ─────────────────────────────────────────── */
 .content-body p {
   margin-bottom: 1.5rem;
   white-space: pre-wrap;
@@ -81,7 +132,7 @@ ul, ol {
   list-style-type: decimal;
 }
 
-/* Code block styling */
+/* ── Code ─────────────────────────────────────────────────── */
 pre {
   position: relative;
   padding: 1.25rem;
@@ -89,7 +140,7 @@ pre {
   border-radius: 0.25rem;
   overflow-x: auto;
   scrollbar-width: none;
-  background-color: #f7f6eb !important;
+  background-color: var(--code-bg) !important;
   line-height: 1.75em;
   -webkit-overflow-scrolling: touch;
 }
@@ -105,37 +156,38 @@ pre code {
   display: block;
 }
 
-/* Inline code styling */
 :not(pre) > code {
   padding: 0.2rem 0.4rem;
-  background-color: #f7f6eb;
+  background-color: var(--code-bg);
   border-radius: 0.25rem;
   font-size: 0.9em;
-  color: #689d6a; 
+  color: var(--code-text);
 }
 
-/* Ensure images don't overflow their containers */
+/* ── Images ───────────────────────────────────────────────── */
 img {
   max-width: 100%;
   height: auto;
 }
 
+/* ── Blockquote ───────────────────────────────────────────── */
 blockquote {
   border-left: 4px solid #af3a03;
-  padding-left: 1rem;
   font-style: italic;
   margin-left: 0;
   margin-right: 0;
-  background-color: #f7f6eb;
+  background-color: var(--code-bg);
   padding: 1rem;
 }
 
+/* ── HR ───────────────────────────────────────────────────── */
 hr {
   border: 0;
-  border-top: 1px solid #e2e8f0;
+  border-top: 1px solid var(--border);
   margin: 2rem 0;
 }
 
+/* ── Table ────────────────────────────────────────────────── */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -145,22 +197,23 @@ table {
 table th,
 table td {
   padding: 0.5rem;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border);
 }
 
 table th {
-  background-color: #f8f8f8;
+  background-color: var(--table-head-bg);
 }
 
-/* Improve link accessibility */
+/* ── Links ────────────────────────────────────────────────── */
 a:focus {
   outline: 2px solid #4299e1;
   outline-offset: 2px;
 }
 
+/* ── Tags ─────────────────────────────────────────────────── */
 .tag {
-  border: 1px solid black;
-  color: black;
+  border: 1px solid var(--body-text);
+  color: var(--body-text);
   padding: 0.25rem 0.5rem;
   border-radius: 0.25rem;
   text-decoration: none;
@@ -173,25 +226,64 @@ a:focus {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
+/* ── Site nav (shared across landing + content pages) ─────── */
+.site-nav {
+  display: flex;
+  align-items: center;
+  font-size: 0.875rem;
+  gap: 0;
+}
+.site-nav a {
+  color: var(--body-text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.site-nav .sep {
+  margin: 0 5px;
+  opacity: 0.4;
+  user-select: none;
+}
 
+/* ── Post tag chips (blog listing) ───────────────────────── */
+.post-tag {
+  background-color: var(--tag-bg, #f1f0e8);
+  border-bottom: 1px solid var(--tag-border, #aaa);
+  padding: 1px 8px;
+  font-size: 0.75rem;
+  text-decoration: none;
+  color: var(--body-text);
+  display: inline-block;
+}
+.post-tag:hover {
+  opacity: 0.8;
+}
+
+/* Post title link in blog listing */
+.post-title-link {
+  border-bottom: 1px solid var(--tag-border, #aaa);
+  text-decoration: none;
+  color: var(--body-text);
+}
+
+/* ── TOC ──────────────────────────────────────────────────── */
 .toc {
   font-size: 1em;
   line-height: calc(0.9 * 1.5em);
   margin-top: 2rem;
   margin-bottom: 3rem;
-  padding-left: 1.5rem; 
+  padding-left: 1.5rem;
 }
 
-.toc > nav > ul > li > ul { 
+.toc > nav > ul > li > ul {
   margin-left: 1.5rem;
   margin-top: 0.1rem;
   margin-bottom: 0.1rem;
-  list-style-type: disc; 
+  list-style-type: disc;
 }
 
-.toc > nav > ul > li > ul > li > ul { 
-  list-style-type: circle; 
-  margin-left: 1.5rem; 
+.toc > nav > ul > li > ul > li > ul {
+  list-style-type: circle;
+  margin-left: 1.5rem;
 }
 
 .toc > nav > ul > li > ul li {
@@ -203,4 +295,28 @@ a:focus {
   box-shadow: 0 1px;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
+}
+
+/* ── Dark mode toggle ─────────────────────────────────────── */
+.theme-toggle-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px;
+  opacity: 0.45;
+  line-height: 1;
+  color: inherit;
+  margin-left: 12px;
+  flex-shrink: 0;
+}
+.theme-toggle-btn:hover { opacity: 1; }
+
+/* Icon state controlled by data-theme on <html> */
+.theme-toggle-btn #icon-sun { display: none; }
+html[data-theme="dark"] .theme-toggle-btn #icon-moon { display: none; }
+html[data-theme="dark"] .theme-toggle-btn #icon-sun  { display: block; }
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) .theme-toggle-btn #icon-moon { display: none; }
+  html:not([data-theme="light"]) .theme-toggle-btn #icon-sun  { display: block; }
 }
