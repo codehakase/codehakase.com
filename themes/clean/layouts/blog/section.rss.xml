@@ -1,0 +1,31 @@
+{{- /*
+  Canonical feed for the site. Built from the shared writing selector
+  (partials/writing.html) so it always matches the homepage, /blog and
+  llms.txt. Pages outside blog/shorts (about, projects, the year notes,
+  archive) are excluded by construction.
+*/ -}}
+{{- $pages := partial "writing.html" . -}}
+{{- $limit := site.Config.Services.RSS.Limit -}}
+{{- if ge $limit 1 -}}{{ $pages = $pages | first $limit }}{{- end -}}
+{{- printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>{{ .Site.Title }}</title>
+    <link>{{ .Permalink }}</link>
+    <description>Writing by {{ .Site.Title }} — long-form posts and short notes.</description>
+    <generator>Hugo</generator>
+    {{- with site.LanguageCode }}<language>{{ . }}</language>{{ end }}
+    {{- with (index $pages 0) }}<lastBuildDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</lastBuildDate>{{ end }}
+    {{- with .OutputFormats.Get "rss" }}{{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType.Type | safeHTML }}{{ end }}
+    {{- range $pages }}
+    {{- $desc := .Description | default .Summary -}}
+    <item>
+      <title>{{ .Title }}</title>
+      <link>{{ .Permalink }}</link>
+      <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
+      <guid>{{ .Permalink }}</guid>
+      <description>{{ $desc | transform.XMLEscape | safeHTML }}</description>
+    </item>
+    {{- end }}
+  </channel>
+</rss>

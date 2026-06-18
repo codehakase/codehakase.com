@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "hugo --gc --minify",
+  "buildCommand": "hugo --gc --minify && bash scripts/validate.sh",
   "outputDirectory": "public",
   "build": {
     "env": {
@@ -9,6 +9,13 @@
   },
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/index.xml",
+      "destination": "/blog/index.xml",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/llms.txt",

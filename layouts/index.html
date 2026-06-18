@@ -203,7 +203,7 @@
       <div class="mb-8">
         <h2 class="font-semibold text-lg mb-2">Writing</h2>
         <div class="space-y-2">
-          {{ range first 5 (where site.RegularPages "Layout" "in" (slice "post" "shorts")) }}
+          {{ range first 5 (partial "writing.html" .) }}
           <div class="flex justify-between items-center space-y-4">
             <a class="font-medium underline" href="{{.RelPermalink}}">{{.Title}}</a>
             <span class="text-sm text-muted">{{ dateFormat "January 2, 2006" .Date }}</span>

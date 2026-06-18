@@ -1,0 +1,14 @@
+{{/*
+  writing.html — the single source of truth for "what counts as my writing".
+
+  Returns all regular pages in the `blog` and `shorts` sections, newest first.
+  Everything that lists posts (homepage, /blog, the RSS feed, llms.txt, the
+  "recent posts" footer on single pages) consumes this partial so the four
+  surfaces can never drift out of sync.
+
+  New notes are now published under content/blog/; the `shorts` section is a
+  frozen legacy namespace kept only so existing /shorts/* URLs keep resolving.
+*/ -}}
+{{- $pages := where site.RegularPages "Section" "in" (slice "blog" "shorts") -}}
+{{- $pages = where $pages "Params.hidden" "!=" true -}}
+{{ return $pages }}

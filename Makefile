@@ -1,4 +1,10 @@
-.PHONY: upload-static upload-path
+.PHONY: validate upload-static upload-path
+
+# Build the site and run the content-standard invariants (mirrors the Vercel
+# build gate). Run this locally before pushing to catch drift early.
+validate:
+	hugo --gc --minify
+	bash scripts/validate.sh
 
 # Upload all static images to Cloudflare R2
 upload-static:

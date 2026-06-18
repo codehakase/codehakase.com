@@ -40,6 +40,20 @@ summaryLength = 10
 showAllPostsArchive = true
 
 
+# Canonical feed lives at /blog/index.xml (blog + legacy shorts). The home
+# RSS output is dropped so there is a single feed; /index.xml is redirected
+# to /blog/index.xml in vercel.json for any existing subscribers.
+[outputs]
+  home = ["HTML", "llms"]
+
+[outputFormats]
+  [outputFormats.llms]
+    mediaType = "text/plain"
+    baseName = "llms"
+    isPlainText = true
+    rel = "alternate"
+    noUgly = true
+
 [taxonomies]
    tag = "tags"
 

@@ -27,9 +27,7 @@
   </div>
   {{ end }}
   {{ if ne .Params.hidden true }}
-    {{ $currentPage := . }}
-    {{ $recentPages := where .Site.RegularPages "Permalink" "ne" .Permalink }}
-    {{ $recentPages = where $recentPages "Section" "in" (slice "blog" "shorts")}}
+    {{ $recentPages := where (partial "writing.html" .) "Permalink" "ne" .Permalink }}
     {{ if gt (len $recentPages) 1 }}
       <div class="mt-8 pt-4">
         <h3 class="text-lg font-bold mb-2">Recent posts:</h3>

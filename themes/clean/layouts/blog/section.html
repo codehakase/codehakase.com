@@ -7,7 +7,7 @@
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
     <div class="order-2 md:order-1">
-      {{ $pages := where .Site.RegularPages "Section" "in" (slice "blog" "shorts") }}
+      {{ $pages := partial "writing.html" . }}
       
       {{ range ($pages.GroupByDate "2006") }}
         <div class="mb-8">

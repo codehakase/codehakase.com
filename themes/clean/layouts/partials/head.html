@@ -51,10 +51,8 @@
   <link rel="canonical" href="{{ .RelPermalink }}">
   {{ end }}
 
-  <!-- RSS -->
-  {{ with .OutputFormats.Get "rss" -}}
-  {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
-  {{ end -}}
+  <!-- RSS (canonical feed: blog + legacy shorts) -->
+  {{ printf `<link rel="alternate" type="application/rss+xml" href="%s" title="%s" />` ("blog/index.xml" | absURL) $.Site.Title | safeHTML }}
 
   {{ partialCached "maths.html" . }}
 </head>
