@@ -8,10 +8,11 @@ I build in the open to solve niche problems and explore new tech, focusing on th
 
 Below are some open source software projects I've authored or helped develop. If you find something interesting, let me know!
 
-- [alpf](https://github.com/codehakase/alpf) - Agentic Loop with Promise Fulfilment, a deterministic framework for agents to retry tasks until a promise is fulfilled.
 - [snipp](https://github.com/codehakase/snipp) - Minimalist macOS screenshot utility built with Rust + Tauri v2.
-- [Fake.hs](https://github.com/codehakase/Fake.hs) - A minimalist Haskell faker library for generating fake data in tests, built with the State monad.
+- [alpf](https://github.com/codehakase/alpf) - Agentic Loop with Promise Fulfilment, a deterministic framework for agents to retry tasks until a promise is fulfilled.
 - [md](https://github.com/codehakase/md) - A fast, lightweight CLI utility for rendering Markdown files with rich formatting and syntax highlighting.
+- [Fake.hs](https://github.com/codehakase/Fake.hs) - A minimalist Haskell faker library for generating fake data in tests, built with the State monad.
+- [playback](https://github.com/codehakase/playback) - Playback is a CLI tool to change video playback speed. Re-encodes video so file size scales with duration.
 - [rld](https://github.com/codehakase/rld) is a tiny tool that runs a Go program and watch changes on it.
 - [Engage PHP SDK](https://github.com/engage-so/engage-php) lets you capture user attributes and events on your site.
 - [Engage Go SDK](https://github.com/engage-so/engage-go) is the [Engage.so](https://engage.so) sdk written in Go.

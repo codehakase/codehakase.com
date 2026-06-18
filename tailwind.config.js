@@ -20,8 +20,8 @@ module.exports = {
         'h5': ['1.1em', { lineHeight: '1.5' }],
       },
       colors: {
-        'code-bg': '#f7f6eb',
-        'code-text': '#689d6a',
+        'code-bg': 'var(--code-bg)',
+        'code-text': 'var(--code-text)',
       },
       padding: {
         'code': '1.25rem',

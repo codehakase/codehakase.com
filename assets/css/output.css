@@ -636,8 +636,7 @@ body {
   margin-right: auto;
   overflow-x: auto;
   border-radius: 0.25rem;
-  --tw-bg-opacity: 1;
-  background-color: rgb(247 246 235 / var(--tw-bg-opacity, 1));
+  background-color: var(--code-bg);
   padding: 1.25rem;
   line-height: 1.75;
 }
@@ -657,16 +656,14 @@ body {
 
 .content-body :not(pre) > code {
   border-radius: 0.25rem;
-  --tw-bg-opacity: 1;
-  background-color: rgb(247 246 235 / var(--tw-bg-opacity, 1));
+  background-color: var(--code-bg);
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
-  --tw-text-opacity: 1;
-  color: rgb(104 157 106 / var(--tw-text-opacity, 1));
+  color: var(--code-text);
 }
 
 .visible {
