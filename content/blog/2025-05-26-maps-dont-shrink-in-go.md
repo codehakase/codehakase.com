@@ -7,6 +7,7 @@ modified: 2025-05-27
 tags: [go, maps]
 share: true
 category: "go"
+math: true
 ---
 
 Maps in Go are built-in data structures that provide a way to store key-value pairs. They are similar to dictionaries or hash tables in other programming languages. Maps are unordered collections, meaning that the order of elements is not guaranteed.

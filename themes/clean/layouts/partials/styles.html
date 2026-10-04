@@ -1,0 +1,15 @@
+{{- $tailwind := resources.Get "css/output.css" -}}
+{{- $main := resources.FromString "css/main.source.css" (readFile "themes/clean/static/css/main.css") -}}
+{{- $styles := slice $tailwind $main -}}
+{{- $target := "css/home.css" -}}
+
+{{- if .syntax -}}
+  {{- $syntaxLight := resources.FromString "css/syntax-light.source.css" (readFile "themes/clean/static/css/syntax-light.css") -}}
+  {{- $syntaxDark := resources.FromString "css/syntax-dark.source.css" (readFile "themes/clean/static/css/syntax-dark.css") -}}
+  {{- $styles = slice $tailwind $main $syntaxLight $syntaxDark -}}
+  {{- $target = "css/site.css" -}}
+{{- end -}}
+
+{{- with $styles | resources.Concat $target | minify | fingerprint "sha256" -}}
+  <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous" media="screen">
+{{- end -}}

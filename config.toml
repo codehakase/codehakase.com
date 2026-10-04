@@ -8,7 +8,6 @@ enableRobotsTXT = true
   mainSections = ["blog", "shorts"]
   description = "Francis Sunday's personal website"
   twitter = "@codehakase"
-  maths = true
 
 [markup]
   [markup.highlight]
@@ -60,3 +59,14 @@ showAllPostsArchive = true
 [permalinks]
   blog = "/blog/:title"
   shorts = "/shorts/:title"
+
+[module]
+  [[module.mounts]]
+    source = "assets"
+    target = "assets"
+  [[module.mounts]]
+    source = "static"
+    target = "assets"
+  [[module.mounts]]
+    source = "static"
+    target = "static"

@@ -38,12 +38,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-  {{ with resources.Get "css/output.css" }}
-    <link rel="stylesheet" href="{{ .Permalink }}" media="screen">
-  {{ end }}
-  <link rel="stylesheet" href="{{ .Site.BaseURL }}css/main.css" media="screen">
-  <link rel="stylesheet" href="{{ .Site.BaseURL }}css/syntax-light.css" media="screen">
-  <link rel="stylesheet" href="{{ .Site.BaseURL }}css/syntax-dark.css" media="screen">
+  {{ partialCached "styles.html" (dict "syntax" true) "content" }}
 
   {{ if .Params.canonical }}
   <link rel="canonical" href="{{ .Params.canonical }}">
@@ -54,5 +49,7 @@
   <!-- RSS (canonical feed: blog + legacy shorts) -->
   {{ printf `<link rel="alternate" type="application/rss+xml" href="%s" title="%s" />` ("blog/index.xml" | absURL) $.Site.Title | safeHTML }}
 
-  {{ partialCached "maths.html" . }}
+  {{ if .Params.math }}
+    {{ partial "maths.html" . }}
+  {{ end }}
 </head>

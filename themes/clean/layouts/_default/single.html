@@ -21,7 +21,7 @@
     <h3 class="text-lg font-bold mb-2">Tags:</h3>
     <div class="flex flex-wrap">
       {{ range .Params.tags }}
-        <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" class="tag">{{ . }}</a>
+        <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}/" class="tag">{{ . }}</a>
       {{ end }}
     </div>
   </div>

@@ -1,0 +1,46 @@
+{{- $src := .Destination -}}
+{{- $localPath := "" -}}
+{{- $resourcePath := "" -}}
+{{- $alt := .PlainText -}}
+{{- $title := .Title -}}
+
+{{- if strings.HasPrefix .Destination "https://blob.codehakase.com/static/" -}}
+  {{- $localPath = strings.TrimPrefix "https://blob.codehakase.com" .Destination -}}
+  {{- $src = strings.TrimPrefix "/static" $localPath -}}
+  {{- $resourcePath = strings.TrimPrefix "/static/" $localPath -}}
+{{- else if strings.HasPrefix .Destination "/" -}}
+  {{- $localPath = printf "/static%s" .Destination -}}
+  {{- $resourcePath = strings.TrimPrefix "/" .Destination -}}
+{{- end -}}
+
+{{- $imageNumber := .Page.Scratch.Get "markdownImageNumber" | default 0 -}}
+{{- $imageConfig := false -}}
+{{- $imageResource := false -}}
+{{- if and $localPath (fileExists $localPath) -}}
+  {{- $imageConfig = images.Config $localPath -}}
+{{- end -}}
+{{- with resources.Get $resourcePath -}}
+  {{- if eq .MediaType.MainType "image" -}}
+    {{- $imageResource = . -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $srcset := slice -}}
+{{- if and $imageResource (in (slice "jpeg" "png") $imageResource.MediaType.SubType) -}}
+  {{- range slice 480 768 1280 1536 -}}
+    {{- if ge $imageResource.Width . -}}
+      {{- $resized := $imageResource.Resize (printf "%dx" .) -}}
+      {{- $srcset = $srcset | append (printf "%s %dw" $resized.RelPermalink .) -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+<img src="{{ $src | safeURL }}"
+  {{- with $alt }} alt="{{ . }}"{{ else }} alt=""{{ end -}}
+  {{- with $title }} title="{{ . }}"{{ end -}}
+  {{- with $imageConfig }} width="{{ .Width }}" height="{{ .Height }}"{{ end -}}
+  {{- with $srcset }} srcset="{{ delimit . ", " }}" sizes="(max-width: 768px) calc(100vw - 2rem), 736px"{{ end -}}
+  {{- if eq $imageNumber 0 }} fetchpriority="high"{{ else }} loading="lazy"{{ end -}}
+  decoding="async">
+
+{{- .Page.Scratch.Add "markdownImageNumber" 1 -}}

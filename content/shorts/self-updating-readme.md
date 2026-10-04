@@ -43,7 +43,6 @@ func main() {
 
 This is currently configured to run every push to the repo, and on schedule for every 6 hours.
 
-What I like about the structure of this script is how I can extend it to pull multiple feed entries. It only pulls my latest posts, and with this new [Shorts](/shorts) category I've added for TILs and short-form content, I can extend the `ReadmeInfo` to include a `Shorts` slice, and add another routine to concurrently fetch the rss info for shorts.
+What I like about the structure of this script is how I can extend it to pull multiple feed entries. It only pulls my latest posts, and with this new [Shorts](/shorts/) category I've added for TILs and short-form content, I can extend the `ReadmeInfo` to include a `Shorts` slice, and add another routine to concurrently fetch the rss info for shorts.
 
 [^1]: GitHub profile READMEs allow users to create a special repository with their username. This enables personalized introductions with information like bio, skills, and projects.
-

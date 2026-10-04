@@ -1,5 +1,6 @@
 .hugo_build.lock
 /public
+/resources
 /node_modules
 .DS_Store
 .wrangler
