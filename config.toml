@@ -6,7 +6,7 @@ enableRobotsTXT = true
 
 [params]
   mainSections = ["blog", "shorts"]
-  description = "Francis Sunday's personal website"
+  description = "Francis Sunday is a software engineer building reliable products, backend systems, infrastructure, and developer tools."
   twitter = "@codehakase"
 
 [markup]

@@ -1,163 +1,228 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <script>
-    (function() {
-      var s = localStorage.getItem('theme');
-      if (s) document.documentElement.setAttribute('data-theme', s);
-    })();
+      (function () {
+        var s = localStorage.getItem("theme");
+        if (s) document.documentElement.setAttribute("data-theme", s);
+      })();
     </script>
-    <title>Francis Sunday</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Francis Sunday&#x27;s personal website"/>
-    <meta property="og:title" content="Home | Francis Sunday"/>
-    <meta name="og:locale" property="og:locale" content="en_US"/>
-    <meta property="og:description" content="Francis Sunday&#x27;s personal website"/>
-    <meta name="twitter:title" content="codehakase (Francis Sunday)"/>
-    <meta name="twitter:description" content="Francis Sunday&#x27;s personal website"/>
-    <meta name="twitter:creator" property="twitter:creator" content="@codehakase"/>
-    <meta property="twitter:url" content="https://codehakase.com"/>
-    <meta name="google-site-verification" content="7vov0rUbQyKAwE63r2_AJWzknxbi7wZ1JvQ9ywVCSwA" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
-    <link rel="manifest" href="/favicons/site.webmanifest">
-    <link rel="shortcut icon" href="/favicons/favicon.ico">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <title>Francis Sunday — Software Engineer</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Francis Sunday is a software engineer building reliable products, backend systems, infrastructure, and developer tools."
+    />
+    <meta property="og:title" content="Francis Sunday — Software Engineer" />
+    <meta name="og:locale" property="og:locale" content="en_US" />
+    <meta
+      property="og:description"
+      content="Francis Sunday is a software engineer building reliable products, backend systems, infrastructure, and developer tools."
+    />
+    <meta
+      property="og:image"
+      content="https://blob.codehakase.com/static/images/cover-codehakase.png"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://codehakase.com" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Francis Sunday — Software Engineer" />
+    <meta
+      name="twitter:description"
+      content="Francis Sunday is a software engineer building reliable products, backend systems, infrastructure, and developer tools."
+    />
+    <meta
+      name="twitter:image"
+      content="https://blob.codehakase.com/static/images/cover-codehakase.png"
+    />
+    <meta
+      name="twitter:creator"
+      property="twitter:creator"
+      content="@codehakase"
+    />
+    <meta property="twitter:url" content="https://codehakase.com" />
+    <meta
+      name="google-site-verification"
+      content="7vov0rUbQyKAwE63r2_AJWzknxbi7wZ1JvQ9ywVCSwA"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicons/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/favicons/site.webmanifest" />
+    <link rel="shortcut icon" href="/favicons/favicon.ico" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
     {{ partialCached "styles.html" (dict "syntax" false) "home" }}
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Francis Sunday",
-      "alternateName": "codehakase",
-      "jobTitle": "Software Engineer",
-      "worksFor": {
-        "@type": "Organization",
-        "name": "Talstack",
-        "url": "https://talstack.com"
-      },
-      "url": "https://codehakase.com",
-      "sameAs": [
-        "https://www.linkedin.com/in/codehakase",
-        "https://github.com/codehakase",
-        "https://twitter.com/codehakase",
-        "https://codehakase.com",
-        "https://hakasestudio.com"
-      ],
-      "owns": {
-        "@type": "Organization",
-        "name": "Hakase Development Studio",
-        "url": "https://hakasestudio.com",
-        "description": "A development studio focused on backend systems, infrastructure, and making complex products work at scale."
-      },
-      "knowsAbout": [
-        "Go", "Golang", "Haskell", "Functional Programming",
-        "Backend Engineering", "Infrastructure", "Distributed Systems",
-        "Databases", "SQL", "Postgres"
-      ],
-      "image": "https://blob.codehakase.com/static/images/dp.jpeg",
-      "description": "Francis Sunday is an experienced software engineer building financial systems, compliance workflows, monitoring tools, and developer tools. He works primarily with Go and Haskell, with interests in distributed systems, databases, and functional programming."
-    }
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Francis Sunday",
+        "alternateName": "codehakase",
+        "jobTitle": "Software Engineer",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Talstack",
+          "url": "https://talstack.com"
+        },
+        "url": "https://codehakase.com",
+        "sameAs": [
+          "https://www.linkedin.com/in/codehakase",
+          "https://github.com/codehakase",
+          "https://twitter.com/codehakase",
+          "https://codehakase.com",
+          "https://hakasestudio.com"
+        ],
+        "owns": {
+          "@type": "Organization",
+          "name": "Hakase Development Studio",
+          "url": "https://hakasestudio.com",
+          "description": "A development studio focused on backend systems, infrastructure, and making complex products work at scale."
+        },
+        "knowsAbout": [
+          "Go",
+          "Golang",
+          "Haskell",
+          "Functional Programming",
+          "Backend Engineering",
+          "Infrastructure",
+          "Distributed Systems",
+          "Databases",
+          "SQL",
+          "Postgres"
+        ],
+        "image": "https://blob.codehakase.com/static/images/dp.jpeg",
+        "description": "Francis Sunday is an experienced software engineer building reliable products, financial systems, compliance workflows, monitoring tools, and developer tools. His work spans product engineering, backend systems, infrastructure, distributed systems, and databases, often using Go and Haskell."
+      }
     </script>
     <style>
-    /* ── Color tokens ──────────────────────────────────────── */
-    :root {
-      --body-bg:    #fcfbf0;
-      --body-text:  #1c1b14;
-      --muted:      #4b5563;
-      --dim:        #9ca3af;
-      --tag-bg:     #f1f0e8;
-      --tag-border: #aaa;
-    }
-    @media (prefers-color-scheme: dark) {
+      /* ── Color tokens ──────────────────────────────────────── */
       :root {
-        --body-bg:    #1c1b10;
-        --body-text:  #e8e4c8;
-        --muted:      #8a8878;
-        --dim:        #6b6a5a;
-        --tag-bg:     #2a2916;
+        --body-bg: #fcfbf0;
+        --body-text: #1c1b14;
+        --muted: #4b5563;
+        --dim: #9ca3af;
+        --tag-bg: #f1f0e8;
+        --tag-border: #aaa;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --body-bg: #1c1b10;
+          --body-text: #e8e4c8;
+          --muted: #8a8878;
+          --dim: #6b6a5a;
+          --tag-bg: #2a2916;
+          --tag-border: #504f40;
+        }
+      }
+      html[data-theme="dark"] {
+        --body-bg: #1c1b10;
+        --body-text: #e8e4c8;
+        --muted: #8a8878;
+        --dim: #6b6a5a;
+        --tag-bg: #2a2916;
         --tag-border: #504f40;
       }
-    }
-    html[data-theme="dark"] {
-      --body-bg:    #1c1b10;
-      --body-text:  #e8e4c8;
-      --muted:      #8a8878;
-      --dim:        #6b6a5a;
-      --tag-bg:     #2a2916;
-      --tag-border: #504f40;
-    }
-    html[data-theme="light"] {
-      --body-bg:    #fcfbf0;
-      --body-text:  #1c1b14;
-      --muted:      #4b5563;
-      --dim:        #9ca3af;
-      --tag-bg:     #f1f0e8;
-      --tag-border: #aaa;
-    }
+      html[data-theme="light"] {
+        --body-bg: #fcfbf0;
+        --body-text: #1c1b14;
+        --muted: #4b5563;
+        --dim: #9ca3af;
+        --tag-bg: #f1f0e8;
+        --tag-border: #aaa;
+      }
 
-    /* ── Base ──────────────────────────────────────────────── */
-    body {
-      font-family: "PT Serif", serif;
-      font-size: 1.1em;
-      line-height: 1.6;
-      background-color: var(--body-bg);
-      color: var(--body-text);
-    }
+      /* ── Base ──────────────────────────────────────────────── */
+      body {
+        font-family: "PT Serif", serif;
+        font-size: 1.1em;
+        line-height: 1.6;
+        background-color: var(--body-bg);
+        color: var(--body-text);
+      }
 
-    /* ── Header layout ─────────────────────────────────────── */
-    .site-header {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      padding-top: 2.5rem;
-      margin-bottom: 2rem;
-    }
-    .header-right {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding-bottom: 4px;
-    }
+      /* ── Header layout ─────────────────────────────────────── */
+      .site-header {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        padding-top: 2.5rem;
+        margin-bottom: 2rem;
+      }
+      .header-right {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding-bottom: 4px;
+      }
 
-    /* ── Theme toggle ──────────────────────────────────────── */
-    .theme-btn {
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0;
-      line-height: 1;
-      color: var(--body-text);
-      opacity: 0.45;
-      flex-shrink: 0;
-    }
-    .theme-btn:hover { opacity: 1; }
+      /* ── Theme toggle ──────────────────────────────────────── */
+      .theme-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        line-height: 1;
+        color: var(--body-text);
+        opacity: 0.45;
+        flex-shrink: 0;
+      }
+      .theme-btn:hover {
+        opacity: 1;
+      }
 
-    /* Icon state */
-    .theme-btn #icon-sun { display: none; }
-    html[data-theme="dark"] .theme-btn #icon-moon { display: none; }
-    html[data-theme="dark"] .theme-btn #icon-sun  { display: block; }
-    @media (prefers-color-scheme: dark) {
-      html:not([data-theme="light"]) .theme-btn #icon-moon { display: none; }
-      html:not([data-theme="light"]) .theme-btn #icon-sun  { display: block; }
-    }
+      /* Icon state */
+      .theme-btn #icon-sun {
+        display: none;
+      }
+      html[data-theme="dark"] .theme-btn #icon-moon {
+        display: none;
+      }
+      html[data-theme="dark"] .theme-btn #icon-sun {
+        display: block;
+      }
+      @media (prefers-color-scheme: dark) {
+        html:not([data-theme="light"]) .theme-btn #icon-moon {
+          display: none;
+        }
+        html:not([data-theme="light"]) .theme-btn #icon-sun {
+          display: block;
+        }
+      }
 
-    /* ── Muted text overrides ──────────────────────────────── */
-    .text-muted { color: var(--muted); }
+      /* ── Muted text overrides ──────────────────────────────── */
+      .text-muted {
+        color: var(--muted);
+      }
 
-    /* ── Project tag chips ─────────────────────────────────── */
-    .chip {
-      background-color: var(--tag-bg);
-      border-bottom: 1px solid var(--tag-border);
-      padding: 2px 8px;
-      font-size: 0.75rem;
-    }
+      /* ── Project tag chips ─────────────────────────────────── */
+      .chip {
+        background-color: var(--tag-bg);
+        border-bottom: 1px solid var(--tag-border);
+        padding: 2px 8px;
+        font-size: 0.75rem;
+      }
     </style>
   </head>
 
@@ -172,38 +237,78 @@
             <a href="/blog/">posts</a>
             <span class="sep">/</span>
             <a href="/projects/">projects</a>
+            <span class="sep">/</span>
+            <a href="/links/">links</a>
           </nav>
-          <button class="theme-btn" onclick="toggleTheme()" title="Toggle dark mode">
-            <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          <button
+            class="theme-btn"
+            onclick="toggleTheme()"
+            title="Toggle dark mode"
+          >
+            <svg
+              id="icon-moon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
             </svg>
-            <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="5"/>
-              <line x1="12" y1="1" x2="12" y2="3"/>
-              <line x1="12" y1="21" x2="12" y2="23"/>
-              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-              <line x1="1" y1="12" x2="3" y2="12"/>
-              <line x1="21" y1="12" x2="23" y2="12"/>
-              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            <svg
+              id="icon-sun"
+              xmlns="http://www.w3.org/2000/svg"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="5" />
+              <line x1="12" y1="1" x2="12" y2="3" />
+              <line x1="12" y1="21" x2="12" y2="23" />
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+              <line x1="1" y1="12" x2="3" y2="12" />
+              <line x1="21" y1="12" x2="23" y2="12" />
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
             </svg>
           </button>
         </div>
       </header>
 
-       <div class="mb-8">
+      <div class="mb-8">
         <h1 class="text-4xl md:text-5xl font-bold">Francis Sunday</h1>
-        <h3 class="text-xl max-w-[36rem] mt-5 leading-[1.7]">I'm a software engineer with a passion for building amazing products and systems, currently making work "work" at <a href="" class="underline">Talstack</a></h3>
-       </div>
+        <div class="text-xl max-w-[36rem] mt-5 leading-[1.7] space-y-4">
+          <p>
+            I'm a software engineer building dependable products, backend
+            systems, and developer tools. Currently at
+            <a href="https://talstack.com?ref=codehakase.com" class="underline"
+              >Talstack</a
+            >.
+          </p>
+          <p>
+            I write about systems, programming, and things I learn while
+            building.
+          </p>
+        </div>
+      </div>
 
       <div class="mb-8">
         <h2 class="font-semibold text-lg mb-2">Writing</h2>
         <div class="space-y-2">
           {{ range first 5 (partial "writing.html" .) }}
           <div class="flex justify-between items-center space-y-4">
-            <a class="font-medium underline" href="{{.RelPermalink}}">{{.Title}}</a>
-            <span class="text-sm text-muted">{{ dateFormat "January 2, 2006" .Date }}</span>
+            <a class="font-medium underline" href="{{.RelPermalink}}"
+              >{{.Title}}</a
+            >
+            <span class="text-sm text-muted"
+              >{{ dateFormat "January 2, 2006" .Date }}</span
+            >
           </div>
           {{ end }}
         </div>
@@ -216,23 +321,37 @@
         <h2 class="font-semibold text-lg mb-2">Projects</h2>
         <div class="grid md:grid-cols-3 gap-6">
           <div>
-            <a class="font-medium" href="https://github.com/codehakase/snipp">snipp</a>
-            <p class="text-sm text-muted mt-1">Minimalist macOS screenshot utility built with Rust + Tauri v2.</p>
+            <a class="font-medium" href="https://github.com/codehakase/snipp"
+              >snipp</a
+            >
+            <p class="text-sm text-muted mt-1">
+              Minimalist macOS screenshot utility built with Rust + Tauri v2.
+            </p>
             <div class="flex items-center gap-2 mt-1">
               <span class="chip">rust</span>
               <span class="chip">tauri</span>
             </div>
           </div>
           <div>
-            <a class="font-medium" href="https://github.com/codehakase/alpf">alpf</a>
-            <p class="text-sm text-muted mt-1">Agentic Loop with Promise Fulfilment, a deterministic framework for agents to retry tasks until a promise is fulfilled.</p>
+            <a class="font-medium" href="https://github.com/codehakase/alpf"
+              >alpf</a
+            >
+            <p class="text-sm text-muted mt-1">
+              Agentic Loop with Promise Fulfilment, a deterministic framework
+              for agents to retry tasks until a promise is fulfilled.
+            </p>
             <div class="flex items-center gap-2 mt-1">
               <span class="chip">go</span>
             </div>
           </div>
           <div>
-            <a class="font-medium" href="https://github.com/codehakase/Fake.hs">Fake.hs</a>
-            <p class="text-sm text-muted mt-1">A minimalist Haskell faker library for generating fake data in tests, built with the State monad.</p>
+            <a class="font-medium" href="https://github.com/codehakase/Fake.hs"
+              >Fake.hs</a
+            >
+            <p class="text-sm text-muted mt-1">
+              A minimalist Haskell faker library for generating fake data in
+              tests, built with the State monad.
+            </p>
             <div class="flex items-center gap-2 mt-1">
               <span class="chip">haskell</span>
             </div>
@@ -245,12 +364,27 @@
 
       <footer class="mt-8 mb-8 pt-8">
         <div class="text-sm font-medium max-w-sm">
-          <p class="mb-3">Got any thoughts, comments, corrections or suggestions? <a class="underline" href="mailto:me@codehakase.com">Email me</a> or <a href="https://calendar.app.google/25LQtt9mAm2PuhG19?ref=codehakase.com" target="_blank" class="underline">Book a call</a>. I'd like to hear from you.</p>
+          <p class="mb-3">
+            Got any thoughts, comments, corrections or suggestions?
+            <a class="underline" href="mailto:me@codehakase.com">Email me</a> or
+            <a
+              href="https://calendar.app.google/25LQtt9mAm2PuhG19?ref=codehakase.com"
+              target="_blank"
+              class="underline"
+              >Book a call</a
+            >. I'd like to hear from you.
+          </p>
           <div class="flex flex-col underline">
             <a href="/blog/index.xml">rss</a>
-            <a href="https://github.com/codehakase?ref=codehakase.com">github</a>
-            <a href="https://linkedin.com/in/codehakase?ref=codehakase.com">linkedin</a>
-            <a href="https://bsky.app/profile/codehakase.com?ref=codehakase.com">bsky</a>
+            <a href="https://github.com/codehakase?ref=codehakase.com"
+              >github</a
+            >
+            <a href="https://linkedin.com/in/codehakase?ref=codehakase.com"
+              >linkedin</a
+            >
+            <a href="https://bsky.app/profile/codehakase.com?ref=codehakase.com"
+              >bsky</a
+            >
             <a href="https://x.com/codehakase?ref=codehakase.com">X</a>
             <a href="https://hakasestudio.com?ref=codehakase.com">studio</a>
           </div>
@@ -259,19 +393,24 @@
     </div>
 
     <script>
-    function toggleTheme() {
-      var h = document.documentElement;
-      var current = h.getAttribute('data-theme') ||
-        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      var next = current === 'dark' ? 'light' : 'dark';
-      h.setAttribute('data-theme', next);
-      localStorage.setItem('theme', next);
-    }
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
-      if (!localStorage.getItem('theme')) {
-        document.documentElement.removeAttribute('data-theme');
+      function toggleTheme() {
+        var h = document.documentElement;
+        var current =
+          h.getAttribute("data-theme") ||
+          (window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light");
+        var next = current === "dark" ? "light" : "dark";
+        h.setAttribute("data-theme", next);
+        localStorage.setItem("theme", next);
       }
-    });
+      window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .addEventListener("change", function (e) {
+          if (!localStorage.getItem("theme")) {
+            document.documentElement.removeAttribute("data-theme");
+          }
+        });
     </script>
   </body>
 </html>

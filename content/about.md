@@ -1,23 +1,28 @@
 ---
 title: "About"
 date: 2025-02-08T10:52:01+01:00
+description: "Francis Sunday is a software engineer building reliable products, backend systems, infrastructure, and developer tools."
 category: [about]
 hidden: true
+showDate: false
 ---
 
 Hi, I'm Francis.
 
-I'm a software engineer who likes reliable systems and elegant functional design. I work mostly in Go and Haskell, and I'm drawn to distributed systems, databases, and developer tools.
+I'm a software engineer based in Lagos, Nigeria. I work at [Talstack](https://talstack.com?ref=codehakase.com), and run a small [infra studio](https://hakasestudio.com?ref=codehakase.com), helping founders build dependable backend systems and infrastructure. Previously, I worked on payments infrastructure at [Nala](https://nala.com?ref=codehakase.com).
 
-Currently, I'm a full-stack engineer at [Talstack](https://talstack.com?ref=codehakase.com), building the platform powering Africa's workforce. Before that I worked on payments infrastructure at [Nala](https://nala.com?ref=codehakase.com), helping ship the EU→West Africa remittance corridor.
+My interests include distributed systems, Go, Haskell, developer tools, and music. This site is where I write about things I’m learning, software I’m building, and problems I find interesting.
 
-I also run a small [infra studio](https://hakasestudio.com?ref=codehakase.com) for technical founders building infrastructure-heavy products — distributed systems, blockchain infrastructure, and the long-term reliability work most teams struggle to hire for.
+If you have any questions or want to get in touch with me, email me:
 
-##### Contact
-- [BlueSky](https://bsky.app/profile/codehakase.com?ref=codehakase.com)
-- [X (Twitter)](https://x.com/codehakase?ref=codehakase.com) 
+me@codehakase.com
+
+I'm also on other platforms:
+
 - [Github](https://github.com/codehakase?ref=codehakase.com)
 - [LinkedIn](https://linkedin.com/in/codehakase?ref=codehakase.com)
+- [X (Twitter)](https://x.com/codehakase?ref=codehakase.com) 
+- [BlueSky](https://bsky.app/profile/codehakase.com?ref=codehakase.com)
 
 ##### Colophon
 
