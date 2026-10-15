@@ -39,7 +39,7 @@
   {{- with $alt }} alt="{{ . }}"{{ else }} alt=""{{ end -}}
   {{- with $title }} title="{{ . }}"{{ end -}}
   {{- with $imageConfig }} width="{{ .Width }}" height="{{ .Height }}"{{ end -}}
-  {{- with $srcset }} srcset="{{ delimit . ", " }}" sizes="(max-width: 768px) calc(100vw - 2rem), 736px"{{ end -}}
+  {{- with $srcset }} srcset="{{ delimit . ", " }}" sizes="(max-width: 640px) calc(100vw - 2rem), 608px"{{ end -}}
   {{- if eq $imageNumber 0 }} fetchpriority="high"{{ else }} loading="lazy"{{ end -}}
   decoding="async">
 

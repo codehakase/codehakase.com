@@ -1,38 +1,28 @@
 {{ define "main" }}
-<div class="mb-8">
-  {{ if eq .RelPermalink "/blog/" }}
-    <h1 class="text-3xl font-bold mb-6">Posts</h1>
-  {{ else if isset .Data "Term" }}
-    <h1 class="text-2xl font-bold mb-6">{{ .Data.Term | lower}}</h1>
+<div class="listing">
+  {{ if isset .Data "Term" }}
+    <p class="eyebrow"><a href="/tags/">Topics</a></p>
+    <h1 class="page-title">{{ .Data.Term | lower }}</h1>
   {{ else }}
-    <h1 class="text-3xl font-bold mb-6">{{ .Title }}</h1>
+    <h1 class="page-title">{{ .Title }}</h1>
   {{ end }}
 
   {{ with .Content }}
-    <div class="mb-8">{{ . }}</div>
+    <div class="listing-intro content-body">{{ . }}</div>
   {{ end }}
 
-  <div class="space-y-8">
-    {{ if isset .Data "Term" }}
-      {{ range .Pages }}
-        <div>
-          <a href="{{ .RelPermalink }}" class="border-b border-[#aaa]">{{ .Title }}</a>
-          <div class="text-sm mb-2">{{ dateFormat "January 2, 2006" .Date }}</div>
-        </div>
-      {{ end }}
-    {{ else }}
-      {{ $paginator := .Paginate (where .Pages "Type" "in" .Site.Params.mainSections) 10 }}
-      {{ range $paginator.Pages }}
-        <div>
-          <a href="{{ .RelPermalink }}" class="border-b border-[#aaa]">{{ .Title }}</a>
-          <div class="text-sm mb-2">{{ dateFormat "January 2, 2006" .Date }}</div>
-        </div>
-      {{ end }}
-    {{ end }}
-  </div>
-
+  {{ $pages := .Pages }}
   {{ if not (isset .Data "Term") }}
-    {{ partial "pagination.html" . }}
+    {{ $pages = where .Pages "Type" "in" .Site.Params.mainSections }}
   {{ end }}
+  {{ $pages = where $pages "Params.hidden" "!=" true }}
+  <ul class="post-list">
+    {{ range $pages }}
+    <li>
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+    </li>
+    {{ end }}
+  </ul>
 </div>
-{{ end }} 
+{{ end }}

@@ -15,7 +15,7 @@ My interests include distributed systems, Go, Haskell, developer tools, and musi
 
 If you have any questions or want to get in touch with me, email me:
 
-me@codehakase.com
+[me@codehakase.com](mailto:me@codehakase.com)
 
 I'm also on other platforms:
 
@@ -24,6 +24,6 @@ I'm also on other platforms:
 - [X (Twitter)](https://x.com/codehakase?ref=codehakase.com) 
 - [BlueSky](https://bsky.app/profile/codehakase.com?ref=codehakase.com)
 
-##### Colophon
+## Colophon
 
 This site is built with [Hugo](https://gohugo.io) and [TailwindCSS](https://tailwindcss.com), and hosted on [Vercel](https://vercel.com).

@@ -153,6 +153,6 @@ On BSD, macOS, and Solaris systems, [`Chtimes`](https://golang.org/pkg/os/#Chtim
 ## Conclusion
 This article was made to point out some changes made to the Go programming language. Having been using Go since v1.8 some of the changes to v1.10 brings optimization and faster runtime to developing Go programs. Have you upgraded your existing Go codebases to V1.10? Share your experience in the comment section below 😄.
 
-#### References
+### References
 [https://golang.org.doc/go1.10](https://golang.org.doc/go1.10)
 

@@ -1,0 +1,5 @@
+<h{{ .Level }} id="{{ .Anchor }}"
+  {{- range $k, $v := .Attributes }}{{ if ne $k "id" }}{{ printf " %s=%q" $k $v | safeHTMLAttr }}{{ end }}{{ end }}>
+  {{- .Text -}}
+  {{- if and (ge .Level 2) (le .Level 3) (ne .Page.Params.class "links") }}<a class="heading-anchor" href="#{{ .Anchor }}" aria-hidden="true" tabindex="-1">#</a>{{ end -}}
+</h{{ .Level }}>

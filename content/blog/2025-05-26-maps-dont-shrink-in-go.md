@@ -28,7 +28,7 @@ Go maps are designed to **grow** as the data they hold increases, but they gener
 1.  There are **too many overflow buckets** (an indicator that many main buckets are very full and chaining heavily).
 2.  The **load factor** exceeds a predefined threshold.
 
-### The Growth Process
+## The Growth Process
 
 When a map needs to grow, Go performs these main steps:
 1.  A **new, larger array of main buckets** is allocated. This new array is often twice the size of the current one.
@@ -38,7 +38,7 @@ When a map needs to grow, Go performs these main steps:
 Sometimes, multiple keys will hash to the same main bucket. Each main bucket has a fixed number of slots (e.g 8). If a main bucket fills up, Go doesn't immediately resize the entire map. Instead, it creates an **overflow bucket** and links it to that specific full main bucket. New key-value pairs that belong to this full main bucket are then stored in its overflow bucket. This allows the map to handle more entries that map to the same initial bucket without triggering an immediate, full rehash of all entries in the entire map. 
 
 
-### Load Factor
+## Load Factor
 
 Go keeps track of how full a map is using a *load factor*. This is essentially the average number of items per bucket. It can be represented as: \(\lambda = \frac{n}{m}\)
 
@@ -94,7 +94,7 @@ Memory after delete: 5122288 bytes
 Map length: 100
 ```
 
-### Reclaiming Memory
+## Reclaiming Memory
 We can partially reclaim memory by using pointers to the map, and GC will clean up the unused buckets. However, the internal structure of the map will remain intact.
 
 ```go

@@ -103,7 +103,7 @@ Go was released in 2009 when multi-core processors were already available. Go is
 ![How Goroutines work](https://cdn-images-1.medium.com/max/1600/1*NFojvbkdRkxz0ZDbu4ysNA.jpeg "How Goroutines work - http://golangtutorials.blogspot.in/2011/06/goroutines.html")
 
 
-##### Some benefits from using goroutines
+#### Some benefits from using goroutines
 - Goroutines allow you avoid having to resort to mutex locking when sharing data structures.
 - Goroutines have faster startup time than threads.
 - Goroutines makes use of *channels*, a built-in way used to safely communicate between themselves.

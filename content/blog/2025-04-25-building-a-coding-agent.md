@@ -11,7 +11,7 @@ category: ai
 
 I just finished reading Thorsten Ball's article on Ampcode, [How to build an agent](https://ampcode.com/how-to-build-an-agent?ref=codehakase.com), and wanted to note my thoughts. Going into it, I kind of expected a deep dive into complex engineering, maybe some heavy AI theory behind coding agents. But the main thrust of the piece was surprisingly different. It argues that building these agents doesn't necessarily involve arcane secrets. Thorsten makes a strong case that with the right model (like Anthropic's Claude) and a good SDK, a lot of the work boils down to setting up relatively standard boilerplate code.
 
-### Key takeways
+## Key takeways
 What really stood out was how the Anthropic Go SDK handles the heavy lifting. It abstracts away the direct API interactions, making it much simpler to work with the model's features. The core agent loop presented felt quite manageable:
 * Initialize the client.
 * Track the conversation history (the SDK uses `anthropic.MessageParam` for this).

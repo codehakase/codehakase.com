@@ -13,7 +13,7 @@ I do a lot of AI-assisted programming across my personal projects, studio work, 
 
 I mostly utilise smaller threads so I don't get the agent drunk on context. One pattern kept emerging: I'd ask the agent to "keep fixing until the tests pass" or "deploy and verify the health check succeeds," and I'd find myself babysitting the process. The agent would make progress, hit an error, try again, and I have to be on standby to send a "Continue" text. This led me to build [alpf](https://github.com/codehakase/alpf?ref=codehakase.com) (Agentic Loop with Promise Fulfilment) - a CLI tool that wraps any task executor with bounded execution guarantees. The interesting part isn't the tool itself, but how it changes the way I work with AI coding agents.
 
-### The Problem with Open-Ended Agent Loops
+## The Problem with Open-Ended Agent Loops
 
 When you ask an agent to fix a failing test suite, it enters a loop: read error, edit code, run tests, check results. This works well for straightforward fixes. But complex scenarios - flaky tests, environment issues, cascading failures, can turn into endless cycles.
 
@@ -24,7 +24,7 @@ I've watched agents:
 
 The fundamental issue is that these agents lack hard termination boundaries. They rely on the model's judgment to know when to stop, which isn't always reliable.
 
-### Why ALPF?
+## Why ALPF?
 
 [ALPF](https://github.com/codehakase/alpf?ref=codehakase.com) introduces three constraints that make agent-driven tasks deterministic:
 
@@ -52,7 +52,7 @@ Attempt 3: Output hash matches attempt 2 - no progress detected
 Stopping execution: stagnation limit reached
 ```
 
-### Integration via MCP
+## Integration via MCP
 
 The real power comes from ALPF's MCP (Model Context Protocol) server. Any agent with MCP support can directly inspect execution state, check progress, and even reconfigure tasks mid-run.
 
@@ -82,7 +82,7 @@ Claude Code calls the MCP tools and sees:
 
 This visibility lets the agent make informed decisions. If progress has stalled, it can try a different approach. If the promise is close to being fulfilled, it can focus on the remaining failures.
 
-#### The MCP Tools
+### The MCP Tools
 
 ALPF exposes these tools to AI agents via MCP:
 
@@ -98,7 +98,7 @@ ALPF exposes these tools to AI agents via MCP:
 
 The `alpf_rollback` tool is particularly useful. If an agent's fix makes things worse, I can roll back and let it try a different approach from a known-good state.
 
-### Learnings
+## Learnings
 
 Building ALPF crystallized a few things about working with AI coding agents:
 - **Agents need boundaries.** Without explicit limits, they'll keep trying indefinitely. This isn't a flaw in the models - it's a missing piece of infrastructure. The models are optimized to be helpful, which means they'll keep attempting until told to stop.

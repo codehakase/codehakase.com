@@ -1,27 +1,42 @@
 <head>
   <script>
   (function() {
-    var s = localStorage.getItem('theme');
-    if (s) document.documentElement.setAttribute('data-theme', s);
+    try {
+      var s = localStorage.getItem('theme');
+      if (s) document.documentElement.setAttribute('data-theme', s);
+    } catch (e) {}
   })();
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
-  <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ if .IsPage }}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
+  {{- $title := cond .IsHome .Site.Title (printf "%s | %s" .Title .Site.Title) }}
+  {{- $description := "" }}
+  {{- with .Description }}{{ $description = . }}{{ else }}{{ if .IsPage }}{{ $description = .Summary | plainify | htmlUnescape | truncate 160 }}{{ else }}{{ $description = .Site.Params.description }}{{ end }}{{ end }}
+  <title>{{ $title }}</title>
+  <meta name="description" content="{{ $description }}">
+  <meta name="author" content="Francis Sunday">
+
   <!-- Open Graph -->
-  <meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}"/>
-  <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ if .IsPage }}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
+  <meta property="og:site_name" content="{{ .Site.Title }}">
+  <meta property="og:title" content="{{ $title }}">
+  <meta property="og:description" content="{{ $description }}">
   <meta property="og:image" content="https://blob.codehakase.com/static/images/cover-codehakase.png">
-  <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}"/>
-  <meta property="og:url" content="{{ .Permalink }}"/>
+  <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+  <meta property="og:url" content="{{ .Permalink }}">
+  {{- if and .IsPage (in (slice "blog" "shorts") .Section) }}
+  <meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+  <meta property="article:modified_time" content="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}">
+  {{- range .Params.tags }}
+  <meta property="article:tag" content="{{ . }}">
+  {{- end }}
+  {{- end }}
 
   <!-- Twitter Card -->
-  <meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}"/>
-  <meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{ if .IsPage }}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
+  <meta name="twitter:title" content="{{ $title }}">
+  <meta name="twitter:description" content="{{ $description }}">
   {{ with .Site.Params.twitter }}
-  <meta name="twitter:creator" property="twitter:creator" content="{{ . }}"/>
-  <meta name="twitter:site" content="{{ . }}"/>
+  <meta name="twitter:creator" content="{{ . }}">
+  <meta name="twitter:site" content="{{ . }}">
   {{ end }}
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://blob.codehakase.com/static/images/cover-codehakase.png">
@@ -32,22 +47,38 @@
   <link rel="manifest" href="/favicons/site.webmanifest">
   <link rel="shortcut icon" href="/favicons/favicon.ico">
   <meta name="msapplication-TileColor" content="#da532c">
-  <meta name="theme-color" content="#ffffff">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#fcfbf0" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1c1b10" media="(prefers-color-scheme: dark)">
 
   <!-- Fonts and Styles -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
   {{ partialCached "styles.html" (dict "syntax" true) "content" }}
 
-  {{ if .Params.canonical }}
-  <link rel="canonical" href="{{ .Params.canonical }}">
-  {{ else }}
-  <link rel="canonical" href="{{ .RelPermalink }}">
-  {{ end }}
+  <link rel="canonical" href="{{ with .Params.canonical }}{{ . }}{{ else }}{{ .Permalink }}{{ end }}">
 
   <!-- RSS (canonical feed: blog + legacy shorts) -->
   {{ printf `<link rel="alternate" type="application/rss+xml" href="%s" title="%s" />` ("blog/index.xml" | absURL) $.Site.Title | safeHTML }}
+
+  {{- if and .IsPage (in (slice "blog" "shorts") .Section) }}
+  <script type="application/ld+json">
+  {{ dict
+      "@context" "https://schema.org"
+      "@type" "BlogPosting"
+      "headline" .Title
+      "description" $description
+      "datePublished" (.Date.Format "2006-01-02T15:04:05Z07:00")
+      "dateModified" (.Lastmod.Format "2006-01-02T15:04:05Z07:00")
+      "url" .Permalink
+      "mainEntityOfPage" .Permalink
+      "keywords" (delimit (.Params.tags | default slice) ", ")
+      "author" (dict "@type" "Person" "name" "Francis Sunday" "url" .Site.BaseURL)
+      "image" "https://blob.codehakase.com/static/images/cover-codehakase.png"
+    | jsonify | safeJS }}
+  </script>
+  {{- end }}
 
   {{ if .Params.math }}
     {{ partial "maths.html" . }}

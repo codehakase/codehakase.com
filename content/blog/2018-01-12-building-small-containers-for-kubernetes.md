@@ -37,7 +37,7 @@ $ docker build myapp .
 
 While the above process is pretty straight forward, there are some issues to put into consideration. Using the default images can lead to large container images, security vulnerabilities, and memory overheads.
 
-#### Let's flesh out a sample app
+## Let's flesh out a sample app
 We'll write a simple app in Go, that exposes a single HTTP route that returns a string when hit. We will build a Docker image from it.
 
 ```go
@@ -213,7 +213,7 @@ $ docker run -it -p 8080:8080 codehakase/goapp
 
 Navigate to `http://localhost:8080/api` to test the response from the app.
 
-### Conclusion
+## Conclusion
 The goal of this article was to explain how to reduce container sizes
 specifically for Go apps. With smaller containers, you have more performance, as
 building your containers say in a CI environment is going to be faster, pushing

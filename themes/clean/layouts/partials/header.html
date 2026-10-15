@@ -1,25 +1,19 @@
-<header class="flex flex-col md:flex-row justify-between items-center py-8">
-  <div>
-    <h1 class="text-base font-bold">
-      <a href="{{ .Site.BaseURL }}">codehakase.com</a>
-    </h1>
-  </div>
+<header class="site-header">
+  <a class="site-title" href="/">codehakase.com</a>
 
-  <div style="display:flex;align-items:center;">
-    <nav class="site-nav">
+  <div class="site-header-right">
+    <nav class="site-nav" aria-label="Main">
       <a href="/about/">about</a>
-      <span class="sep">/</span>
+      <span class="sep" aria-hidden="true">/</span>
       <a href="/blog/">posts</a>
-      <span class="sep">/</span>
+      <span class="sep" aria-hidden="true">/</span>
       <a href="/projects/">projects</a>
-      <span class="sep">/</span>
-      <a href="/{{ now.Format "2006" }}/">links</a>
     </nav>
-    <button onclick="toggleTheme()" title="Toggle dark mode" class="theme-toggle-btn">
-      <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+    <button type="button" onclick="toggleTheme()" title="Toggle dark mode" aria-label="Toggle dark mode" class="theme-toggle-btn">
+      <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
       </svg>
-      <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="5"/>
         <line x1="12" y1="1" x2="12" y2="3"/>
         <line x1="12" y1="21" x2="12" y2="23"/>
@@ -35,17 +29,36 @@
 </header>
 
 <script>
+function syncThemeColor() {
+  var h = document.documentElement;
+  var t = h.getAttribute('data-theme');
+  document.querySelectorAll('meta[name="theme-color"]').forEach(function(m) {
+    if (!m.dataset.media) m.dataset.media = m.getAttribute('media') || '';
+    if (t) {
+      m.removeAttribute('media');
+      m.setAttribute('content', t === 'dark' ? '#1c1b10' : '#fcfbf0');
+    } else if (m.dataset.media) {
+      m.setAttribute('media', m.dataset.media);
+      m.setAttribute('content', m.dataset.media.indexOf('dark') > -1 ? '#1c1b10' : '#fcfbf0');
+    }
+  });
+}
 function toggleTheme() {
   var h = document.documentElement;
   var current = h.getAttribute('data-theme') ||
     (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   var next = current === 'dark' ? 'light' : 'dark';
   h.setAttribute('data-theme', next);
-  localStorage.setItem('theme', next);
+  try { localStorage.setItem('theme', next); } catch (e) {}
+  syncThemeColor();
 }
-window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
-  if (!localStorage.getItem('theme')) {
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function() {
+  var stored = null;
+  try { stored = localStorage.getItem('theme'); } catch (e) {}
+  if (!stored) {
     document.documentElement.removeAttribute('data-theme');
+    syncThemeColor();
   }
 });
+syncThemeColor();
 </script>

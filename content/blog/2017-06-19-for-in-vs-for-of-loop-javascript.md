@@ -41,7 +41,7 @@ for (let i in text) {
 ...
 ```
 
-# for..of
+## for..of
 Use this to iterate over the values in an iterable like an array:
 ```javascript
 let girls = ['Jane', 'Lilian', 'Tobi'];

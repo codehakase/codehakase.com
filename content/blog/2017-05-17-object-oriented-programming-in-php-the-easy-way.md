@@ -17,12 +17,12 @@ For some PHP developers, the concept of object-orient programming, seems like a 
 ## Why Learn OOP?
 Many frameworks built upon PHP are using the OOP paradigm and if you intend learning one of those frameworks (Laravel, Codeigniter, Symfony, etc), you'll need a ground on OOP to start with.
 
-## Objects and Classes
+### Objects and Classes
 In OOP there are two major concepts you'd see often (they really make up OOP), they are **objects** and **classes**. These terms sometimes appear to be interchangeable. That is not the case.
 
 A class for example, stands as a **structure** or *blueprint*. Relate that to a Building, say a Bank, a blueprint is presented which defines the properties of the buildings, and once accepted they proceed to errect the building. *Classes* form the structure of data needed to build objects. That same bank can use the same bluprint and errect same structure in a different location with slight differences (branch manager, number of staff, etc).
 
-### Creating Classes
+#### Creating Classes
 The syntax to create a class in PHP is very straightforward, the `class` key word is used to declare a class, followed by the name and a pair of curly braces `{ ... }`
 
 ```php
@@ -100,7 +100,7 @@ object(User)[3]
 Awesome!! each instance of the `User` class is independent of the others, their data is not same.
 
 
-### Method and Property Visibility
+#### Method and Property Visibility
 Now the `public` keyword, is a visibility type. There are three of them `public`, `protected`, and `private`. Also in addition to a property or method visiblity, there's `static` keyword, which allows them to accessed even without an instantiation of the class.
 Any property (variable) or method (class functions) with the `public` keyword, is accessible anywhere, within and outside the class.
 
@@ -108,7 +108,7 @@ Any property or method declared as `protected` can only be accessible within tha
 
 A property or method declared as `private`, is only accessible from within the class it was defined in.
 
-## Comparing Procedural code and Object-Oriented code
+### Comparing Procedural code and Object-Oriented code
 *OOP actually provides an easier approach to dealing with data. Because an object can store data internally, variables don't need to be passed from function to function to work properly.*
 Consider the following getter, setter procedural code
 ```php
@@ -179,7 +179,7 @@ object(Sample)[4]
     array (size=1)
       'Hello' => string 'World' (length=5)
 ```
-### Better Code Management
+#### Better Code Management
 With OOP, you can manage your files within your application easily, by making use of autoloading.
 
 A typical procedural dependencies script may look as such:
@@ -220,7 +220,7 @@ $user->learnOOP(true);
 ...
 ```
 
-# Conclusion
+## Conclusion
 It's been awesome walking you through the concept of object-orient programming in PHP. Learning or mastering OOP is a really great way to up your programming skills to the next level as a PHP Developer.
 We are still gonna continue learning other concepts of OOP, and build a real application with it. All this to come in subsequent articles after this.
 

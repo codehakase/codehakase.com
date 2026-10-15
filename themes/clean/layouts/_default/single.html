@@ -1,47 +1,73 @@
 {{ define "main" }}
-<article class="mb-8">
-  <header class="mb-8">
-    <h1 class="text-3xl font-bold mb-2">{{ .Title }}</h1>
+{{- $isPost := in (slice "blog" "shorts") .Section -}}
+<article class="post{{ with .Params.class }} {{ . }}{{ end }}">
+  <header class="post-header">
+    <h1 class="post-title">{{ .Title }}</h1>
     {{ if ne .Params.showDate false }}
-    <div class="text-sm">{{ dateFormat "January 2, 2006" .Date }}</div>
+    <p class="post-meta">
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+      {{- if and $isPost (gt (.Lastmod.Sub .Date).Hours 48.0) }}
+      <span class="dot" aria-hidden="true">·</span>
+      <span>Updated <time datetime="{{ .Lastmod.Format "2006-01-02" }}">{{ .Lastmod.Format "January 2, 2006" }}</time></span>
+      {{- end }}
+      {{- if $isPost }}
+      <span class="dot" aria-hidden="true">·</span>
+      <span>{{ .ReadingTime }} min read</span>
+      {{- end }}
+    </p>
+    {{ end }}
+    {{ if and $isPost .Params.tags }}
+    <ul class="post-tags" aria-label="Tags">
+      {{ range .Params.tags }}
+      <li><a href="{{ printf "/tags/%s/" (. | urlize) | relLangURL }}" class="post-tag">{{ . | lower }}</a></li>
+      {{ end }}
+    </ul>
     {{ end }}
   </header>
 
-  {{ if .Params.toc }}
-  <div class="toc">
-    <p class="text-base font-bold">Table of Contents</p>
+  {{- $headings := len .Fragments.HeadingsMap -}}
+  {{ if or (eq .Params.toc true) (and $isPost (ne .Params.toc false) (ge $headings 4) (ge .WordCount 900)) }}
+  <details class="toc">
+    <summary>Contents</summary>
     {{ .TableOfContents }}
-  </div>
+  </details>
   {{ end }}
 
-  <div class="max-w-none content-body">
+  <div class="content-body">
     {{ .Content }}
   </div>
 
-  {{ if .Params.tags }}
-  <div class="mt-8 pt-4 border-t border-gray-200">
-    <h3 class="text-lg font-bold mb-2">Tags:</h3>
-    <div class="flex flex-wrap">
-      {{ range .Params.tags }}
-        <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}/" class="tag">{{ . }}</a>
-      {{ end }}
-    </div>
-  </div>
+  {{ if and $isPost (ne .Params.hidden true) }}
+  {{- $all := partial "writing.html" . -}}
+  {{- $cur := . -}}
+  {{- $older := false -}}
+  {{- $newer := false -}}
+  {{- range slice ($all.Next .) ($all.Prev .) -}}
+    {{- with . -}}
+      {{- if .Date.Before $cur.Date }}{{ $older = . }}{{ else }}{{ $newer = . }}{{ end -}}
+    {{- end -}}
+  {{- end -}}
+  {{ if or $older $newer }}
+  <nav class="post-nav" aria-label="More posts">
+    {{ with $older }}<a class="post-nav-older" href="{{ .RelPermalink }}" rel="prev"><span>← Older</span>{{ .Title }}</a>{{ else }}<span></span>{{ end }}
+    {{ with $newer }}<a class="post-nav-newer" href="{{ .RelPermalink }}" rel="next"><span>Newer →</span>{{ .Title }}</a>{{ end }}
+  </nav>
   {{ end }}
-  {{ if ne .Params.hidden true }}
+  <footer class="post-footer">
     {{ $recentPages := where (partial "writing.html" .) "Permalink" "ne" .Permalink }}
-    {{ if gt (len $recentPages) 1 }}
-      <div class="mt-8 pt-4">
-        <h3 class="text-lg font-bold mb-2">Recent posts:</h3>
-        <div class="ml-8">
-          <ul class="list-disc">
-            {{ range first 10 $recentPages }}
-              <li><a href="{{ .RelPermalink }}" class="text-base font-medium underline">{{ .Title }}</a></li>
-            {{ end }}
-          </ul>
-        </div>
-      </div>
+    {{ if gt (len $recentPages) 0 }}
+    <h2 class="section-label">More writing</h2>
+    <ul class="post-list">
+      {{ range first 5 $recentPages }}
+      <li>
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+      </li>
+      {{ end }}
+    </ul>
+    <a class="more-link" href="/blog/">All posts →</a>
     {{ end }}
+  </footer>
   {{ end }}
 </article>
-{{ end }} 
+{{ end }}

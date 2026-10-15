@@ -2,10 +2,11 @@
 <html lang="{{ .Site.LanguageCode | default "en" }}">
   {{ partial "head.html" . }}
   <body>
-    <div class="max-w-3xl mx-auto p-4">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="page">
       {{ partial "header.html" . }}
       
-      <main>
+      <main id="main">
         {{ block "main" . }}{{ end }}
       </main>
       

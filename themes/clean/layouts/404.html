@@ -1,0 +1,15 @@
+{{ define "main" }}
+<div class="listing">
+  <h1 class="page-title">Page not found</h1>
+  <p class="listing-intro">This page does not exist, or it moved. Try the <a href="/blog/">list of posts</a> or the <a href="/">homepage</a>.</p>
+  <h2 class="section-label">Recent writing</h2>
+  <ul class="post-list">
+    {{ range first 5 (partial "writing.html" .) }}
+    <li>
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+    </li>
+    {{ end }}
+  </ul>
+</div>
+{{ end }}

@@ -11,7 +11,7 @@ comments: true
 ---
 In JavaScript, most things are objects, from core JavaScript features like strings and arrays to the browser APIs built on top of JavaScript. You can even create your own objects to encapsulate related functions and variables into efficient packages, and act as handy data containers.
 
-### What Is An Object?
+## What Is An Object?
 In JavaScript terms, An Object is a collection of data, which consits of several variables and functions - which are called properties and methods.
 
 Creating an object is as easy as eating candy (lol!). Taking our Vehicle instance, we can create a Car Object like so:
@@ -27,12 +27,12 @@ If we log to our console the type of our car variable, we'd get an object `conso
 
 > Note: We separate each key-value pairs with a comma (,)
 
-#### Accessing Object Properties
+### Accessing Object Properties
 Now we've created our object, how do we access the items inside? Its easy. We use the `dot` notation to access properties of an object. Say we want to log to our console, the value of the `colour` property in our `car` object, we'll write as so:
 ```javascript
 console.log( car.colour ); // black
 ```
-#### What Data Types are allowed as Property values in Objects?
+### What Data Types are allowed as Property values in Objects?
 An Object's property can have all data type as its value (`strings, number, float, array, function, ...`).
 ```javascript
 let me = {
@@ -59,7 +59,7 @@ me.bio(); //  Hi! I'm Francis Sunday, and I'm interested in God, programming, mu
 ```
 Now you get the feel of objects :+1:
 
-### Objects Are Everywhere
+## Objects Are Everywhere
 You need to grab an element in a DIV with html, you'd do something like this:
 ```javascript
 let myDiv = document.getElementById('thatDiv');
@@ -74,7 +74,7 @@ someVar.style
 ...
 ```
 
-#### Sub-Namespaces
+### Sub-Namespaces
 Values of objects, can also become objects. And they are still accessed via the dot notation.
 If i change the name property in the `me` object as so:
 ```javascript
@@ -90,7 +90,7 @@ me.name.lastname // Sunday
 
 ```
 
-#### Updating Objects Properties
+### Updating Objects Properties
 After an Object has been created with its properties, we can still update the values of its properties.
 ```javascript
 let person = {
@@ -117,7 +117,7 @@ console.log( car );
 // { model: 'MV400', colour: 'blue', name: 'benz' }
 ```
 
-### Try It
+## Try It
 We've covered a lot of ground so far, to make sure everything we learned so far sinks in, open up your favourite editor (mine is VSCode), and try a quick example.
 
 Create a basic `HTML` markup with two text fields `name`, `age` and a `submit` button. Make sure all the form fields has an ID.
@@ -166,6 +166,6 @@ Preview
 <br/><br/>
 <br/><br/>
 
-### Summary
+## Summary
 In this title, we walked through the basics of Objects in JavaScript. In the next part (*JavaScript Objects 102*), I'll be writing on Object Oriented programming in JavaScript, with highlights on Prototypes, Inheritance, and Constructors.
 Have any questions? Drop them in the comment box below.

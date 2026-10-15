@@ -1,15 +1,20 @@
+{{- /* The source names carry a content hash. Without it, `hugo server` keeps
+  serving a cached copy after an edit to the theme CSS. */ -}}
 {{- $tailwind := resources.Get "css/output.css" -}}
-{{- $main := resources.FromString "css/main.source.css" (readFile "themes/clean/static/css/main.css") -}}
+{{- $mainSrc := readFile "themes/clean/static/css/main.css" -}}
+{{- $main := resources.FromString (printf "css/main.%s.css" (md5 $mainSrc)) $mainSrc -}}
 {{- $styles := slice $tailwind $main -}}
 {{- $target := "css/home.css" -}}
 
 {{- if .syntax -}}
-  {{- $syntaxLight := resources.FromString "css/syntax-light.source.css" (readFile "themes/clean/static/css/syntax-light.css") -}}
-  {{- $syntaxDark := resources.FromString "css/syntax-dark.source.css" (readFile "themes/clean/static/css/syntax-dark.css") -}}
+  {{- $lightSrc := readFile "themes/clean/static/css/syntax-light.css" -}}
+  {{- $darkSrc := readFile "themes/clean/static/css/syntax-dark.css" -}}
+  {{- $syntaxLight := resources.FromString (printf "css/syntax-light.%s.css" (md5 $lightSrc)) $lightSrc -}}
+  {{- $syntaxDark := resources.FromString (printf "css/syntax-dark.%s.css" (md5 $darkSrc)) $darkSrc -}}
   {{- $styles = slice $tailwind $main $syntaxLight $syntaxDark -}}
   {{- $target = "css/site.css" -}}
 {{- end -}}
 
 {{- with $styles | resources.Concat $target | minify | fingerprint "sha256" -}}
-  <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous" media="screen">
+  <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
 {{- end -}}

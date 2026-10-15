@@ -23,7 +23,7 @@ If this is your first time seeing/hearing of this term, here's it in plain Engli
 - Aysnc/await cannot be used with plain callbacks
 
 
-#### Async/Await Vs Promises (Syntax)
+### Async/Await Vs Promises (Syntax)
 Lets write a function that returns a Promise, which resolves with some data object. When its called, it logs, and return something:
 ```javascript
 const bookTaxi = () => {
@@ -57,7 +57,7 @@ bookTaxi()
 > The `await` operator is used to wait fro a Promise. It can only be used inside an `async` function - MDN
 
 
-##### Another Example
+#### Another Example
 A simple `async` function to resolve after a specific time.
 ```javascript
 // this function resolves after 5 seconds

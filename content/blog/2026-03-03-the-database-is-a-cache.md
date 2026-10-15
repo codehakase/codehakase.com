@@ -15,13 +15,13 @@ This made sense because applications could only operate on structured data. A bi
 
 That constraint is gone now.
 
-### The Duplication Problem
+## The Duplication Problem
 
 In a database-first billing system, information gets created twice. First as a document: the signed contract with payment terms, line items, a billing schedule. Then again as structured data: rows in an **invoices** table that represent the same information in a format the application can query.
 
 The contract is the original record. The database is a copy. Keeping them in sync is an ongoing cost, and when they drift (they always drift) the dashboard stops being trustworthy. The typical fix is better process. But the real issue is architectural: the system doesn't read the source document, so someone has to bridge the gap manually.
 
-### The Contract Is the Record
+## The Contract Is the Record
 
 An AI agent can read a contract PDF and extract payment terms, line items, and billing schedules. It can read a bank statement and match deposits to outstanding invoices. It can cross-reference an email thread where a discount was negotiated against the original proposal.
 
@@ -31,7 +31,7 @@ A signed contract lands in a directory. The agent reads it and derives the struc
 
 The database still exists, but its role changes. It's a derived cache, generated for fast queries and dashboards. If it drifts, you regenerate it from the files. The files are the durable layer.
 
-### Why This Matters for System Design
+## Why This Matters for System Design
 
 The observation here is about where truth lives in the system. In a database-first design, truth lives in the database, and everything upstream (documents, emails, contracts) is treated as transient input that gets discarded after entry. In a file-first design, truth lives in the source documents, and the database is a materialized view over them.
 
