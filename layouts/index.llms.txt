@@ -7,19 +7,21 @@
   Do not edit static/llms.txt — it has been removed in favour of this template.
 */ -}}
 # Francis Sunday
-> Software engineer building reliable backend systems, with interests in distributed systems, databases, and functional programming.
+> Software engineer at Talstack, leading delivery of its HRIS product in Haskell and PostgreSQL. Previously worked on cross-border payments in Go at Nala.
 
 ## About
-Francis Sunday (@codehakase) is a software engineer who works at the intersection of backend infrastructure, developer tools, and functional design. He primarily works with Go and Haskell, and cares deeply about building systems that are correct and reliable.
+Francis Sunday (@codehakase) is a software engineer based in Lagos, Nigeria, with experience across product engineering, backend systems, and payments infrastructure. Francis is particularly interested in distributed systems, developer tools, and keeping software reliable in production.
 
-He currently works as a full stack engineer at [Talstack](https://talstack.com), building tools powering Africa's workforce. Previously at [Nala](https://nala.com), he contributed to the [Rafiki API](https://rafiki.com), building payment rails for remittances from Europe to Africa, integrating payout solutions across diverse African regions, and developing internal tools including a real-time transaction monitoring dashboard.
+At [Talstack](https://talstack.com), a people management platform, Francis is a software engineer leading delivery of the HRIS product. The product covers employee records, documents, access controls, and a workflows engine. Most of this work is in Haskell and PostgreSQL.
 
-He also runs [Hakase Development Studio](https://hakasestudio.com), a small consultancy for technical founders and engineering teams building infrastructure-heavy products, focused on distributed systems, blockchain infrastructure, and long-term reliability.
+Previously, Francis worked on cross-border payments at [Nala](https://nala.com), building backend systems in Go. There, Francis contributed to the [Rafiki API](https://rafiki.com), covering remittances from Europe to Africa, payout integrations across African regions, and internal tools including a real-time transaction monitoring dashboard.
+
+Francis also runs [Hakase Development Studio](https://hakasestudio.com), a small studio for backend engineering and infrastructure.
 
 ## Technical Expertise
-- **Languages:** Go, Haskell, Rust, TypeScript, Python
-- **Domains:** Distributed systems, databases, backend infrastructure, developer tooling
-- **Interests:** Functional programming, runtime internals, performance optimization, AI coding agents
+- **Languages:** Go, Haskell, SQL, Rust, TypeScript, Python
+- **Domains:** Backend systems, PostgreSQL, distributed systems, payments, HR software, developer tooling
+- **Interests:** Functional programming, runtime internals, performance, observability, AI coding agents
 
 ## Writing
 Francis writes long-form blog posts and short-form technical notes at [codehakase.com/blog](https://codehakase.com/blog/). Most recent first:

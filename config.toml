@@ -6,7 +6,7 @@ enableRobotsTXT = true
 
 [params]
   mainSections = ["blog", "shorts"]
-  description = "Francis Sunday is a software engineer building reliable products, backend systems, infrastructure, and developer tools."
+  description = "Francis Sunday is a software engineer at Talstack, leading delivery of its HRIS product in Haskell. Previously worked on cross-border payments in Go at Nala."
   twitter = "@codehakase"
 
 [markup]

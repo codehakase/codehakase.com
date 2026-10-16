@@ -1,7 +1,7 @@
 ---
 title: Projects
 date: 2021-04-08T10:52:01+01:00
-description: "Francis Sunday is a software engineer building reliable products, backend systems, infrastructure, and developer tools."
+description: "Francis Sunday is a software engineer at Talstack, leading delivery of its HRIS product in Haskell. Previously worked on cross-border payments in Go at Nala."
 category: [projects]
 hidden: true
 showDate: false

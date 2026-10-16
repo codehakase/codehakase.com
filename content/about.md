@@ -1,29 +1,24 @@
 ---
 title: "About"
 date: 2025-02-08T10:52:01+01:00
-description: "Francis Sunday is a software engineer building reliable products, backend systems, infrastructure, and developer tools."
+description: "Francis Sunday is a software engineer at Talstack, leading delivery of its HRIS product in Haskell. Previously worked on cross-border payments in Go at Nala."
 category: [about]
 hidden: true
 showDate: false
 ---
 
-Hi, I'm Francis.
+I’m Francis, a software engineer based in Lagos, Nigeria. I’ve worked across product engineering, backend systems, and payments infrastructure.
 
-I'm a software engineer based in Lagos, Nigeria. I work at [Talstack](https://talstack.com?ref=codehakase.com), and run a small [infra studio](https://hakasestudio.com?ref=codehakase.com), helping founders build dependable backend systems and infrastructure. Previously, I worked on payments infrastructure at [Nala](https://nala.com?ref=codehakase.com).
+I currently work at [Talstack](https://talstack.com?ref=codehakase.com), a people management platform, where I lead delivery of our HRIS product. That includes employee records, documents, access controls, and a workflows engine. Most of my work there is in Haskell and PostgreSQL.
 
-My interests include distributed systems, Go, Haskell, developer tools, and music. This site is where I write about things I’m learning, software I’m building, and problems I find interesting.
+Previously, I worked on cross-border payments at [Nala](https://nala.com?ref=codehakase.com), building backend systems in Go. I’m particularly interested in distributed systems, developer tools, and the work of keeping software reliable in production.
 
-If you have any questions or want to get in touch with me, email me:
+I also run [Hakase Development Studio](https://hakasestudio.com?ref=codehakase.com), a small studio for backend engineering and infrastructure.
 
-[me@codehakase.com](mailto:me@codehakase.com)
+Outside work, I play the piano, and spend time with my lovely family. This site is where I write about software, things I’m learning, and projects I’m building.
 
-I'm also on other platforms:
-
-- [Github](https://github.com/codehakase?ref=codehakase.com)
-- [LinkedIn](https://linkedin.com/in/codehakase?ref=codehakase.com)
-- [X (Twitter)](https://x.com/codehakase?ref=codehakase.com) 
-- [BlueSky](https://bsky.app/profile/codehakase.com?ref=codehakase.com)
+If something here is useful, or wrong, email me: [me@codehakase.com](mailto:me@codehakase.com).
 
 ## Colophon
 
-This site is built with [Hugo](https://gohugo.io) and [TailwindCSS](https://tailwindcss.com), and hosted on [Vercel](https://vercel.com).
+Built with [Hugo](https://gohugo.io) and [Tailwind CSS](https://tailwindcss.com), and hosted on [Vercel](https://vercel.com).
