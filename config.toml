@@ -9,6 +9,12 @@ enableRobotsTXT = true
   description = "Francis Sunday is a software engineer at Talstack, leading delivery of its HRIS product in Haskell. Previously worked on cross-border payments in Go at Nala."
   twitter = "@codehakase"
 
+  # Author card shown at the end of every post.
+  [params.author]
+    name = "Francis Sunday"
+    avatar = "/images/dp.jpeg"
+    bio = "I'm a software engineer at [Talstack](https://talstack.com?ref=codehakase.com), where I lead delivery of our HRIS product in Haskell and PostgreSQL. Previously, I built cross-border payments systems in Go at [Nala](https://nala.com?ref=codehakase.com)."
+
 [markup]
   [markup.highlight]
     codeFences = true

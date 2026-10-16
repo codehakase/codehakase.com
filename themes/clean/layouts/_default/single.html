@@ -38,34 +38,25 @@
   </div>
 
   {{ if and $isPost (ne .Params.hidden true) }}
-  {{- $all := partial "writing.html" . -}}
-  {{- $cur := . -}}
-  {{- $older := false -}}
-  {{- $newer := false -}}
-  {{- range slice ($all.Next .) ($all.Prev .) -}}
-    {{- with . -}}
-      {{- if .Date.Before $cur.Date }}{{ $older = . }}{{ else }}{{ $newer = . }}{{ end -}}
-    {{- end -}}
-  {{- end -}}
-  {{ if or $older $newer }}
-  <nav class="post-nav" aria-label="More posts">
-    {{ with $older }}<a class="post-nav-older" href="{{ .RelPermalink }}" rel="prev"><span>← Older</span>{{ .Title }}</a>{{ else }}<span></span>{{ end }}
-    {{ with $newer }}<a class="post-nav-newer" href="{{ .RelPermalink }}" rel="next"><span>Newer →</span>{{ .Title }}</a>{{ end }}
-  </nav>
-  {{ end }}
+  {{- $recentPages := where (partial "writing.html" .) "Permalink" "ne" .Permalink -}}
   <footer class="post-footer">
-    {{ $recentPages := where (partial "writing.html" .) "Permalink" "ne" .Permalink }}
-    {{ if gt (len $recentPages) 0 }}
-    <h2 class="section-label">More writing</h2>
-    <ul class="post-list">
+    <p class="post-end" aria-hidden="true">— End —</p>
+
+    {{ with site.Params.author }}
+    <div class="author-card">
+      {{ with .avatar }}<span class="author-avatar"><img src="{{ . | relURL }}" alt="" width="52" height="52" loading="lazy"></span>{{ end }}
+      <p><a class="author-name" href="/about/">{{ .name }}</a> {{ .bio | markdownify }}</p>
+    </div>
+    {{ end }}
+
+    {{ if $recentPages }}
+    <nav class="post-nav" aria-labelledby="more-posts">
+      <h2 id="more-posts" class="post-nav-label">More posts</h2>
       {{ range first 5 $recentPages }}
-      <li>
-        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
-      </li>
+      <a class="post-nav-item" href="{{ .RelPermalink }}">{{ .Title }}</a>
       {{ end }}
-    </ul>
-    <a class="more-link" href="/blog/">All posts →</a>
+      <a class="post-nav-all" href="/blog/">All posts →</a>
+    </nav>
     {{ end }}
   </footer>
   {{ end }}
