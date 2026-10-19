@@ -82,6 +82,12 @@ a:hover {
   text-decoration-color: var(--accent);
 }
 
+a[target="_blank"]:not(:empty):not(:has(*))::after {
+  content: "↗";
+  display: inline-block;
+  margin-inline-start: 0.125rem;
+}
+
 a:focus-visible,
 button:focus-visible,
 summary:focus-visible {
