@@ -1,9 +1,10 @@
 {{- /* The source names carry a content hash. Without it, `hugo server` keeps
   serving a cached copy after an edit to the theme CSS. */ -}}
+{{- $fonts := resources.Get "css/fonts.css" -}}
 {{- $tailwind := resources.Get "css/output.css" -}}
 {{- $mainSrc := readFile "themes/clean/static/css/main.css" -}}
 {{- $main := resources.FromString (printf "css/main.%s.css" (md5 $mainSrc)) $mainSrc -}}
-{{- $styles := slice $tailwind $main -}}
+{{- $styles := slice $fonts $tailwind $main -}}
 {{- $target := "css/home.css" -}}
 
 {{- if .syntax -}}
@@ -11,10 +12,12 @@
   {{- $darkSrc := readFile "themes/clean/static/css/syntax-dark.css" -}}
   {{- $syntaxLight := resources.FromString (printf "css/syntax-light.%s.css" (md5 $lightSrc)) $lightSrc -}}
   {{- $syntaxDark := resources.FromString (printf "css/syntax-dark.%s.css" (md5 $darkSrc)) $darkSrc -}}
-  {{- $styles = slice $tailwind $main $syntaxLight $syntaxDark -}}
+  {{- $styles = slice $fonts $tailwind $main $syntaxLight $syntaxDark -}}
   {{- $target = "css/site.css" -}}
 {{- end -}}
 
-{{- with $styles | resources.Concat $target | minify | fingerprint "sha256" -}}
-  <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+{{- /* Inline the small stylesheets so first visits and page navigation do not
+  wait for another request before rendering. */ -}}
+{{- with $styles | resources.Concat $target | minify -}}
+  <style>{{ .Content | safeCSS }}</style>
 {{- end -}}
